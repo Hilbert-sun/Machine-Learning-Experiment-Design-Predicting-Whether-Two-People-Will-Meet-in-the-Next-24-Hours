@@ -2,44 +2,38 @@
 
 Date: 2026-10-09 (Asia/Kuala_Lumpur)
 
-## Result
+## Current execution
 
-**T01–T04 DONE.** T01 was reused; T02, T03 and T04 were implemented and verified sequentially under the user's explicit range authorization. T05–T16 remain TODO. Stop development here.
+**T16 — IN_PROGRESS: final publication step.** Dependencies T03–T15 were DONE. Software validation, final integration and delivery documentation are complete; source-only GitHub synchronization remains before marking T16 DONE. Do not start a new development task.
 
-## Implementation summary
+## Implementation and changed files
 
-- T02: `app.py`, shared UI, eight `pages/` views, `.streamlit/config.toml` and UI tests. Chinese-first top navigation, dark/light theme support, working page links, persistent dataset choice and honest empty model/metric states. Data Sources includes official attribution and license links.
-- T03: `src/downloader.py`, Data Manager integration and tests. Live Figshare metadata supplies names/URLs/sizes/MD5; streaming downloads have progress, timeouts, retries, atomic writes, skip-existing checks and partial cleanup. Manual upload refuses path traversal and silent overwrite. README documents recovery.
-- T04: `src/loader.py`, validation UI and tests. Chunked source parsing checks full-file structure, numeric types and IDs; actual aliases are mapped without guessing. Copenhagen relative time, SocioPatterns UNIX time, Bluetooth -1/-2 markers, missed-call duration=-1, repeated timestamps, direction and duplicate rows are preserved for T05.
-- Data Manager caches validation summaries by file size/mtime. Changed files lose Ready status. Ready requires a validated primary contact file, not just phone/SMS data; errors display Validation Failed and recovery guidance. Supplementary Facebook/gender/README/notebook files are listed but not schema-validated.
-- Updated `README.md`, `TASKS.md`, `AGENTS.md`, dependencies (Streamlit minimum 1.65) and config comments. No cleaning, labels, features, models or fabricated results were added.
+- Added `src/overview.py` and connected `pages/0_Overview.py` to current processed cache statistics, observed pairs, current-policy eligible positive rate and actual saved model counts. This fixes the final audit's discovery that Overview still showed initialization placeholders despite available data. Unknown/absent denominators remain unknown; changed inputs invalidate cached display.
+- Added `tests/test_delivery.py`: complete synthetic raw Bluetooth scans → source cleaning → labels → historical features → chronological split → baseline/main-model calibration → saved model → time-valid prediction/backtest → frozen final evaluation → CSV/HTML, plus Overview measured counts and cache invalidation. No phase was bypassed or supplied a fake model probability.
+- Added `requirements-lock.txt`, recording 51 installed runtime/test package versions without URLs/credentials; verified them against installed versions and declared requirements. No package installation was needed.
+- Added `DELIVERY.md` with exact scope, A–H evidence, launch/reproduction commands, source/license references, actual data limitations and next research steps. Updated README, task/progress instructions/status. Completed modules were reused rather than regenerated.
 
 ## Verification
 
-- Final focused regression covering all current modules: `.venv/bin/python -m pytest -q tests/test_schema.py tests/test_data_manager.py tests/test_ui.py tests/test_downloader.py tests/test_environment.py`: **63 passed in 1.96s**.
+- Before final integration: full `.venv/bin/python -m pytest -q`: **166 passed in 7.26s**.
+- New delivery/navigation checks: **13 passed in 2.93s**.
+- Final full `.venv/bin/python -m pytest -q`: **168 passed in 8.13s**.
 - `.venv/bin/python -m pip check`: **No broken requirements found**.
-- Real headless Streamlit server started successfully and returned HTTP 200 from its health endpoint; temporary verification server was stopped afterwards. AppTest exercised all eight registered routes.
-- T03 live acquisition: six small Copenhagen files were downloaded and verified against official sizes/MD5; duplicate requests were skipped. SocioPatterns gzip downloaded successfully (653,252 bytes), with no publisher checksum. Local evidence: `reports/download_verification.json` and `reports/copenhagen_metadata.json`.
-- T04 strict-parser live verification: complete calls.csv **3,600 rows**; complete sms.csv **24,333 rows**; complete SocioPatterns contacts **188,508 rows**.
-- Copenhagen Bluetooth: requested/read at most **8,192 bytes** and validated **674 complete rows** from that bounded source sample. This is **not full-dataset validation**. Full bt_symmetric.csv (98,257,835 bytes according to official metadata) was not downloaded. The sample is stored under ignored reports, not the raw data directory, so it cannot mark Copenhagen Ready.
-- Actual source headers: Bluetooth `# timestamp,user_a,user_b,rssi`; calls `timestamp,caller,callee,duration`; SMS `timestamp,sender,recipient`; SocioPatterns five whitespace-separated columns without a header.
-- Raw/derived data, models, reports, caches, virtual environment and secrets are ignored; directory markers remain trackable.
+- `.venv/bin/streamlit --version`: **1.65.0**. The documented Streamlit executable started successfully on loopback; root and health routes returned HTTP200. The temporary server was stopped.
+- All eight AppTest pages loaded without errors. Real SocioPatterns Overview matched **327 participants,188,508 records,5,818 pairs,5 Study Days**, unknown eligible positive rate and no trained real model.
+- All 51 locked package versions match the installed tested environment and the declared dependency ranges.
+- A–H evidence is mapped in DELIVERY.md. Native algorithm/model UI tests use explicit synthetic fixtures; no fixture score is claimed as a study result.
+- Local evidence remains ignored: `reports/delivery_ui_check.json`, `reports/delivery_startup_check.json`, and earlier stage records. `git diff --check` passed.
+- No test failed during T16. Nonfatal sandbox CPU-probe, bare-mode Streamlit context and unwritable default pip-cache warnings did not affect results.
 
-## Resolved failures and limits
+## Real-data limitations
 
-- T02 initial UI test: dataset choice reset after navigation (1 failed / 10 passed). Fixed independent persistent selection state; rerun passed.
-- T04 extra-field test at a chunk boundary initially failed because Pandas C parsing silently truncated the extra field (1 failed / 23 passed). Switched to Python parsing with parser warnings treated as errors. All 24 schema tests and the full 63-test regression passed, including later-chunk field-count errors.
-- Initial sandbox GitHub authentication check reported invalid credentials because network access was unavailable. Network-enabled check confirmed the existing keyring login and push permission; no token was exposed or credentials changed.
-- No outstanding implementation blocker. Full Copenhagen Bluetooth validation remains a data acquisition step for the user. Data cleaning/coverage and later research tests belong to T05 onward.
+Software testing is complete; research experiments are not. Existing SocioPatterns still has zero primary-evaluation-eligible samples because reliable scan evidence is unavailable. Full Copenhagen Bluetooth remains undownloaded/unvalidated locally. No real study models, probabilities or performance scores have been produced. E3 stays unavailable without verified communication timing; unconfirmed weekdays remain null. No dataset or new package was downloaded in T16.
 
-## GitHub destination
+## Repository/publication
 
-User requested saving this project to their newly created repository. Identified `Hilbert-sun/-24-` (created 2026-10-09, empty main branch) and confirmed push permission. GitHub reported it had been renamed during publication; the canonical destination is now:
+The previously authorized destination is `https://github.com/Hilbert-sun/Machine-Learning-Experiment-Design-Predicting-Whether-Two-People-Will-Meet-in-the-Next-24-Hours`. Fetched origin and confirmed local/remote main were aligned (0 ahead/0 behind) before final publication. Current publication scope is source, configuration, documentation, tests and directory markers only. Raw/derived data, weights, features/labels, reports, virtual environment and secrets remain excluded. Commit/push and remote verification are the remaining delivery steps.
 
-https://github.com/Hilbert-sun/Machine-Learning-Experiment-Design-Predicting-Whether-Two-People-Will-Meet-in-the-Next-24-Hours
+## Next task
 
-Implementation commit `b773e61bf96120b4f405c38a9bf0bf7b637405ee` was successfully pushed to main and verified against the remote branch. The source-only commit contains 34 files; all downloaded datasets, local reports, models, secrets and virtual environment remain excluded. Origin and persistent instructions are updated to the canonical address. A follow-up documentation commit records this publication result; use Git history for its SHA.
-
-## Next recommended task
-
-**T05 — 数据清洗和统一格式.** Wait for the user's instruction. Do not automatically start T05.
+No new task is started. Finish T16's source-only publication, mark DONE after remote verification, then stop. Any full-data research run is a separate user-authorized task, not an automatic continuation.

@@ -1,4 +1,4 @@
-# Data Manager consumes paths; later tasks implement prediction/model settings.
+# Data Manager and Model Training consume paths/policies; Prediction Lab is later.
 project:
   name: Encounter Lab
 paths:
@@ -12,6 +12,8 @@ prediction:
   horizon_hours: 24
   snapshot_hour: 8
   history_windows_days: [1, 3, 7, 14]
+  min_scan_coverage: 0.5
+  candidate_mode: known_pair
 split:
   method: chronological
   train_fraction: 0.6
@@ -20,3 +22,7 @@ split:
 features:
   enable_communications: false
   enable_static_facebook: false
+  weekday_origin: null
+  weekday_reference: null
+training:
+  random_seed: 42
