@@ -4,7 +4,7 @@ Date: 2026-10-09 (Asia/Kuala_Lumpur)
 
 ## Current execution
 
-**T16 — IN_PROGRESS: final publication step.** Dependencies T03–T15 were DONE. Software validation, final integration and delivery documentation are complete; source-only GitHub synchronization remains before marking T16 DONE. Do not start a new development task.
+**T16 — DONE. T01–T16 software tasks are complete.** Dependencies T03–T15 were DONE. Software validation, final integration, delivery documentation and source-only GitHub publication succeeded. Stop; do not start a new development/research task automatically.
 
 ## Implementation and changed files
 
@@ -32,8 +32,10 @@ Software testing is complete; research experiments are not. Existing SocioPatter
 
 ## Repository/publication
 
-The previously authorized destination is `https://github.com/Hilbert-sun/Machine-Learning-Experiment-Design-Predicting-Whether-Two-People-Will-Meet-in-the-Next-24-Hours`. Fetched origin and confirmed local/remote main were aligned (0 ahead/0 behind) before final publication. Current publication scope is source, configuration, documentation, tests and directory markers only. Raw/derived data, weights, features/labels, reports, virtual environment and secrets remain excluded. Commit/push and remote verification are the remaining delivery steps.
+The previously authorized destination is `https://github.com/Hilbert-sun/Machine-Learning-Experiment-Design-Predicting-Whether-Two-People-Will-Meet-in-the-Next-24-Hours`. Fetched origin and confirmed local/remote main were aligned (0 ahead/0 behind) before publication. Reviewed 48 changed source/configuration/documentation/test files; staged checks excluded all data, weights, reports, virtual environment and secrets.
+
+Software delivery commit **634a532574b54d5d340be099b2cd8077976e4cc2** was pushed to main; `git ls-remote` returned the identical SHA. A follow-up documentation commit records T16 completion and this verified publication result. The latest HEAD is recorded by Git history; no force-push or unrelated remote-history overwrite occurred.
 
 ## Next task
 
-No new task is started. Finish T16's source-only publication, mark DONE after remote verification, then stop. Any full-data research run is a separate user-authorized task, not an automatic continuation.
+No remaining task in T01–T16. Stop here. A full-data research run requires a new user instruction and valid observation data; it is not an automatic continuation of software delivery.

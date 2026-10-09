@@ -25,7 +25,7 @@ The first execution was limited to T01 and is complete. The user subsequently au
 
 ## Current authorized range
 
-The user requested continuing to T16, final testing, documentation and delivery. T03–T15 dependencies are complete. Verify the full suite and documented workflow, fix only delivery-relevant issues, and stop after T16.
+T01–T16 software tasks are complete and verified. T16 included full testing, documented startup, raw-scan integration and source-only GitHub delivery. Stop; do not download full datasets, train a study model or invent new development work without a new user instruction. Research-data limitations in DELIVERY.md remain in force.
 
 ## Prediction data contract
 

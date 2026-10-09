@@ -70,4 +70,4 @@ Candidate Pair扩展、可选walk-forward、可靠通讯可用时间接入、星
 
 GitHub目的地：[Encounter Lab仓库](https://github.com/Hilbert-sun/Machine-Learning-Experiment-Design-Predicting-Whether-Two-People-Will-Meet-in-the-Next-24-Hours)。最终发布提交由Git历史记录。
 
-源码、配置、文档、测试和空目录标记是提交范围；原始/衍生数据、模型权重、特征/标签、报告、虚拟环境和密钥均忽略。GitHub同步作为本次最终交付的最后步骤，最终结果记录于PROGRESS.md及执行回复。
+源码、配置、文档、测试和空目录标记是提交范围；原始/衍生数据、模型权重、特征/标签、报告、虚拟环境和密钥均忽略。软件交付提交 `634a532574b54d5d340be099b2cd8077976e4cc2` 已推送并与远端main核对一致；后续收尾文档提交记录T16完成状态，最新提交以Git历史为准。
