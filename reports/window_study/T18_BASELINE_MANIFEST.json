@@ -1,0 +1,680 @@
+{
+  "baseline": "T17",
+  "baseline_commit": "f1169519d124169b474819010caa2ab0b25960fa",
+  "calibration": {
+    "fit_prediction_times": 1,
+    "fit_rows": 35666,
+    "method": "sigmoid",
+    "reason": "predeclared validation-support gate; not selected using test improvement",
+    "tuning_prediction_times": 2,
+    "tuning_rows": 81830
+  },
+  "code_hashes_at_baseline_commit": {
+    "src/calibration.py": "43a0c87dbd4ce494b67aa49954c2fc309c01f9f9bb91ece1b2861000706bbf31",
+    "src/feature_engineering.py": "2a1d39ae6e25599170ab07f5aad7a0c1da282ad8b64f8767eb6f71efbfc45783",
+    "src/label_builder.py": "f568512f6a933cf65180d402298d30070c03262f9a27aa1203a8dd7616b1f014",
+    "src/model_registry.py": "369840717b8a09b12ba73194694ef8e60dc87fa8ce7a7f1299916e3d5b60472c",
+    "src/preprocessing.py": "9e57bda021693312955f33858bb45e20eb379557de1cdbe5300ccb55055bd3b9",
+    "src/real_experiment.py": "0b73b2a8afe92120e868e8e344afa8cb5ee8ac4e66ec20a6d32a8e4190a2a59b",
+    "src/temporal_split.py": "b794be0ee92ef9c37e8511b946c298b1b510c5f18d5aea89edb92f45250ed608",
+    "src/train.py": "5fc2a5fae7ef104675601c09649d6d3ff34f0c7a82bfc39daae68e4da15e2361"
+  },
+  "coverage_excluded_rows": 427201,
+  "coverage_exclusion_reasons": {
+    "low_scan_coverage": 427201
+  },
+  "dataset_sources": [
+    {
+      "bytes": 653252,
+      "dataset": "SocioPatterns",
+      "sha256": "ecf4a90312c8d72057f72e936c366b470e63876da7db846300044795f045e2ea",
+      "source_path": "data/raw/sociopatterns/HighSchool2013_proximity_net.csv.gz"
+    },
+    {
+      "bytes": 98257835,
+      "dataset": "Copenhagen",
+      "sha256": "1c620f0f0f25d59730dc3427b051d5ab9e7c0b70173d9f92c04cf7c2d8b97e44",
+      "source_path": "data/raw/copenhagen/bt_symmetric.csv"
+    }
+  ],
+  "eligible_rows": 769627,
+  "file_hashes": {
+    "data/features/features-3c0064d963f12a0c97ef.parquet": "b44c37144804937baf02a0d330c2cfd2923ccfbfeb7c9c3a9c439a2174034b9d",
+    "data/processed/labels/labels-57c096d9e76eba821404.parquet": "3a333bfe4c1e34ef116a7c2f14880b211b193275c5eae61e0894b060883eec38",
+    "data/raw/copenhagen/bt_symmetric.csv": "1c620f0f0f25d59730dc3427b051d5ab9e7c0b70173d9f92c04cf7c2d8b97e44",
+    "data/raw/sociopatterns/HighSchool2013_proximity_net.csv.gz": "ecf4a90312c8d72057f72e936c366b470e63876da7db846300044795f045e2ea",
+    "models/T17/193387315b5b/constant-ff9a40f43272/manifest.json": "79e3cfb7e72ce0617fb90e51504eda725b0c42b50c801d5685ebdd115078811a",
+    "models/T17/193387315b5b/constant-ff9a40f43272/model.joblib": "648c1efb123cbfa9908f15c41f60db1cd97ce86b789f735697e753b73a8237aa",
+    "models/T17/193387315b5b/historical_frequency-bdb8b460786f/manifest.json": "01895e0a9a3e8d1390fca0b32b36ad4e5344d9002a2cdb58b0d491f5946a01ad",
+    "models/T17/193387315b5b/historical_frequency-bdb8b460786f/model.joblib": "34aa434662fd8b17340240cfad442bdd7dfe6e7eae028618ae9a2bea5b638659",
+    "models/T17/193387315b5b/logistic_regression-ed32f364e66e/manifest.json": "a76218ad637355ae3b28aeeed7dbfb2f6ece8d9020dcf5d2a23cd7d54159a629",
+    "models/T17/193387315b5b/logistic_regression-ed32f364e66e/model.joblib": "97f3cf0649960d3c628626a3bfef8dbb3ca6fc0c29961a73ad3ddbfa51f240d9",
+    "models/T17/87c5d0cc8e77/xgboost-f788627b3aa2/manifest.json": "8fba7b04cec95589bd6978ba75f692a6a07cf307b043211080440124130d6dc8",
+    "models/T17/87c5d0cc8e77/xgboost-f788627b3aa2/model.joblib": "0175f8b4b3dc8380a98ebb64fc1bcc91cbeab5ba5532e20a3195ad34359f7eba",
+    "models/T17/raw_xgboost/xgboost-51f3a5ee59a3/manifest.json": "6df5f717c26fe38772e4cf147d3e763e09879332fa7af92b5fcd9f31e0d2dc04",
+    "models/T17/raw_xgboost/xgboost-51f3a5ee59a3/model.joblib": "733ac7cc930f38f5219a4377d910ac823d63b374cec7b944a93402a39198e1a9",
+    "reports/T17_DATA_DIAGNOSTICS.md": "edd72443d8e7fe9e48ff74b3a3c5941accb527bc90e5f7fc49ed97b2f33de952",
+    "reports/T17_METRICS.csv": "a6eecbdeff40b45b4ede52984802c3b3762535d89b31c161837777abd0b1e11e",
+    "reports/T17_METRICS.json": "9f6c5851f7a6b6fb27c5d731b55008b4a4351b7124e6093ff7aa0f01bbd4ff21",
+    "reports/T17_REAL_EXPERIMENT.md": "659bddc592a4f7095301f3dc4f2e12b4961fa6884c8e77c1e7ef5dfcd192bab1",
+    "reports/T17_SAFE_METADATA.json": "7e5fcf97a3de879200d40646478097d4b8e1431ccfb23688bb4bcc7d53e203e3",
+    "reports/training-193387315b5b.json": "6e440d1595e9774b40dd40759c52f28f6fab784d83b8f455eef66eb0c2324b72",
+    "reports/training-87c5d0cc8e77.json": "64e851a019a7a7f91f8be74e68879228e3e43a17b162750cd31b5a4be3717fd9"
+  },
+  "metrics": {
+    "test": {
+      "constant": {
+        "accuracy": 0.10221778068186185,
+        "brier_score": 0.0918967267059289,
+        "calibration_error_ece": 0.01128807829492097,
+        "f1": 0.18547655912178657,
+        "log_loss": 0.3305812394875906,
+        "positive_rate": 0.10221778068186185,
+        "pr_auc_average_precision": 0.10221778068186185,
+        "precision": 0.10221778068186185,
+        "recall": 1.0,
+        "reliability": [
+          {
+            "mean_probability": 0.11350585897621775,
+            "observed_fraction": 0.10221778068186185
+          }
+        ],
+        "roc_auc": 0.5,
+        "rows": 260170,
+        "threshold": 0.11350585897678281
+      },
+      "historical_frequency": {
+        "accuracy": 0.8546450397816812,
+        "brier_score": 0.08337652384824007,
+        "calibration_error_ece": 0.026971772367113667,
+        "f1": 0.34632603322213196,
+        "log_loss": 0.7307601996665972,
+        "positive_rate": 0.10221778068186185,
+        "pr_auc_average_precision": 0.30904016985934585,
+        "precision": 0.32048370069420007,
+        "recall": 0.3767015116191622,
+        "reliability": [
+          {
+            "mean_probability": 0.04864069851902448,
+            "observed_fraction": 0.05677112669518015
+          },
+          {
+            "mean_probability": 0.14868183095760698,
+            "observed_fraction": 0.10351546374729612
+          },
+          {
+            "mean_probability": 0.24575676699174506,
+            "observed_fraction": 0.18939100077579518
+          },
+          {
+            "mean_probability": 0.3478514989466575,
+            "observed_fraction": 0.2801556420233463
+          },
+          {
+            "mean_probability": 0.4658861541658625,
+            "observed_fraction": 0.4007441453272051
+          },
+          {
+            "mean_probability": 0.5651894895514372,
+            "observed_fraction": 0.5620649651972158
+          },
+          {
+            "mean_probability": 0.65225685718399,
+            "observed_fraction": 0.6134628730048577
+          },
+          {
+            "mean_probability": 0.7500111501806404,
+            "observed_fraction": 0.7220338983050848
+          },
+          {
+            "mean_probability": 0.8575798053798039,
+            "observed_fraction": 0.8213333333333334
+          },
+          {
+            "mean_probability": 0.9789851976677043,
+            "observed_fraction": 0.8293736501079914
+          }
+        ],
+        "roc_auc": 0.7037950699087386,
+        "rows": 260170,
+        "threshold": 0.23076923076923078
+      },
+      "logistic_regression": {
+        "accuracy": 0.7409155552138986,
+        "brier_score": 0.09573683712246493,
+        "calibration_error_ece": 0.08728953188332166,
+        "f1": 0.22743839541547278,
+        "log_loss": 0.44578346864320995,
+        "positive_rate": 0.10221778068186185,
+        "pr_auc_average_precision": 0.2452156120251689,
+        "precision": 0.16357821155367977,
+        "recall": 0.3730916748138678,
+        "reliability": [
+          {
+            "mean_probability": 0.011982141115850059,
+            "observed_fraction": 0.09472147611818288
+          },
+          {
+            "mean_probability": 0.14122080802087533,
+            "observed_fraction": 0.5938303341902313
+          },
+          {
+            "mean_probability": 0.24428586669398417,
+            "observed_fraction": 0.7791798107255521
+          },
+          {
+            "mean_probability": 0.34608197880239316,
+            "observed_fraction": 0.8278688524590164
+          },
+          {
+            "mean_probability": 0.45164111068509244,
+            "observed_fraction": 0.8444444444444444
+          },
+          {
+            "mean_probability": 0.5447216407776418,
+            "observed_fraction": 0.9024390243902439
+          },
+          {
+            "mean_probability": 0.6536827287178582,
+            "observed_fraction": 0.8904109589041096
+          },
+          {
+            "mean_probability": 0.7516730221294652,
+            "observed_fraction": 0.9305555555555556
+          },
+          {
+            "mean_probability": 0.8545144223986237,
+            "observed_fraction": 0.9122807017543859
+          },
+          {
+            "mean_probability": 0.9370842473765428,
+            "observed_fraction": 1.0
+          }
+        ],
+        "roc_auc": 0.6521284739320994,
+        "rows": 260170,
+        "threshold": 0.017183409462913524
+      },
+      "xgboost_raw": {
+        "accuracy": 0.8708267671138102,
+        "brier_score": 0.08839424317495514,
+        "calibration_error_ece": 0.0792442273061261,
+        "f1": 0.3981446659145042,
+        "log_loss": 0.3808438391489658,
+        "positive_rate": 0.10221778068186185,
+        "pr_auc_average_precision": 0.3814913053546118,
+        "precision": 0.38009916224995727,
+        "recall": 0.4179890200797172,
+        "reliability": [
+          {
+            "mean_probability": 0.0120506379357506,
+            "observed_fraction": 0.08339393164510432
+          },
+          {
+            "mean_probability": 0.13766117624195567,
+            "observed_fraction": 0.45480631276901007
+          },
+          {
+            "mean_probability": 0.24342886828372826,
+            "observed_fraction": 0.625
+          },
+          {
+            "mean_probability": 0.34413412025100304,
+            "observed_fraction": 0.6887218045112782
+          },
+          {
+            "mean_probability": 0.44199136505361464,
+            "observed_fraction": 0.6918032786885245
+          },
+          {
+            "mean_probability": 0.5526937154623178,
+            "observed_fraction": 0.6923076923076923
+          },
+          {
+            "mean_probability": 0.6517729837553842,
+            "observed_fraction": 0.6857142857142857
+          },
+          {
+            "mean_probability": 0.753808870646453,
+            "observed_fraction": 0.8220640569395018
+          },
+          {
+            "mean_probability": 0.8538999158143997,
+            "observed_fraction": 0.91
+          },
+          {
+            "mean_probability": 0.9468353893817141,
+            "observed_fraction": 0.9564606741573034
+          }
+        ],
+        "roc_auc": 0.7507174523959044,
+        "rows": 260170,
+        "threshold": 0.03290223330259323
+      },
+      "xgboost_sigmoid": {
+        "accuracy": 0.8708267671138102,
+        "brier_score": 0.07767315693245937,
+        "calibration_error_ece": 0.010393397802240061,
+        "f1": 0.3981446659145042,
+        "log_loss": 0.2789101115588304,
+        "positive_rate": 0.10221778068186185,
+        "pr_auc_average_precision": 0.3814913053546118,
+        "precision": 0.38009916224995727,
+        "recall": 0.4179890200797172,
+        "reliability": [
+          {
+            "mean_probability": 0.05670412869504614,
+            "observed_fraction": 0.05266693977877919
+          },
+          {
+            "mean_probability": 0.13648821770575278,
+            "observed_fraction": 0.11681046104071179
+          },
+          {
+            "mean_probability": 0.24363840649461915,
+            "observed_fraction": 0.2192121833357739
+          },
+          {
+            "mean_probability": 0.3458686642649432,
+            "observed_fraction": 0.3291797891277557
+          },
+          {
+            "mean_probability": 0.44613335513097363,
+            "observed_fraction": 0.40211046250561294
+          },
+          {
+            "mean_probability": 0.5455615268215496,
+            "observed_fraction": 0.48010039440659735
+          },
+          {
+            "mean_probability": 0.6486826313463437,
+            "observed_fraction": 0.6175908221797323
+          },
+          {
+            "mean_probability": 0.7455172543002969,
+            "observed_fraction": 0.6868008948545862
+          },
+          {
+            "mean_probability": 0.8486044933992906,
+            "observed_fraction": 0.7120879120879121
+          },
+          {
+            "mean_probability": 0.96217922198159,
+            "observed_fraction": 0.8996587030716724
+          }
+        ],
+        "roc_auc": 0.7507174523959044,
+        "rows": 260170,
+        "threshold": 0.21784518184593685
+      }
+    },
+    "validation": {
+      "constant": {
+        "accuracy": 0.11771407239586015,
+        "brier_score": 0.10387517861602284,
+        "calibration_error_ece": 0.004208213419077331,
+        "f1": 0.21063360532544037,
+        "log_loss": 0.36243262832985473,
+        "positive_rate": 0.11771407239586015,
+        "pr_auc_average_precision": 0.11771407239586015,
+        "precision": 0.11771407239586015,
+        "recall": 1.0,
+        "reliability": [
+          {
+            "mean_probability": 0.11350585897686455,
+            "observed_fraction": 0.11771407239586015
+          }
+        ],
+        "roc_auc": 0.5,
+        "rows": 155368,
+        "threshold": 0.11350585897678281
+      },
+      "historical_frequency": {
+        "accuracy": 0.8312458163843263,
+        "brier_score": 0.09410774308613021,
+        "calibration_error_ece": 0.03068960716301278,
+        "f1": 0.3607460685115202,
+        "log_loss": 0.7093718192399411,
+        "positive_rate": 0.11771407239586015,
+        "pr_auc_average_precision": 0.32333476667290006,
+        "precision": 0.3255302296928628,
+        "recall": 0.404505440428673,
+        "reliability": [
+          {
+            "mean_probability": 0.0581031129606942,
+            "observed_fraction": 0.06750358516764927
+          },
+          {
+            "mean_probability": 0.15040179380259455,
+            "observed_fraction": 0.10566802608122298
+          },
+          {
+            "mean_probability": 0.24872693563469012,
+            "observed_fraction": 0.18751850755108085
+          },
+          {
+            "mean_probability": 0.3489975649350606,
+            "observed_fraction": 0.27128378378378376
+          },
+          {
+            "mean_probability": 0.46512253377728285,
+            "observed_fraction": 0.41588511137162953
+          },
+          {
+            "mean_probability": 0.5684258226505968,
+            "observed_fraction": 0.5865463494667761
+          },
+          {
+            "mean_probability": 0.6535805118653966,
+            "observed_fraction": 0.6753875968992248
+          },
+          {
+            "mean_probability": 0.7474648704891897,
+            "observed_fraction": 0.7537993920972644
+          },
+          {
+            "mean_probability": 0.855178120381883,
+            "observed_fraction": 0.8714733542319749
+          },
+          {
+            "mean_probability": 0.9868762798210655,
+            "observed_fraction": 0.5869120654396728
+          }
+        ],
+        "roc_auc": 0.6988628655041624,
+        "rows": 155368,
+        "threshold": 0.23076923076923078
+      },
+      "logistic_regression": {
+        "accuracy": 0.7413881880438701,
+        "brier_score": 0.106839682057713,
+        "calibration_error_ece": 0.09683347845656581,
+        "f1": 0.3159686755192373,
+        "log_loss": 0.46163791049796526,
+        "positive_rate": 0.11771407239586015,
+        "pr_auc_average_precision": 0.31301101567411255,
+        "precision": 0.2294133643173222,
+        "recall": 0.507408824976762,
+        "reliability": [
+          {
+            "mean_probability": 0.014956175440016263,
+            "observed_fraction": 0.10420751714894994
+          },
+          {
+            "mean_probability": 0.13881715511411408,
+            "observed_fraction": 0.5289957567185289
+          },
+          {
+            "mean_probability": 0.24304229511037911,
+            "observed_fraction": 0.7223618090452262
+          },
+          {
+            "mean_probability": 0.3440695223259127,
+            "observed_fraction": 0.7557840616966581
+          },
+          {
+            "mean_probability": 0.4455363646443552,
+            "observed_fraction": 0.8543689320388349
+          },
+          {
+            "mean_probability": 0.5451073279949078,
+            "observed_fraction": 0.8251748251748252
+          },
+          {
+            "mean_probability": 0.6459802477090628,
+            "observed_fraction": 0.8823529411764706
+          },
+          {
+            "mean_probability": 0.752632319926533,
+            "observed_fraction": 0.8529411764705882
+          },
+          {
+            "mean_probability": 0.8463311101239925,
+            "observed_fraction": 0.9076923076923077
+          },
+          {
+            "mean_probability": 0.9372684539046315,
+            "observed_fraction": 1.0
+          }
+        ],
+        "roc_auc": 0.6948656093095869,
+        "rows": 155368,
+        "threshold": 0.017183409462913524
+      },
+      "xgboost_raw": {
+        "accuracy": 0.8333740681901504,
+        "brier_score": 0.10205561857254972,
+        "calibration_error_ece": 0.08986751199450976,
+        "f1": 0.373880699820912,
+        "log_loss": 0.4332739698453278,
+        "positive_rate": 0.11740193083221312,
+        "pr_auc_average_precision": 0.35623851733794043,
+        "precision": 0.3345110928512736,
+        "recall": 0.42375351306339126,
+        "reliability": [
+          {
+            "mean_probability": 0.014393014901770319,
+            "observed_fraction": 0.0979728430203485
+          },
+          {
+            "mean_probability": 0.13664817299966836,
+            "observed_fraction": 0.37446808510638296
+          },
+          {
+            "mean_probability": 0.24194063411552422,
+            "observed_fraction": 0.5803858520900321
+          },
+          {
+            "mean_probability": 0.34482616388682025,
+            "observed_fraction": 0.6051779935275081
+          },
+          {
+            "mean_probability": 0.4423814888923399,
+            "observed_fraction": 0.6193548387096774
+          },
+          {
+            "mean_probability": 0.5443291869014502,
+            "observed_fraction": 0.640625
+          },
+          {
+            "mean_probability": 0.6466687067610318,
+            "observed_fraction": 0.6229508196721312
+          },
+          {
+            "mean_probability": 0.761018967628479,
+            "observed_fraction": 0.6941176470588235
+          },
+          {
+            "mean_probability": 0.8502392721002119,
+            "observed_fraction": 0.8540145985401459
+          },
+          {
+            "mean_probability": 0.9456665028411498,
+            "observed_fraction": 0.9450171821305842
+          }
+        ],
+        "roc_auc": 0.7307747845924063,
+        "rows": 81830,
+        "threshold": 0.03290223330259323
+      },
+      "xgboost_sigmoid": {
+        "accuracy": 0.8333740681901504,
+        "brier_score": 0.0917463187616351,
+        "calibration_error_ece": 0.015135073099957208,
+        "f1": 0.373880699820912,
+        "log_loss": 0.3189819261454628,
+        "positive_rate": 0.11740193083221312,
+        "pr_auc_average_precision": 0.35623851733794043,
+        "precision": 0.3345110928512736,
+        "recall": 0.42375351306339126,
+        "reliability": [
+          {
+            "mean_probability": 0.05983839191269097,
+            "observed_fraction": 0.06163029650650748
+          },
+          {
+            "mean_probability": 0.13746023628839782,
+            "observed_fraction": 0.12575722273998136
+          },
+          {
+            "mean_probability": 0.24438326209889852,
+            "observed_fraction": 0.20649416539827498
+          },
+          {
+            "mean_probability": 0.34519084266044064,
+            "observed_fraction": 0.2874040920716113
+          },
+          {
+            "mean_probability": 0.4457864034296913,
+            "observed_fraction": 0.33791523482245134
+          },
+          {
+            "mean_probability": 0.5434297820282632,
+            "observed_fraction": 0.38795656465942746
+          },
+          {
+            "mean_probability": 0.6456577591892314,
+            "observed_fraction": 0.568
+          },
+          {
+            "mean_probability": 0.747253287979153,
+            "observed_fraction": 0.6152019002375297
+          },
+          {
+            "mean_probability": 0.8448906135153785,
+            "observed_fraction": 0.6382978723404256
+          },
+          {
+            "mean_probability": 0.965152995610281,
+            "observed_fraction": 0.8667917448405253
+          }
+        ],
+        "roc_auc": 0.7307747845924063,
+        "rows": 81830,
+        "threshold": 0.21784518184593685
+      }
+    }
+  },
+  "model_paths": {
+    "constant": "models/T17/193387315b5b/constant-ff9a40f43272",
+    "historical_frequency": "models/T17/193387315b5b/historical_frequency-bdb8b460786f",
+    "logistic_regression": "models/T17/193387315b5b/logistic_regression-ed32f364e66e",
+    "xgboost_raw": "models/T17/raw_xgboost/xgboost-51f3a5ee59a3",
+    "xgboost_sigmoid": "models/T17/87c5d0cc8e77/xgboost-f788627b3aa2"
+  },
+  "protocol": {
+    "baseline_parameters": {
+      "logistic_regression": {
+        "max_iter": 2000
+      }
+    },
+    "calibration_rule": "sigmoid on early validation if both classes>=20 and later validation has>=2 snapshot times; otherwise no fitted calibrator",
+    "candidate_mode": "Known Pair; contacts strictly before t",
+    "chronological_fractions": [
+      0.6,
+      0.2,
+      0.2
+    ],
+    "communications_enabled": false,
+    "historical_windows_days": [
+      1,
+      3,
+      7,
+      14
+    ],
+    "horizon_hours": 24,
+    "maximum_feature_history_days": 14,
+    "min_scan_coverage": 0.5,
+    "minimum_class_rows_each_set": 20,
+    "minimum_snapshot_times_each_set": 2,
+    "minimum_train_rows": 200,
+    "negative_downsampling": false,
+    "seed": 42,
+    "snapshot_hour": 8,
+    "strict_label_window_purge": true,
+    "test_policy": "one final frozen-model comparison after all fitting; no hyperparameter search",
+    "threshold_rule": "validation F1 only; raw XGBoost threshold uses the same later-validation period as calibrated XGBoost",
+    "weekday_origin": null,
+    "xgboost_parameters": {
+      "learning_rate": 0.05,
+      "max_depth": 4,
+      "n_estimators": 200
+    }
+  },
+  "purge_by_day": [
+    {
+      "negative": 32098,
+      "positive": 5637,
+      "reason": "inclusive_24h_label_window_reaches_validation",
+      "rows": 37735,
+      "study_day": 16,
+      "timestamp": 1324800
+    },
+    {
+      "negative": 45809,
+      "positive": 788,
+      "reason": "inclusive_24h_label_window_reaches_test",
+      "rows": 46597,
+      "study_day": 21,
+      "timestamp": 1756800
+    }
+  ],
+  "purged_rows": 84332,
+  "remaining_risks": [
+    "T17 test days were already inspected; new same-source comparisons are not a pristine independent holdout.",
+    "Symmetrized recorded scan bins are an availability proxy, not proof of continuous presence.",
+    "Repeated pairs/participants and few independent prediction days limit inference."
+  ],
+  "schema_version": 1,
+  "splits": {
+    "test": {
+      "independent_prediction_days": 6,
+      "negative": 233576,
+      "positive": 26594,
+      "prediction_times": [
+        1843200,
+        1929600,
+        2016000,
+        2102400,
+        2188800,
+        2275200
+      ],
+      "rows": 260170
+    },
+    "train": {
+      "independent_prediction_days": 15,
+      "negative": 239138,
+      "positive": 30619,
+      "prediction_times": [
+        28800,
+        115200,
+        201600,
+        288000,
+        374400,
+        460800,
+        547200,
+        633600,
+        720000,
+        806400,
+        892800,
+        979200,
+        1065600,
+        1152000,
+        1238400
+      ],
+      "rows": 269757
+    },
+    "validation": {
+      "independent_prediction_days": 4,
+      "negative": 137079,
+      "positive": 18289,
+      "prediction_times": [
+        1411200,
+        1497600,
+        1584000,
+        1670400
+      ],
+      "rows": 155368
+    }
+  }
+}

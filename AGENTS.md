@@ -25,7 +25,7 @@ The first execution was limited to T01 and is complete. The user subsequently au
 
 ## Current authorized range
 
-T17 was explicitly authorized, including the user's later approval to download the official complete Copenhagen Bluetooth file. Diagnostics and the first genuine real-data baselines/XGBoost experiment are complete. Stop after committing reviewed code/docs/aggregate metadata; do not add UI or begin a new experiment automatically. Raw data, individual samples and model weights stay local.
+The user authorized and completed T18–T22 sequentially from RESEARCH_SPEC.md. Its T18-only startup template did not override that range. Stop now; T23–T27 are TODO, awaiting a new instruction. No push/new-source download/new UI occurred. T17 at f116951 and T211d/7d evidence are preserved. Run102140b8cf3df83f is the genuine1/3/7d study. Only four primary test days and earlier T17 test exposure: do not call it pristine independent validation or tune on these results. Use `python -m src.window_verify` for read-only full artifact/metric/code-freeze verification. Raw data, individual predictions, features and hidden research models remain local. Later changes need new versioned protocols/runs, not overwriting frozen evidence.
 
 ## Prediction data contract
 
@@ -39,7 +39,7 @@ T17 was explicitly authorized, including the user's later approval to download t
 - Evaluation uses frozen models/thresholds and exact saved input signatures. All window/communication ablations run on validation only. E3 stays unavailable without verified communication availability; never fabricate scores.
 - Native TreeSHAP applies to XGBoost/LightGBM base raw margins, not calibrated probabilities. Other local sensitivity methods must not be labeled SHAP or causal. Keep synthetic-fixture provenance in pages, figures and exports.
 - T17's held-out test scores have now been reported. Do not use them to choose new thresholds/features/hyperparameters; later tuning needs a new validation design. Preserve the original T17 results, including worse Logistic Regression probability scores and raw/calibrated XGBoost variants.
-- Reports remain ignored except the five reviewed T17 aggregate deliverables explicitly whitelisted in .gitignore. Do not broaden that whitelist to private manifests, individual samples or model files.
+- Reports remain ignored except the five T17 and fifteen reviewed T18–T22 aggregate deliverables explicitly whitelisted by filename in .gitignore. Do not broaden that whitelist to per-run private manifests, individual samples, large HTML bundles or model files.
 
 ## Local environment
 
@@ -47,3 +47,12 @@ T17 was explicitly authorized, including the user's later approval to download t
 - Run focused tests with `.venv/bin/python -m pytest`.
 - Treat dataset and model directories as local artifacts; never commit data, trained models, secrets, or the virtual environment.
 - The GitHub destination authorized by the user is `https://github.com/Hilbert-sun/Machine-Learning-Experiment-Design-Predicting-Whether-Two-People-Will-Meet-in-the-Next-24-Hours` (renamed from `Hilbert-sun/-24-` during publication); preserve existing remote history and never force-push.
+
+## Research window contract (T18–T22)
+
+- Main cohort is shared1d historical candidates, full7d source span, original0.5 future scan coverage, exact dataset/time/pair keys and labels; all windows share split hashes. Source span is not proof of continuous observation.
+- Research features are bounded_window_v1 from window_features.py; never feed legacy E2 banks as equivalent strict budgets. All counts/activity/network/RSSI/scan/frequency/recency use the selected1/3/7d interval only.
+- Research WindowModel reuses ModelRegistry estimators/persistence but requires neutral bounded features and matching history_window_days. Local models use models/.window_study to stay out of legacy UI selectors.
+- Parameters/seed/split/threshold/calibration/fold/uncertainty rules were frozen before new test scores. Raw models are reported because3 validation dates cannot support independent calibration plus>=2 tuning dates after purge.
+- Four primary test days are below the8-day bootstrap-CI gate; paired daily and leave-one-day-out ranges are descriptive, not confidence intervals. Prespecified expanding folds are dependent robustness evidence; no significance or long-term claim.
+- Separate7d candidate expansion reports reach counts only; its population differs from the main1d pool. Do not compare expanded-pool AP as a pure history-window effect. Do not compare T17/new raw AP as identical-cohort improvements.

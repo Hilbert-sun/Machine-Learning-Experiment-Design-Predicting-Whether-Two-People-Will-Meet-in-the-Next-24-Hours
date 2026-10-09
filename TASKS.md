@@ -2,7 +2,7 @@
 
 Task IDs and titles follow the user's task-board screenshot. Dependencies and acceptance criteria below are the implementation plan derived from `PROJECT_SPEC.md`, rather than additional completed functionality.
 
-Current execution: **T17 — DONE**. Genuine-data diagnostics, unchanged-policy Copenhagen baselines/XGBoost, calibration, local artifacts, safe reports and171 passing tests completed. Commit reviewed safe files, then stop; no new UI/task.
+Current execution: **T18–T22 — DONE**. All five requested Research Edition tasks verified on real Copenhagen data; stop here. Next recommended task: T23, not started. T17 remains frozen; no push.
 
 | Complete | ID | Task | Status | Dependencies | Acceptance criteria |
 | --- | --- | --- | --- | --- | --- |
@@ -23,5 +23,15 @@ Current execution: **T17 — DONE**. Genuine-data diagnostics, unchanged-policy 
 | [x] | T15 | 模型评估和实验比较 | DONE | T06, T12, T14 | Real baseline/model metrics, PR/ROC/confusion/calibration, feature/SHAP analysis and E1–E5 experiments are reproducible and exportable as CSV/HTML. |
 | [x] | T16 | 整体测试、文档和最终交付 | DONE | T03–T15 | Applicable specification tests A–H and full pytest suite pass; README steps work; data provenance/licenses, limitations and reproducibility metadata are documented. |
 | [x] | T17 | Real Data Training & Feasibility Verification | DONE | T16 | Diagnose local files, candidates, labels, coverage and temporal splits; justify/test minimal feasible changes; train genuine baselines and XGBoost only with meaningful chronological cohorts; save requested reports, aggregate metrics and local models; commit safe code/docs/metadata only. |
+| [x] | T18 | T17 基准冻结与审计 | DONE | T17 | Immutable hash manifest verifies T17 data/config/models/reports, reconciles 84,332 purged rows and audits E2 information budget; original tests pass. |
+| [x] | T19 | 比较样本与真实信息预算 | DONE | T18 | Common dataset/time/pair keys with strict 1d candidates, complete 7d history, coverage labels and shared purged chronological splits; Parquet/JSON hashes and day counts. |
+| [x] | T20 | 窗口隔离与特征计算 | DONE | T19 | Explicit bounded 1/3/7d features and source/window/cohort/version caches; old/future perturbation and cache recovery tests pass. |
+| [x] | T21 | 1d vs 7d 主实验 | DONE | T20 | Fixed XGBoost/frequency/logistic protocol and shared frozen cohort, validation-only thresholds/calibration; actual predictions and CSV/JSON/HTML reproduce scores. |
+| [x] | T22 | 3d 中间窗口与时间鲁棒性 | DONE | T21 | 3d comparison, feasible forward folds, paired day-block differences, frequency/coverage/day sensitivity and separate 7d-pool reach report. |
+| [ ] | T23 | History Window Study UI | TODO | T22 | Real backend-driven setup/audit/comparison/case explorer, downloads and AppTest; meaningful empty states. |
+| [ ] | T24 | Dataset Catalog 与接入门槛 | TODO | T23 | Source adapters/catalog, licenses/schema/coverage/history manifests and evidence-based eligibility. |
+| [ ] | T25 | MIT Reality Mining 接入 | TODO | T24 | Verify legal source/schema/coverage; exploratory-only unless reliable negative observation evidence. |
+| [ ] | T26 | 其他数据适配与合法性验证 | TODO | T24 | Verify Social Evolution/workplace source access, reading/quality, independent per-source eligibility without fabricated negatives. |
+| [ ] | T27 | 研究交付与最终验证 | TODO | T25, T26 | Research/window/catalog reports, reproducible outputs and full tests; reviewed Git changes, no unauthorized push. |
 
 T01 excludes Streamlit navigation/pages, dataset downloads, preprocessing, features, training and predictions. These belong to later tasks.

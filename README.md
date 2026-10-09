@@ -70,7 +70,7 @@ Overview复用当前清洗缓存，显示实测参与者、接触记录、配对
 
 仅主接触文件通过验证才能显示 Ready；只有电话/短信不能让 Copenhagen 就绪。Ready 仅指源文件结构通过验证，不代表已经清洗或可以预测。蓝牙 -1/-2 扫描标记、重复行和自接触都保留给后续清洗任务；不将未知观测当作负例。静态 Facebook/gender 文件及 Notebook/README 当前仅保存和列出。
 
-初期真实验证覆盖calls.csv、sms.csv、SocioPatterns及Copenhagen小片段；T17补齐了完整Copenhagen蓝牙。原始数据不会上传Git。reports目录默认忽略，仅五份T17聚合报告/指标列入显式提交白名单；其他本机验证记录、逐样本数据及训练清单仍保持本地。
+初期真实验证覆盖calls.csv、sms.csv、SocioPatterns及Copenhagen小片段；T17补齐了完整Copenhagen蓝牙。原始数据不会上传Git。reports目录默认忽略，五份T17及十五份经审查的T18–T22聚合证据按文件名列入白名单；其他本机验证记录、逐样本数据、HTML大文件及训练清单仍保持本地。
 
 ## 数据清洗与缓存（T05）
 
@@ -222,3 +222,32 @@ python -m pytest -q
 ## 开发约束
 
 先读 `PROJECT_SPEC.md`、`AGENTS.md`、`TASKS.md` 和 `PROGRESS.md`，每次只执行一个明确任务，通过相关验证后更新进度并停止。所有数据字段应由真实源文件验证，所有预测和指标应来自实际运行；不得使用未来信息构建特征或候选配对。没有观测不能直接当作没有接触。
+
+
+## Research Edition：T18–T22
+
+2026-10-10完成前五个研究任务，规范见 [RESEARCH_SPEC.md](RESEARCH_SPEC.md)。T17原始基准已冻结，84,332行差额来自Day16/21边界purge；不要运行上面的T17重拟合命令覆盖冻结证据。原E2仅屏蔽部分长窗口列，不能替代本轮严格信息预算比较。
+
+新run `102140b8cf3df83f` 用共同前1d候选集、完整7d历史跨度及原0.5覆盖策略：100,485行eligible；purge后训练54,677／验证14,816／测试25,569行，11／3／4个预测日。中性命名特征逐项裁剪到1/3/7d；原T17代码/模型/报告不变。
+
+| XGBoost历史窗口 | AP | ROC-AUC | Brier | Log Loss |
+| --- | --- | --- | --- | --- |
+|1d|0.588723|0.770656|0.128026|0.415109|
+|3d|0.627494|0.799719|0.120801|0.394671|
+|7d|0.691366|0.841494|0.109107|0.360995|
+
+测试正例率21.38136%，7d−1d AP差+0.102644；4个主测试日及3个预设滚动折的差值均为正。结果支持这些观测时期内的窗口效果；仅4个主测试日，不输出置信区间或显著性结论。验证只有3天，无法在严格隔离后同时支持校准和>=2个阈值选择日，统一报告未校准模型及可靠性曲线。T17已经看过重叠日期，本轮不是全新独立外部验证；候选/正例率变化也使它不能与T17直接比较原始AP。
+
+详见 [T18审计](reports/window_study/T18_AUDIT.md)、[共同样本](reports/window_study/T19_COHORT_AUDIT.md)、[窗口隔离](reports/window_study/T20_FEATURE_AUDIT.md)、[主实验](reports/window_study/T21_REAL_EXPERIMENT.md)、[三窗口/时间鲁棒性](reports/window_study/T22_WINDOW_COMPARISON.md)。三个模型全部实际拟合，较差的1d历史频率结果保留。十五份聚合输出可随代码保存；逐样本Parquet、36个模型和完整交互HTML保存在忽略目录。
+
+在本机原T17数据/模型、T19共同cohort和T20特征缓存齐全的情况下：
+
+```bash
+.venv/bin/python -m src.window_verify
+.venv/bin/python -m src.window_study
+.venv/bin/python -m src.window_robustness
+```
+
+第一条只读校验所有冻结代码/数据/模型/概率及指标；后两条复用完成的独立run并生成报告，不重新拟合已完成run。完整HTML位于 `reports/window_study/102140b8cf3df83f/T21_REPORT.html` 和 `T22_REPORT.html`。新克隆不带本地数据/模型/cohort/特征，必须先准备同源产物；不得替换冻结输入以冒充复现。T19/T20生成API分别是 `build_comparison_cohort`、`build_window_features(history_window_days=...)`，私有特征receipt包含内容哈希和路径。
+
+全量验证：185项测试通过；5个实验阶段的指标重算通过，36个保存模型对完整导出样本的预测一致。下一任务T23尚未开始，研究UI和新增数据源不属于本次交付。

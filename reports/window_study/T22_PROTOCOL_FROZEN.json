@@ -1,0 +1,215 @@
+{
+  "fold_plan": [
+    {
+      "sets": {
+        "test": {
+          "distinct_prediction_days": 2,
+          "label_hash": "1c1ee403aa2206098bf4a776107e203a57c26080a5f2d52fd0e5607831f8d337",
+          "negative": 5433,
+          "positive": 1893,
+          "prediction_times": [
+            1324800,
+            1411200
+          ],
+          "rows": 7326,
+          "sample_key_hash": "e6f5f9fc19dabcc7908fbf083b549dd733eb27b1ff740123ff25ddaac8acd535"
+        },
+        "train": {
+          "distinct_prediction_days": 3,
+          "label_hash": "f11ca2d085639d69ef291021f3d3259574931071b5e78321e85974052d836e59",
+          "negative": 6764,
+          "positive": 2244,
+          "prediction_times": [
+            633600,
+            720000,
+            806400
+          ],
+          "rows": 9008,
+          "sample_key_hash": "1159f6d462b8605f9597bb6952effd680aeec538b79d90f4b9959e67a84fd610"
+        },
+        "validation": {
+          "distinct_prediction_days": 3,
+          "label_hash": "82149d33c9665e3610cb6117549fb08202251eaf2badcf7efdf613e5b4cf8edd",
+          "negative": 20565,
+          "positive": 3821,
+          "prediction_times": [
+            979200,
+            1065600,
+            1152000
+          ],
+          "rows": 24386,
+          "sample_key_hash": "ecf16e302e3896aed69abbcec040d8b5e6c1854c841a401ddd0cd8fd5054e09a"
+        }
+      },
+      "status": "ready",
+      "study_day": 16
+    },
+    {
+      "sets": {
+        "test": {
+          "distinct_prediction_days": 2,
+          "label_hash": "395c9d6e53837770de354899dbe101ff375a03621bcb7ac5643594642417123e",
+          "negative": 10741,
+          "positive": 2584,
+          "prediction_times": [
+            1584000,
+            1670400
+          ],
+          "rows": 13325,
+          "sample_key_hash": "1e9d4ba7c214ce32346daefef31a9d6e684191930a84b329a403c5e90c473d92"
+        },
+        "train": {
+          "distinct_prediction_days": 6,
+          "label_hash": "b8dd4a037625b0538081de9e7bfa95e66002b49503f26c2baea10c68142f04e0",
+          "negative": 23438,
+          "positive": 7598,
+          "prediction_times": [
+            633600,
+            720000,
+            806400,
+            892800,
+            979200,
+            1065600
+          ],
+          "rows": 31036,
+          "sample_key_hash": "230b13b77375d652af7f8349e7dd3c65cfaf3964fb7e4359acf0e910af5793d8"
+        },
+        "validation": {
+          "distinct_prediction_days": 3,
+          "label_hash": "ecf811c39bb5daf47556dee84d72991f59dc448ef4e45f0618c73fa145b86d11",
+          "negative": 5836,
+          "positive": 2092,
+          "prediction_times": [
+            1238400,
+            1324800,
+            1411200
+          ],
+          "rows": 7928,
+          "sample_key_hash": "a78a878936da5405f2d5ab419d25ee4bff9824be70fd14f43f7f4b60aa951f30"
+        }
+      },
+      "status": "ready",
+      "study_day": 19
+    },
+    {
+      "sets": {
+        "test": {
+          "distinct_prediction_days": 2,
+          "label_hash": "60a242cbeebc7a5a840edb9f3e4e9f02c21a5cb0416a3f6902900c3eabd04f24",
+          "negative": 1050,
+          "positive": 558,
+          "prediction_times": [
+            1843200,
+            1929600
+          ],
+          "rows": 1608,
+          "sample_key_hash": "dae4b7248abe8dfff0133cb5ef8485b2b9f1075abd7dc611e2297a64a3614be1"
+        },
+        "train": {
+          "distinct_prediction_days": 9,
+          "label_hash": "d9f0c0273d4b8d91ee4feaa6899bfbefd2672ac46adbfc0eb2de415804bcfaf3",
+          "negative": 32875,
+          "positive": 8470,
+          "prediction_times": [
+            633600,
+            720000,
+            806400,
+            892800,
+            979200,
+            1065600,
+            1152000,
+            1238400,
+            1324800
+          ],
+          "rows": 41345,
+          "sample_key_hash": "1950cb6f236692d02c8972b811b4e072f2f673a5c42640bac364e83a4e6a0dbd"
+        },
+        "validation": {
+          "distinct_prediction_days": 3,
+          "label_hash": "182104098c02c47bb20d360d6a08b20b47a80d667d34578d1139b9b81b2ef4e9",
+          "negative": 16134,
+          "positive": 3871,
+          "prediction_times": [
+            1497600,
+            1584000,
+            1670400
+          ],
+          "rows": 20005,
+          "sample_key_hash": "02a1d86957d15256d716ec0a7808ffeef191d4ee8a3dd5858c30341a1841090e"
+        }
+      },
+      "status": "ready",
+      "study_day": 22
+    }
+  ],
+  "implementation_sha256": "07349122439cdc47b1af9ee644430fd9e9324550784c129b47670f8b8f23187d",
+  "parent_protocol_sha256": "2fb4525d61f6711deb1182d7cac8c7d72edd5e1a6f4efd6d488e7d532a4facf7",
+  "parent_results_sha256": "ac5255e5c58abe614481e2130014c9c328a4d0b504a8543aa397324a0f0ace6f",
+  "protocol": {
+    "calibration": null,
+    "calibration_reason": "Only3 validation dates; independent calibration plus>=2 threshold dates is unsupported after strict24h purge.",
+    "candidate_policy": "shared [t-1d,t) contacts",
+    "chronological_fractions": [
+      0.6,
+      0.2,
+      0.2
+    ],
+    "communications": false,
+    "coverage_threshold": 0.5,
+    "future_horizon_hours": 24,
+    "hyperparameter_search": false,
+    "minimum_history_span_days": 7,
+    "models": [
+      "historical_frequency",
+      "logistic_regression",
+      "xgboost"
+    ],
+    "negative_sampling": false,
+    "parameters": {
+      "historical_frequency": {},
+      "logistic_regression": {
+        "max_iter": 2000
+      },
+      "xgboost": {
+        "learning_rate": 0.05,
+        "max_depth": 4,
+        "n_estimators": 200
+      }
+    },
+    "primary_contrast": [
+      1,
+      7
+    ],
+    "prior_exposure": "T17 test dates overlap this study; fixed-protocol same-source temporal comparison, not pristine independent validation.",
+    "purge": "t+24h < next_start",
+    "seed": 42,
+    "test_used_for_selection": false,
+    "threshold": "maximum validation F1; ties closest to0.5",
+    "uncertainty": {
+      "block": "one prediction day; all models/windows resample the same days",
+      "bootstrap_repetitions": 1000,
+      "few_days_policy": "paired per-day and leave-one-day-out descriptive ranges; no confidence/significance claim",
+      "minimum_days_for_bootstrap_ci": 8
+    },
+    "version": 1,
+    "walk_forward": {
+      "calibration": null,
+      "minimum_class_rows": 20,
+      "minimum_train_days": 3,
+      "purpose": "pre-primary-holdout descriptive robustness only; no selection or refitting primary models",
+      "test_days": 2,
+      "test_start_study_days": [
+        16,
+        19,
+        22
+      ],
+      "validation_days": 3
+    },
+    "weekday_origin": null,
+    "windows_planned": [
+      1,
+      3,
+      7
+    ]
+  }
+}

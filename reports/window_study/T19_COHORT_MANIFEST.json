@@ -1,0 +1,466 @@
+{
+  "candidate_interval": "[t-1d,t)",
+  "cohort_filename": "cohort-bef6ce9fa3291223fcbb.parquet",
+  "cohort_sha256": "ac27dec7df7697f160e11077bd4e096370a48041fea251da318d6ab423c7b319",
+  "cohort_version": 1,
+  "coverage_threshold": 0.5,
+  "daily_filter_funnel": [
+    {
+      "all_past_candidate_rows": 233,
+      "eligible_rows": 0,
+      "excluded_coverage_or_unknown": 0,
+      "excluded_incomplete_7d_span": 233,
+      "excluded_not_1d_candidate": 0,
+      "negative": 0,
+      "one_day_candidates": 0,
+      "positive": 0,
+      "study_day": 1,
+      "timestamp": 28800
+    },
+    {
+      "all_past_candidate_rows": 923,
+      "eligible_rows": 0,
+      "excluded_coverage_or_unknown": 0,
+      "excluded_incomplete_7d_span": 923,
+      "excluded_not_1d_candidate": 0,
+      "negative": 0,
+      "one_day_candidates": 0,
+      "positive": 0,
+      "study_day": 2,
+      "timestamp": 115200
+    },
+    {
+      "all_past_candidate_rows": 9215,
+      "eligible_rows": 0,
+      "excluded_coverage_or_unknown": 0,
+      "excluded_incomplete_7d_span": 9215,
+      "excluded_not_1d_candidate": 0,
+      "negative": 0,
+      "one_day_candidates": 0,
+      "positive": 0,
+      "study_day": 3,
+      "timestamp": 201600
+    },
+    {
+      "all_past_candidate_rows": 13911,
+      "eligible_rows": 0,
+      "excluded_coverage_or_unknown": 0,
+      "excluded_incomplete_7d_span": 13911,
+      "excluded_not_1d_candidate": 0,
+      "negative": 0,
+      "one_day_candidates": 0,
+      "positive": 0,
+      "study_day": 4,
+      "timestamp": 288000
+    },
+    {
+      "all_past_candidate_rows": 18716,
+      "eligible_rows": 0,
+      "excluded_coverage_or_unknown": 0,
+      "excluded_incomplete_7d_span": 18716,
+      "excluded_not_1d_candidate": 0,
+      "negative": 0,
+      "one_day_candidates": 0,
+      "positive": 0,
+      "study_day": 5,
+      "timestamp": 374400
+    },
+    {
+      "all_past_candidate_rows": 22618,
+      "eligible_rows": 0,
+      "excluded_coverage_or_unknown": 0,
+      "excluded_incomplete_7d_span": 22618,
+      "excluded_not_1d_candidate": 0,
+      "negative": 0,
+      "one_day_candidates": 0,
+      "positive": 0,
+      "study_day": 6,
+      "timestamp": 460800
+    },
+    {
+      "all_past_candidate_rows": 25797,
+      "eligible_rows": 0,
+      "excluded_coverage_or_unknown": 0,
+      "excluded_incomplete_7d_span": 25797,
+      "excluded_not_1d_candidate": 0,
+      "negative": 0,
+      "one_day_candidates": 0,
+      "positive": 0,
+      "study_day": 7,
+      "timestamp": 547200
+    },
+    {
+      "all_past_candidate_rows": 26372,
+      "eligible_rows": 844,
+      "excluded_coverage_or_unknown": 249,
+      "excluded_incomplete_7d_span": 0,
+      "excluded_not_1d_candidate": 25279,
+      "negative": 636,
+      "one_day_candidates": 1093,
+      "positive": 208,
+      "study_day": 8,
+      "timestamp": 633600
+    },
+    {
+      "all_past_candidate_rows": 26726,
+      "eligible_rows": 775,
+      "excluded_coverage_or_unknown": 277,
+      "excluded_incomplete_7d_span": 0,
+      "excluded_not_1d_candidate": 25674,
+      "negative": 351,
+      "one_day_candidates": 1052,
+      "positive": 424,
+      "study_day": 9,
+      "timestamp": 720000
+    },
+    {
+      "all_past_candidate_rows": 31386,
+      "eligible_rows": 7389,
+      "excluded_coverage_or_unknown": 2585,
+      "excluded_incomplete_7d_span": 0,
+      "excluded_not_1d_candidate": 21412,
+      "negative": 5777,
+      "one_day_candidates": 9974,
+      "positive": 1612,
+      "study_day": 10,
+      "timestamp": 806400
+    },
+    {
+      "all_past_candidate_rows": 35847,
+      "eligible_rows": 6675,
+      "excluded_coverage_or_unknown": 2409,
+      "excluded_incomplete_7d_span": 0,
+      "excluded_not_1d_candidate": 26763,
+      "negative": 4917,
+      "one_day_candidates": 9084,
+      "positive": 1758,
+      "study_day": 11,
+      "timestamp": 892800
+    },
+    {
+      "all_past_candidate_rows": 40288,
+      "eligible_rows": 7198,
+      "excluded_coverage_or_unknown": 2667,
+      "excluded_incomplete_7d_span": 0,
+      "excluded_not_1d_candidate": 30423,
+      "negative": 5514,
+      "one_day_candidates": 9865,
+      "positive": 1684,
+      "study_day": 12,
+      "timestamp": 979200
+    },
+    {
+      "all_past_candidate_rows": 45885,
+      "eligible_rows": 8155,
+      "excluded_coverage_or_unknown": 3547,
+      "excluded_incomplete_7d_span": 0,
+      "excluded_not_1d_candidate": 34183,
+      "negative": 6243,
+      "one_day_candidates": 11702,
+      "positive": 1912,
+      "study_day": 13,
+      "timestamp": 1065600
+    },
+    {
+      "all_past_candidate_rows": 52542,
+      "eligible_rows": 9033,
+      "excluded_coverage_or_unknown": 3799,
+      "excluded_incomplete_7d_span": 0,
+      "excluded_not_1d_candidate": 39710,
+      "negative": 8808,
+      "one_day_candidates": 12832,
+      "positive": 225,
+      "study_day": 14,
+      "timestamp": 1152000
+    },
+    {
+      "all_past_candidate_rows": 52773,
+      "eligible_rows": 602,
+      "excluded_coverage_or_unknown": 300,
+      "excluded_incomplete_7d_span": 0,
+      "excluded_not_1d_candidate": 51871,
+      "negative": 403,
+      "one_day_candidates": 902,
+      "positive": 199,
+      "study_day": 15,
+      "timestamp": 1238400
+    },
+    {
+      "all_past_candidate_rows": 52936,
+      "eligible_rows": 674,
+      "excluded_coverage_or_unknown": 318,
+      "excluded_incomplete_7d_span": 0,
+      "excluded_not_1d_candidate": 51944,
+      "negative": 226,
+      "one_day_candidates": 992,
+      "positive": 448,
+      "study_day": 16,
+      "timestamp": 1324800
+    },
+    {
+      "all_past_candidate_rows": 55948,
+      "eligible_rows": 6652,
+      "excluded_coverage_or_unknown": 3503,
+      "excluded_incomplete_7d_span": 0,
+      "excluded_not_1d_candidate": 45793,
+      "negative": 5207,
+      "one_day_candidates": 10155,
+      "positive": 1445,
+      "study_day": 17,
+      "timestamp": 1411200
+    },
+    {
+      "all_past_candidate_rows": 59125,
+      "eligible_rows": 6680,
+      "excluded_coverage_or_unknown": 3090,
+      "excluded_incomplete_7d_span": 0,
+      "excluded_not_1d_candidate": 49355,
+      "negative": 5393,
+      "one_day_candidates": 9770,
+      "positive": 1287,
+      "study_day": 18,
+      "timestamp": 1497600
+    },
+    {
+      "all_past_candidate_rows": 60855,
+      "eligible_rows": 4775,
+      "excluded_coverage_or_unknown": 2209,
+      "excluded_incomplete_7d_span": 0,
+      "excluded_not_1d_candidate": 53871,
+      "negative": 3500,
+      "one_day_candidates": 6984,
+      "positive": 1275,
+      "study_day": 19,
+      "timestamp": 1584000
+    },
+    {
+      "all_past_candidate_rows": 65487,
+      "eligible_rows": 8550,
+      "excluded_coverage_or_unknown": 3605,
+      "excluded_incomplete_7d_span": 0,
+      "excluded_not_1d_candidate": 53332,
+      "negative": 7241,
+      "one_day_candidates": 12155,
+      "positive": 1309,
+      "study_day": 20,
+      "timestamp": 1670400
+    },
+    {
+      "all_past_candidate_rows": 67485,
+      "eligible_rows": 5306,
+      "excluded_coverage_or_unknown": 2105,
+      "excluded_incomplete_7d_span": 0,
+      "excluded_not_1d_candidate": 60074,
+      "negative": 5018,
+      "one_day_candidates": 7411,
+      "positive": 288,
+      "study_day": 21,
+      "timestamp": 1756800
+    },
+    {
+      "all_past_candidate_rows": 67927,
+      "eligible_rows": 960,
+      "excluded_coverage_or_unknown": 509,
+      "excluded_incomplete_7d_span": 0,
+      "excluded_not_1d_candidate": 66458,
+      "negative": 763,
+      "one_day_candidates": 1469,
+      "positive": 197,
+      "study_day": 22,
+      "timestamp": 1843200
+    },
+    {
+      "all_past_candidate_rows": 68054,
+      "eligible_rows": 648,
+      "excluded_coverage_or_unknown": 356,
+      "excluded_incomplete_7d_span": 0,
+      "excluded_not_1d_candidate": 67050,
+      "negative": 287,
+      "one_day_candidates": 1004,
+      "positive": 361,
+      "study_day": 23,
+      "timestamp": 1929600
+    },
+    {
+      "all_past_candidate_rows": 70898,
+      "eligible_rows": 7482,
+      "excluded_coverage_or_unknown": 3513,
+      "excluded_incomplete_7d_span": 0,
+      "excluded_not_1d_candidate": 59903,
+      "negative": 6007,
+      "one_day_candidates": 10995,
+      "positive": 1475,
+      "study_day": 24,
+      "timestamp": 2016000
+    },
+    {
+      "all_past_candidate_rows": 72819,
+      "eligible_rows": 5199,
+      "excluded_coverage_or_unknown": 2928,
+      "excluded_incomplete_7d_span": 0,
+      "excluded_not_1d_candidate": 64692,
+      "negative": 3794,
+      "one_day_candidates": 8127,
+      "positive": 1405,
+      "study_day": 25,
+      "timestamp": 2102400
+    },
+    {
+      "all_past_candidate_rows": 74890,
+      "eligible_rows": 5977,
+      "excluded_coverage_or_unknown": 3365,
+      "excluded_incomplete_7d_span": 0,
+      "excluded_not_1d_candidate": 65548,
+      "negative": 4618,
+      "one_day_candidates": 9342,
+      "positive": 1359,
+      "study_day": 26,
+      "timestamp": 2188800
+    },
+    {
+      "all_past_candidate_rows": 77172,
+      "eligible_rows": 6911,
+      "excluded_coverage_or_unknown": 2630,
+      "excluded_incomplete_7d_span": 0,
+      "excluded_not_1d_candidate": 67631,
+      "negative": 5683,
+      "one_day_candidates": 9541,
+      "positive": 1228,
+      "study_day": 27,
+      "timestamp": 2275200
+    }
+  ],
+  "dataset_id": "copenhagen",
+  "history_completeness": "t-7d >= source_start; time span is not proof of continuous scans",
+  "label_hash": "1c3578473c683b1c6ce3d749e51da33286ac9fdb568dcdac91ee7908bb1adee1",
+  "label_interval": "(t,t+24h]",
+  "purged_by_day": [
+    {
+      "negative": 3500,
+      "positive": 1275,
+      "rows": 4775,
+      "timestamp": 1584000
+    },
+    {
+      "negative": 287,
+      "positive": 361,
+      "rows": 648,
+      "timestamp": 1929600
+    }
+  ],
+  "rows": 100485,
+  "sample_key_hash": "ca997435557bad1a48b8f00bec089125fcb4a6d9642675b0ecd975bbf523c68b",
+  "shared_windows": [
+    1,
+    3,
+    7
+  ],
+  "source_hashes": {
+    "contacts.parquet": "7c4c3c61b43179d407c149e7f7126133ccbcca97bba18cbf889277303155d21b",
+    "labels-57c096d9e76eba821404.parquet": "3a333bfe4c1e34ef116a7c2f14880b211b193275c5eae61e0894b060883eec38",
+    "observations.parquet": "984a51e94b3a5d34514d93f5e06b8c3fe54cb75acd92c49e71f71e6212ccc12c"
+  },
+  "split_filename": "cohort-bef6ce9fa3291223fcbb-splits.parquet",
+  "split_sha256": "63c8be47a9d931ae43dcca70d8bca5d7a9fe67489e472ee4cf7118caf8d5fbb9",
+  "support": {
+    "calibration": {
+      "method": null,
+      "reason": "验证集在校准/阈值时段隔离后为空；增加验证时长或明确禁用校准。",
+      "tuning": {
+        "distinct_prediction_days": 3,
+        "label_hash": "00b53609cb802311f2eb0033a91c6a1653cb3ec18d59d61b1bd2f9658b1dc7a8",
+        "negative": 13022,
+        "positive": 1794,
+        "prediction_times": [
+          1670400,
+          1756800,
+          1843200
+        ],
+        "rows": 14816,
+        "sample_key_hash": "bcd86090dd9c812816f5de420fd1eb247ebfff988425990167b15386a149a977"
+      }
+    },
+    "sets": {
+      "test": {
+        "distinct_prediction_days": 4,
+        "label_hash": "664ec9aec48527e95df97e640640ce1833fcb585642ae13e8c3f851e4cabb542",
+        "negative": 20102,
+        "positive": 5467,
+        "prediction_times": [
+          2016000,
+          2102400,
+          2188800,
+          2275200
+        ],
+        "rows": 25569,
+        "sample_key_hash": "da1a01aa8618e7b60bc65f9c8e5d8778acb46ee4df15c7a16d854bd091557b75"
+      },
+      "train": {
+        "distinct_prediction_days": 11,
+        "label_hash": "e52ea7fde47b6ab503748389591ab3456c4084d2a99f197ece86f0c1583ecbc0",
+        "negative": 43475,
+        "positive": 11202,
+        "prediction_times": [
+          633600,
+          720000,
+          806400,
+          892800,
+          979200,
+          1065600,
+          1152000,
+          1238400,
+          1324800,
+          1411200,
+          1497600
+        ],
+        "rows": 54677,
+        "sample_key_hash": "80b64b83ce5628da54f204a9aec5076f3a11775ca91cc54c41367fa89c4c8047"
+      },
+      "validation": {
+        "distinct_prediction_days": 3,
+        "label_hash": "00b53609cb802311f2eb0033a91c6a1653cb3ec18d59d61b1bd2f9658b1dc7a8",
+        "negative": 13022,
+        "positive": 1794,
+        "prediction_times": [
+          1670400,
+          1756800,
+          1843200
+        ],
+        "rows": 14816,
+        "sample_key_hash": "bcd86090dd9c812816f5de420fd1eb247ebfff988425990167b15386a149a977"
+      }
+    },
+    "status": "ready",
+    "temporal_split": {
+      "excluded_rows": 0,
+      "horizon_hours": 24,
+      "method": "chronological_unique_snapshot_times",
+      "purged_rows": 5423,
+      "requested_fractions": [
+        0.6,
+        0.2,
+        0.2
+      ],
+      "sets": {
+        "test": {
+          "first_timestamp": 2016000,
+          "last_timestamp": 2275200,
+          "rows": 25569
+        },
+        "train": {
+          "first_timestamp": 633600,
+          "last_timestamp": 1497600,
+          "rows": 54677
+        },
+        "validation": {
+          "first_timestamp": 1670400,
+          "last_timestamp": 1843200,
+          "rows": 14816
+        }
+      },
+      "source_rows": 100485,
+      "test_start": 2016000,
+      "validation_start": 1670400
+    }
+  }
+}

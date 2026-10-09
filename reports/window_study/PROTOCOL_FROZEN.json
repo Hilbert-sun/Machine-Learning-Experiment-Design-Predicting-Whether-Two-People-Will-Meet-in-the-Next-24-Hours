@@ -1,0 +1,196 @@
+{
+  "code_hashes": {
+    "src/baselines.py": "ba1330329104a68c01a4db8c8dd4eb7d2b0df28824a775c3bd37c81da5402acd",
+    "src/evaluate.py": "84f48036325970cc8e5f84a33dae2c1136c4114c92861d11eb8b628ec0cbe1c4",
+    "src/model_registry.py": "369840717b8a09b12ba73194694ef8e60dc87fa8ce7a7f1299916e3d5b60472c",
+    "src/temporal_split.py": "b794be0ee92ef9c37e8511b946c298b1b510c5f18d5aea89edb92f45250ed608",
+    "src/window_cohort.py": "b8e2010be20744e007052c08a6f30e1f48fc4ececf97880f1778112288ddcc14",
+    "src/window_features.py": "b9569679f23a130deb8e1e5f92ab3d126efbb344e93859bea395b053b9cee380",
+    "src/window_models.py": "ca9e313841152bc31e77a260944191334cf8cdb5a4c14ce09b6513f5541ef7ed",
+    "src/window_study.py": "f9604f1c08e85fa27c9b77e836acfed2c041d277af18f43ca500a25dc250227c"
+  },
+  "cohort_manifest_sha256": "5dbae8440b80217a21ade2f9e960c9b5f1171fd79964ab897e055115cfcf61e0",
+  "feature_hashes": {
+    "1": "e375a17e0f12ab3a9f802a27bcee7f5f086494e97f10c3cd2c63387dfc730ee4",
+    "3": "27c78747b919b05b5315cd9704ad20a1598de96b90374ebe76e8fd34488ecffa",
+    "7": "e138e1c155f16d0c7a73d0c89cda800762ebb3b87a06d198df06077ea32e75f5"
+  },
+  "label_hash": "1c3578473c683b1c6ce3d749e51da33286ac9fdb568dcdac91ee7908bb1adee1",
+  "package_versions": {
+    "numpy": "2.4.6",
+    "pandas": "2.3.3",
+    "pyarrow": "23.0.1",
+    "scikit-learn": "1.9.1",
+    "xgboost": "3.2.0"
+  },
+  "protocol": {
+    "calibration": null,
+    "calibration_reason": "Only3 validation dates; independent calibration plus>=2 threshold dates is unsupported after strict24h purge.",
+    "candidate_policy": "shared [t-1d,t) contacts",
+    "chronological_fractions": [
+      0.6,
+      0.2,
+      0.2
+    ],
+    "communications": false,
+    "coverage_threshold": 0.5,
+    "future_horizon_hours": 24,
+    "hyperparameter_search": false,
+    "minimum_history_span_days": 7,
+    "models": [
+      "historical_frequency",
+      "logistic_regression",
+      "xgboost"
+    ],
+    "negative_sampling": false,
+    "parameters": {
+      "historical_frequency": {},
+      "logistic_regression": {
+        "max_iter": 2000
+      },
+      "xgboost": {
+        "learning_rate": 0.05,
+        "max_depth": 4,
+        "n_estimators": 200
+      }
+    },
+    "primary_contrast": [
+      1,
+      7
+    ],
+    "prior_exposure": "T17 test dates overlap this study; fixed-protocol same-source temporal comparison, not pristine independent validation.",
+    "purge": "t+24h < next_start",
+    "seed": 42,
+    "test_used_for_selection": false,
+    "threshold": "maximum validation F1; ties closest to0.5",
+    "uncertainty": {
+      "block": "one prediction day; all models/windows resample the same days",
+      "bootstrap_repetitions": 1000,
+      "few_days_policy": "paired per-day and leave-one-day-out descriptive ranges; no confidence/significance claim",
+      "minimum_days_for_bootstrap_ci": 8
+    },
+    "version": 1,
+    "walk_forward": {
+      "calibration": null,
+      "minimum_class_rows": 20,
+      "minimum_train_days": 3,
+      "purpose": "pre-primary-holdout descriptive robustness only; no selection or refitting primary models",
+      "test_days": 2,
+      "test_start_study_days": [
+        16,
+        19,
+        22
+      ],
+      "validation_days": 3
+    },
+    "weekday_origin": null,
+    "windows_planned": [
+      1,
+      3,
+      7
+    ]
+  },
+  "run_id": "102140b8cf3df83f",
+  "sample_key_hash": "ca997435557bad1a48b8f00bec089125fcb4a6d9642675b0ecd975bbf523c68b",
+  "splits": {
+    "calibration": {
+      "method": null,
+      "reason": "验证集在校准/阈值时段隔离后为空；增加验证时长或明确禁用校准。",
+      "tuning": {
+        "distinct_prediction_days": 3,
+        "label_hash": "00b53609cb802311f2eb0033a91c6a1653cb3ec18d59d61b1bd2f9658b1dc7a8",
+        "negative": 13022,
+        "positive": 1794,
+        "prediction_times": [
+          1670400,
+          1756800,
+          1843200
+        ],
+        "rows": 14816,
+        "sample_key_hash": "bcd86090dd9c812816f5de420fd1eb247ebfff988425990167b15386a149a977"
+      }
+    },
+    "sets": {
+      "test": {
+        "distinct_prediction_days": 4,
+        "label_hash": "664ec9aec48527e95df97e640640ce1833fcb585642ae13e8c3f851e4cabb542",
+        "negative": 20102,
+        "positive": 5467,
+        "prediction_times": [
+          2016000,
+          2102400,
+          2188800,
+          2275200
+        ],
+        "rows": 25569,
+        "sample_key_hash": "da1a01aa8618e7b60bc65f9c8e5d8778acb46ee4df15c7a16d854bd091557b75"
+      },
+      "train": {
+        "distinct_prediction_days": 11,
+        "label_hash": "e52ea7fde47b6ab503748389591ab3456c4084d2a99f197ece86f0c1583ecbc0",
+        "negative": 43475,
+        "positive": 11202,
+        "prediction_times": [
+          633600,
+          720000,
+          806400,
+          892800,
+          979200,
+          1065600,
+          1152000,
+          1238400,
+          1324800,
+          1411200,
+          1497600
+        ],
+        "rows": 54677,
+        "sample_key_hash": "80b64b83ce5628da54f204a9aec5076f3a11775ca91cc54c41367fa89c4c8047"
+      },
+      "validation": {
+        "distinct_prediction_days": 3,
+        "label_hash": "00b53609cb802311f2eb0033a91c6a1653cb3ec18d59d61b1bd2f9658b1dc7a8",
+        "negative": 13022,
+        "positive": 1794,
+        "prediction_times": [
+          1670400,
+          1756800,
+          1843200
+        ],
+        "rows": 14816,
+        "sample_key_hash": "bcd86090dd9c812816f5de420fd1eb247ebfff988425990167b15386a149a977"
+      }
+    },
+    "status": "ready",
+    "temporal_split": {
+      "excluded_rows": 0,
+      "horizon_hours": 24,
+      "method": "chronological_unique_snapshot_times",
+      "purged_rows": 5423,
+      "requested_fractions": [
+        0.6,
+        0.2,
+        0.2
+      ],
+      "sets": {
+        "test": {
+          "first_timestamp": 2016000,
+          "last_timestamp": 2275200,
+          "rows": 25569
+        },
+        "train": {
+          "first_timestamp": 633600,
+          "last_timestamp": 1497600,
+          "rows": 54677
+        },
+        "validation": {
+          "first_timestamp": 1670400,
+          "last_timestamp": 1843200,
+          "rows": 14816
+        }
+      },
+      "source_rows": 100485,
+      "test_start": 2016000,
+      "validation_start": 1670400
+    }
+  }
+}

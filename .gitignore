@@ -36,3 +36,20 @@ secrets/
 credentials*.json
 *.pem
 *.key
+
+# T18-T22: reviewed aggregate evidence only; individual predictions/HTML stay local.
+!reports/window_study/T18_BASELINE_MANIFEST.json
+!reports/window_study/T18_AUDIT.md
+!reports/window_study/T19_COHORT_MANIFEST.json
+!reports/window_study/T19_COHORT_AUDIT.md
+!reports/window_study/T20_FEATURE_AUDIT.md
+!reports/window_study/PROTOCOL_FROZEN.json
+!reports/window_study/T22_PROTOCOL_FROZEN.json
+!reports/window_study/T21_RESULTS.json
+!reports/window_study/T21_REAL_EXPERIMENT.md
+!reports/window_study/T21_METRICS.csv
+!reports/window_study/T22_ROBUSTNESS.json
+!reports/window_study/T22_WINDOW_COMPARISON.md
+!reports/window_study/T22_METRICS.csv
+!reports/window_study/T22_SENSITIVITY.csv
+!reports/window_study/T22_WALK_FORWARD.csv
