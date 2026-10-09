@@ -34,7 +34,11 @@ Date: 2026-10-09 (Asia/Kuala_Lumpur)
 
 ## GitHub destination
 
-User requested saving this project to their newly created repository. Identified `Hilbert-sun/-24-` (created 2026-10-09, empty main branch), confirmed push permission and configured it as origin. Source, configuration, documentation and tests are the publication scope; all downloaded datasets and local reports remain excluded. Git history and the remote branch record the publication result.
+User requested saving this project to their newly created repository. Identified `Hilbert-sun/-24-` (created 2026-10-09, empty main branch) and confirmed push permission. GitHub reported it had been renamed during publication; the canonical destination is now:
+
+https://github.com/Hilbert-sun/Machine-Learning-Experiment-Design-Predicting-Whether-Two-People-Will-Meet-in-the-Next-24-Hours
+
+Implementation commit `b773e61bf96120b4f405c38a9bf0bf7b637405ee` was successfully pushed to main and verified against the remote branch. The source-only commit contains 34 files; all downloaded datasets, local reports, models, secrets and virtual environment remain excluded. Origin and persistent instructions are updated to the canonical address. A follow-up documentation commit records this publication result; use Git history for its SHA.
 
 ## Next recommended task
 

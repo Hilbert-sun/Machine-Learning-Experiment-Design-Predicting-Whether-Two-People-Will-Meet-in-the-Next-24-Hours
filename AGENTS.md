@@ -28,4 +28,4 @@ The first execution was limited to T01 and is complete. The user subsequently au
 - Use Python 3.11 and the project-local `.venv`.
 - Run focused tests with `.venv/bin/python -m pytest`.
 - Treat dataset and model directories as local artifacts; never commit data, trained models, secrets, or the virtual environment.
-- The GitHub destination authorized by the user is `https://github.com/Hilbert-sun/-24-`; preserve existing remote history and never force-push.
+- The GitHub destination authorized by the user is `https://github.com/Hilbert-sun/Machine-Learning-Experiment-Design-Predicting-Whether-Two-People-Will-Meet-in-the-Next-24-Hours` (renamed from `Hilbert-sun/-24-` during publication); preserve existing remote history and never force-push.
