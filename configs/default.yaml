@@ -1,0 +1,22 @@
+# Data Manager consumes paths; later tasks implement prediction/model settings.
+project:
+  name: Encounter Lab
+paths:
+  raw_copenhagen: data/raw/copenhagen
+  raw_sociopatterns: data/raw/sociopatterns
+  processed: data/processed
+  features: data/features
+  models: models
+  reports: reports
+prediction:
+  horizon_hours: 24
+  snapshot_hour: 8
+  history_windows_days: [1, 3, 7, 14]
+split:
+  method: chronological
+  train_fraction: 0.6
+  validation_fraction: 0.2
+  test_fraction: 0.2
+features:
+  enable_communications: false
+  enable_static_facebook: false

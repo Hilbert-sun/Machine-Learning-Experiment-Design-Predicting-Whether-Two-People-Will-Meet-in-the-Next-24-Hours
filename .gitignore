@@ -1,0 +1,32 @@
+# Python and local tools
+.venv/
+venv/
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+.coverage
+htmlcov/
+.DS_Store
+
+# Raw data and sensitive derived artifacts: keep directory markers only.
+data/**
+!data/**/
+!data/**/.gitkeep
+models/**
+!models/**/
+!models/**/.gitkeep
+reports/**
+!reports/**/
+!reports/**/.gitkeep
+
+# Credentials and machine-specific configuration
+.env
+.env.*
+!.env.example
+.streamlit/secrets.toml
+secrets/
+credentials*.json
+*.pem
+*.key
