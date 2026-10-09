@@ -10,6 +10,14 @@ from src.ui import PAGES
 APP = str(Path(__file__).resolve().parents[1] / "app.py")
 
 
+@pytest.fixture(autouse=True)
+def isolate_navigation_from_user_datasets_and_models(monkeypatch, tmp_path):
+    import yaml
+    config = yaml.safe_load((Path(APP).parent / "configs/default.yaml").read_text())
+    config["paths"] = {name: str(tmp_path / name) for name in config["paths"]}
+    monkeypatch.setattr(yaml, "safe_load", lambda _: config)
+
+
 @pytest.mark.parametrize("path,title", PAGES)
 def test_all_pages_load(path, title):
     app = AppTest.from_file(APP).run()

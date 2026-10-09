@@ -21,7 +21,7 @@ def training_page(monkeypatch, tmp_path, *, eligible=True):
         frame.to_parquet(labels.path, index=False)
     selected = TrainingInputs(SimpleNamespace(report={"source_file": "synthetic_fixture"}, directory=tmp_path / "synthetic_processed_fixture"), labels, features)
     monkeypatch.setattr("src.training_data.available_training_inputs", lambda *args: [selected])
-    monkeypatch.setattr("yaml.safe_load", lambda _: {"paths": {"models": str(tmp_path / "models"), "reports": str(tmp_path / "reports")}})
+    monkeypatch.setattr("yaml.safe_load", lambda _: {"paths": {name: str(tmp_path / name) for name in ("models", "reports", "raw_copenhagen", "raw_sociopatterns", "processed", "features")}})
     return AppTest.from_file(APP).run().switch_page("pages/4_Model_Training.py").run()
 
 

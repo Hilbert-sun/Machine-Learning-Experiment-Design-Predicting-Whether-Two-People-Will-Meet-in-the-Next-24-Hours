@@ -1,6 +1,6 @@
 # Encounter Lab — 相遇实验室
 
-使用公开、匿名接触数据，研究两名参与者未来 24 小时内发生设备近距离接触的概率。T01–T16的软件实现和完整验证已完成，交付范围与A–H验收证据见 [DELIVERY.md](DELIVERY.md)。当前真实数据的主要评估样本不足，尚未训练研究模型，因此真实预测/性能页面保持明确空状态。
+使用公开、匿名接触数据，研究两名参与者未来 24 小时内发生设备近距离接触的概率。T01–T16的软件交付证据见 [DELIVERY.md](DELIVERY.md)。T17已在完整Copenhagen真实数据上完成首次基线/XGBoost实验：测试PR-AUC(AP)0.3815、ROC-AUC0.7507、校准Brier0.0777，详见 [诊断报告](reports/T17_DATA_DIAGNOSTICS.md) 和 [真实实验报告](reports/T17_REAL_EXPERIMENT.md)。数据与模型仅在本地，仓库只提交代码及安全聚合结果；新克隆仍需自行准备真实数据与模型。
 
 ## 环境安装
 
@@ -20,7 +20,7 @@ macOS 上 XGBoost / LightGBM 需要 OpenMP 运行库。如果导入提示找不�
 brew install libomp
 ```
 
-`requirements-lock.txt`记录本次Python3.11/macOS arm64已验证环境的51个精确包版本，便于模型版本复现；`requirements.txt`保留可维护的依赖范围。完整测试结果：168项通过。新机器需从官方来源获取数据，仓库不包含数据、模型权重或本机实验报告。
+`requirements-lock.txt`记录Python3.11/macOS arm64已验证环境的51个精确包版本，便于模型版本复现；`requirements.txt`保留可维护的依赖范围。T17完整测试结果：171项通过。新机器需从官方来源获取数据；仓库不包含原始样本和模型权重，T17安全聚合报告为明确例外。
 
 通过以下命令启动应用，默认地址为 `http://localhost:8501`：
 
@@ -70,7 +70,7 @@ Overview复用当前清洗缓存，显示实测参与者、接触记录、配对
 
 仅主接触文件通过验证才能显示 Ready；只有电话/短信不能让 Copenhagen 就绪。Ready 仅指源文件结构通过验证，不代表已经清洗或可以预测。蓝牙 -1/-2 扫描标记、重复行和自接触都保留给后续清洗任务；不将未知观测当作负例。静态 Facebook/gender 文件及 Notebook/README 当前仅保存和列出。
 
-本次真实验证覆盖完整 calls.csv、sms.csv 和 SocioPatterns 接触文件。Copenhagen 蓝牙仅验证了最多8 KB的真实源片段，未下载或验证其全量文件；没有生成虚构实验结果。本地验证记录保存在忽略的 `reports/`，原始数据不会上传 GitHub。新机器需通过 Data Manager 自行下载数据。
+初期真实验证覆盖calls.csv、sms.csv、SocioPatterns及Copenhagen小片段；T17补齐了完整Copenhagen蓝牙。原始数据不会上传Git。reports目录默认忽略，仅五份T17聚合报告/指标列入显式提交白名单；其他本机验证记录、逐样本数据及训练清单仍保持本地。
 
 ## 数据清洗与缓存（T05）
 
@@ -85,7 +85,7 @@ Overview复用当前清洗缓存，显示实测参与者、接触记录、配对
 
 预处理通过磁盘 SQLite 处理跨分块去重，使用 Parquet 保存结果。缓存签名包含源路径、大小、修改时间、数据集与处理版本；匹配缓存会复用。仅全部文件成功保存后发布缓存清单，源文件改变或输出不完整会使缓存失效；失败会清理本次临时输出并保留旧缓存。代码改变清洗语义时须增加 `src/preprocessing.py` 的 `VERSION`。
 
-T05 已用本地完整 SocioPatterns 文件验证预处理与缓存复用；没有新增下载。Copenhagen 全量主文件仍未下载，仅在临时目录验证过既有蓝牙片段，不能据此将完整 Copenhagen 标为 Processed。
+T05验证时只有完整SocioPatterns和Copenhagen片段。T17经用户授权已下载并校验完整Copenhagen主文件，原覆盖率/标签/时间隔离规则保持不变，现已完成真实预处理与首个实验；历史片段未作为训练数据。
 
 ## 数据探索（T06）
 
@@ -120,7 +120,7 @@ Data Manager 中先预处理，再点击「生成24小时标签」。配置默�
 
 默认产出29个数值特征字段（包括4个历史完整性标记），以及3个键字段；没有模型分数。缓存记录版本、输入签名与策略。实测改变未来接触或目标标签不改变此前快照的特征，构建期间输入改变则拒绝发布缓存。
 
-阶段二实测使用已有SocioPatterns清洗缓存生成10,742个样本及同样行数的特征，其中4,023个标签为已观测正例、6,719个未知，主要评估可用样本为0。不能据此声称模型可训练或有任何性能结果。无需新增下载；Copenhagen全量仍需用户取得后再验证完整流程。
+阶段二的SocioPatterns样本仍为10,742行，4,023正例、6,719未知、0个主要评估可用样本；该数据的覆盖/时长限制未被改写。T17完整Copenhagen产生769,627个可评估样本，严格隔离后训练/验证/测试为269,757/155,368/260,170，支持真正的时间评估。
 
 ## 时间切分与模型开发（T09–T12）
 
@@ -164,7 +164,7 @@ model = ModelRegistry.load(record["saved_models"]["xgboost"])
 probabilities = model.predict_proba(split.validation.loc[:, FEATURE_NAMES])[:, 1]
 ```
 
-阶段三的算法、完整七模型校准/保存/加载和页面训练流程通过**明确标识的合成测试数据**验证。当前真实SocioPatterns仍有0个主要评估样本，真实训练入口已验证会拒绝训练；没有下载新的大型数据集，也没有生成或声称真实研究模型分数。
+阶段三使用合成测试验证七模型管道；T17后来使用真实Copenhagen训练Constant Probability、Historical Contact Frequency、Logistic Regression及XGBoost，并验证模型保存/加载等价。SocioPatterns仍被拒绝作为主要训练队列，不把未知观测改为负例。
 
 ## 历史关系网络（T13）
 
@@ -200,7 +200,18 @@ CSV按record_type区分模型指标、频率分组、校准前后、重要性、
 
 API入口：`src.experiments.evaluate_saved_run(report_path, evaluation_set="test")`、`run_ablation_experiments(report_path)`、`export_evaluation(report)` 和 `save_evaluation(report, directory)`。
 
-阶段四已用真实缓存验证网络页面；预测、评估、七模型对比、原生SHAP与导出流程使用合成测试验证。T16已完成完整测试、真实页面检查及原始扫描端到端集成测试。项目仍没有真实已训练模型，真实预测/评估页面会提示缺少产物，不显示研究概率或性能。
+阶段四/T16的模型交互证据来自合成测试；T17已补上首个真实实验，未新增UI功能。现有本机页面可发现真实Copenhagen模型；新克隆若没有忽略的本地数据/模型，仍显示诚实空状态。后续调参不得反复利用已报告的T17测试集。
+
+## T17真实实验复现
+
+先从官方API获取并验证完整bt_symmetric.csv，然后有意执行：
+
+```bash
+.venv/bin/python -m src.real_experiment
+.venv/bin/python -m src.real_experiment_report
+```
+
+此命令复用数据流程、按固定协议重新拟合并覆盖T17聚合输出，不隐式下载。初始零样本由SocioPatterns无扫描日志和4.21天时长共同导致；完整Copenhagen解决了数据可行性，无需降低0.5覆盖门槛或弱化测试隔离。测试集仅有6个预测日，结果是记录过程下的初步可行性证据，不能解释为独立个体试验或长期关系预测。原始数据、模型与私有训练清单仍不提交。
 
 运行当前测试：
 

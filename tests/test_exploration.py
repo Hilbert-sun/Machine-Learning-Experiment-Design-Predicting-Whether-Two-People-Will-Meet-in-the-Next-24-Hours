@@ -93,6 +93,7 @@ def app_with_config(monkeypatch, tmp_path):
     monkeypatch.setattr("yaml.safe_load", lambda _: {"paths": {
         "raw_copenhagen": str(tmp_path / "raw"), "raw_sociopatterns": str(tmp_path / "raw"),
         "processed": str(tmp_path / "processed"),
+        "models": str(tmp_path / "models"), "reports": str(tmp_path / "reports"),
     }})
     return AppTest.from_file(APP).run().switch_page("pages/2_Data_Explorer.py").run()
 

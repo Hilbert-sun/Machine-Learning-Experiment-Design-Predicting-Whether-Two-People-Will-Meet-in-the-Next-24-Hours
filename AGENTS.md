@@ -25,7 +25,7 @@ The first execution was limited to T01 and is complete. The user subsequently au
 
 ## Current authorized range
 
-T01–T16 software tasks are complete and verified. T16 included full testing, documented startup, raw-scan integration and source-only GitHub delivery. Stop; do not download full datasets, train a study model or invent new development work without a new user instruction. Research-data limitations in DELIVERY.md remain in force.
+T17 was explicitly authorized, including the user's later approval to download the official complete Copenhagen Bluetooth file. Diagnostics and the first genuine real-data baselines/XGBoost experiment are complete. Stop after committing reviewed code/docs/aggregate metadata; do not add UI or begin a new experiment automatically. Raw data, individual samples and model weights stay local.
 
 ## Prediction data contract
 
@@ -34,10 +34,12 @@ T01–T16 software tasks are complete and verified. T16 included full testing, d
 - Communication, RSSI, weekday and coverage fields unavailable from reliable sources remain null, not zero. Default weekday origin is unconfirmed. SocioPatterns currently has no samples eligible for the primary evaluation policy.
 - T09 splits whole prediction times chronologically and purges labels with t+24h >= the next set's start. Calibration uses early validation, tuning uses later validation, with the same strict label-window separation.
 - Fit preprocessing/models on train only; all-null train columns are removed. Parameters, calibration and thresholds use validation only. Keep final test scores for the final evaluation task.
-- Phase-three native model/calibration/persistence verification used explicitly synthetic test fixtures. No real study model was trained: current SocioPatterns has zero eligible primary samples. Do not relabel unknowns or present fixture metrics as research results.
+- Phase-three initial verification used synthetic fixtures. T17 subsequently trained genuine Copenhagen models; reports/T17_REAL_EXPERIMENT.md and T17_METRICS.json are the real evidence. SocioPatterns still has zero primary-eligible samples. Never relabel unknowns or present fixture metrics as research results.
 - Prediction Lab requires t strictly after the saved model's validation-label information deadline. Future mode must not read/display actual outcomes. Feature-window policy must match the saved model; preserve legacy full-bank models with a null window contract.
 - Evaluation uses frozen models/thresholds and exact saved input signatures. All window/communication ablations run on validation only. E3 stays unavailable without verified communication availability; never fabricate scores.
 - Native TreeSHAP applies to XGBoost/LightGBM base raw margins, not calibrated probabilities. Other local sensitivity methods must not be labeled SHAP or causal. Keep synthetic-fixture provenance in pages, figures and exports.
+- T17's held-out test scores have now been reported. Do not use them to choose new thresholds/features/hyperparameters; later tuning needs a new validation design. Preserve the original T17 results, including worse Logistic Regression probability scores and raw/calibrated XGBoost variants.
+- Reports remain ignored except the five reviewed T17 aggregate deliverables explicitly whitelisted in .gitignore. Do not broaden that whitelist to private manifests, individual samples or model files.
 
 ## Local environment
 

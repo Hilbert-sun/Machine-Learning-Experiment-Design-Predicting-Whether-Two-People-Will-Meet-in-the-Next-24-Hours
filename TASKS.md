@@ -2,7 +2,7 @@
 
 Task IDs and titles follow the user's task-board screenshot. Dependencies and acceptance criteria below are the implementation plan derived from `PROJECT_SPEC.md`, rather than additional completed functionality.
 
-Current execution: **T16 — DONE**. All T01–T16 software tasks are verified; full tests, documented startup, final integration and source-only GitHub delivery succeeded. Stop; real-data research work requires a new instruction.
+Current execution: **T17 — DONE**. Genuine-data diagnostics, unchanged-policy Copenhagen baselines/XGBoost, calibration, local artifacts, safe reports and171 passing tests completed. Commit reviewed safe files, then stop; no new UI/task.
 
 | Complete | ID | Task | Status | Dependencies | Acceptance criteria |
 | --- | --- | --- | --- | --- | --- |
@@ -22,5 +22,6 @@ Current execution: **T16 — DONE**. All T01–T16 software tasks are verified; 
 | [x] | T14 | Prediction Lab 交互页面 | DONE | T12, T13 | Pair/time/window/model controls return real model probabilities; history and uncertainty are explained; backtest outcomes respect unknown coverage; future mode hides labels. |
 | [x] | T15 | 模型评估和实验比较 | DONE | T06, T12, T14 | Real baseline/model metrics, PR/ROC/confusion/calibration, feature/SHAP analysis and E1–E5 experiments are reproducible and exportable as CSV/HTML. |
 | [x] | T16 | 整体测试、文档和最终交付 | DONE | T03–T15 | Applicable specification tests A–H and full pytest suite pass; README steps work; data provenance/licenses, limitations and reproducibility metadata are documented. |
+| [x] | T17 | Real Data Training & Feasibility Verification | DONE | T16 | Diagnose local files, candidates, labels, coverage and temporal splits; justify/test minimal feasible changes; train genuine baselines and XGBoost only with meaningful chronological cohorts; save requested reports, aggregate metrics and local models; commit safe code/docs/metadata only. |
 
 T01 excludes Streamlit navigation/pages, dataset downloads, preprocessing, features, training and predictions. These belong to later tasks.

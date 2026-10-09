@@ -3,6 +3,7 @@
 from collections import Counter, defaultdict
 
 import numpy as np
+import pandas as pd
 import pyarrow as pa
 import pyarrow.dataset as ds
 
@@ -38,26 +39,36 @@ def _history_context(processed, t):
         last_bin, last_day = {}, {}
         expression = (ds.field("timestamp") >= t - window * DAY) & (ds.field("timestamp") < t)
         for frame in parquet_frames(contacts, ["timestamp", "user_min", "user_max", "rssi"], expression):
-            for pair, group in frame.groupby(["user_min", "user_max"]):
-                stats["count"][pair] += len(group)
-                bins = np.unique(group.timestamp.to_numpy() // bin_size)
-                days = np.unique(group.timestamp.to_numpy() // DAY)
-                stats["bins"][pair] += int((bins > last_bin.get(pair, -1)).sum())
-                stats["days"][pair] += int((days > last_day.get(pair, -1)).sum())
-                last_bin[pair], last_day[pair] = int(bins[-1]), int(days[-1])
-                if window == 7:
-                    signal = group.rssi.dropna()
-                    stats["rssi_sum"][pair] += float(signal.sum())
-                    stats["rssi_n"][pair] += len(signal)
-                    if len(signal):
-                        stats["rssi_max"][pair] = max(stats["rssi_max"].get(pair, -np.inf), float(signal.max()))
-                    a, b = pair
+            keys = ["user_min", "user_max"]
+            grouped = frame.groupby(keys, sort=False)
+            stats["count"].update(grouped.size().to_dict())
+            # Hash-aggregate chunks instead of constructing a DataFrame per pair.
+            # Prior maxima remove only repeats across chronological chunk boundaries.
+            for column, divisor, previous, destination in (("bin", bin_size, last_bin, stats["bins"]), ("day", DAY, last_day, stats["days"])):
+                unique = frame.loc[:, keys].assign(**{column: frame.timestamp.to_numpy() // divisor}).drop_duplicates(keys + [column])
+                if previous:
+                    prior = pd.DataFrame([(a, b, value) for (a, b), value in previous.items()], columns=keys + ["previous"])
+                    compared = unique.merge(prior, on=keys, how="left")
+                    fresh = compared.loc[compared[column].gt(compared.previous.fillna(-1))]
+                else:
+                    fresh = unique
+                destination.update(fresh.groupby(keys, sort=False).size().to_dict())
+                previous.update(unique.groupby(keys, sort=False)[column].max().to_dict())
+            if window == 7:
+                signal = grouped.rssi.agg(["sum", "count", "max"])
+                stats["rssi_sum"].update(signal["sum"].to_dict())
+                stats["rssi_n"].update(signal["count"].to_dict())
+                for pair, value in signal["max"].dropna().items():
+                    stats["rssi_max"][pair] = max(stats["rssi_max"].get(pair, -np.inf), float(value))
+                for a, b in signal.index:
                     neighbors[a].add(b)
                     neighbors[b].add(a)
-                    activity[a] += len(group)
-                    activity[b] += len(group)
-                if window == 14:
-                    positive_buckets[pair].update((t - 1 - group.timestamp.to_numpy()) // DAY)
+                activity.update(frame.user_min.value_counts().to_dict())
+                activity.update(frame.user_max.value_counts().to_dict())
+            if window == 14:
+                buckets = frame.loc[:, keys].assign(bucket=(t - 1 - frame.timestamp.to_numpy()) // DAY).drop_duplicates(keys + ["bucket"])
+                for a, b, bucket in buckets.itertuples(index=False, name=None):
+                    positive_buckets[(a, b)].add(int(bucket))
         result[window] = stats
     scans = Counter()
     if processed.report["scan_coverage_available"]:
@@ -69,7 +80,7 @@ def _history_context(processed, t):
     return result, neighbors, activity, positive_buckets, scans
 
 
-def build_features(processed, labels, output, *, weekday_origin=None, weekday_reference=None, communications_enabled=False):
+def build_features(processed, labels, output, *, weekday_origin=None, weekday_reference=None, communications_enabled=False, progress=None):
     """Read only label keys, never labels or future eligibility/coverage columns.
 
     Weekday indexing requires an explicitly supplied, documented source convention.
@@ -145,6 +156,8 @@ def build_features(processed, labels, output, *, weekday_origin=None, weekday_re
                         records.clear()
                 if records:
                     writer.write_table(pa.Table.from_pylist(records, schema=FEATURE_SCHEMA))
+                if progress:
+                    progress(t, count)
         if file_signatures(paths) != signatures:
             raise RuntimeError("输入在特征生成期间改变，未发布缓存。")
         return {"rows": count, "feature_columns": list(FEATURE_NAMES), "history_windows_days": list(WINDOWS),

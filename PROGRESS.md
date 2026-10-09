@@ -2,40 +2,66 @@
 
 Date: 2026-10-09 (Asia/Kuala_Lumpur)
 
-## Current execution
+## Result
 
-**T16 — DONE. T01–T16 software tasks are complete.** Dependencies T03–T15 were DONE. Software validation, final integration, delivery documentation and source-only GitHub publication succeeded. Stop; do not start a new development/research task automatically.
+**T17 — DONE: first genuine real-data feasibility experiment.** T01–T16 engineering remains complete. Diagnosed the previous blocker, acquired official Copenhagen Bluetooth only after explicit user approval, preserved scientific filtering/split rules, trained the requested real baselines and XGBoost, checked calibration, saved local artifacts and generated safe aggregate deliverables. No new UI was added. Stop after the requested safe commit.
 
-## Implementation and changed files
+## Exactly why training was previously blocked
 
-- Added `src/overview.py` and connected `pages/0_Overview.py` to current processed cache statistics, observed pairs, current-policy eligible positive rate and actual saved model counts. This fixes the final audit's discovery that Overview still showed initialization placeholders despite available data. Unknown/absent denominators remain unknown; changed inputs invalidate cached display.
-- Added `tests/test_delivery.py`: complete synthetic raw Bluetooth scans → source cleaning → labels → historical features → chronological split → baseline/main-model calibration → saved model → time-valid prediction/backtest → frozen final evaluation → CSV/HTML, plus Overview measured counts and cache invalidation. No phase was bypassed or supplied a fake model probability.
-- Added `requirements-lock.txt`, recording 51 installed runtime/test package versions without URLs/credentials; verified them against installed versions and declared requirements. No package installation was needed.
-- Added `DELIVERY.md` with exact scope, A–H evidence, launch/reproduction commands, source/license references, actual data limitations and next research steps. Updated README, task/progress instructions/status. Completed modules were reused rather than regenerated.
+- Existing full SocioPatterns:327 participants,188,508 records,4.207870 observed days,5,818 full-period pairs,4,602 actual historical candidate pairs and3 daily prediction times. It supplies no scan logs, so all10,742 samples are excluded;4,023 recorded positives remain evidence and6,719 absences remain unknown, not fabricated negatives.
+- Independently, three daily time points cannot survive the strict24h train/validation/test purge. Even counterfactual6-hour/1-hour grids with coverage ignored produce13/76 time points but zero purged validation times under60/20/20. More overlapping rows do not create more observation days.
+- Copenhagen main Bluetooth file was absent; calls/SMS cannot substitute as physical-contact labels. The earlier8KB probe was never used for training.
+- Minimal resolution was data acquisition, not relaxed labels or a weakened test. Downloaded genuine `bt_symmetric.csv` from Figshare API article7267433:98,257,835 bytes, official MD5 `98892459f73e774cf79e7977edfeee3e` verified. All raw/model files remain ignored.
+
+## Genuine Copenhagen cohort
+
+-706 valid recorded device IDs;692 appear in valid study contacts;5,474,289 raw rows →2,426,279 valid contact records. Empty/external rows remain scan evidence. Source relative seconds0–2,418,900, spanning27.996528 days/28 Study Days.
+-79,530 pairs observed over the full period (descriptive only);77,172 pairs actually appear as past-only candidates across27 prediction snapshots.
+-1,196,828 candidate rows:111,299 observed positive labels including ineligible positives,687,700 negative labels,397,829 unknown. Coverage≥0.5 yields769,627 eligible rows:81,927 positive/687,700 negative.
+- Strict purged chronological split: train269,757 (30,619 positive/239,138 negative,15 times); validation155,368 (18,289/137,079,4 times); test260,170 (26,594/233,576,6 times). Purged84,332 rows; test prevalence10.221778%.
+- Kept daily08:00,24h horizon, Known Pair, coverage0.5,1/3/7/14-day bank/14-day model history, no negative downsampling, no communications or guessed weekdays,60/20/20 and strict inclusive-window purge. Counts-only0.25/0.5/0.75 sensitivity was not used to choose test-favorable settings.
+
+## First frozen final-test results
+
+| Model | PR-AUC(AP) | ROC-AUC | Brier | Log Loss | Precision | Recall | F1 |
+| --- | --- | --- | --- | --- | --- | --- | --- |
+| Constant Probability |0.102218|0.500000|0.091897|0.330581|0.102218|1.000000|0.185477|
+| Historical Contact Frequency |0.309040|0.703795|0.083377|0.730760|0.320484|0.376702|0.346326|
+| Logistic Regression |0.245216|0.652128|0.095737|0.445783|0.163578|0.373092|0.227438|
+| XGBoost raw |0.381491|0.750717|0.088394|0.380844|0.380099|0.417989|0.398145|
+| XGBoost sigmoid |0.381491|0.750717|0.077673|0.278910|0.380099|0.417989|0.398145|
+
+Baselines fit/threshold-select first; only after success was fixed200-tree/depth4/learning-rate0.05 XGBoost fitted. Sigmoid used35,666 early-validation rows at1 prediction time; thresholds used81,830 later-validation rows at2 times, separated by the same strict24h gap. No grid or post-test model tuning was performed. Baseline validation uses the full validation set; main validation uses the later period, so only the identical test cohort is presented as a same-cohort ranking.
+
+XGBoost ECE improved0.079244→0.010393; raw/calibrated AP and ROC-AUC are identical. Logistic probability scores are worse than the constant prior and are retained, not hidden or repaired after seeing the test. No significance/independent-trial claim is made for six dependent test days.
+
+## Files and deliverables
+
+- Added `src/real_experiment.py`: deterministic diagnostics, predefined sample-support gates, genuine baseline-then-main execution, frozen holdout metrics, safe relative-path aggregate metadata, local model save/load equivalence. No implicit download/UI.
+- Added `src/real_experiment_report.py`: renders the requested reports from measured JSON without fitting or selection.
+- Optimized only chunk aggregation in `src/feature_engineering.py` to avoid per-pair DataFrame construction at2.43million records, retaining exact record/bin/day/RSSI definitions and time filters. Added optional progress callbacks. Existing semantics/version remain unchanged and parity/no-future tests pass.
+- Added `tests/test_real_experiment.py`; isolated existing navigation/UI fixture paths from the now-real user data/model directories. Previous empty-workspace tests must not assume an empty production model registry.
+- Public safe deliverables: `reports/T17_DATA_DIAGNOSTICS.md`, `reports/T17_REAL_EXPERIMENT.md`, `reports/T17_METRICS.csv`, `reports/T17_METRICS.json`, `reports/T17_SAFE_METADATA.json`. .gitignore whitelists only these five reports; all other reports remain private/ignored.
+- Updated README/DELIVERY/AGENTS/TASKS/PROGRESS to distinguish historical synthetic engineering verification from this first real experiment.
+- Local artifacts: three baseline pipelines plus raw/calibrated XGBoost under ignored `models/T17/`; detailed paths in the experiment report. Private training manifests remain ignored. No individual pair rows or dataset contents are committed.
 
 ## Verification
 
-- Before final integration: full `.venv/bin/python -m pytest -q`: **166 passed in 7.26s**.
-- New delivery/navigation checks: **13 passed in 2.93s**.
-- Final full `.venv/bin/python -m pytest -q`: **168 passed in 8.13s**.
-- `.venv/bin/python -m pip check`: **No broken requirements found**.
-- `.venv/bin/streamlit --version`: **1.65.0**. The documented Streamlit executable started successfully on loopback; root and health routes returned HTTP200. The temporary server was stopped.
-- All eight AppTest pages loaded without errors. Real SocioPatterns Overview matched **327 participants,188,508 records,5,818 pairs,5 Study Days**, unknown eligible positive rate and no trained real model.
-- All 51 locked package versions match the installed tested environment and the declared dependency ranges.
-- A–H evidence is mapped in DELIVERY.md. Native algorithm/model UI tests use explicit synthetic fixtures; no fixture score is claimed as a study result.
-- Local evidence remains ignored: `reports/delivery_ui_check.json`, `reports/delivery_startup_check.json`, and earlier stage records. `git diff --check` passed.
-- No test failed during T16. Nonfatal sandbox CPU-probe, bare-mode Streamlit context and unwritable default pip-cache warnings did not affect results.
+- Vectorized-history cross-row-group parity and existing feature/label/delivery/temporal checks:33 passed.
+- Relevant T17/feature/label/temporal/model/calibration/navigation checks:68 passed in3.35s.
+- Final full `.venv/bin/python -m pytest -q`: **171 passed in8.61s**, with genuine data/models present and test fixtures isolated.
+- Every saved model reload matched its actual pre-save test-probe probabilities. Model-generating file hashes still match the pre-test freeze recorded in safe metadata; no statistical code changed after heldout scores.
+- Official download size/MD5 verified; public deliverable review found no home paths, credentials or individual samples. Raw data/models/private receipts/manifests remain excluded.
+- No relevant test failed in T17. Sandbox PyArrow CPU-probe warnings were nonfatal. A documentation patch initially had out-of-order contexts; corrected without model/code/score changes.
 
-## Real-data limitations
+## Interpretation and remaining limitations
 
-Software testing is complete; research experiments are not. Existing SocioPatterns still has zero primary-evaluation-eligible samples because reliable scan evidence is unavailable. Full Copenhagen Bluetooth remains undownloaded/unvalidated locally. No real study models, probabilities or performance scores have been produced. E3 stays unavailable without verified communication timing; unconfirmed weekdays remain null. No dataset or new package was downloaded in T16.
+The target is a future recorded study-device Bluetooth proximity event under a recorded-bin coverage assumption, not ground truth of human conversation/continuous presence. Symmetrized rows and50% coverage cannot prove full online status or eliminate missed detection. Four positive-RSSI measurements were retained under the prespecified no-threshold rule. Rows repeat participants/pairs/days; calibration covers one day and test six days. Weekdays/communications remain unknown, cold-start/new-person generalization was not tested, and long-term claims are unsupported.
 
-## Repository/publication
+Research feasibility is established for this declared within-population recorded-event task. Future improvements require a new validation design, not optimizing this already-reported test set. No further experiment starts automatically.
 
-The previously authorized destination is `https://github.com/Hilbert-sun/Machine-Learning-Experiment-Design-Predicting-Whether-Two-People-Will-Meet-in-the-Next-24-Hours`. Fetched origin and confirmed local/remote main were aligned (0 ahead/0 behind) before publication. Reviewed 48 changed source/configuration/documentation/test files; staged checks excluded all data, weights, reports, virtual environment and secrets.
+## Repository and next task
 
-Software delivery commit **634a532574b54d5d340be099b2cd8077976e4cc2** was pushed to main; `git ls-remote` returned the identical SHA. A follow-up documentation commit records T16 completion and this verified publication result. The latest HEAD is recorded by Git history; no force-push or unrelated remote-history overwrite occurred.
+Commit only reviewed code, docs, tests and the five aggregate T17 reports. Raw datasets, model weights, labels/features, individual samples, private manifests and credentials are excluded. This T17 request requires a commit; no push or new UI is necessary. The final commit identifier is reported in the execution reply/Git history.
 
-## Next task
-
-No remaining task in T01–T16. Stop here. A full-data research run requires a new user instruction and valid observation data; it is not an automatic continuation of software delivery.
+No next task is started. Stop after T17.

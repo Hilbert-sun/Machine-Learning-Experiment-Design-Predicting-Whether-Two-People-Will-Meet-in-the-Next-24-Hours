@@ -15,6 +15,7 @@ def manager(monkeypatch, tmp_path):
         "raw_copenhagen": str(tmp_path / "raw"), "raw_sociopatterns": str(tmp_path / "raw"),
         "processed": str(tmp_path / "processed"),
         "features": str(tmp_path / "features"),
+        "models": str(tmp_path / "models"), "reports": str(tmp_path / "reports"),
     }})
     return AppTest.from_file(APP).run().switch_page("pages/1_Data_Manager.py").run()
 

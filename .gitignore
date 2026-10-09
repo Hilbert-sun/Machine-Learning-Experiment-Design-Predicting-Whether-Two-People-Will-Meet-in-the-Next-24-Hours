@@ -20,6 +20,12 @@ models/**
 reports/**
 !reports/**/
 !reports/**/.gitkeep
+# T17: explicitly reviewed, aggregate-only scientific deliverables.
+!reports/T17_DATA_DIAGNOSTICS.md
+!reports/T17_REAL_EXPERIMENT.md
+!reports/T17_METRICS.csv
+!reports/T17_METRICS.json
+!reports/T17_SAFE_METADATA.json
 
 # Credentials and machine-specific configuration
 .env

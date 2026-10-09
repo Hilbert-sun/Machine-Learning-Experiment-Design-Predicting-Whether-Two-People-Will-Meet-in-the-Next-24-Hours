@@ -9,7 +9,7 @@ APP = str(Path(__file__).resolve().parents[1] / "app.py")
 
 def test_evaluation_page_displays_true_fixture_results_and_blocks_test_ablation(monkeypatch, tmp_path):
     saved_fixture(tmp_path)
-    monkeypatch.setattr("yaml.safe_load", lambda _: {"paths": {"reports": str(tmp_path / "reports")}})
+    monkeypatch.setattr("yaml.safe_load", lambda _: {"paths": {name: str(tmp_path / name) for name in ("reports", "models", "raw_copenhagen", "raw_sociopatterns", "processed", "features")}})
     app = AppTest.from_file(APP, default_timeout=15).run().switch_page("pages/6_Model_Evaluation.py").run()
     assert not app.exception
     assert any("合成测试" in message.value for message in app.warning)
@@ -27,7 +27,7 @@ def test_evaluation_page_displays_true_fixture_results_and_blocks_test_ablation(
 
 
 def test_missing_real_experiments_does_not_show_placeholder_scores(monkeypatch, tmp_path):
-    monkeypatch.setattr("yaml.safe_load", lambda _: {"paths": {"reports": str(tmp_path / "reports")}})
+    monkeypatch.setattr("yaml.safe_load", lambda _: {"paths": {name: str(tmp_path / name) for name in ("reports", "models", "raw_copenhagen", "raw_sociopatterns", "processed", "features")}})
     app = AppTest.from_file(APP).run().switch_page("pages/6_Model_Evaluation.py").run()
     assert not app.exception and not app.metric and not app.get("plotly_chart")
     assert any("尚无" in message.value for message in app.info)
