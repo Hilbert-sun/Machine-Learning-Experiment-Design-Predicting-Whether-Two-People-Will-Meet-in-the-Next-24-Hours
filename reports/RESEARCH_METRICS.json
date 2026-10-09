@@ -1,0 +1,970 @@
+{
+  "source_kind": "real_public_dataset",
+  "metrics": [
+    {
+      "experiment": "T17",
+      "window_days": 14,
+      "model": "constant",
+      "dataset_id": "copenhagen",
+      "cohort": "T17 all-past known pairs",
+      "evaluation_scope": "frozen_test",
+      "rows": 260170,
+      "positive_rate": 0.10221778068186185,
+      "threshold": 0.11350585897678281,
+      "pr_auc_average_precision": 0.10221778068186185,
+      "brier_score": 0.0918967267059289,
+      "log_loss": 0.3305812394875906,
+      "precision": 0.10221778068186185,
+      "recall": 1.0,
+      "f1": 0.18547655912178657,
+      "roc_auc": 0.5,
+      "accuracy": 0.10221778068186185,
+      "calibration_error_ece": 0.01128807829492097
+    },
+    {
+      "experiment": "T17",
+      "window_days": 14,
+      "model": "historical_frequency",
+      "dataset_id": "copenhagen",
+      "cohort": "T17 all-past known pairs",
+      "evaluation_scope": "frozen_test",
+      "rows": 260170,
+      "positive_rate": 0.10221778068186185,
+      "threshold": 0.23076923076923078,
+      "pr_auc_average_precision": 0.30904016985934585,
+      "brier_score": 0.08337652384824007,
+      "log_loss": 0.7307601996665972,
+      "precision": 0.32048370069420007,
+      "recall": 0.3767015116191622,
+      "f1": 0.34632603322213196,
+      "roc_auc": 0.7037950699087386,
+      "accuracy": 0.8546450397816812,
+      "calibration_error_ece": 0.026971772367113667
+    },
+    {
+      "experiment": "T17",
+      "window_days": 14,
+      "model": "logistic_regression",
+      "dataset_id": "copenhagen",
+      "cohort": "T17 all-past known pairs",
+      "evaluation_scope": "frozen_test",
+      "rows": 260170,
+      "positive_rate": 0.10221778068186185,
+      "threshold": 0.017183409462913524,
+      "pr_auc_average_precision": 0.2452156120251689,
+      "brier_score": 0.09573683712246493,
+      "log_loss": 0.44578346864320995,
+      "precision": 0.16357821155367977,
+      "recall": 0.3730916748138678,
+      "f1": 0.22743839541547278,
+      "roc_auc": 0.6521284739320994,
+      "accuracy": 0.7409155552138986,
+      "calibration_error_ece": 0.08728953188332166
+    },
+    {
+      "experiment": "T17",
+      "window_days": 14,
+      "model": "xgboost_raw",
+      "dataset_id": "copenhagen",
+      "cohort": "T17 all-past known pairs",
+      "evaluation_scope": "frozen_test",
+      "rows": 260170,
+      "positive_rate": 0.10221778068186185,
+      "threshold": 0.03290223330259323,
+      "pr_auc_average_precision": 0.3814913053546118,
+      "brier_score": 0.08839424317495514,
+      "log_loss": 0.3808438391489658,
+      "precision": 0.38009916224995727,
+      "recall": 0.4179890200797172,
+      "f1": 0.3981446659145042,
+      "roc_auc": 0.7507174523959044,
+      "accuracy": 0.8708267671138102,
+      "calibration_error_ece": 0.0792442273061261
+    },
+    {
+      "experiment": "T17",
+      "window_days": 14,
+      "model": "xgboost_sigmoid",
+      "dataset_id": "copenhagen",
+      "cohort": "T17 all-past known pairs",
+      "evaluation_scope": "frozen_test",
+      "rows": 260170,
+      "positive_rate": 0.10221778068186185,
+      "threshold": 0.21784518184593685,
+      "pr_auc_average_precision": 0.3814913053546118,
+      "brier_score": 0.07767315693245937,
+      "log_loss": 0.2789101115588304,
+      "precision": 0.38009916224995727,
+      "recall": 0.4179890200797172,
+      "f1": 0.3981446659145042,
+      "roc_auc": 0.7507174523959044,
+      "accuracy": 0.8708267671138102,
+      "calibration_error_ece": 0.010393397802240061
+    },
+    {
+      "experiment": "T21-T22",
+      "dataset_id": "copenhagen",
+      "cohort": "shared1d candidates + full7d span",
+      "evaluation_scope": "frozen_test",
+      "window_days": 1,
+      "model": "historical_frequency",
+      "rows": 25569,
+      "positive_rate": 0.21381360240916736,
+      "threshold": 0.20487590760283117,
+      "pr_auc_average_precision": 0.20964201551472464,
+      "brier_score": 0.7107011496256251,
+      "log_loss": 24.79333973741869,
+      "precision": 0.21381360240916736,
+      "recall": 1.0,
+      "f1": 0.35230055419512823,
+      "roc_auc": 0.48729915786904016,
+      "accuracy": 0.21381360240916736,
+      "ap_over_prevalence": 0.9804896094194245,
+      "distinct_prediction_days": 4
+    },
+    {
+      "experiment": "T21-T22",
+      "dataset_id": "copenhagen",
+      "cohort": "shared1d candidates + full7d span",
+      "evaluation_scope": "frozen_test",
+      "window_days": 1,
+      "model": "logistic_regression",
+      "rows": 25569,
+      "positive_rate": 0.21381360240916736,
+      "threshold": 0.34925852636036164,
+      "pr_auc_average_precision": 0.5106167487231119,
+      "brier_score": 0.1396146324078859,
+      "log_loss": 0.44496815962723085,
+      "precision": 0.593993993993994,
+      "recall": 0.3618072068776294,
+      "f1": 0.44969876094122996,
+      "roc_auc": 0.7501770693261695,
+      "accuracy": 0.8106691696976808,
+      "ap_over_prevalence": 2.388139683208569,
+      "distinct_prediction_days": 4
+    },
+    {
+      "experiment": "T21-T22",
+      "dataset_id": "copenhagen",
+      "cohort": "shared1d candidates + full7d span",
+      "evaluation_scope": "frozen_test",
+      "window_days": 1,
+      "model": "xgboost",
+      "rows": 25569,
+      "positive_rate": 0.21381360240916736,
+      "threshold": 0.3174563944339752,
+      "pr_auc_average_precision": 0.5887225238838673,
+      "brier_score": 0.12802613614112504,
+      "log_loss": 0.41510891649298604,
+      "precision": 0.6031476997578693,
+      "recall": 0.4556429486006951,
+      "f1": 0.5191205585078671,
+      "roc_auc": 0.7706561999323844,
+      "accuracy": 0.8195079979662873,
+      "ap_over_prevalence": 2.753438122038888,
+      "distinct_prediction_days": 4
+    },
+    {
+      "experiment": "T21-T22",
+      "dataset_id": "copenhagen",
+      "cohort": "shared1d candidates + full7d span",
+      "evaluation_scope": "frozen_test",
+      "window_days": 3,
+      "model": "historical_frequency",
+      "rows": 25569,
+      "positive_rate": 0.21381360240916736,
+      "threshold": 1.0,
+      "pr_auc_average_precision": 0.33290756879472466,
+      "brier_score": 0.2290183932252404,
+      "log_loss": 3.0003952191734555,
+      "precision": 0.4761560693641618,
+      "recall": 0.24108286080117067,
+      "f1": 0.32009714632665454,
+      "roc_auc": 0.6418371709440076,
+      "accuracy": 0.781023896124213,
+      "ap_over_prevalence": 1.5569990171048682,
+      "distinct_prediction_days": 4
+    },
+    {
+      "experiment": "T21-T22",
+      "dataset_id": "copenhagen",
+      "cohort": "shared1d candidates + full7d span",
+      "evaluation_scope": "frozen_test",
+      "window_days": 3,
+      "model": "logistic_regression",
+      "rows": 25569,
+      "positive_rate": 0.21381360240916736,
+      "threshold": 0.3327946006945454,
+      "pr_auc_average_precision": 0.5714965591098409,
+      "brier_score": 0.13189504934065935,
+      "log_loss": 0.42487289925591065,
+      "precision": 0.6378066378066378,
+      "recall": 0.4042436436802634,
+      "f1": 0.4948499776085983,
+      "roc_auc": 0.780479514235948,
+      "accuracy": 0.8235363135046345,
+      "ap_over_prevalence": 2.672872785783706,
+      "distinct_prediction_days": 4
+    },
+    {
+      "experiment": "T21-T22",
+      "dataset_id": "copenhagen",
+      "cohort": "shared1d candidates + full7d span",
+      "evaluation_scope": "frozen_test",
+      "window_days": 3,
+      "model": "xgboost",
+      "rows": 25569,
+      "positive_rate": 0.21381360240916736,
+      "threshold": 0.3532690703868866,
+      "pr_auc_average_precision": 0.627493964585029,
+      "brier_score": 0.1208012799411845,
+      "log_loss": 0.3946706793885129,
+      "precision": 0.6431801951916211,
+      "recall": 0.4942381562099872,
+      "f1": 0.5589573851882499,
+      "roc_auc": 0.799719013968945,
+      "accuracy": 0.8332355586843443,
+      "ap_over_prevalence": 2.934771022585441,
+      "distinct_prediction_days": 4
+    },
+    {
+      "experiment": "T21-T22",
+      "dataset_id": "copenhagen",
+      "cohort": "shared1d candidates + full7d span",
+      "evaluation_scope": "frozen_test",
+      "window_days": 7,
+      "model": "historical_frequency",
+      "rows": 25569,
+      "positive_rate": 0.21381360240916736,
+      "threshold": 0.5,
+      "pr_auc_average_precision": 0.5193285540187074,
+      "brier_score": 0.13935051496898226,
+      "log_loss": 0.9743389471422614,
+      "precision": 0.575940548072457,
+      "recall": 0.45363087616608744,
+      "f1": 0.5075207203519901,
+      "roc_auc": 0.7750632647832982,
+      "accuracy": 0.8117642457663578,
+      "ap_over_prevalence": 2.4288845432054744,
+      "distinct_prediction_days": 4
+    },
+    {
+      "experiment": "T21-T22",
+      "dataset_id": "copenhagen",
+      "cohort": "shared1d candidates + full7d span",
+      "evaluation_scope": "frozen_test",
+      "window_days": 7,
+      "model": "logistic_regression",
+      "rows": 25569,
+      "positive_rate": 0.21381360240916736,
+      "threshold": 0.3458729111465327,
+      "pr_auc_average_precision": 0.6447802801313985,
+      "brier_score": 0.1191592952341588,
+      "log_loss": 0.3897488336571551,
+      "precision": 0.7120622568093385,
+      "recall": 0.4686299615877081,
+      "f1": 0.5652509652509653,
+      "roc_auc": 0.8240476314531029,
+      "accuracy": 0.8458680433337245,
+      "ap_over_prevalence": 3.0156186176476547,
+      "distinct_prediction_days": 4
+    },
+    {
+      "experiment": "T21-T22",
+      "dataset_id": "copenhagen",
+      "cohort": "shared1d candidates + full7d span",
+      "evaluation_scope": "frozen_test",
+      "window_days": 7,
+      "model": "xgboost",
+      "rows": 25569,
+      "positive_rate": 0.21381360240916736,
+      "threshold": 0.3169858753681183,
+      "pr_auc_average_precision": 0.6913660477643164,
+      "brier_score": 0.10910678787461896,
+      "log_loss": 0.3609950714488096,
+      "precision": 0.6802989412497406,
+      "recall": 0.599414669837205,
+      "f1": 0.6373006612213147,
+      "roc_auc": 0.8414944720283969,
+      "accuracy": 0.8541202237083969,
+      "ap_over_prevalence": 3.2334988979853314,
+      "distinct_prediction_days": 4
+    }
+  ],
+  "window_run_id": "102140b8cf3df83f",
+  "T17_test_previously_exposed": true,
+  "different_cohorts_not_direct_AP_comparable": true,
+  "primary_test_days": 4,
+  "test_used_for_selection": false,
+  "source_report_hashes": {
+    "reports/T17_SAFE_METADATA.json": "7e5fcf97a3de879200d40646478097d4b8e1431ccfb23688bb4bcc7d53e203e3",
+    "reports/window_study/T22_ROBUSTNESS.json": "4d6f0779b0557b5e1459bc96d900b32c30c09617d730d4d947ee410364ee6728"
+  },
+  "dataset_statuses": [
+    {
+      "dataset_id": "copenhagen",
+      "name": "Copenhagen Networks Study",
+      "source_url": "https://figshare.com/articles/dataset/The_Copenhagen_Networks_Study_interaction_data/7267433",
+      "citation": "Sapiezynski et al. (2019), Scientific Data, DOI10.1038/s41597-019-0325-x; dataset10.6084/m9.figshare.7267433",
+      "licence": "MIT (data; article license separately)",
+      "access_status": "public",
+      "format": "copenhagen",
+      "temporal_resolution": 300,
+      "scan_coverage_evidence": "Recorded reporter bins including empty scans; symmetrized rows remain an availability proxy, not continuous presence.",
+      "eligibility_status": "eligible_primary_24h",
+      "reason": "Coverage policy supported; still require cohort/class/time checks before training.",
+      "participants": 692,
+      "event_rows": 2426279,
+      "valid_pairs": 79530,
+      "first_timestamp": 0,
+      "last_timestamp": 2418900,
+      "usable_days_for_1d_3d_7d": {
+        "1": {
+          "calendar_complete_snapshots": 26,
+          "primary_eligible_snapshots": 26,
+          "chronological_purged_date_capacity": {
+            "train": 14,
+            "validation": 4,
+            "test": 6
+          },
+          "temporal_status": "date_capacity_only",
+          "note": "calendar span only; no contact absence is converted into a negative"
+        },
+        "3": {
+          "calendar_complete_snapshots": 24,
+          "primary_eligible_snapshots": 24,
+          "chronological_purged_date_capacity": {
+            "train": 13,
+            "validation": 4,
+            "test": 5
+          },
+          "temporal_status": "date_capacity_only",
+          "note": "calendar span only; no contact absence is converted into a negative"
+        },
+        "7": {
+          "calendar_complete_snapshots": 20,
+          "primary_eligible_snapshots": 20,
+          "chronological_purged_date_capacity": {
+            "train": 11,
+            "validation": 3,
+            "test": 4
+          },
+          "temporal_status": "date_capacity_only",
+          "note": "calendar span only; no contact absence is converted into a negative"
+        }
+      },
+      "file_hash": "1c620f0f0f25d59730dc3427b051d5ab9e7c0b70173d9f92c04cf7c2d8b97e44",
+      "adapter_version": 3,
+      "file_name": "bt_symmetric.csv",
+      "file_bytes": 98257835,
+      "raw_rows": 5474289,
+      "invalid_rows": 3048010,
+      "self_contact_rows": 0,
+      "time_unit": "seconds",
+      "time_origin_seconds": 0,
+      "span_days": 27.99652777777778,
+      "missing_data_policy": "No recorded contact is not proof of a negative. No inferred labels or model scores.",
+      "per_day": [
+        {
+          "study_day": 1,
+          "event_rows": 16803,
+          "participants_with_contacts": 309
+        },
+        {
+          "study_day": 2,
+          "event_rows": 105772,
+          "participants_with_contacts": 500
+        },
+        {
+          "study_day": 3,
+          "event_rows": 85906,
+          "participants_with_contacts": 465
+        },
+        {
+          "study_day": 4,
+          "event_rows": 97620,
+          "participants_with_contacts": 503
+        },
+        {
+          "study_day": 5,
+          "event_rows": 92277,
+          "participants_with_contacts": 496
+        },
+        {
+          "study_day": 6,
+          "event_rows": 72583,
+          "participants_with_contacts": 477
+        },
+        {
+          "study_day": 7,
+          "event_rows": 30705,
+          "participants_with_contacts": 341
+        },
+        {
+          "study_day": 8,
+          "event_rows": 23789,
+          "participants_with_contacts": 369
+        },
+        {
+          "study_day": 9,
+          "event_rows": 122687,
+          "participants_with_contacts": 544
+        },
+        {
+          "study_day": 10,
+          "event_rows": 117421,
+          "participants_with_contacts": 549
+        },
+        {
+          "study_day": 11,
+          "event_rows": 136349,
+          "participants_with_contacts": 556
+        },
+        {
+          "study_day": 12,
+          "event_rows": 153122,
+          "participants_with_contacts": 555
+        },
+        {
+          "study_day": 13,
+          "event_rows": 130047,
+          "participants_with_contacts": 547
+        },
+        {
+          "study_day": 14,
+          "event_rows": 33506,
+          "participants_with_contacts": 370
+        },
+        {
+          "study_day": 15,
+          "event_rows": 22238,
+          "participants_with_contacts": 363
+        },
+        {
+          "study_day": 16,
+          "event_rows": 131392,
+          "participants_with_contacts": 555
+        },
+        {
+          "study_day": 17,
+          "event_rows": 113372,
+          "participants_with_contacts": 531
+        },
+        {
+          "study_day": 18,
+          "event_rows": 108479,
+          "participants_with_contacts": 525
+        },
+        {
+          "study_day": 19,
+          "event_rows": 111705,
+          "participants_with_contacts": 534
+        },
+        {
+          "study_day": 20,
+          "event_rows": 91450,
+          "participants_with_contacts": 546
+        },
+        {
+          "study_day": 21,
+          "event_rows": 29359,
+          "participants_with_contacts": 377
+        },
+        {
+          "study_day": 22,
+          "event_rows": 23569,
+          "participants_with_contacts": 353
+        },
+        {
+          "study_day": 23,
+          "event_rows": 122705,
+          "participants_with_contacts": 539
+        },
+        {
+          "study_day": 24,
+          "event_rows": 101500,
+          "participants_with_contacts": 513
+        },
+        {
+          "study_day": 25,
+          "event_rows": 126820,
+          "participants_with_contacts": 540
+        },
+        {
+          "study_day": 26,
+          "event_rows": 101630,
+          "participants_with_contacts": 530
+        },
+        {
+          "study_day": 27,
+          "event_rows": 98243,
+          "participants_with_contacts": 496
+        },
+        {
+          "study_day": 28,
+          "event_rows": 25230,
+          "participants_with_contacts": 337
+        }
+      ],
+      "days_without_contact_records": 0,
+      "duplicate_canonical_records": null,
+      "duplicates_policy": "Repeated source measurements retained; valid_pairs is distinct. No deduplication of repeated timestamps across different pairs.",
+      "processed_sha256": "ab805260519e06672597b2c9cb75392dc0019c9bfd13d9127db58be1daad69af",
+      "namespace": "copenhagen",
+      "coverage_diagnostics": {
+        "empty_scan_rows": 2220136,
+        "external_device_rows": 827874,
+        "recorded_participants": 706,
+        "eligible_rows": 769627,
+        "unknown_rows": 397829
+      },
+      "preprocessing_note": "No unpublished availability assumptions."
+    },
+    {
+      "dataset_id": "highschool2013",
+      "name": "SocioPatterns High School2013",
+      "source_url": "https://sociopatterns.org/datasets/high-school-contact-and-friendship-networks/",
+      "citation": "Mastrandrea, Fournet, Barrat (2015), DOI10.1371/journal.pone.0136497",
+      "licence": "CC BY-NC-SA",
+      "access_status": "public",
+      "format": "highschool",
+      "temporal_resolution": 20,
+      "scan_coverage_evidence": "Positive contact list only; no independent scanner-online logs.",
+      "eligibility_status": "insufficient_history",
+      "reason": "missing verified scan support or insufficient eligible chronological samples; no reliable negative assumption; insufficient_days after7d history and strict chronological purge",
+      "participants": 327,
+      "event_rows": 188508,
+      "valid_pairs": 5818,
+      "first_timestamp": 1385982020,
+      "last_timestamp": 1386345580,
+      "usable_days_for_1d_3d_7d": {
+        "1": {
+          "calendar_complete_snapshots": 2,
+          "primary_eligible_snapshots": 0,
+          "chronological_purged_date_capacity": {
+            "train": 0,
+            "validation": 0,
+            "test": 0
+          },
+          "temporal_status": "insufficient_days",
+          "note": "calendar span only; no contact absence is converted into a negative"
+        },
+        "3": {
+          "calendar_complete_snapshots": 0,
+          "primary_eligible_snapshots": 0,
+          "chronological_purged_date_capacity": {
+            "train": 0,
+            "validation": 0,
+            "test": 0
+          },
+          "temporal_status": "insufficient_days",
+          "note": "calendar span only; no contact absence is converted into a negative"
+        },
+        "7": {
+          "calendar_complete_snapshots": 0,
+          "primary_eligible_snapshots": 0,
+          "chronological_purged_date_capacity": {
+            "train": 0,
+            "validation": 0,
+            "test": 0
+          },
+          "temporal_status": "insufficient_days",
+          "note": "calendar span only; no contact absence is converted into a negative"
+        }
+      },
+      "file_hash": "ecf4a90312c8d72057f72e936c366b470e63876da7db846300044795f045e2ea",
+      "adapter_version": 3,
+      "file_name": "HighSchool2013_proximity_net.csv.gz",
+      "file_bytes": 653252,
+      "raw_rows": 188508,
+      "invalid_rows": 0,
+      "self_contact_rows": 0,
+      "time_unit": "seconds",
+      "time_origin_seconds": 1385942400,
+      "span_days": 4.207870370370371,
+      "missing_data_policy": "No recorded contact is not proof of a negative. No inferred labels or model scores.",
+      "per_day": [
+        {
+          "study_day": 1,
+          "event_rows": 28780,
+          "participants_with_contacts": 312
+        },
+        {
+          "study_day": 2,
+          "event_rows": 47338,
+          "participants_with_contacts": 310
+        },
+        {
+          "study_day": 3,
+          "event_rows": 40174,
+          "participants_with_contacts": 303
+        },
+        {
+          "study_day": 4,
+          "event_rows": 37279,
+          "participants_with_contacts": 295
+        },
+        {
+          "study_day": 5,
+          "event_rows": 34937,
+          "participants_with_contacts": 299
+        }
+      ],
+      "days_without_contact_records": 0,
+      "duplicate_canonical_records": null,
+      "duplicates_policy": "Repeated source measurements retained; valid_pairs is distinct. No deduplication of repeated timestamps across different pairs.",
+      "processed_sha256": "7de8faf7504a67aa0bc9aed3c6e175fd3f900277c76dcd29a1dbdd39ac99d860",
+      "namespace": "highschool2013",
+      "coverage_diagnostics": null,
+      "preprocessing_note": "No unpublished availability assumptions."
+    },
+    {
+      "dataset_id": "reality_mining_mendeley",
+      "name": "MIT Reality Mining (Mendeley processed)",
+      "source_url": "https://data.mendeley.com/datasets/d6bzzfd23g/1",
+      "citation": "Khushnood Abbas (2018), Real Human Contact processed data, DOI10.17632/d6bzzfd23g.1; Eagle & Pentland (2006), DOI10.1007/s00779-005-0046-3",
+      "licence": "CC BY4.0 (Mendeley processed version)",
+      "access_status": "public",
+      "format": "triplet",
+      "temporal_resolution": null,
+      "scan_coverage_evidence": "Only positive dyadic edges; no empty scan/online logs. Third column observed as small integer ticks; scale not confirmed.",
+      "eligibility_status": "exploratory_only",
+      "reason": "missing verified scan support or insufficient eligible chronological samples; no reliable negative assumption; timestamp tick scale not verified; no conversion to seconds/days or24h labels",
+      "participants": 96,
+      "event_rows": 1086403,
+      "valid_pairs": 2539,
+      "first_timestamp": 0,
+      "last_timestamp": 233,
+      "usable_days_for_1d_3d_7d": {
+        "1": {
+          "calendar_complete_snapshots": null,
+          "primary_eligible_snapshots": 0,
+          "note": "timestamp unit unverified"
+        },
+        "3": {
+          "calendar_complete_snapshots": null,
+          "primary_eligible_snapshots": 0,
+          "note": "timestamp unit unverified"
+        },
+        "7": {
+          "calendar_complete_snapshots": null,
+          "primary_eligible_snapshots": 0,
+          "note": "timestamp unit unverified"
+        }
+      },
+      "file_hash": "ededff41b0befdd6ba370602d496dc8b93cc38c3a39d2e47ecd82443d093bf49",
+      "adapter_version": 3,
+      "file_name": "realHumanContactMIT.txt",
+      "file_bytes": 10848197,
+      "raw_rows": 1086403,
+      "invalid_rows": 0,
+      "self_contact_rows": 0,
+      "time_unit": "unverified integer tick",
+      "time_origin_seconds": null,
+      "span_days": null,
+      "missing_data_policy": "No recorded contact is not proof of a negative. No inferred labels or model scores.",
+      "per_day": [],
+      "days_without_contact_records": null,
+      "duplicate_canonical_records": 1058831,
+      "duplicates_policy": "Repeated source measurements retained; valid_pairs is distinct. No deduplication of repeated timestamps across different pairs.",
+      "processed_sha256": "9d2aeecfbedb6eae8ed681f59114f1ca75ba45319ccf908b13be3b07278d53e6",
+      "namespace": "reality_mining_mendeley",
+      "coverage_diagnostics": null,
+      "preprocessing_note": "Processed redistribution; repeated dyadic rows retained and diagnosed. Do not infer raw mobile scanner availability or assume third-column seconds."
+    },
+    {
+      "dataset_id": "workplace2015",
+      "name": "SocioPatterns Workplace2015",
+      "source_url": "https://sociopatterns.org/datasets/test/",
+      "citation": "Genois & Barrat (2018), EPJ Data Science7,11",
+      "licence": "Creative Commons Public Domain Dedication (CC0)",
+      "access_status": "public",
+      "format": "triplet",
+      "temporal_resolution": 20,
+      "scan_coverage_evidence": "Active contact intervals[t-20s,t] only; absent independent badge-online logs. Contact-free intervals are not reliable negatives.",
+      "eligibility_status": "exploratory_only",
+      "reason": "missing verified scan support or insufficient eligible chronological samples; no reliable negative assumption; insufficient_days after7d history and strict chronological purge",
+      "participants": 217,
+      "event_rows": 78249,
+      "valid_pairs": 4274,
+      "first_timestamp": 28840,
+      "last_timestamp": 1022380,
+      "usable_days_for_1d_3d_7d": {
+        "1": {
+          "calendar_complete_snapshots": 9,
+          "primary_eligible_snapshots": 0,
+          "chronological_purged_date_capacity": {
+            "train": 4,
+            "validation": 1,
+            "test": 2
+          },
+          "temporal_status": "insufficient_days",
+          "note": "calendar span only; no contact absence is converted into a negative"
+        },
+        "3": {
+          "calendar_complete_snapshots": 7,
+          "primary_eligible_snapshots": 0,
+          "chronological_purged_date_capacity": {
+            "train": 3,
+            "validation": 0,
+            "test": 2
+          },
+          "temporal_status": "insufficient_days",
+          "note": "calendar span only; no contact absence is converted into a negative"
+        },
+        "7": {
+          "calendar_complete_snapshots": 3,
+          "primary_eligible_snapshots": 0,
+          "chronological_purged_date_capacity": {
+            "train": 0,
+            "validation": 0,
+            "test": 1
+          },
+          "temporal_status": "insufficient_days",
+          "note": "calendar span only; no contact absence is converted into a negative"
+        }
+      },
+      "file_hash": "339eb090d506d750f38a2c1ac6aca76c00c55b462f9dea325933d8b7bc260871",
+      "adapter_version": 3,
+      "file_name": "workplace_InVS15_tij.dat.gz",
+      "file_bytes": 241057,
+      "raw_rows": 78249,
+      "invalid_rows": 0,
+      "self_contact_rows": 0,
+      "time_unit": "seconds",
+      "time_origin_seconds": 0,
+      "span_days": 11.499305555555555,
+      "missing_data_policy": "No recorded contact is not proof of a negative. No inferred labels or model scores.",
+      "per_day": [
+        {
+          "study_day": 1,
+          "event_rows": 12162,
+          "participants_with_contacts": 176
+        },
+        {
+          "study_day": 2,
+          "event_rows": 8254,
+          "participants_with_contacts": 166
+        },
+        {
+          "study_day": 3,
+          "event_rows": 6904,
+          "participants_with_contacts": 162
+        },
+        {
+          "study_day": 4,
+          "event_rows": 8455,
+          "participants_with_contacts": 187
+        },
+        {
+          "study_day": 5,
+          "event_rows": 7738,
+          "participants_with_contacts": 168
+        },
+        {
+          "study_day": 6,
+          "event_rows": 0,
+          "participants_with_contacts": 0
+        },
+        {
+          "study_day": 7,
+          "event_rows": 0,
+          "participants_with_contacts": 0
+        },
+        {
+          "study_day": 8,
+          "event_rows": 7252,
+          "participants_with_contacts": 178
+        },
+        {
+          "study_day": 9,
+          "event_rows": 9129,
+          "participants_with_contacts": 179
+        },
+        {
+          "study_day": 10,
+          "event_rows": 4677,
+          "participants_with_contacts": 152
+        },
+        {
+          "study_day": 11,
+          "event_rows": 7941,
+          "participants_with_contacts": 164
+        },
+        {
+          "study_day": 12,
+          "event_rows": 5737,
+          "participants_with_contacts": 121
+        }
+      ],
+      "days_without_contact_records": 2,
+      "duplicate_canonical_records": 0,
+      "duplicates_policy": "Repeated source measurements retained; valid_pairs is distinct. No deduplication of repeated timestamps across different pairs.",
+      "processed_sha256": "b72ea37357fff12b3540679a23dc5980553977564fd4dd53f28c2a69ae726106",
+      "namespace": "workplace2015",
+      "coverage_diagnostics": null,
+      "preprocessing_note": "Independent population/sensor namespace; no cross-dataset identity matching or concatenated training."
+    },
+    {
+      "dataset_id": "workplace2013",
+      "name": "SocioPatterns Workplace2013",
+      "source_url": "https://sociopatterns.org/datasets/contacts-in-a-workplace/",
+      "citation": "Genois et al. (2015), Network Science3,326",
+      "licence": "Creative Commons Public Domain Dedication (CC0)",
+      "access_status": "public",
+      "format": "triplet",
+      "temporal_resolution": 20,
+      "scan_coverage_evidence": "Active contact intervals[t-20s,t] only; absent independent badge-online logs. Contact-free intervals are not reliable negatives.",
+      "eligibility_status": "exploratory_only",
+      "reason": "missing verified scan support or insufficient eligible chronological samples; no reliable negative assumption; insufficient_days after7d history and strict chronological purge",
+      "participants": 92,
+      "event_rows": 9827,
+      "valid_pairs": 755,
+      "first_timestamp": 28820,
+      "last_timestamp": 1016440,
+      "usable_days_for_1d_3d_7d": {
+        "1": {
+          "calendar_complete_snapshots": 9,
+          "primary_eligible_snapshots": 0,
+          "chronological_purged_date_capacity": {
+            "train": 4,
+            "validation": 1,
+            "test": 2
+          },
+          "temporal_status": "insufficient_days",
+          "note": "calendar span only; no contact absence is converted into a negative"
+        },
+        "3": {
+          "calendar_complete_snapshots": 7,
+          "primary_eligible_snapshots": 0,
+          "chronological_purged_date_capacity": {
+            "train": 3,
+            "validation": 0,
+            "test": 2
+          },
+          "temporal_status": "insufficient_days",
+          "note": "calendar span only; no contact absence is converted into a negative"
+        },
+        "7": {
+          "calendar_complete_snapshots": 3,
+          "primary_eligible_snapshots": 0,
+          "chronological_purged_date_capacity": {
+            "train": 0,
+            "validation": 0,
+            "test": 1
+          },
+          "temporal_status": "insufficient_days",
+          "note": "calendar span only; no contact absence is converted into a negative"
+        }
+      },
+      "file_hash": "bf818f7e819864e134c90ed82f2cda6ca9d9548d43fe4d05002ac068c91258c0",
+      "adapter_version": 3,
+      "file_name": "workplace_InVS_tij.dat.zip",
+      "file_bytes": 30331,
+      "raw_rows": 9827,
+      "invalid_rows": 0,
+      "self_contact_rows": 0,
+      "time_unit": "seconds",
+      "time_origin_seconds": 0,
+      "span_days": 11.430787037037037,
+      "missing_data_policy": "No recorded contact is not proof of a negative. No inferred labels or model scores.",
+      "per_day": [
+        {
+          "study_day": 1,
+          "event_rows": 1158,
+          "participants_with_contacts": 72
+        },
+        {
+          "study_day": 2,
+          "event_rows": 1053,
+          "participants_with_contacts": 70
+        },
+        {
+          "study_day": 3,
+          "event_rows": 838,
+          "participants_with_contacts": 59
+        },
+        {
+          "study_day": 4,
+          "event_rows": 945,
+          "participants_with_contacts": 70
+        },
+        {
+          "study_day": 5,
+          "event_rows": 671,
+          "participants_with_contacts": 62
+        },
+        {
+          "study_day": 6,
+          "event_rows": 0,
+          "participants_with_contacts": 0
+        },
+        {
+          "study_day": 7,
+          "event_rows": 0,
+          "participants_with_contacts": 0
+        },
+        {
+          "study_day": 8,
+          "event_rows": 976,
+          "participants_with_contacts": 68
+        },
+        {
+          "study_day": 9,
+          "event_rows": 1102,
+          "participants_with_contacts": 69
+        },
+        {
+          "study_day": 10,
+          "event_rows": 1079,
+          "participants_with_contacts": 69
+        },
+        {
+          "study_day": 11,
+          "event_rows": 1296,
+          "participants_with_contacts": 68
+        },
+        {
+          "study_day": 12,
+          "event_rows": 709,
+          "participants_with_contacts": 62
+        }
+      ],
+      "days_without_contact_records": 2,
+      "duplicate_canonical_records": 0,
+      "duplicates_policy": "Repeated source measurements retained; valid_pairs is distinct. No deduplication of repeated timestamps across different pairs.",
+      "processed_sha256": "70319afaba2682d1568ee20255040ee5c0c2a898a5663d580e99f183bf06d821",
+      "namespace": "workplace2013",
+      "coverage_diagnostics": null,
+      "preprocessing_note": "Independent population/sensor namespace; no cross-dataset identity matching or concatenated training."
+    },
+    {
+      "dataset_id": "social_evolution",
+      "name": "MIT Social Evolution",
+      "source_url": "https://realitycommons.media.mit.edu/socialevolution.html",
+      "citation": "MIT Human Dynamics Lab, Social Evolution dataset; source data dictionary https://realitycommons.media.mit.edu/socialevolution1.html",
+      "licence": "not verified; no automatic acquisition",
+      "access_status": "unavailable_at_verification",
+      "format": "social_evolution",
+      "temporal_resolution": 360,
+      "scan_coverage_evidence": "Published dictionary describes Bluetooth/Wi-Fi proximity and six-minute sampling, plus interpolated missing Bluetooth records. No verified raw-only flag/online logs.",
+      "eligibility_status": "not_yet_verified",
+      "reason": "Live official overview/dictionary/download navigation unavailable (connection refused/502). No verified lawful download or license; do not infer restriction from outage.",
+      "participants": null,
+      "event_rows": null,
+      "valid_pairs": null,
+      "first_timestamp": null,
+      "last_timestamp": null,
+      "usable_days_for_1d_3d_7d": null,
+      "file_hash": null
+    }
+  ],
+  "verification": {
+    "run_id": "102140b8cf3df83f",
+    "stages_verified": 5,
+    "saved_models_full_prediction_equivalence": 36,
+    "metric_recomputation": "passed",
+    "T17_unchanged": true,
+    "statistical_source_freeze": "passed"
+  }
+}

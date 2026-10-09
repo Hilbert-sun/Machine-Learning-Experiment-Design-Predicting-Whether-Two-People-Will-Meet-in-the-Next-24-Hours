@@ -1,0 +1,36 @@
+{
+  "manifest": {
+    "dataset_id": "social_evolution",
+    "name": "MIT Social Evolution",
+    "source_url": "https://realitycommons.media.mit.edu/socialevolution.html",
+    "citation": "MIT Human Dynamics Lab, Social Evolution dataset; source data dictionary https://realitycommons.media.mit.edu/socialevolution1.html",
+    "licence": "not verified; no automatic acquisition",
+    "access_status": "unavailable_at_verification",
+    "format": "social_evolution",
+    "temporal_resolution": 360,
+    "scan_coverage_evidence": "Published dictionary describes Bluetooth/Wi-Fi proximity and six-minute sampling, plus interpolated missing Bluetooth records. No verified raw-only flag/online logs.",
+    "eligibility_status": "not_yet_verified",
+    "reason": "Live official overview/dictionary/download navigation unavailable (connection refused/502). No verified lawful download or license; do not infer restriction from outage.",
+    "participants": null,
+    "event_rows": null,
+    "valid_pairs": null,
+    "first_timestamp": null,
+    "last_timestamp": null,
+    "usable_days_for_1d_3d_7d": null,
+    "file_hash": null
+  },
+  "live_access_checks": [
+    {
+      "url": "https://realitycommons.media.mit.edu/socialevolution.html",
+      "error_type": "ConnectionError",
+      "access": "connection unavailable, not proof of restriction"
+    },
+    {
+      "url": "https://realitycommons.media.mit.edu/socialevolution1.html",
+      "error_type": "ConnectionError",
+      "access": "connection unavailable, not proof of restriction"
+    }
+  ],
+  "raw_data_acquired": false,
+  "model_scores": null
+}

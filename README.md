@@ -251,3 +251,21 @@ python -m pytest -q
 第一条只读校验所有冻结代码/数据/模型/概率及指标；后两条复用完成的独立run并生成报告，不重新拟合已完成run。完整HTML位于 `reports/window_study/102140b8cf3df83f/T21_REPORT.html` 和 `T22_REPORT.html`。新克隆不带本地数据/模型/cohort/特征，必须先准备同源产物；不得替换冻结输入以冒充复现。T19/T20生成API分别是 `build_comparison_cohort`、`build_window_features(history_window_days=...)`，私有特征receipt包含内容哈希和路径。
 
 全量验证：185项测试通过；5个实验阶段的指标重算通过，36个保存模型对完整导出样本的预测一致。下一任务T23尚未开始，研究UI和新增数据源不属于本次交付。
+
+
+## Research Edition最终交付：T23–T27
+
+2026-10-10完成剩余任务，现共十个导航页面。新增 **History Window Study**：真实后端作业、完整样本审计、1/3/7d曲线、PR/可靠性/日期差异、CSV/JSON/HTML下载和保存模型个案预测。默认复用冻结研究；更改设置只评估validation，保护已报告test；未来模式不读取实际标签。新增 **Dataset Catalog**：分来源许可/访问/字段/哈希/时间/覆盖/可用历史诊断、小片段探针后合法下载、验证后手动导入及拒绝覆盖已有raw文件。
+
+完整交付见 [RESEARCH_REPORT.md](RESEARCH_REPORT.md)、[WINDOW_STUDY.md](WINDOW_STUDY.md)、[DATASET_CATALOG.md](DATASET_CATALOG.md)。机器可读指标：[CSV](reports/RESEARCH_METRICS.csv)、[JSON](reports/RESEARCH_METRICS.json)；验证：[T27_VERIFICATION.json](reports/T27_VERIFICATION.json)。全量196项测试通过；十页真实AppTest、导出和临时本地HTTP启动通过；36个冻结模型的完整概率/指标一致，另有真实seed43验证作业及缓存复用检查。冻结T17–T22统计源码、数据、模型和报告保持不变。
+
+来源结论：Copenhagen支持目前报告的主要实验；High School历史/扫描证据不足；Reality Mining处理版96个ID/1,086,403行，但时间ticks0–233单位未核验且无在线日志；Workplace2015/2013为217/92个ID、78,249/9,827行，各只剩3个完整7d历史预测日且缺在线证据，均仅探索；Social Evolution官方端点无法连接、许可/实际schema未核验，未下载实际文件。没有为了新增AP而造负例或混合来源。
+
+```bash
+.venv/bin/python -m pytest -q
+.venv/bin/python -m src.window_verify
+.venv/bin/python -m src.research_delivery
+.venv/bin/streamlit run app.py
+```
+
+研究交付生成命令只读本地证据并生成聚合报告，不训练、不下载。数据/模型/逐样本预测和大型交互HTML留在本地；Git只保存经审查的代码、文档及按文件名列入白名单的聚合结果。未经新授权不push。全部T01–T27结束，未自动启动新任务。

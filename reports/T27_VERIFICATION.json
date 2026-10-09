@@ -1,0 +1,187 @@
+{
+  "date": "2026-10-10 (Asia/Kuala_Lumpur)",
+  "tasks": "T23-T27",
+  "full_pytest": {
+    "passed": 196,
+    "duration_seconds": 9.49,
+    "command": ".venv/bin/python -m pytest -q"
+  },
+  "actual_ui": {
+    "pages": [
+      {
+        "page": "pages/0_Overview.py",
+        "status": "passed"
+      },
+      {
+        "page": "pages/1_Data_Manager.py",
+        "status": "passed"
+      },
+      {
+        "page": "pages/2_Data_Explorer.py",
+        "status": "passed"
+      },
+      {
+        "page": "pages/3_Encounter_Network.py",
+        "status": "passed"
+      },
+      {
+        "page": "pages/4_Model_Training.py",
+        "status": "passed"
+      },
+      {
+        "page": "pages/5_Prediction_Lab.py",
+        "status": "passed"
+      },
+      {
+        "page": "pages/6_Model_Evaluation.py",
+        "status": "passed"
+      },
+      {
+        "page": "pages/7_Data_Sources.py",
+        "status": "passed"
+      },
+      {
+        "page": "pages/8_History_Window_Study.py",
+        "status": "passed"
+      },
+      {
+        "page": "pages/9_Dataset_Catalog.py",
+        "status": "passed"
+      }
+    ],
+    "real_frozen_charts": 8,
+    "real_downloads": 3,
+    "real_case_future_and_backtest": "passed",
+    "ineligible_source_blocked": "passed",
+    "catalog_source_rows": 6,
+    "export_csv_rows": 3,
+    "html_sha256": "5e96e975a150ca2762b7e2bb8f2c5c9309e58d51bd6cfa05f9cc3746d1b857e7"
+  },
+  "startup": {
+    "bind": "localhost only",
+    "http_status": {
+      "health": 200,
+      "root": 200
+    },
+    "temporary_server_stopped": true
+  },
+  "frozen_experiment_verification": {
+    "run_id": "102140b8cf3df83f",
+    "stages_verified": 5,
+    "saved_models_full_prediction_equivalence": 36,
+    "metric_recomputation": "passed",
+    "T17_unchanged": true,
+    "statistical_source_freeze": "passed"
+  },
+  "new_real_validation_job": {
+    "run_id": "3509f33feab4d305",
+    "scope": "validation_only",
+    "metrics": [
+      {
+        "window_days": 1,
+        "model": "logistic_regression",
+        "rows": 14816,
+        "positive_rate": 0.121085313174946,
+        "threshold": 0.34925852636036164,
+        "pr_auc_average_precision": 0.33849292436080836,
+        "brier_score": 0.10364706878115358,
+        "log_loss": 0.3599202743254901,
+        "precision": 0.3413510747185261,
+        "recall": 0.3717948717948718,
+        "f1": 0.35592315901814303,
+        "roc_auc": 0.671531429446129,
+        "accuracy": 0.8370680345572354
+      },
+      {
+        "window_days": 7,
+        "model": "logistic_regression",
+        "rows": 14816,
+        "positive_rate": 0.121085313174946,
+        "threshold": 0.3458729111465327,
+        "pr_auc_average_precision": 0.46754996554048583,
+        "brier_score": 0.09016362875663043,
+        "log_loss": 0.31260073017297946,
+        "precision": 0.4475592073465442,
+        "recall": 0.5161649944258639,
+        "f1": 0.47942013978772974,
+        "roc_auc": 0.7795584592543585,
+        "accuracy": 0.8642683585313174
+      }
+    ],
+    "recomputation": "passed"
+  },
+  "unsupported_calibration_gate": {
+    "status": "correctly_blocked",
+    "reason": "无可用独立校准段：验证集在校准/阈值时段隔离后为空；增加验证时长或明确禁用校准。"
+  },
+  "new_validation_cache_reused": true,
+  "datasets": [
+    {
+      "dataset_id": "copenhagen",
+      "eligibility_status": "eligible_primary_24h",
+      "event_rows": 2426279,
+      "file_hash": "1c620f0f0f25d59730dc3427b051d5ab9e7c0b70173d9f92c04cf7c2d8b97e44",
+      "processed_sha256": "ab805260519e06672597b2c9cb75392dc0019c9bfd13d9127db58be1daad69af"
+    },
+    {
+      "dataset_id": "highschool2013",
+      "eligibility_status": "insufficient_history",
+      "event_rows": 188508,
+      "file_hash": "ecf4a90312c8d72057f72e936c366b470e63876da7db846300044795f045e2ea",
+      "processed_sha256": "7de8faf7504a67aa0bc9aed3c6e175fd3f900277c76dcd29a1dbdd39ac99d860"
+    },
+    {
+      "dataset_id": "reality_mining_mendeley",
+      "eligibility_status": "exploratory_only",
+      "event_rows": 1086403,
+      "file_hash": "ededff41b0befdd6ba370602d496dc8b93cc38c3a39d2e47ecd82443d093bf49",
+      "processed_sha256": "9d2aeecfbedb6eae8ed681f59114f1ca75ba45319ccf908b13be3b07278d53e6"
+    },
+    {
+      "dataset_id": "workplace2015",
+      "eligibility_status": "exploratory_only",
+      "event_rows": 78249,
+      "file_hash": "339eb090d506d750f38a2c1ac6aca76c00c55b462f9dea325933d8b7bc260871",
+      "processed_sha256": "b72ea37357fff12b3540679a23dc5980553977564fd4dd53f28c2a69ae726106"
+    },
+    {
+      "dataset_id": "workplace2013",
+      "eligibility_status": "exploratory_only",
+      "event_rows": 9827,
+      "file_hash": "bf818f7e819864e134c90ed82f2cda6ca9d9548d43fe4d05002ac068c91258c0",
+      "processed_sha256": "70319afaba2682d1568ee20255040ee5c0c2a898a5663d580e99f183bf06d821"
+    },
+    {
+      "dataset_id": "social_evolution",
+      "eligibility_status": "not_yet_verified",
+      "event_rows": null,
+      "file_hash": null,
+      "processed_sha256": null
+    }
+  ],
+  "report_sha256": {
+    "RESEARCH_REPORT.md": "067d9f7b3cf000da68dbbe212ad78e6f1bbfb50058ab2add824c63289b322b38",
+    "WINDOW_STUDY.md": "7de12984e416a5a3531250c61d3fec33acac44731970669201ac6a9182f5677a",
+    "DATASET_CATALOG.md": "76f754ceeadb95bfdfacaf57305e6a523d64e358f4afe8a2282cad3e59fd2809",
+    "reports/RESEARCH_METRICS.csv": "07724b83bd6b95a3f18e9b8caa8dc3805787c481aaee813c57974854404e9db1",
+    "reports/RESEARCH_METRICS.json": "52237e296764cdc8e892594db5c4b5ec79ea71774fe218e0bf16c1fba22dbc19",
+    "reports/DATASET_CATALOG.json": "a5973c47a4397045f248dd71a8e9497644309988448371c64ec1c1f904dd9440",
+    "reports/T25_REALITY_MINING.md": "6d15978fb8821ba7a88d0b7cc07ac41409bd8a5f4b54d961015d84bc399e50f9",
+    "reports/T25_REALITY_MINING_DIAGNOSTICS.json": "c10cfbbdb48b8803aaac8ac172ded53710e31530c819d3c4c184befb672abf25",
+    "reports/T26_SOURCE_VERIFICATION.md": "318c6048afc26c53c728a1e724b4c5aa29b92dbc2c2f2ecf007b256af1e39e02",
+    "reports/T26_WORKPLACE_DIAGNOSTICS.json": "76d60d45611a4160bb612d39f0acae02d1e8057f87cd70870473a84fc2654196",
+    "reports/T26_SOCIAL_EVOLUTION_STATUS.json": "2f25577af2af374c1b86eed7132229d927032bfa87a677e7aae28cf8ecee8f0c"
+  },
+  "privacy": {
+    "raw_datasets_committed": false,
+    "individual_predictions_committed": false,
+    "models_committed": false,
+    "remote_pushed": false
+  },
+  "limitations": [
+    "Social Evolution live source/license/header unavailable; no real file parsed.",
+    "Reality Mining processed time units and independent scan coverage unverified.",
+    "Workplace7d calendar capacity insufficient and no independent online evidence.",
+    "Copenhagen main test only4 dates with prior T17 overlap; no significance/independent external claim."
+  ]
+}

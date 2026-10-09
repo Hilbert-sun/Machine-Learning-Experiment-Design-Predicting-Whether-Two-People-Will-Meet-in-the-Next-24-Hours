@@ -1,63 +1,61 @@
 # Encounter Lab — Progress
 
-Date: 2026-10-10 (Asia/Kuala_Lumpur)
+Date:2026-10-10 (Asia/Kuala_Lumpur)
 
-Authorized scope: T18–T22 from RESEARCH_SPEC.md. Complete sequentially and stop after T22. No push/download/new UI. T17 remains immutable at f116951; its complete original progress is available in that commit.
+**T23–T27 — DONE. All T01–T27 task statuses are DONE within documented source eligibility/access limits.** The user authorized the remaining five tasks in one execution. Implemented and verified sequentially; stopped after T27. No remote push. Historical T17 progress is in f116951; T18–T22 progress is in c5da210. Their frozen statistical code, raw data, labels/features, models and reports remain unchanged.
 
-## T18 — DONE
+## T23 — History Window Study DONE
 
-Added baseline_audit.py, immutable T18_BASELINE_MANIFEST.json, T18_AUDIT.md and freeze/E2 tests. Verified original sources/model/report hashes and baseline source hashes at f116951. Eligible769,627 minus Day16 purge37,735 and Day21 purge46,597 equals685,295 retained rows; all losses explained. Legacy E2 masks long columns but uses all-history candidates and masks14d frequency into a constant: insufficient for a strict information-budget comparison. Original full tests plus new tests:173 passed in7.77s. No T17 file changed.
+Added pages/8_History_Window_Study.py, src/window_ui.py and top navigation. Four regions:Experiment Setup/Cohort Audit/Window Comparison/Case Explorer. Dataset/candidate/coverage/window/model/seed/calibration controls invoke real jobs; default settings verify/reuse frozen evidence, altered settings create source/settings-hashed validation-only jobs. Reuses existing strict cohort/features/registry/calibration code. Invalid dataset evidence, unsupported calibration, missing files or insufficient days fail explicitly. Different controls/source/artifact signatures invalidate displayed results.
 
-Remaining risk: few dates, scan-bin proxy, existing T17 test exposure. New results must not be described as pristine external validation or use test scores for tuning.
+Real metric/PR/reliability/per-day/paired-delta charts, class prevalence, filter funnel, split date/purge audit, CSV/JSON/standalone HTML downloads and saved-model case probabilities work. Case times must follow model-selection information deadline; future mode never reads targets; only explicit backtest reads matching exported outcomes, otherwise Unknown. Research models remain hidden from legacy UI selectors.
 
-## T19 — DONE
+Focused initial tests:14 passed in2.17s. Actual Copenhagen AppTest verified frozen charts,3 downloads, model case and dataset switch invalidation. T27 additionally exercised new-source selection/eligibility block and future/backtest behavior.
 
-Added window_cohort.py and common-cohort tests. Genuine strict1d candidates/full7d-span cohort:100,485 eligible rows across20 days,54,677/14,816/25,569 train/validation/test rows over11/3/4 dates. Purge5,423 (Day19:4,775; Day23:648). Stored common Parquet/split assignments locally and aggregate hashes/day funnel publicly. Existing0.5 future coverage preserved. Independent calibration plus>=2 threshold dates is unsupported; raw models fixed for all windows.25 focused tests passed in0.89s; real construction and cache replay succeeded. T17 preserved.
+## T24 — Dataset Catalog DONE
 
-## T20 — DONE
+Added source registry, src/dataset_catalog.py, pages/9_Dataset_Catalog.py and source tests. Extensible DatasetAdapter validates declared schema, finite integer timestamps/IDs, canonical isolated pairs, source/processed hashes, duplicates/missing dates and calendar-complete1/3/7d snapshots. Calendar capacity is separate from actual primary eligible observation; Copenhagen requires empty-scan evidence and eligible purged chronology. New public acquisitions require confirmed source/license/real URL plus a bounded first schema probe; full files reuse the existing streaming downloader. Manual imports validate before publication and refuse replacement of existing raw files. Source/schema/license/unit/version changes invalidate catalog caches. No archive paths are extracted.
 
-Added window_features.py and isolation/cache tests. Every feature is explicitly clipped to its1/3/7d interval; legacy T17 source contracts unchanged. Real banks each100,485 rows and identical common keys; private content-hash receipt saved. SHA source/window/feature/cohort keys and per-snapshot recoverable caches implemented.14 tests passed in1.30s, covering t-5d/t-10d/t/future perturbations, unknown scans and interrupted-cache reuse. T17 immutable artifact verification passes.
+Initial catalog/downloader/navigation verification:28 passed in2.35s. Original source scan reproduced Copenhagen2,426,279 contacts/692 contact IDs and High School188,508/327. New-source manifests are stored locally under data/processed/catalog. No existing loader/downloader/statistical source was changed.
 
-## T21 — DONE
+## T25 — Reality Mining DONE; exploratory_only
 
-Added bounded WindowModel using existing registry estimators/persistence, fixed-protocol study and aggregate report renderer. Real run102140b8cf3df83f freezes source/cohort/feature/code/package hashes and future T22 rules before test scores.1d/7d share25,569 test samples with21.38136% positives. XGBoost AP0.5887225→0.6913660 (delta+0.1026435), Brier0.1280261→0.1091068; frequency/logistic results including poor1d-frequency probabilities retained. All models/thresholds frozen before evaluating test; raw calibration policy preserved. Individual probability/label Parquet and hidden local models ignored; safe aggregate CSV/JSON/Markdown and standalone local HTML generated.18 focused tests passed in1.90s; real exported metrics recompute and save/load/code-freeze/T17 checks passed. No pristine-independent-test or significance claim.
+Verified Netzschleuder metadata/Bluetooth-edge semantics and Mendeley processed redistribution. Public frontend file-list API/root-folder parameter returned actual filename/download URL/size/SHA256.32KB probe preceded10,848,197-byte full acquisition under CC BY4.0; official SHA256 ededff41b0befdd6ba370602d496dc8b93cc38c3a39d2e47ecd82443d093bf49 matched.
 
-## T22 — DONE
+Measured96 IDs,1,086,403 rows,2,539 pairs;1,058,831 repeated canonical endpoint/tick records,27,572 unique combinations. Third-column ticks0–233 have unknown scale: no seconds/day conversion, observed-day span or24h labels invented. No online/empty-scan evidence; exploratory_only, no AP. Mirror reports1,086,404 edges (one-row redistribution difference disclosed); mirror data license was not established from its site-code footer, so no full mirror download. Source/dictionary/limitations reports saved.28 focused catalog/schema tests passed after tick/duplicate safeguards.
 
-Added window_robustness.py and robustness tests; extended the output-only renderer. Same study run adds3d with identical cohort/parameters. XGBoost AP1d/3d/7d =0.5887225/0.6274940/0.6913660; ROC-AUC0.7706562/0.7997190/0.8414945; Brier0.1280261/0.1208013/0.1091068. Test prevalence21.38136%. Logistic/frequency comparators and poor frequency probability scores are fully reported.
+## T26 — Other source verification DONE; research limits retained
 
-7d−1d XGBoost delta+0.1026435, positive on all4 primary test days; leave-one-day-out descriptive range[+0.0937274,+0.1121683]. Four dates are below the predeclared8-day gate: confidence_interval=null, insufficient_days_for_ci. This is a descriptive sensitivity range, not a confidence interval or significance claim.
+Official public-domain Workplace2015/2013 files passed bounded gzip/ZIP probes before full download.2015:217 IDs/78,249 rows/4,274 pairs, timestamps28,840–1,022,380,11.499306 days.2013:92/9,827/755,28,820–1,016,440,11.430787 days. Each has two dates without positive records;1/3/7d complete-span snapshots9/7/3.7d time-only60/20/20 purge gives0/0/1 train/validation/test dates:insufficient_days. Both lack independent online logs, so exploratory_only with zero reliable primary dates; no AP and no cross-source merging.2013 publisher calendar description differs from timestamp-derived extent; actual seconds/Study Days retained without silently repairing the discrepancy.
 
-Prespecified forward folds test Days16–17,19–20,22–23, with3/6/9 train dates and3 validation dates each, strict24h boundary purge. XGBoost7d−1d AP deltas+0.084520,+0.086919,+0.044854. These expanding folds are dependent and choose no primary parameters/windows. All their test dates precede primary Days24–27; earlier T17 exposure remains disclosed.
+Social Evolution live official overview/dictionary connections failed; not evidence of403/authentication restriction. Indexed official dictionary describes endpoints/prob2, six-minute sensing and whole-period interpolation risk. Actual header/timezone/license/lawful full path remain unverified; catalog not_yet_verified and no real file acquired. Explicit schema/timezone parser is tested on labeled synthetic fixtures, not claimed as real-source parsing.42 focused catalog/schema/downloader tests passed in1.65s. Reports distinguish completed investigation from unavailable real prediction eligibility.
 
-Exported contact-frequency/scan-quality/day sensitivity for all9 model/window combinations. Separate7d candidate reach across all20 cohort dates:474,339 eligible rows versus100,485 for1d (extra373,854). No expanded-pool AP or pure-window-effect claim. No new source/UI.
+## T27 — Final research delivery DONE
 
-## Final verification and corrected failures
+Created RESEARCH_REPORT.md, WINDOW_STUDY.md, DATASET_CATALOG.md and a read-only src/research_delivery.py command. Aggregate CSV/JSON combine genuine T17 and1/3/7d evidence while separating cohorts/prevalence/calibration. Source JSON records all six independent dataset states. Report-generation command never trains or downloads. Exact selected report/CSV/JSON hashes and checks are in reports/T27_VERIFICATION.json.
 
-- T18 full original/new freeze tests:173 passed in7.77s.
-- T19 focused cohort/temporal/label tests:25 passed in0.89s; real common cohort and cached replay succeeded.
-- T20 focused feature/cohort tests:14 passed in1.30s; real banks and t-5d/t-10d/t/future invariance passed.
-- T21 focused model/window tests:18 passed in1.90s; actual probability exports reproduce metrics, saved model probes match.
-- T22 focused robustness/cohort/model/temporal tests:17 passed in2.14s.
-- Final full `.venv/bin/python -m pytest -q`: **185 passed in9.36s**.
-- `.venv/bin/python -m src.window_verify`: five actual stages (primary,3d,three folds) recompute all binary metrics;36 saved models reproduce their complete exported predictions; T17 artifacts unchanged; T21 statistical hashes and frozen T22 implementation match.
-- Standalone T21/T22 HTML files parse and contain bundled Plotly code/actual graphs; safe JSON parses and CSVs contain actual model scores. These large HTML bundles stay ignored locally.
-- Initial T22 collection/CLI import failed at window_robustness.py:88 with SyntaxError (missing subgroup dictionary delimiter); fixed before any T22 fit and17 relevant tests passed afterward.
-- Initial final read-only verifier failed at window_verify.py:39 AssertionError: a flat single3d model manifest was compared with a window-indexed multi-bank map. Normalized this metadata shape in the verifier only; full36-model probability equivalence then passed. Frozen statistical code/results were unchanged.
-- Nonfatal PyArrow sandbox CPU-probe warnings persisted. No remaining implementation blocker. Calibration/CI/data-source limits are explicitly reported, not silently relaxed.
+Main Copenhagen XGBoost AP1d/3d/7d remains0.5887225/0.6274940/0.6913660;7d−1d+0.1026435. Only4 test days and prior T17 overlap:descriptive same-source evidence, not pristine independent validation or significance. Raw calibration policy and few-day CI refusal preserved. T17 raw/calibrated values, all comparator results including poor1d-frequency probabilities, subgroup/date/forward-fold diagnostics are unchanged. Different T17/new cohorts make raw AP directly incomparable.
 
-## Files and safe artifacts
+## Verification commands/results
 
-Added RESEARCH_SPEC.md (supplied research requirements), eight audit/cohort/window/model/experiment/report/verification source modules and five focused test modules. Updated AGENTS/TASKS/PROGRESS/README and exact-file ignore exceptions. No existing T17 statistical source changed; no existing UI file changed. New aggregate reports live in reports/window_study; exactly15 reviewed filenames are eligible for Git. Per-run predictions, feature/label Parquet, private model manifests, model weights and large standalone HTML remain ignored. Original T17 report/model/data hashes still match.
+- `.venv/bin/python -m pytest -q`: **196 passed in9.49s**. Includes ten-page navigation AppTest and meaningful source/window/model/UI safeguards.
+- Final focused catalog/window/new navigation tests:22 passed in2.38s after import/source integration.
+- Real manual AppTest:all10 pages load; frozen study8 charts/3 downloads; actual future and explicit backtest cases; changed-source invalidation/ineligible-source block;6-source catalog scan. Local details:reports/T27_UI_CHECK.json.
+- Genuine changed-seed43/Logistic Regression1d+7d job ran on validation only; exported metrics recomputed and completed job cache reused. No reported test used for this selection. Unsupported independent calibration was correctly rejected. Local receipt:reports/T27_VALIDATION_JOB_CHECK.json.
+- `.venv/bin/python -m src.window_verify` via final delivery/verification:all5 frozen stages' binary metrics recompute,36 saved models reproduce complete exported probabilities, original T17 evidence and frozen T21/T22 statistical hashes match.
+- `.venv/bin/python -m src.research_delivery`: six local source manifests/hashes verified;14 actual frozen model/window metric rows exported; no implicit fit/download.
+- Real CSV/JSON/standalone bundled Plotly HTML exported and validated; large HTML remains ignored. Aggregate reports contain no individual IDs or home paths.
+- Temporary localhost-only Streamlit server started; root and health endpoints HTTP200; server stopped. Local receipt:reports/T27_STARTUP_CHECK.json.
+- Git diff checks and explicit staged-file safety audit cover original frozen files, raw/individual/model/credential exclusion. Local safe commit ID is reported in the reply/Git history; no push.
 
-Local private run: `reports/window_study/102140b8cf3df83f/`; models:`models/.window_study/102140b8cf3df83f/` (hidden from legacy UI registry lists). Public metrics:`T21_METRICS.csv`,`T22_METRICS.csv`,`T22_SENSITIVITY.csv`,`T22_WALK_FORWARD.csv`; aggregate JSON includes run/protocol/source/cohort/feature/code checksums and every actual distinct prediction date. T17 original progress remains in f116951.
+## Corrected failure and remaining limitations
 
-## Commands and reuse
+T24 initial focused tests:27 passed/1 failed because a test searched pandas' truncated table-string representation for a hidden column value. Replaced with direct eligibility_status column comparison;28 focused tests then passed and final full196 pass. No inaccurate eligibility status was found. Early Mendeley API without root-folder parameter returned a public error payload; inspecting the public frontend confirmed folder_id=root, after which official metadata/probe/hash checks succeeded. Nonfatal PyArrow CPU-probe/bare Streamlit warnings persisted.
 
-Implemented sequentially, verifying and marking each task before advancing. Ran `python -m src.baseline_audit`, cohort/feature generation APIs, `python -m src.window_study`, `python -m src.window_robustness`, focused pytest files as above, full pytest and `python -m src.window_verify`. Use project-local .venv/bin/python. No implicit downloads or uploads. Later reruns of completed study commands reuse the completed run; use window_verify for complete read-only code/data/model/result checks. New clones require the matching ignored local artifacts and must not substitute mismatched inputs.
+External data limitations remain scientific/source outcomes:Reality Mining time units and scanner availability unverified; Workplace insufficient7d prediction dates and observation evidence; Social Evolution source/license/raw provenance unavailable. No source was reclassified as trainable merely because a parser opened it. Copenhagen recorded scan bins/coverage are proxies, targets are device proximity, observations are short and pairs/users recur. No fake results, future-information features, random split or repeated-test tuning was added.
 
-## Remaining risk and stop
+## Files and stop
 
-Same-source fixed-protocol temporal evidence supports7d over1d in the evaluated periods. Only4 primary dates, prior T17 date exposure, dependent recurring users/pairs, uncalibrated probabilities, scan coverage proxy and device-proximity target limit generalization. It is not pristine independent validation. Different cohort prevalence means new AP cannot be compared directly with T17 as identical-cohort model improvement. Do not retune these reported test sets.
+Changed/new runtime files:src/ui.py, src/window_ui.py, src/dataset_catalog.py, src/research_delivery.py;two research/catalog pages;source registry and focused tests. Updated AGENTS/TASKS/PROGRESS/README and exact-file ignore exceptions. New public root reports plus nine explicitly reviewed aggregate report files are safe Git scope. Raw sources, parsed/feature/label Parquet, model weights/manifests, individual predictions, private jobs/API receipts and large HTML remain ignored. No extra dependencies installed.
 
-**Requested T18–T22 all DONE. Next recommended task:T23 (History Window Study UI), not started. STOP.** Safe local commit only; no remote push. Commit ID is reported in the execution reply/Git history.
+**All requested remaining tasks T23–T27 complete. No next task; STOP.** Social Evolution real-data acquisition/training and other unsupported-source experiments remain unavailable as explicitly documented, not claimed complete research models. No automatic push or new experiment.

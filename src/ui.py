@@ -11,6 +11,8 @@ PAGES = (
     ("pages/5_Prediction_Lab.py", "预测实验室 · Prediction Lab"),
     ("pages/6_Model_Evaluation.py", "模型评估 · Model Evaluation"),
     ("pages/7_Data_Sources.py", "数据来源 · Data Sources"),
+    ("pages/8_History_Window_Study.py", "历史窗口研究 · History Window Study"),
+    ("pages/9_Dataset_Catalog.py", "数据目录 · Dataset Catalog"),
 )
 
 

@@ -1,0 +1,54 @@
+{
+  "dataset_id": "reality_mining_mendeley",
+  "name": "MIT Reality Mining (Mendeley processed)",
+  "source_url": "https://data.mendeley.com/datasets/d6bzzfd23g/1",
+  "citation": "Khushnood Abbas (2018), Real Human Contact processed data, DOI10.17632/d6bzzfd23g.1; Eagle & Pentland (2006), DOI10.1007/s00779-005-0046-3",
+  "licence": "CC BY4.0 (Mendeley processed version)",
+  "access_status": "public",
+  "format": "triplet",
+  "temporal_resolution": null,
+  "scan_coverage_evidence": "Only positive dyadic edges; no empty scan/online logs. Third column observed as small integer ticks; scale not confirmed.",
+  "eligibility_status": "exploratory_only",
+  "reason": "missing verified scan support or insufficient eligible chronological samples; no reliable negative assumption; timestamp tick scale not verified; no conversion to seconds/days or24h labels",
+  "participants": 96,
+  "event_rows": 1086403,
+  "valid_pairs": 2539,
+  "first_timestamp": 0,
+  "last_timestamp": 233,
+  "usable_days_for_1d_3d_7d": {
+    "1": {
+      "calendar_complete_snapshots": null,
+      "primary_eligible_snapshots": 0,
+      "note": "timestamp unit unverified"
+    },
+    "3": {
+      "calendar_complete_snapshots": null,
+      "primary_eligible_snapshots": 0,
+      "note": "timestamp unit unverified"
+    },
+    "7": {
+      "calendar_complete_snapshots": null,
+      "primary_eligible_snapshots": 0,
+      "note": "timestamp unit unverified"
+    }
+  },
+  "file_hash": "ededff41b0befdd6ba370602d496dc8b93cc38c3a39d2e47ecd82443d093bf49",
+  "adapter_version": 3,
+  "file_name": "realHumanContactMIT.txt",
+  "file_bytes": 10848197,
+  "raw_rows": 1086403,
+  "invalid_rows": 0,
+  "self_contact_rows": 0,
+  "time_unit": "unverified integer tick",
+  "time_origin_seconds": null,
+  "span_days": null,
+  "missing_data_policy": "No recorded contact is not proof of a negative. No inferred labels or model scores.",
+  "per_day": [],
+  "days_without_contact_records": null,
+  "duplicate_canonical_records": 1058831,
+  "duplicates_policy": "Repeated source measurements retained; valid_pairs is distinct. No deduplication of repeated timestamps across different pairs.",
+  "processed_sha256": "9d2aeecfbedb6eae8ed681f59114f1ca75ba45319ccf908b13be3b07278d53e6",
+  "namespace": "reality_mining_mendeley",
+  "coverage_diagnostics": null,
+  "preprocessing_note": "Processed redistribution; repeated dyadic rows retained and diagnosed. Do not infer raw mobile scanner availability or assume third-column seconds."
+}

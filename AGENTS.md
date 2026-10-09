@@ -25,7 +25,7 @@ The first execution was limited to T01 and is complete. The user subsequently au
 
 ## Current authorized range
 
-The user authorized and completed T18–T22 sequentially from RESEARCH_SPEC.md. Its T18-only startup template did not override that range. Stop now; T23–T27 are TODO, awaiting a new instruction. No push/new-source download/new UI occurred. T17 at f116951 and T211d/7d evidence are preserved. Run102140b8cf3df83f is the genuine1/3/7d study. Only four primary test days and earlier T17 test exposure: do not call it pristine independent validation or tune on these results. Use `python -m src.window_verify` for read-only full artifact/metric/code-freeze verification. Raw data, individual predictions, features and hidden research models remain local. Later changes need new versioned protocols/runs, not overwriting frozen evidence.
+The user authorized and completed T23–T27 together, following prior T01–T22. All27 task statuses are DONE within explicitly documented source eligibility limits. Stop now; no new task or remote push automatically. Frozen T17–T22 evidence is preserved. T23 adds true backend research UI (new configurations validation-only) and T24 a source catalog. T25/T26 public source diagnostics are complete; that does not mean all sources support training. Reality Mining processed time ticks and scan evidence are unverified; Workplace7d evaluation days/online logs are insufficient; Social Evolution official live access/license/header remain unverified and no real file was acquired. Preserve these outcomes. Read RESEARCH_REPORT.md, WINDOW_STUDY.md, DATASET_CATALOG.md and reports/T27_VERIFICATION.json for delivery. Raw data/per-sample predictions/models stay local; no push was authorized.
 
 ## Prediction data contract
 
@@ -39,7 +39,7 @@ The user authorized and completed T18–T22 sequentially from RESEARCH_SPEC.md. 
 - Evaluation uses frozen models/thresholds and exact saved input signatures. All window/communication ablations run on validation only. E3 stays unavailable without verified communication availability; never fabricate scores.
 - Native TreeSHAP applies to XGBoost/LightGBM base raw margins, not calibrated probabilities. Other local sensitivity methods must not be labeled SHAP or causal. Keep synthetic-fixture provenance in pages, figures and exports.
 - T17's held-out test scores have now been reported. Do not use them to choose new thresholds/features/hyperparameters; later tuning needs a new validation design. Preserve the original T17 results, including worse Logistic Regression probability scores and raw/calibrated XGBoost variants.
-- Reports remain ignored except the five T17 and fifteen reviewed T18–T22 aggregate deliverables explicitly whitelisted by filename in .gitignore. Do not broaden that whitelist to per-run private manifests, individual samples, large HTML bundles or model files.
+- Reports remain ignored except the five T17, fifteen T18–T22 and nine T23–T27 reviewed aggregate deliverables explicitly whitelisted by filename in .gitignore. Do not broaden that whitelist to per-run private manifests, individual samples, large HTML bundles or model files.
 
 ## Local environment
 
@@ -56,3 +56,12 @@ The user authorized and completed T18–T22 sequentially from RESEARCH_SPEC.md. 
 - Parameters/seed/split/threshold/calibration/fold/uncertainty rules were frozen before new test scores. Raw models are reported because3 validation dates cannot support independent calibration plus>=2 tuning dates after purge.
 - Four primary test days are below the8-day bootstrap-CI gate; paired daily and leave-one-day-out ranges are descriptive, not confidence intervals. Prespecified expanding folds are dependent robustness evidence; no significance or long-term claim.
 - Separate7d candidate expansion reports reach counts only; its population differs from the main1d pool. Do not compare expanded-pool AP as a pure history-window effect. Do not compare T17/new raw AP as identical-cohort improvements.
+
+## Research edition delivery (T23–T27)
+
+- History Window Study default settings reuse verified frozen evidence. Altered settings produce separately versioned validation-only jobs. Never use displayed frozen test scores to choose new parameters/windows/coverage.
+- Future Case Explorer must read only historical feature banks and use times after the saved selection-information deadline. Read actual targets only on explicit backtest; unavailable target stays Unknown.
+- DatasetAdapter namespaces every source, validates schema/time/IDs and keeps calendar capacity separate from reliable observation. Unknown processed tick units must not become seconds/days. Missing contacts must not become negatives.
+- New public source downloads require verified license/real URL and a bounded schema probe first. Do not infer data license from a site's source-code footer, or infer access restriction from an outage. No bypass of restricted sources.
+- Manual imports validate before publishing and refuse replacement of existing raw files. Schema/time/license policy changes invalidate adapter caches. Parsed data and manifests are local except reviewed aggregate deliverables.
+- Full verification uses project .venv pytest, window_verify, research_delivery and real UI/export checks. Ten navigation pages are delivered. Research interfaces use hidden bounded-window model registries; legacy model UI contracts remain intact.

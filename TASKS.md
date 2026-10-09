@@ -2,7 +2,7 @@
 
 Task IDs and titles follow the user's task-board screenshot. Dependencies and acceptance criteria below are the implementation plan derived from `PROJECT_SPEC.md`, rather than additional completed functionality.
 
-Current execution: **T18–T22 — DONE**. All five requested Research Edition tasks verified on real Copenhagen data; stop here. Next recommended task: T23, not started. T17 remains frozen; no push.
+Current execution: **T23–T27 — DONE**. All27 tasks completed within documented source-access/eligibility limits.196 tests pass;10-page real UI/export/startup checks and frozen36-model verification pass. Stop; no remote push.
 
 | Complete | ID | Task | Status | Dependencies | Acceptance criteria |
 | --- | --- | --- | --- | --- | --- |
@@ -28,10 +28,10 @@ Current execution: **T18–T22 — DONE**. All five requested Research Edition t
 | [x] | T20 | 窗口隔离与特征计算 | DONE | T19 | Explicit bounded 1/3/7d features and source/window/cohort/version caches; old/future perturbation and cache recovery tests pass. |
 | [x] | T21 | 1d vs 7d 主实验 | DONE | T20 | Fixed XGBoost/frequency/logistic protocol and shared frozen cohort, validation-only thresholds/calibration; actual predictions and CSV/JSON/HTML reproduce scores. |
 | [x] | T22 | 3d 中间窗口与时间鲁棒性 | DONE | T21 | 3d comparison, feasible forward folds, paired day-block differences, frequency/coverage/day sensitivity and separate 7d-pool reach report. |
-| [ ] | T23 | History Window Study UI | TODO | T22 | Real backend-driven setup/audit/comparison/case explorer, downloads and AppTest; meaningful empty states. |
-| [ ] | T24 | Dataset Catalog 与接入门槛 | TODO | T23 | Source adapters/catalog, licenses/schema/coverage/history manifests and evidence-based eligibility. |
-| [ ] | T25 | MIT Reality Mining 接入 | TODO | T24 | Verify legal source/schema/coverage; exploratory-only unless reliable negative observation evidence. |
-| [ ] | T26 | 其他数据适配与合法性验证 | TODO | T24 | Verify Social Evolution/workplace source access, reading/quality, independent per-source eligibility without fabricated negatives. |
-| [ ] | T27 | 研究交付与最终验证 | TODO | T25, T26 | Research/window/catalog reports, reproducible outputs and full tests; reviewed Git changes, no unauthorized push. |
+| [x] | T23 | History Window Study UI | DONE | T22 | Real backend-driven setup/audit/comparison/case explorer, downloads and AppTest; meaningful empty states. |
+| [x] | T24 | Dataset Catalog 与接入门槛 | DONE | T23 | Source adapters/catalog, licenses/schema/coverage/history manifests and evidence-based eligibility. |
+| [x] | T25 | MIT Reality Mining 接入 | DONE | T24 | Verify legal source/schema/coverage; exploratory-only unless reliable negative observation evidence. |
+| [x] | T26 | 其他数据适配与合法性验证 | DONE | T24 | Verify Social Evolution/workplace source access, reading/quality, independent per-source eligibility without fabricated negatives. |
+| [x] | T27 | 研究交付与最终验证 | DONE | T25, T26 | Research/window/catalog reports, reproducible outputs and full tests; reviewed Git changes, no unauthorized push. |
 
 T01 excludes Streamlit navigation/pages, dataset downloads, preprocessing, features, training and predictions. These belong to later tasks.

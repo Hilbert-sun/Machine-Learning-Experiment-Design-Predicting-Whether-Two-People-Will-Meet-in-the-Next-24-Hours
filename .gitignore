@@ -53,3 +53,14 @@ credentials*.json
 !reports/window_study/T22_METRICS.csv
 !reports/window_study/T22_SENSITIVITY.csv
 !reports/window_study/T22_WALK_FORWARD.csv
+
+# T23-T27: reviewed aggregate research/source evidence only.
+!reports/RESEARCH_METRICS.csv
+!reports/RESEARCH_METRICS.json
+!reports/DATASET_CATALOG.json
+!reports/T25_REALITY_MINING.md
+!reports/T25_REALITY_MINING_DIAGNOSTICS.json
+!reports/T26_SOURCE_VERIFICATION.md
+!reports/T26_WORKPLACE_DIAGNOSTICS.json
+!reports/T26_SOCIAL_EVOLUTION_STATUS.json
+!reports/T27_VERIFICATION.json
