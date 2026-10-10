@@ -1,0 +1,670 @@
+{
+  "run_id": "6d5df52b7fd76419",
+  "source_kind": "real_public_dataset",
+  "sources": [
+    {
+      "dataset_id": "workplace2013",
+      "name": "SocioPatterns Workplace2013",
+      "source_url": "https://sociopatterns.org/datasets/contacts-in-a-workplace/",
+      "download_url": "https://sociopatterns.org/assets/data/workplace_InVS_tij.dat.zip",
+      "citation": "Genois et al. (2015), Network Science3,326",
+      "licence": "Creative Commons Public Domain Dedication (CC0)",
+      "scan_coverage_evidence": "Active contact intervals[t-20s,t] only; absent independent badge-online logs. Contact-free intervals are not reliable negatives.",
+      "source_verification_date": "2026-10-10",
+      "schema": [
+        "timestamp",
+        "user_a",
+        "user_b"
+      ],
+      "file_path": "data/raw/catalog/workplace2013/workplace_InVS_tij.dat.zip",
+      "adapter_version": 3,
+      "independent_online_logs": false,
+      "timestamp_unit": "seconds",
+      "timestamp_encoding": "relative integer; epoch mapping unverified",
+      "timestamp_origin_policy": "Study Day from floor(first/86400) only if seconds verified; no civil dates or tick conversion",
+      "deduplication": "Canonical (dataset,timestamp,minID,maxID); exact repeats once; different pair/time retained.",
+      "file_hash": "bf818f7e819864e134c90ed82f2cda6ca9d9548d43fe4d05002ac068c91258c0",
+      "processed_sha256": "70319afaba2682d1568ee20255040ee5c0c2a898a5663d580e99f183bf06d821",
+      "participants": 92,
+      "valid_pairs": 755,
+      "raw_rows": 9827,
+      "event_rows": 9827,
+      "first_timestamp": 28820,
+      "last_timestamp": 1016440,
+      "span_days": 11.430787037037037,
+      "days_without_contact_records": 2,
+      "descriptive_status": "descriptive_ready",
+      "status": "positive_retrieval_ready",
+      "prediction_times": {
+        "1": [
+          201600,
+          288000,
+          374400,
+          460800,
+          547200,
+          633600,
+          720000,
+          806400,
+          892800
+        ],
+        "3": [
+          374400,
+          460800,
+          547200,
+          633600,
+          720000,
+          806400,
+          892800
+        ],
+        "7": [
+          720000,
+          806400,
+          892800
+        ]
+      },
+      "unique_contact_records": 9827,
+      "duplicate_canonical_records": 0,
+      "retrieval_status": {
+        "1": {
+          "complete_prediction_times": 9,
+          "nonempty_candidate_times": 7,
+          "positive_pool_times": 6,
+          "status": "positive_retrieval_ready",
+          "reason": "Observed-positive retrieval only; unrecorded pairs remain Unknown."
+        },
+        "3": {
+          "complete_prediction_times": 7,
+          "nonempty_candidate_times": 5,
+          "positive_pool_times": 4,
+          "status": "positive_retrieval_ready",
+          "reason": "Observed-positive retrieval only; unrecorded pairs remain Unknown."
+        },
+        "7": {
+          "complete_prediction_times": 3,
+          "nonempty_candidate_times": 3,
+          "positive_pool_times": 3,
+          "status": "positive_retrieval_ready",
+          "reason": "Observed-positive retrieval only; unrecorded pairs remain Unknown."
+        }
+      },
+      "reason": "No reliable independent online/scan logs: no binary prediction evaluation."
+    },
+    {
+      "dataset_id": "workplace2015",
+      "name": "SocioPatterns Workplace2015",
+      "source_url": "https://sociopatterns.org/datasets/test/",
+      "download_url": "https://sociopatterns.org/assets/data/workplace_InVS15_tij.dat.gz",
+      "citation": "Genois & Barrat (2018), EPJ Data Science7,11",
+      "licence": "Creative Commons Public Domain Dedication (CC0)",
+      "scan_coverage_evidence": "Active contact intervals[t-20s,t] only; absent independent badge-online logs. Contact-free intervals are not reliable negatives.",
+      "source_verification_date": "2026-10-10",
+      "schema": [
+        "timestamp",
+        "user_a",
+        "user_b"
+      ],
+      "file_path": "data/raw/catalog/workplace2015/workplace_InVS15_tij.dat.gz",
+      "adapter_version": 3,
+      "independent_online_logs": false,
+      "timestamp_unit": "seconds",
+      "timestamp_encoding": "relative integer; epoch mapping unverified",
+      "timestamp_origin_policy": "Study Day from floor(first/86400) only if seconds verified; no civil dates or tick conversion",
+      "deduplication": "Canonical (dataset,timestamp,minID,maxID); exact repeats once; different pair/time retained.",
+      "file_hash": "339eb090d506d750f38a2c1ac6aca76c00c55b462f9dea325933d8b7bc260871",
+      "processed_sha256": "b72ea37357fff12b3540679a23dc5980553977564fd4dd53f28c2a69ae726106",
+      "participants": 217,
+      "valid_pairs": 4274,
+      "raw_rows": 78249,
+      "event_rows": 78249,
+      "first_timestamp": 28840,
+      "last_timestamp": 1022380,
+      "span_days": 11.499305555555555,
+      "days_without_contact_records": 2,
+      "descriptive_status": "descriptive_ready",
+      "status": "positive_retrieval_ready",
+      "prediction_times": {
+        "1": [
+          201600,
+          288000,
+          374400,
+          460800,
+          547200,
+          633600,
+          720000,
+          806400,
+          892800
+        ],
+        "3": [
+          374400,
+          460800,
+          547200,
+          633600,
+          720000,
+          806400,
+          892800
+        ],
+        "7": [
+          720000,
+          806400,
+          892800
+        ]
+      },
+      "unique_contact_records": 78249,
+      "duplicate_canonical_records": 0,
+      "retrieval_status": {
+        "1": {
+          "complete_prediction_times": 9,
+          "nonempty_candidate_times": 7,
+          "positive_pool_times": 6,
+          "status": "positive_retrieval_ready",
+          "reason": "Observed-positive retrieval only; unrecorded pairs remain Unknown."
+        },
+        "3": {
+          "complete_prediction_times": 7,
+          "nonempty_candidate_times": 5,
+          "positive_pool_times": 4,
+          "status": "positive_retrieval_ready",
+          "reason": "Observed-positive retrieval only; unrecorded pairs remain Unknown."
+        },
+        "7": {
+          "complete_prediction_times": 3,
+          "nonempty_candidate_times": 3,
+          "positive_pool_times": 3,
+          "status": "positive_retrieval_ready",
+          "reason": "Observed-positive retrieval only; unrecorded pairs remain Unknown."
+        }
+      },
+      "reason": "No reliable independent online/scan logs: no binary prediction evaluation."
+    },
+    {
+      "dataset_id": "highschool2013",
+      "name": "SocioPatterns High School2013",
+      "source_url": "https://sociopatterns.org/datasets/high-school-contact-and-friendship-networks/",
+      "download_url": "https://sociopatterns.org/assets/data/HighSchool2013_proximity_net.csv.gz",
+      "citation": "Mastrandrea, Fournet, Barrat (2015), DOI10.1371/journal.pone.0136497",
+      "licence": "CC BY-NC-SA",
+      "scan_coverage_evidence": "Positive contact list only; no independent scanner-online logs.",
+      "source_verification_date": "2026-10-10",
+      "schema": "timestamp,user_a,user_b,class_a,class_b",
+      "file_path": "data/raw/sociopatterns/HighSchool2013_proximity_net.csv.gz",
+      "adapter_version": 3,
+      "independent_online_logs": false,
+      "timestamp_unit": "seconds",
+      "timestamp_encoding": "UNIX ctime seconds",
+      "timestamp_origin_policy": "Study Day from floor(first/86400) only if seconds verified; no civil dates or tick conversion",
+      "deduplication": "Canonical (dataset,timestamp,minID,maxID); exact repeats once; different pair/time retained.",
+      "file_hash": "ecf4a90312c8d72057f72e936c366b470e63876da7db846300044795f045e2ea",
+      "processed_sha256": "7de8faf7504a67aa0bc9aed3c6e175fd3f900277c76dcd29a1dbdd39ac99d860",
+      "participants": 327,
+      "valid_pairs": 5818,
+      "raw_rows": 188508,
+      "event_rows": 188508,
+      "first_timestamp": 1385982020,
+      "last_timestamp": 1386345580,
+      "span_days": 4.207870370370371,
+      "days_without_contact_records": 0,
+      "descriptive_status": "descriptive_ready",
+      "status": "insufficient_history",
+      "prediction_times": {
+        "1": [
+          1386144000,
+          1386230400
+        ],
+        "3": [],
+        "7": []
+      },
+      "unique_contact_records": 188508,
+      "duplicate_canonical_records": 0,
+      "retrieval_status": {
+        "1": {
+          "complete_prediction_times": 2,
+          "nonempty_candidate_times": 2,
+          "positive_pool_times": 2,
+          "status": "insufficient_history",
+          "reason": "Calendar completeness is not continuous badge coverage; fewer than3 positive-pool dates yield only limited descriptive evidence."
+        },
+        "3": {
+          "complete_prediction_times": 0,
+          "nonempty_candidate_times": 0,
+          "positive_pool_times": 0,
+          "status": "insufficient_history",
+          "reason": "Calendar completeness is not continuous badge coverage; fewer than3 positive-pool dates yield only limited descriptive evidence."
+        },
+        "7": {
+          "complete_prediction_times": 0,
+          "nonempty_candidate_times": 0,
+          "positive_pool_times": 0,
+          "status": "insufficient_history",
+          "reason": "Calendar completeness is not continuous badge coverage; fewer than3 positive-pool dates yield only limited descriptive evidence."
+        }
+      },
+      "reason": "No reliable independent online/scan logs: no binary prediction evaluation."
+    },
+    {
+      "dataset_id": "reality_mining_mendeley",
+      "name": "MIT Reality Mining (Mendeley processed)",
+      "source_url": "https://data.mendeley.com/datasets/d6bzzfd23g/1",
+      "download_url": "https://data.mendeley.com/public-files/datasets/d6bzzfd23g/files/92a45d24-0e4d-4a53-b4fe-35dfa985b2dc/file_downloaded",
+      "citation": "Khushnood Abbas (2018), Real Human Contact processed data, DOI10.17632/d6bzzfd23g.1; Eagle & Pentland (2006), DOI10.1007/s00779-005-0046-3",
+      "licence": "CC BY4.0 (Mendeley processed version)",
+      "scan_coverage_evidence": "Only positive dyadic edges; no empty scan/online logs. Third column observed as small integer ticks; scale not confirmed.",
+      "source_verification_date": "2026-10-10",
+      "schema": [
+        "user_a",
+        "user_b",
+        "timestamp"
+      ],
+      "file_path": "data/raw/catalog/reality_mining_mendeley/realHumanContactMIT.txt",
+      "adapter_version": 3,
+      "independent_online_logs": false,
+      "timestamp_unit": "unverified integer tick",
+      "timestamp_encoding": "relative integer; epoch mapping unverified",
+      "timestamp_origin_policy": "Study Day from floor(first/86400) only if seconds verified; no civil dates or tick conversion",
+      "deduplication": "Canonical (dataset,timestamp,minID,maxID); exact repeats once; different pair/time retained.",
+      "file_hash": "ededff41b0befdd6ba370602d496dc8b93cc38c3a39d2e47ecd82443d093bf49",
+      "processed_sha256": "9d2aeecfbedb6eae8ed681f59114f1ca75ba45319ccf908b13be3b07278d53e6",
+      "participants": 96,
+      "valid_pairs": 2539,
+      "raw_rows": 1086403,
+      "event_rows": 1086403,
+      "first_timestamp": 0,
+      "last_timestamp": 233,
+      "span_days": null,
+      "days_without_contact_records": null,
+      "descriptive_status": "descriptive_ready",
+      "status": "time_unit_unverified",
+      "prediction_times": {
+        "1": [],
+        "3": [],
+        "7": []
+      },
+      "unique_contact_records": 27572,
+      "duplicate_canonical_records": 1058831,
+      "retrieval_status": "time_unit_unverified",
+      "reason": "No publisher dictionary or transformation maps processed ticks to seconds; original study duration is not a mapping."
+    },
+    {
+      "dataset_id": "social_evolution",
+      "name": "MIT Social Evolution",
+      "source_url": "https://realitycommons.media.mit.edu/socialevolution.html",
+      "download_url": null,
+      "citation": "MIT Human Dynamics Lab, Social Evolution dataset; source data dictionary https://realitycommons.media.mit.edu/socialevolution1.html",
+      "licence": "not verified; no automatic acquisition",
+      "scan_coverage_evidence": "Published dictionary describes Bluetooth/Wi-Fi proximity and six-minute sampling, plus interpolated missing Bluetooth records. No verified raw-only flag/online logs.",
+      "source_verification_date": "2026-10-10",
+      "schema": "unverified actual header",
+      "file_path": "data/raw/catalog/social_evolution/Proximity.csv.bz2",
+      "adapter_version": 3,
+      "independent_online_logs": false,
+      "timestamp_unit": "unverified",
+      "timestamp_encoding": "actual encoding unverified",
+      "timestamp_origin_policy": "Study Day from floor(first/86400) only if seconds verified; no civil dates or tick conversion",
+      "deduplication": "Canonical (dataset,timestamp,minID,maxID); exact repeats once; different pair/time retained.",
+      "status": "source_unavailable",
+      "descriptive_status": "source_unavailable",
+      "retrieval_status": "source_unavailable",
+      "reason": "Live official overview/dictionary/download navigation unavailable (connection refused/502). No verified lawful download or license; do not infer restriction from outage.",
+      "file_hash": null
+    }
+  ],
+  "networks": [
+    {
+      "dataset_id": "workplace2013",
+      "analysis_type": "Descriptive Network Analysis",
+      "nodes": 92,
+      "edges": 755,
+      "unique_contact_records": 9827,
+      "components": 1,
+      "largest_component_nodes": 92,
+      "density": 0.18036311514572384,
+      "mean_degree": 16.41304347826087,
+      "degree_histogram": {
+        "status": "aggregate",
+        "minimum_group_size": 5,
+        "bins": [
+          {
+            "bin": "0–5",
+            "count": 5
+          },
+          {
+            "bin": "6–20",
+            "count": 62
+          },
+          {
+            "bin": "21–50",
+            "count": 25
+          }
+        ]
+      },
+      "pair_record_histogram": {
+        "status": "aggregate",
+        "minimum_group_size": 5,
+        "bins": [
+          {
+            "bin": "1–5",
+            "count": 484
+          },
+          {
+            "bin": "6–20",
+            "count": 148
+          },
+          {
+            "bin": "21–100",
+            "count": 108
+          },
+          {
+            "bin": ">100",
+            "count": 15
+          }
+        ]
+      },
+      "activity": [
+        {
+          "study_day": 1,
+          "records": 1158,
+          "active_pairs": 188,
+          "previous_day_repeated_pairs": 0
+        },
+        {
+          "study_day": 2,
+          "records": 1053,
+          "active_pairs": 152,
+          "previous_day_repeated_pairs": 41
+        },
+        {
+          "study_day": 3,
+          "records": 838,
+          "active_pairs": 123,
+          "previous_day_repeated_pairs": 31
+        },
+        {
+          "study_day": 4,
+          "records": 945,
+          "active_pairs": 186,
+          "previous_day_repeated_pairs": 33
+        },
+        {
+          "study_day": 5,
+          "records": 671,
+          "active_pairs": 103,
+          "previous_day_repeated_pairs": 28
+        },
+        {
+          "study_day": 6,
+          "records": 0,
+          "active_pairs": 0,
+          "previous_day_repeated_pairs": 0
+        },
+        {
+          "study_day": 7,
+          "records": 0,
+          "active_pairs": 0,
+          "previous_day_repeated_pairs": 0
+        },
+        {
+          "study_day": 8,
+          "records": 976,
+          "active_pairs": 147,
+          "previous_day_repeated_pairs": 0
+        },
+        {
+          "study_day": 9,
+          "records": 1102,
+          "active_pairs": 151,
+          "previous_day_repeated_pairs": 49
+        },
+        {
+          "study_day": 10,
+          "records": 1079,
+          "active_pairs": 160,
+          "previous_day_repeated_pairs": 51
+        },
+        {
+          "study_day": 11,
+          "records": 1296,
+          "active_pairs": 158,
+          "previous_day_repeated_pairs": 47
+        },
+        {
+          "study_day": 12,
+          "records": 709,
+          "active_pairs": 94,
+          "previous_day_repeated_pairs": 33
+        }
+      ],
+      "pairs_active_on_multiple_days": 312,
+      "time_activity_status": "relative_study_days",
+      "scope": "Entire archived observed graph; never used as a historical ranking graph."
+    },
+    {
+      "dataset_id": "workplace2015",
+      "analysis_type": "Descriptive Network Analysis",
+      "nodes": 217,
+      "edges": 4274,
+      "unique_contact_records": 78249,
+      "components": 1,
+      "largest_component_nodes": 217,
+      "density": 0.1823690049496501,
+      "mean_degree": 39.39170506912443,
+      "degree_histogram": {
+        "status": "suppressed_small_groups",
+        "minimum_group_size": 5,
+        "bins": []
+      },
+      "pair_record_histogram": {
+        "status": "aggregate",
+        "minimum_group_size": 5,
+        "bins": [
+          {
+            "bin": "1–5",
+            "count": 2713
+          },
+          {
+            "bin": "6–20",
+            "count": 790
+          },
+          {
+            "bin": "21–100",
+            "count": 605
+          },
+          {
+            "bin": ">100",
+            "count": 166
+          }
+        ]
+      },
+      "activity": [
+        {
+          "study_day": 1,
+          "records": 12162,
+          "active_pairs": 1485,
+          "previous_day_repeated_pairs": 0
+        },
+        {
+          "study_day": 2,
+          "records": 8254,
+          "active_pairs": 648,
+          "previous_day_repeated_pairs": 256
+        },
+        {
+          "study_day": 3,
+          "records": 6904,
+          "active_pairs": 580,
+          "previous_day_repeated_pairs": 174
+        },
+        {
+          "study_day": 4,
+          "records": 8455,
+          "active_pairs": 821,
+          "previous_day_repeated_pairs": 190
+        },
+        {
+          "study_day": 5,
+          "records": 7738,
+          "active_pairs": 633,
+          "previous_day_repeated_pairs": 214
+        },
+        {
+          "study_day": 6,
+          "records": 0,
+          "active_pairs": 0,
+          "previous_day_repeated_pairs": 0
+        },
+        {
+          "study_day": 7,
+          "records": 0,
+          "active_pairs": 0,
+          "previous_day_repeated_pairs": 0
+        },
+        {
+          "study_day": 8,
+          "records": 7252,
+          "active_pairs": 765,
+          "previous_day_repeated_pairs": 0
+        },
+        {
+          "study_day": 9,
+          "records": 9129,
+          "active_pairs": 1084,
+          "previous_day_repeated_pairs": 246
+        },
+        {
+          "study_day": 10,
+          "records": 4677,
+          "active_pairs": 500,
+          "previous_day_repeated_pairs": 166
+        },
+        {
+          "study_day": 11,
+          "records": 7941,
+          "active_pairs": 559,
+          "previous_day_repeated_pairs": 121
+        },
+        {
+          "study_day": 12,
+          "records": 5737,
+          "active_pairs": 366,
+          "previous_day_repeated_pairs": 96
+        }
+      ],
+      "pairs_active_on_multiple_days": 1382,
+      "time_activity_status": "relative_study_days",
+      "scope": "Entire archived observed graph; never used as a historical ranking graph."
+    },
+    {
+      "dataset_id": "highschool2013",
+      "analysis_type": "Descriptive Network Analysis",
+      "nodes": 327,
+      "edges": 5818,
+      "unique_contact_records": 188508,
+      "components": 1,
+      "largest_component_nodes": 327,
+      "density": 0.10915367441511416,
+      "mean_degree": 35.584097859327215,
+      "degree_histogram": {
+        "status": "suppressed_small_groups",
+        "minimum_group_size": 5,
+        "bins": []
+      },
+      "pair_record_histogram": {
+        "status": "aggregate",
+        "minimum_group_size": 5,
+        "bins": [
+          {
+            "bin": "1–5",
+            "count": 3457
+          },
+          {
+            "bin": "6–20",
+            "count": 1202
+          },
+          {
+            "bin": "21–100",
+            "count": 767
+          },
+          {
+            "bin": ">100",
+            "count": 392
+          }
+        ]
+      },
+      "activity": [
+        {
+          "study_day": 1,
+          "records": 28780,
+          "active_pairs": 2242,
+          "previous_day_repeated_pairs": 0
+        },
+        {
+          "study_day": 2,
+          "records": 47338,
+          "active_pairs": 2573,
+          "previous_day_repeated_pairs": 1047
+        },
+        {
+          "study_day": 3,
+          "records": 40174,
+          "active_pairs": 2161,
+          "previous_day_repeated_pairs": 1054
+        },
+        {
+          "study_day": 4,
+          "records": 37279,
+          "active_pairs": 2162,
+          "previous_day_repeated_pairs": 855
+        },
+        {
+          "study_day": 5,
+          "records": 34937,
+          "active_pairs": 2075,
+          "previous_day_repeated_pairs": 869
+        }
+      ],
+      "pairs_active_on_multiple_days": 2821,
+      "time_activity_status": "relative_study_days",
+      "scope": "Entire archived observed graph; never used as a historical ranking graph."
+    },
+    {
+      "dataset_id": "reality_mining_mendeley",
+      "analysis_type": "Descriptive Network Analysis",
+      "nodes": 96,
+      "edges": 2539,
+      "unique_contact_records": 27572,
+      "components": 1,
+      "largest_component_nodes": 96,
+      "density": 0.5567982456140351,
+      "mean_degree": 52.895833333333336,
+      "degree_histogram": {
+        "status": "suppressed_small_groups",
+        "minimum_group_size": 5,
+        "bins": []
+      },
+      "pair_record_histogram": {
+        "status": "aggregate",
+        "minimum_group_size": 5,
+        "bins": [
+          {
+            "bin": "1–5",
+            "count": 1436
+          },
+          {
+            "bin": "6–20",
+            "count": 691
+          },
+          {
+            "bin": "21–100",
+            "count": 398
+          },
+          {
+            "bin": ">100",
+            "count": 14
+          }
+        ]
+      },
+      "activity": [],
+      "pairs_active_on_multiple_days": null,
+      "time_activity_status": "unavailable_unverified_tick_scale",
+      "scope": "Entire archived observed graph; never used as a historical ranking graph."
+    }
+  ]
+}

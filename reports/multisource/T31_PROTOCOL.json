@@ -1,0 +1,148 @@
+{
+  "task": "T31",
+  "algorithm_version": 1,
+  "adapter_version": 3,
+  "candidate_interval": "[t-1d,t)",
+  "historical_interval": "[t-window,t)",
+  "future_interval": "(t,t+24h]",
+  "windows": [
+    1,
+    3,
+    7
+  ],
+  "ks": [
+    5,
+    10,
+    20
+  ],
+  "methods": [
+    "historical_frequency",
+    "last_contact_recency",
+    "common_neighbors"
+  ],
+  "snapshot_hour": 8,
+  "scores": {
+    "historical_frequency": "unique canonical records / window days, descending",
+    "last_contact_recency": "last timestamp - t, descending",
+    "common_neighbors": "shared neighbors in bounded undirected historical graph, descending"
+  },
+  "ties": "ascending dataset_id,user_min,user_max; deterministic",
+  "scopes": "per_window; common_7d with identical 1d candidates/times across windows when complete",
+  "unknown": "No observed future contact remains Unknown; no binary labels or classification metrics.",
+  "aggregation": "sum snapshot-pair hits / sum observed positive snapshot-pairs; repeated pairs across dates counted separately",
+  "evidence": "Descriptive only, <3 positive-pool dates flagged; no significance or optimized rule/window/K.",
+  "disclosure": "No individual/pair IDs; small (<5 nonzero) public histogram/count families suppressed.",
+  "event_availability": "Event time only, no arrival logs; not a real-time ingestion replay.",
+  "copenhagen": "Primary binary source remains frozen T17/T22/T30; no new fit or comparison ranking.",
+  "sources": [
+    {
+      "dataset_id": "workplace2013",
+      "file_hash": "bf818f7e819864e134c90ed82f2cda6ca9d9548d43fe4d05002ac068c91258c0",
+      "processed_sha256": "70319afaba2682d1568ee20255040ee5c0c2a898a5663d580e99f183bf06d821",
+      "timestamp_unit": "seconds",
+      "prediction_times": {
+        "1": [
+          201600,
+          288000,
+          374400,
+          460800,
+          547200,
+          633600,
+          720000,
+          806400,
+          892800
+        ],
+        "3": [
+          374400,
+          460800,
+          547200,
+          633600,
+          720000,
+          806400,
+          892800
+        ],
+        "7": [
+          720000,
+          806400,
+          892800
+        ]
+      }
+    },
+    {
+      "dataset_id": "workplace2015",
+      "file_hash": "339eb090d506d750f38a2c1ac6aca76c00c55b462f9dea325933d8b7bc260871",
+      "processed_sha256": "b72ea37357fff12b3540679a23dc5980553977564fd4dd53f28c2a69ae726106",
+      "timestamp_unit": "seconds",
+      "prediction_times": {
+        "1": [
+          201600,
+          288000,
+          374400,
+          460800,
+          547200,
+          633600,
+          720000,
+          806400,
+          892800
+        ],
+        "3": [
+          374400,
+          460800,
+          547200,
+          633600,
+          720000,
+          806400,
+          892800
+        ],
+        "7": [
+          720000,
+          806400,
+          892800
+        ]
+      }
+    },
+    {
+      "dataset_id": "highschool2013",
+      "file_hash": "ecf4a90312c8d72057f72e936c366b470e63876da7db846300044795f045e2ea",
+      "processed_sha256": "7de8faf7504a67aa0bc9aed3c6e175fd3f900277c76dcd29a1dbdd39ac99d860",
+      "timestamp_unit": "seconds",
+      "prediction_times": {
+        "1": [
+          1386144000,
+          1386230400
+        ],
+        "3": [],
+        "7": []
+      }
+    },
+    {
+      "dataset_id": "reality_mining_mendeley",
+      "file_hash": "ededff41b0befdd6ba370602d496dc8b93cc38c3a39d2e47ecd82443d093bf49",
+      "processed_sha256": "9d2aeecfbedb6eae8ed681f59114f1ca75ba45319ccf908b13be3b07278d53e6",
+      "timestamp_unit": "unverified integer tick",
+      "prediction_times": {
+        "1": [],
+        "3": [],
+        "7": []
+      }
+    },
+    {
+      "dataset_id": "social_evolution",
+      "status": "source_unavailable"
+    }
+  ],
+  "code_sha256": {
+    "src/positive_retrieval.py": "5187dad50cb90cd62cae70db425e7876293469b35d90b7edfd22f90dba46bd2f",
+    "src/multisource_exploration.py": "e9f7bb63a67e22f642cddf958f8908cba7d8b81bef3d8d7267b9302cd3ad6642",
+    "src/multisource_report.py": "4bff86a48a9a11c3bb9cbabd368a0d329d3e17e050d7345a4183b3f62f64a7b2",
+    "src/dataset_catalog.py": "c1849b98467d88d91d0e4f026cdb79e321c803767538297e8325f7582166c410"
+  },
+  "source_checks": {
+    "date": "2026-10-10",
+    "workplace2013": "Official page: seconds,20s interval,CC0; actual linked URL matches local source.",
+    "workplace2015": "Official page: seconds,20s interval,CC0; actual linked URL matches local source.",
+    "highschool2013": "Official page: UNIXctime seconds,20s interval,CC BY-NC-SA; actual linked URL matches local source.",
+    "reality_mining_mendeley": "Publisher version1 CC BY4.0 description lacks processed tick-to-time transformation; no units borrowed from other versions.",
+    "social_evolution": "Official overview/dictionary live web fetch returned502; no actual file/license/timezone verified."
+  }
+}

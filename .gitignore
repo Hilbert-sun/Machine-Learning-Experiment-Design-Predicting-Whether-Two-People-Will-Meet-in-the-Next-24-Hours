@@ -73,3 +73,10 @@ credentials*.json
 !reports/asof_audit/T30_GROUPS.csv
 !reports/asof_audit/T30_ERRORS.csv
 !reports/asof_audit/T30_SELECTION_BIAS.csv
+
+# T31: exactly reviewed source/network/retrieval aggregates; all pair/rank outputs local.
+!reports/multisource/T31_SOURCE_SUMMARY.json
+!reports/multisource/T31_NETWORK_METRICS.csv
+!reports/multisource/T31_RETRIEVAL_METRICS.csv
+!reports/multisource/T31_FEASIBILITY.json
+!reports/multisource/T31_PROTOCOL.json

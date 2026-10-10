@@ -1,0 +1,5 @@
+dataset_id,analysis_type,nodes,edges,unique_contact_records,components,largest_component_nodes,density,mean_degree,pairs_active_on_multiple_days,time_activity_status,scope
+workplace2013,Descriptive Network Analysis,92,755,9827,1,92,0.18036311514572384,16.41304347826087,312.0,relative_study_days,Entire archived observed graph; never used as a historical ranking graph.
+workplace2015,Descriptive Network Analysis,217,4274,78249,1,217,0.1823690049496501,39.39170506912443,1382.0,relative_study_days,Entire archived observed graph; never used as a historical ranking graph.
+highschool2013,Descriptive Network Analysis,327,5818,188508,1,327,0.10915367441511416,35.584097859327215,2821.0,relative_study_days,Entire archived observed graph; never used as a historical ranking graph.
+reality_mining_mendeley,Descriptive Network Analysis,96,2539,27572,1,96,0.5567982456140351,52.895833333333336,,unavailable_unverified_tick_scale,Entire archived observed graph; never used as a historical ranking graph.

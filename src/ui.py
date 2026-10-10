@@ -14,6 +14,7 @@ PAGES = (
     ("pages/8_History_Window_Study.py", "历史窗口研究 · History Window Study"),
     ("pages/9_Dataset_Catalog.py", "数据目录 · Dataset Catalog"),
     ("pages/10_Time_Machine.py", "时间机器 · Time Machine"),
+    ("pages/11_Multi_Dataset_Exploration.py", "多数据集探索 · Multi-Dataset Exploration"),
 )
 
 

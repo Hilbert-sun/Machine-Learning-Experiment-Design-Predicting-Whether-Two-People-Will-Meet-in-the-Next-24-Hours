@@ -290,3 +290,20 @@ python -m pytest -q
 ```
 
 9个模型/窗口组合共享可评价键；Unknown不进入二分类指标。逐日漏斗、历史频率/扫描质量分组、可靠性曲线、错误统计和选择偏差均可由本地冻结样本重算。只有4日期，不报告显著性或置信区间。逐样本概率/标签/错误及完整HTML保存在忽略的data/processed/asof_audit/<run_id>/，只有7份经过审查的聚合文件纳入Git。T31多数据集探索尚未开始。
+
+
+## T31 — Multi-Dataset Exploratory Research
+
+新增第12个导航页 **多数据集探索 · Multi-Dataset Exploration**；读取真实聚合报告，支持来源切换、网络/频率分布、每日活动和已观测正接触Top-K检索。详见 [MULTISOURCE_STUDY.md](MULTISOURCE_STUDY.md)，[质量汇总](reports/multisource/T31_SOURCE_SUMMARY.json)、[检索CSV](reports/multisource/T31_RETRIEVAL_METRICS.csv) 和 [窗口适用性](reports/multisource/T31_FEASIBILITY.json)。
+
+真实Workplace2013/2015：92/217名接触参与者，9,827/78,249条记录，755/4,274个配对；各只有3个完整7d历史时点。共同日期上固定频率Top20的1/3/7d候选池内捕获率为21.09%/23.13%/23.81%及5.82%/6.57%/6.38%，仅描述已记录正接触，不能跨源比较模型强弱。候选池覆盖未来已记录正配对31.34%/24.87%，候选池外大量正接触另报，不能只看Top-K命中。
+
+HighSchool只有2个完整1d时点，短窗口结果仅有限描述；3/7d不运行。RealityMining仅拓扑：1,086,403原记录、27,572唯一(timestamp,pair)记录、2,539配对，未知tick不换算秒/天。SocialEvolution无合法核验实际文件，明确source_unavailable。缺少独立扫描日志，未观测保持Unknown，不生成分类AP/Precision等。Copenhagen主实验及T17–T30冻结产物不改、不重训。
+
+```bash
+.venv/bin/python -m src.multisource_exploration
+.venv/bin/python -m pytest -q tests/test_positive_retrieval.py tests/test_multisource_exploration.py tests/test_multisource_ui.py
+.venv/bin/python -m pytest -q
+```
+
+固定规则/时间/源哈希先冻结，纯历史排名保存后独立揭晓；重跑同协议核对原排名。无隐式下载。5份公开聚合输出可由本地522条时点/窗口/规则/K统计重算成117行；逐配对记录及交互HTML均忽略。小分组抑制不是形式化匿名保证。T28/T29/T31专项76项、全量282项测试通过，五来源真实页面验证通过。推送research-v2.2并核对远程SHA，不合并main。下一任务T32，尚未开始。

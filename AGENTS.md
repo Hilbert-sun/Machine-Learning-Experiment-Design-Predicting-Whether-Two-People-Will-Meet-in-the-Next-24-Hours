@@ -29,7 +29,7 @@ The user subsequently instructed: “以后做完全部推送” (push all compl
 
 ## Current authorized range
 
-T30 only was authorized and is DONE on research-v2.2 after e1fe901. Fixed-model as-of audit run7521ebdeb40f0b55 covers already published Study Days24–27, not a pristine test.38,005 past-only candidates,37,913 T28-valid predictions,27,820 known labels/10,185 Unknown; metrics use27,802 common known/predicted rows. OldT22's25,569-row cohort/probabilities/labels/metrics reproduce.49 focused and258 full local tests pass;444 old artifact hashes and5 raw checksums unchanged. No model refit/tuning/download. Safely publish only reviewed code/docs/aggregate reports, verify remote SHA, then STOP. T31–T34 remain TODO; next:T31 multiple-dataset exploratory research. Never merge main.
+T31 only is authorized and DONE on research-v2.2 after fa6c965. Genuine Workplace2013/2015 and HighSchool networks/retrieval, RealityMining topology only (ticks unverified), SocialEvolution unavailable. Run6d5df52b7fd76419;76 focused/282 full tests pass,576 prior protected files unchanged. No model refit or old experiment/source modification. Safe aggregate-only current-branch commit/push, remote SHA verification, then STOP. T32–T34 remain TODO; next:T32 performance optimization. Never merge main.
 
 ## Prediction data contract
 
@@ -43,7 +43,7 @@ T30 only was authorized and is DONE on research-v2.2 after e1fe901. Fixed-model 
 - Evaluation uses frozen models/thresholds and exact saved input signatures. All window/communication ablations run on validation only. E3 stays unavailable without verified communication availability; never fabricate scores.
 - Native TreeSHAP applies to XGBoost/LightGBM base raw margins, not calibrated probabilities. Other local sensitivity methods must not be labeled SHAP or causal. Keep synthetic-fixture provenance in pages, figures and exports.
 - T17's held-out test scores have now been reported. Do not use them to choose new thresholds/features/hyperparameters; later tuning needs a new validation design. Preserve the original T17 results, including worse Logistic Regression probability scores and raw/calibrated XGBoost variants.
-- Reports remain ignored except the five T17, fifteen T18–T22, nine T23–T27 and seven T30 reviewed aggregate deliverables explicitly whitelisted by filename in .gitignore. Do not broaden that whitelist to per-run private manifests, individual samples, large HTML bundles or model files.
+- Reports remain ignored except the five T17, fifteen T18–T22, nine T23–T27, seven T30 and five T31 reviewed aggregate deliverables explicitly whitelisted by filename in .gitignore. Do not broaden that whitelist to per-run private manifests, individual samples, large HTML bundles or model files.
 
 ## Local environment
 
@@ -99,3 +99,13 @@ T30 only was authorized and is DONE on research-v2.2 after e1fe901. Fixed-model 
 - Extra candidates have strongly selective positive-only known labels; AP=1 in added known-only samples is degenerate, not perfect prediction. Compare population/prevalence/Unknown rates alongside model metrics.
 - Four dates and repeated participants/pairs allow descriptive differences/leave-one-day sensitivity only, no significance/CI claim. No threshold/parameter/calibration selection on these exposed dates.
 - Individual predictions/labels/errors/HTML stay under ignored data/processed/asof_audit/<run_id>. Seven aggregate report files are explicitly whitelisted; no broad report/data whitelist. --verify-only recomputes metrics/funnels/groups/reliability/errors from local frozen samples.
+
+## T31 multi-source exploration contract
+
+- positive_retrieval.py uses ONLY [t-1d,t) candidates, bounded [t-window,t) record frequency/last recency/common-neighbor scores, descending stable rankings and ascending source/minID/maxID ties. Fixed K5/10/20; no fitted model, test-driven rule/window selection or binary labels.
+- Explicit backtest separately reads (t,t+24h] positive contact keys AFTER scores/rankings freeze. Unrecorded candidates remain Unknown; no binary Precision/AP/ROC/etc. Capture denominators are observed in-pool positives; all-positive capture and candidate reach separately expose outside-pool positives. Zero denominators stay null.
+- Per-window dates differ; compare windows only on common_7d dates/shared1d candidates. Both Workplaces have only3 complete7d dates; HighSchool only2 complete1d dates and0 complete3/7d dates. These are descriptive short-span findings, no significance or cross-source quality leaderboard.
+- Source namespace is mandatory. Exact canonical(timestamp,pair) duplicates count once in this NEW study; old raw/processed files remain untouched. Unknown RealityMining tick units prohibit day/24h conversion. SocialEvolution needs verified lawful actual schema/time/license and raw-only provenance before use; unavailable is not successful acquisition.
+- CLI python -m src.multisource_exploration uses existing verified catalog caches read-only; missing caches go only under new ignored multisource directory. No downloads, no refits. Private score/future/pair records/HTML never leave ignored data/processed/multisource/<run_id>.
+- Only five exact reports/multisource/T31 filenames are whitelisted. Public graphs use these measured aggregate outputs only; small nonzero count/ratio families and histograms are suppressed, no participant/pair IDs. Privacy coarsening is not a formal anonymity guarantee. actual_k is summed selected ranks over snapshots in public aggregates; per-snapshot values stay local.
+- Event timestamps and complete archive span are not badge-online coverage or historical ingestion evidence. T32 remains a separate future task.

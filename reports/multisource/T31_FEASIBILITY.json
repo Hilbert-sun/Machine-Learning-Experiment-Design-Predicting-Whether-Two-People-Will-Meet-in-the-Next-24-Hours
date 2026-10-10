@@ -1,0 +1,108 @@
+[
+  {
+    "dataset_id": "workplace2013",
+    "status": "positive_retrieval_ready",
+    "windows": {
+      "1": {
+        "complete_prediction_times": 9,
+        "nonempty_candidate_times": 7,
+        "positive_pool_times": 6,
+        "status": "positive_retrieval_ready",
+        "reason": "Observed-positive retrieval only; unrecorded pairs remain Unknown."
+      },
+      "3": {
+        "complete_prediction_times": 7,
+        "nonempty_candidate_times": 5,
+        "positive_pool_times": 4,
+        "status": "positive_retrieval_ready",
+        "reason": "Observed-positive retrieval only; unrecorded pairs remain Unknown."
+      },
+      "7": {
+        "complete_prediction_times": 3,
+        "nonempty_candidate_times": 3,
+        "positive_pool_times": 3,
+        "status": "positive_retrieval_ready",
+        "reason": "Observed-positive retrieval only; unrecorded pairs remain Unknown."
+      }
+    },
+    "common_7d_times": [
+      720000,
+      806400,
+      892800
+    ]
+  },
+  {
+    "dataset_id": "workplace2015",
+    "status": "positive_retrieval_ready",
+    "windows": {
+      "1": {
+        "complete_prediction_times": 9,
+        "nonempty_candidate_times": 7,
+        "positive_pool_times": 6,
+        "status": "positive_retrieval_ready",
+        "reason": "Observed-positive retrieval only; unrecorded pairs remain Unknown."
+      },
+      "3": {
+        "complete_prediction_times": 7,
+        "nonempty_candidate_times": 5,
+        "positive_pool_times": 4,
+        "status": "positive_retrieval_ready",
+        "reason": "Observed-positive retrieval only; unrecorded pairs remain Unknown."
+      },
+      "7": {
+        "complete_prediction_times": 3,
+        "nonempty_candidate_times": 3,
+        "positive_pool_times": 3,
+        "status": "positive_retrieval_ready",
+        "reason": "Observed-positive retrieval only; unrecorded pairs remain Unknown."
+      }
+    },
+    "common_7d_times": [
+      720000,
+      806400,
+      892800
+    ]
+  },
+  {
+    "dataset_id": "highschool2013",
+    "status": "insufficient_history",
+    "windows": {
+      "1": {
+        "complete_prediction_times": 2,
+        "nonempty_candidate_times": 2,
+        "positive_pool_times": 2,
+        "status": "insufficient_history",
+        "reason": "Calendar completeness is not continuous badge coverage; fewer than3 positive-pool dates yield only limited descriptive evidence."
+      },
+      "3": {
+        "complete_prediction_times": 0,
+        "nonempty_candidate_times": 0,
+        "positive_pool_times": 0,
+        "status": "insufficient_history",
+        "reason": "Calendar completeness is not continuous badge coverage; fewer than3 positive-pool dates yield only limited descriptive evidence."
+      },
+      "7": {
+        "complete_prediction_times": 0,
+        "nonempty_candidate_times": 0,
+        "positive_pool_times": 0,
+        "status": "insufficient_history",
+        "reason": "Calendar completeness is not continuous badge coverage; fewer than3 positive-pool dates yield only limited descriptive evidence."
+      }
+    },
+    "common_7d_times": []
+  },
+  {
+    "dataset_id": "reality_mining_mendeley",
+    "status": "time_unit_unverified",
+    "windows": {
+      "1": null,
+      "3": null,
+      "7": null
+    }
+  },
+  {
+    "dataset_id": "social_evolution",
+    "status": "source_unavailable",
+    "reason": "Live official overview/dictionary/download navigation unavailable (connection refused/502). No verified lawful download or license; do not infer restriction from outage."
+  }
+]
