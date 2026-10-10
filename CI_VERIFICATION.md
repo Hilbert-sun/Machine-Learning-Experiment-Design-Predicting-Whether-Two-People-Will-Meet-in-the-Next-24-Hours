@@ -1,6 +1,6 @@
 # T33 — Public CI Verification
 
-Status: T33 final delivery remotely verified at ae623111871407a74185777f4d3a74c642b0dcde. T34 phase one requires a NEW current-head run; historical T33 success is not T34 acceptance.
+Status: T33 final delivery remotely verified at ae623111871407a74185777f4d3a74c642b0dcde. T34 phase one subsequently passed at f49db01; final phase two requires its own NEW current-head run. Historical success is not final-head acceptance.
 
 ## Test/data preflight
 
@@ -91,4 +91,12 @@ The latest T33 accepted run was rechecked through GitHub during T34 preflight:
 
 The earlier implementation run 38053176593 at 8d0ea53 passed 335/61/24 tests and is historical evidence only.
 
-T34 phase one must push its own implementation commit and verify all three jobs at that exact SHA. Its run ID cannot be known before the commit exists; report the observed SHA, run URL and counts in the execution reply without creating another unverified documentation commit. T34 remains IN_PROGRESS until the separately authorized phase two status commit and its own CI succeed.
+## T34 phase-one accepted record and final gate
+
+- SHA: f49db01f1115428fc68f031c1819098ef24ae3dc; branch research-v2.2; event push.
+- Run ID:38063195569; [actual phase-one run](https://github.com/Hilbert-sun/Machine-Learning-Experiment-Design-Predicting-Whether-Two-People-Will-Meet-in-the-Next-24-Hours/actions/runs/38063195569).
+- Status completed; conclusion success; all three mandatory jobs success, verified directly through GitHub API/job logs.
+- unit-tests377 passed in82.63s; native imports12 passed in2.13s; pip check successful.
+- streamlit-smoke61 passed in12.40s; repository-safety27 passed in0.46s;51 frozen public objects unchanged and both secret scans passed.
+
+The user then authorized phase two. Its Case Explorer policy regression tests and final status/documentation change require a new complete successful run at the exact final remote SHA. The run ID cannot be known before committing; the final execution reply records actual SHA/run URL/counts without creating another untested receipt commit. DONE acceptance is conditional on that actual current-head success. If it fails, repair and retain IN_PROGRESS until reverified. Neither the T33 nor phase-one run substitutes for final-head verification.

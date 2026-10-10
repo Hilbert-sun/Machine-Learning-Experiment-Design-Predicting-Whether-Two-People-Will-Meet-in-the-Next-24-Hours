@@ -4,7 +4,7 @@
 
 A Python research application that asks whether a pair of anonymous devices will have a recorded proximity contact in the next 24 hours. It compares bounded historical windows, simulates historical predictions, and audits what incomplete observation lets us conclude. Device proximity is a proxy for encounters; this does not predict relationships or track live locations.
 
-T01–T33 are delivered. **T34 phase one is IN_PROGRESS**, pending this implementation commit's own CI verification; phase two completion confirmation is not authorized in this execution.
+T01–T34 are implemented and locally verified. **T34 final delivery** requires all three CI jobs to succeed at the current `research-v2.2` HEAD; the execution reply attests the observed final SHA/run without an extra unverified receipt commit.
 
 ## Research and implemented features
 
@@ -76,7 +76,7 @@ No dataset or model download is needed for public tests or the public audit. The
 
 ## Research limitations, sources and licenses
 
-Only four principal window-study test dates; exposed historical periods; coverage is a proxy, not continuous device-online evidence; missing contact is not automatically negative. Stable archive event time does not establish historical ingestion availability. Static archives cannot be advertised as real-time forecasts. Snapshots retain disclosed TOCTOU/atomic-publication limits and lack live ingestion transactions. Anonymous identifiers can still carry reidentification risk; no individual demo exports are published. The legacy Case Explorer Reveal retains default0.5 coverage: use independent Time Machine for nondefault model policies. Manual browser visual acceptance remains outstanding; real-artifact AppTest covers semantic flows. See [outstanding acceptance limits](FINAL_RESEARCH_AUDIT.md).
+Only four principal window-study test dates; exposed historical periods; coverage is a proxy, not continuous device-online evidence; missing contact is not automatically negative. Stable archive event time does not establish historical ingestion availability. Static archives cannot be advertised as real-time forecasts. Snapshots retain disclosed TOCTOU/atomic-publication limits and lack live ingestion transactions. Anonymous identifiers can still carry reidentification risk; no individual demo exports are published. Case Explorer now reuses the verified Time Machine policy/snapshot service; mixed policies reject before prediction or future reads. Five critical pages passed real browser visual acceptance, alongside the 12-page AppTest suite. See [final acceptance evidence](FINAL_RESEARCH_AUDIT.md).
 
 Source links, citations and dataset-specific licensing evidence are preserved in [source quality metadata](reports/multisource/T31_SOURCE_SUMMARY.json), [dataset catalog](reports/DATASET_CATALOG.json), and [multi-source study](MULTISOURCE_STUDY.md). Copenhagen: [official Figshare record](https://figshare.com/articles/dataset/The_Copenhagen_Networks_Study_interaction_data/7267433). Do not infer a dataset license from website source-code licenses; MIT Social Evolution acquisition/license remain unverified. Contact-only sources cannot support reliable binary negatives. No project code LICENSE file is currently provided; do not assume permission for unrestricted redistribution. Dataset-specific licenses govern third-party data separately.
 

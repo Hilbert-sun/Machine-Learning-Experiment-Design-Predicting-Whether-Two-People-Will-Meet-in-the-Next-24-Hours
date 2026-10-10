@@ -66,7 +66,7 @@ def test_demo_and_reproduction_preserve_independent_reveal_and_empty_states():
     assert 'No screenshots or per-sample demo files' in demo
     # Check documented read-only CLI flags actually exist; do not invoke fitting entry points.
     assert "'--verify-only'" in (ROOT/'src/asof_audit.py').read_text()
-    assert 'Case Explorer Reveal uses default0.5 coverage' in reproduction
+    assert 'Case Explorer Reveal reuses the verified Time Machine policy service' in reproduction
     assert 'python -m src.window_verify' in reproduction
     assert 'python -m src.asof_audit --verify-only' in reproduction
 
@@ -74,7 +74,7 @@ def test_demo_and_reproduction_preserve_independent_reveal_and_empty_states():
 def test_current_status_and_ci_security_policy_not_weakened():
     tasks=(ROOT/'TASKS.md').read_text()
     row=next(r for r in tasks.splitlines() if '| T34 |' in r)
-    assert '| IN_PROGRESS |' in row and '| DONE |' not in row
+    assert '| DONE |' in row and '| IN_PROGRESS |' not in row
     baseline='ae623111871407a74185777f4d3a74c642b0dcde'
     for name in ('.github/workflows/ci.yml','.gitleaks.toml','tools/check_repository_safety.py',
                  'tools/run_secret_scan.py','tests/test_repository_safety.py','tests/conftest.py'):

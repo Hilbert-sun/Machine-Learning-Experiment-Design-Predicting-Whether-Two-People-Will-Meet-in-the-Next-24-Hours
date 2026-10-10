@@ -6,10 +6,11 @@ from pathlib import Path
 import pandas as pd
 import streamlit as st
 
-from src.asof_inference import MODES, NAMESPACES, as_of_candidates, predict_as_of, read_model_contract, reveal_outcome
+from src.asof_inference import MODES, NAMESPACES, as_of_candidates, read_model_contract
 from src.preprocessing import cached_dataset
 from src.window_ui import location, source_path
 from src.safe_cache import cached_json
+from src.time_machine import make_prediction, reveal_prediction
 
 
 def available_models(root, config, dataset):
@@ -83,13 +84,15 @@ def render_as_of_cases(root, config, dataset):
     backtest = st.checkbox("历史回测：独立揭晓实际结果", value=False) if mode == "historical_blind_replay" else False
     if st.button("Compare Case"):
         try:
-            cases = {w: predict_as_of(processed, choices[w]["directory"], t, int(a), int(b), dataset_id=NAMESPACES[dataset],
-                                     history_window_days=w, mode=mode, evidence_path=choices[w]["evidence_path"]) for w in windows}
+            # Reuse the verified common coverage policy and pinned multi-model snapshot.
+            # No future evidence is read until the explicit backtest branch below.
+            prediction = make_prediction(processed, {w: choices[w] for w in windows}, t, int(a), int(b), mode=mode)
+            cases = prediction["cases"]
             for w, case in cases.items():
                 st.metric(f"{w}d历史 ·未来24h接近概率 · {mode}", f"{case['probability']:.2%}")
             st.dataframe(pd.DataFrame({w: case["historical_features"] for w, case in cases.items()}).T)
             if backtest:
-                outcome = reveal_outcome(processed, t, int(a), int(b), backtest=True)
+                outcome = reveal_prediction(processed, prediction)
                 st.write("Actual Outcome:", outcome["outcome"])
                 st.caption(outcome["reason"])
         except (ValueError, OSError, KeyError, RuntimeError) as exc:

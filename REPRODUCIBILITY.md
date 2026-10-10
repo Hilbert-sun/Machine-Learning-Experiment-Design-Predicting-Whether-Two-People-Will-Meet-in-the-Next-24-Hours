@@ -55,6 +55,6 @@ Static Copenhagen archives cannot pass real-time prospective mode without a veri
 
 T30 has no standalone UI tab: open [ASOF_AUDIT.md](ASOF_AUDIT.md) and [aggregate metrics](reports/asof_audit/T30_METRICS.csv); private local HTML is optional. T31 appears in Multi-Dataset Exploration, separating descriptive graphs from Observed Positive Retrieval; unrecorded pairs are Unknown, and MIT ticks are not converted to days.
 
-The older History Window Study Case Explorer Reveal uses default0.5 coverage; nondefault-policy outcomes there are not validated. Use the independent Time Machine, whose verified policy is frozen with the prediction. See the outstanding issue in [final audit](FINAL_RESEARCH_AUDIT.md).
+Case Explorer Reveal reuses the verified Time Machine policy service: every selected model policy comes from read_model_contract, mixed policies reject before prediction/future access, and the exact verified threshold reaches Reveal. The legacy checkbox remains an explicit backtest action; the independent Time Machine retains its separate Freeze step. No evaluation bank becomes an inference candidate source. See [final audit](FINAL_RESEARCH_AUDIT.md).
 
-For a bounded demonstration follow [DEMO_GUIDE.md](DEMO_GUIDE.md). Test harness AppTest validates navigation/state logic; it does not replace manual browser rendering checks. [Final audit](FINAL_RESEARCH_AUDIT.md) records actual verification scope and outstanding limits.
+For a bounded demonstration follow [DEMO_GUIDE.md](DEMO_GUIDE.md). Test harness AppTest validates navigation/state logic; it does not replace manual browser rendering checks. [Final audit](FINAL_RESEARCH_AUDIT.md) records actual verification scope and research limits.
