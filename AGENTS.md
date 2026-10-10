@@ -29,7 +29,7 @@ The user subsequently instructed: “以后做完全部推送” (push all compl
 
 ## Current authorized range
 
-T28 only was authorized and is DONE on research-v2.2, based on published main820d080. Stop and wait for next; no further task authorized. Branch publication follows the user's subsequent standing authorization above. Independent inference is in asof_inference.py/asof_ui.py, documented in ASOF_INFERENCE.md. Existing T17–T27 reports, models, evaluation data and statistical sources (including window_ui.py/window_features.py) remain frozen and unchanged. The old window_ui case_keys/predict_case APIs are offline/frozen legacy only: their candidate bank was filtered using future coverage, so they must not be reused for blind/prospective inference. The active Case Explorer uses direct pre-t contacts and can run without an offline study. Full pytest223 and focused compatibility48 passed;444 existing artifact hashes and5 original raw source checksums unchanged. T28 implementation required no real model refit or dataset acquisition; publication follows the subsequent authorization.
+T29 only was authorized and is DONE on research-v2.2, following published T28 at541804c. Time Machine is an independent eleventh page using unchanged T28 APIs, with Select→Predict→Freeze→Reveal, context/data/model-version invalidation and honest static-archive live rejection.37 focused and234 full local tests pass; genuine1/3/7d UI flow verified;444 prior artifact hashes/inventory and5 raw source checksums unchanged. No real model refit/data download. Safely commit/push current research branch per standing authorization, verify remote SHA, then STOP. T30–T34 are registered TODO; next is T30 prediction quality/selection-bias audit, not started. Never auto-merge main or overwrite frozen evidence.
 
 ## Prediction data contract
 
@@ -77,3 +77,11 @@ T28 only was authorized and is DONE on research-v2.2, based on published main820
 - historical_blind_replay is historical simulation, with an already time-valid model. prospective_inference requires an independently verified aware UTC anchor and fresh pre-t observations for both devices; file mtime/download date is not evidence. Static archives without an anchor reject live mode.
 - reveal_outcome is a separate explicit backtest action, never called by blind inference. Only adequately observed complete horizons justify negative outcomes; unique observed bins, not duplicate row counts, determine coverage.
 - Expanded as-of membership is not covered by old future-filtered-cohort performance/calibration guarantees. Re-evaluation and trusted live clock/feed provenance are suggested future work, not started by T28.
+
+## T29 Time Machine contract
+
+- Use pages/10_Time_Machine.py and time_machine.py/time_machine_ui.py. Inference uses T28 directly; no old future-filtered case/feature bank or offline study prerequisite.
+- Prediction succeeds before Freeze is enabled; Freeze precedes independent Reveal. Serialized frozen probability/input/model-version records remain immutable; reveal never recomputes probabilities. Outcomes remain Contact/No Contact/Unknown with coverage/completeness reasons.
+- Date/hour, pair, dataset, mode, selected windows/models and normal data/model/evidence file-version edits reset active prediction/freeze/reveal state. Future edits may invalidate a version but cannot change the stored frozen record or pre-t features/probabilities on re-prediction.
+- Records are session-only and private, not Git artifacts. Model provenance and label deadlines are shown. Static archives reject live mode via T28 clock/freshness guards.
+- Version metadata checks before/after actions are not atomic ingestion snapshots or proof of historical upload availability. Those concerns/performance caches belong to T32; new population-quality audit belongs to T30. Do not implement those tasks during T29.

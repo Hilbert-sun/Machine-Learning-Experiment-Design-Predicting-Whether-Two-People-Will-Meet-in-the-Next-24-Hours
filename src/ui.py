@@ -13,6 +13,7 @@ PAGES = (
     ("pages/7_Data_Sources.py", "数据来源 · Data Sources"),
     ("pages/8_History_Window_Study.py", "历史窗口研究 · History Window Study"),
     ("pages/9_Dataset_Catalog.py", "数据目录 · Dataset Catalog"),
+    ("pages/10_Time_Machine.py", "时间机器 · Time Machine"),
 )
 
 

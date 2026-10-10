@@ -2,54 +2,42 @@
 
 Date:2026-10-10 (Asia/Kuala_Lumpur)
 
-**T28 — DONE** on `research-v2.2`, created from published main`820d080`; initial worktree clean. Only independent as-of-time inference was authorized. All T17–T27 frozen reports/models/statistical sources and evaluation artifacts preserved; no real model refit, network/download or push. Prior task progress remains available in820d080. Stop and wait for next.
+**T29 — DONE** on research-v2.2, baseline541804c with T28 DONE. Initial worktree clean and branch tracking origin/research-v2.2. Only Time Machine was authorized. T30–T34 were registered TODO, not implemented. Safe current-branch commit/push follows verification; never merge main. Stop after T29 and wait for next.
 
-## Problem and smallest change
+## Actual functionality
 
-The old window_ui.case_keys read an evaluation feature bank whose rows already passed future target-coverage filtering. Omitting label columns did not eliminate candidate-selection leakage. Old window_ui/predict/features/registry/evaluation code is preserved for frozen reproduction; active Case Explorer no longer calls its case_keys/predict_case.
+New independent pages/10_Time_Machine.py (eleventh navigation page), src/time_machine.py and src/time_machine_ui.py reuse unchanged T28 candidate/prediction/reveal APIs and metadata discovery. No offline Window Study or old case_keys/predict_case call is required. Dataset/model family/date/hour/A/B/1d3d7d controls show actual saved-model probabilities, historical contact/bin/recency/network/coverage statistics, model versions and label-information deadlines. Invalid sources/models/times produce explanatory empty/error states.
 
-Added src/asof_inference.py and src/asof_ui.py. Case Explorer uses the independent bridge and is available without Run Study. Offline metric/chart/download behavior remains within the original evaluation scope. Interface details are in ASOF_INFERENCE.md.
+Select→Predict→Freeze→Reveal is enforced in both UI and state controller. Predict does not read future outcomes. Freeze requires a completed prediction and serializes an immutable private record plusSHA256, binding selection version/model artifact versions and actual predictions. Reveal requires valid frozen integrity, independently calls explicit T28 backtest, and displays Contact/No Contact/Unknown with reason. Repeated Reveal reuses the same result; frozen probabilities/digest stay unchanged. Missing numeric historical fields serialize asnull, not fabricated zeros.
 
-## Interfaces and guards
+All relevant selection, source/data/model/evidence versions participate in context invalidation. Edits clear current prediction/freeze/outcome; actions recheck versions before/after and reject changed context. Future-data edits preserve an already frozen record, invalidate the active version, and give identical historical features/probabilities when re-predicted under the new version. Static archives cannot supply a credible live clock; prospective mode delegates to T28 and rejects verified_clock_required with no displayed probabilities.
 
-- as_of_candidates(processed,t,dataset_id=...):canonical dataset/time/pair keys exclusively from[t-1d,t) contacts, independent of all scans/labels/eligibility.
-- as_of_features(...,windows=(1,3,7)):reuse frozen snapshot_features bounded computation directly. Full selected past span required; no future horizon required. No evaluation cohort/bank/label table read or new inference cache.
-- read_model_contract and predict_as_of:verify dataset namespace/source time origin,24h target, feature/window contract, registry checksum and loaded calibration identity. Native manifest time metadata or exact unchanged study-record identity/time metadata is required. Training, validation, threshold and calibration label endpoints all participate in the max deadline; endpoint>=t or unverifiable provenance rejects. Existing study metadata is read-only; no old manifest is rewritten.
-- historical_blind_replay:simulate a specified study time with an already-valid model. prospective_inference:require independently verified aware clock anchor plus recent pre-t scans for both devices (default600s,max permitted3600s); no file-mtime/Study-Day guessing. Current archives have no verified live anchor and are explicitly rejected as live predictions.
-- reveal_outcome(...,backtest=True):separate future evidence query over(t,t+24h]. Explicit authorization is required before any read. Positive evidence is Contact; absent event is No Contact only with complete horizon/sufficient unique observed bins. Missing/low coverage or incomplete absence is Unknown. Outcome data never enter inference membership or features.
+Only session memory stores individual prediction/outcome records. No production model fit/save, new dataset acquisition or individual prediction export/upload. Old frozen statistical sources and T28 APIs are unchanged.
 
-## Verification
+## Tests and evidence
 
-Focused offline command:
-`.venv/bin/python -m pytest -q tests/test_asof_inference.py tests/test_asof_ui.py tests/test_window_ui.py tests/test_prediction.py tests/test_ui.py`
-Result:**48 passed in3.83s**. T28 adds27 small offline tests; existing compatibility tests retained. No unit test depends on network, large datasets or production models.
+Focused command:
+`.venv/bin/python -m pytest -q tests/test_time_machine.py tests/test_time_machine_ui.py tests/test_asof_inference.py tests/test_asof_ui.py`
+Result:**37 passed in3.65s**. Small offline synthetic fixtures only; no network/private source/model needed. Tests cover ordering and backend rejection, immutable copied payload/integrity, reveal-only future access, version/time/pair/window/model/mode/data invalidation, future perturbations with equal pre-t predictions,3 outcome states/explanations, archival realtime rejection and T28 leakage guards. Initial35 checks passed; adding complete model/version packets and Contact/No Contact UI cases brought focused total37.
 
 Full command:`.venv/bin/python -m pytest -q`
-Result:**223 passed in10.22s**.
+Result:**234 passed in11.95s**, including11-page navigation and all existing tests. No test failed during T29. Nonfatal PyArrow CPU-probe/bare Streamlit warnings remain.
 
-Tests cover t/future contact/observation and source-end perturbations with identical candidates, all bounded features and probabilities; deletion of all future rows; strict pre-t data-read filters; no evaluation-file IO; changed past histories allowing different inputs/probabilities;1d boundaries; wrong namespace/window/origin/hash; every label deadline including equality; missing provenance/scans and old-only/unknown pairs; unsupported target/test-selection provenance; fresh/stale/UTC prospective clocks; explicit reveal, endpoint labels and duplicated-scan Unknown negatives; independent page access and archive-live rejection.
+Manual real Copenhagen AppTest:Time Machine opens independently;1/3/7d Predict succeeds; Reveal disabled beforeFreeze; Freeze digest/probabilities unchanged after real outcome reveal; date changes clear active outputs; static prospective request refuses. This is local interface/inference evidence, not a new model-performance experiment. Receipt:/tmp/encounter-t29-check.json.
 
-Read-only genuine Copenhagen check at Study Day24:10,995 direct historical candidates vs7,482 old evaluation rows,3,513 formerly excluded candidates. An excluded pair received actual1/3/7d probabilities from unchanged saved models. This is inference verification, not a new experiment/performance claim. Actual page without Run Study displayed3 blind probabilities; prospective mode rejected with verified_clock_required. No production model fit/save was called.
-
-Preservation:all**444** existing files in models/reports/data processed/features match pre-task SHA256 and inventory; all**5** original local raw source files match frozen catalog SHA256. Git diff confirms all existing statistical sources and frozen research reports unchanged. Local verification receipts are in /tmp/encounter-t28-before.json, encounter-t28-real-check.json and encounter-t28-final-check.json; no private sample/probability report was added to Git.
-
-## Corrected failure
-
-Extended initial run:26 passed/1 UI test failed before app execution because AppTest resolved relative app.py against tests/app.py. Switched the test entrypoint to an absolute path and made new model-catalog path resolution independent of report-root/CWD. Rerun27 passed, then additional horizon/UTC guards and full compatibility48/full223 passed. T28 remained IN_PROGRESS until all final checks succeeded. Nonfatal PyArrow CPU-probe and bare Streamlit warnings persisted.
+Preservation:all444 existing models/reports/processed/features files retain pre-taskSHA256 and inventory;5 original raw files match frozen source catalog checksums. Git diff confirms frozen evaluation/statistical modules and T28 source unchanged. Before receipt:/tmp/encounter-t29-before.json. Existing main remains820d080; no merge authorized.
 
 ## Changed files
 
-New:src/asof_inference.py, src/asof_ui.py, tests/test_asof_inference.py, tests/test_asof_ui.py, ASOF_INFERENCE.md.
-Modified:pages/8_History_Window_Study.py (independent explorer route), AGENTS.md, TASKS.md, PROGRESS.md.
-No dependency changes, old statistical module edits, frozen report/model/evaluation data changes, refits or remote push.
+New:pages/10_Time_Machine.py, src/time_machine.py, src/time_machine_ui.py, tests/test_time_machine.py, tests/test_time_machine_ui.py, TIME_MACHINE.md.
+Updated:src/ui.py navigation;README operation link;AGENTS.md/TASKS.md/PROGRESS.md instructions and complete T29–T34 checklist. No dependency changes or alterations to old frozen reports/model weights/statistical code.
 
-## Residual risks and next suggestion
+## Remaining limitations and next task
 
-Current models were still trained on future-coverage-eligible offline populations; new candidate coverage may shift distribution and calibration. Old AP/ROC/Brier must not be applied as guarantees for all as-of candidates. Source scan coverage is an availability proxy, not continuous presence. Model-time and live-clock authenticity depend on trustworthy producer provenance; source snapshots must remain consistent during a call, and actual ingestion availability under delayed uploads/revisions needs upstream provenance. Relative static archives do not supply live wall-clock evidence. The frozen old case APIs remain legacy only and are not used by the active page.
+Current models were trained on future-observation-eligible populations; the enlarged as-of population has not been independently quality/calibration-audited. Known historical labels do not become unseen external validation simply because the UI uses blind ordering. Static archives lack trustworthy live UTC anchors and ingestion-arrival logs. Filesystem version markers catch normal edits/replacements; atomic snapshots and adversarial same-metadata edits are separate future work. Source snapshots must be stable during a call; event time alone does not prove actual past upload availability. Session-only frozen records do not survive session loss.
 
-Recommended next task (not started):independent evaluation of the as-of population plus auditable model/live-clock/source manifests. **STOP after T28; wait for next.** Local commit, if made, is identified in the final reply/Git history; no push authorized.
+These are disclosed limits, not relaxed guards. T29 delivers no newAP/ROC or source applicability claim. Next authorized-by-plan task:T30 — 预测质量与选择偏差审计, **not started**. T31–T34 also TODO. **STOP; wait for next.**
 
+## Publication
 
-## Subsequent publication authorization
-
-The user then instructed “以后做完全部推送”. Completed and verified tasks now default to safe commits and pushing all unpublished completed-task commits on their current development branch. This includes the completed T28 research-v2.2 branch; main remains820d080 unless separately authorized. The earlier no-push statements describe implementation-time scope and are superseded by this later instruction. No new task starts. Publication is verified in the execution reply/Git tracking state. Future explicit no-push instructions take precedence; raw/private/model artifacts remain excluded.
+Per explicit user instructions and standing authorization, safe completed T29 code/docs/tests are committed and pushed to research-v2.2 only after checks. Final commit and actual remoteSHA synchronization are reported in the execution reply/Git tracking state. Raw/model/individual/credential artifacts stay excluded; main is not merged.

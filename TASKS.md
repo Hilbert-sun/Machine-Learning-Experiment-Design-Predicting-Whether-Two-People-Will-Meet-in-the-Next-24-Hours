@@ -2,7 +2,7 @@
 
 Task IDs and titles follow the user's task-board screenshot. Dependencies and acceptance criteria below are the implementation plan derived from `PROJECT_SPEC.md`, rather than additional completed functionality.
 
-Current execution: **T28 — DONE**. Independent as-of inference only on research-v2.2 from820d080; all frozen T17–T27 artifacts/statistical sources preserved. No refit. Branch publication follows subsequent standing user authorization.223 full tests and48 focused compatibility checks pass; stop after T28.
+Current execution: **T29 — DONE**. Time Machine only onresearch-v2.2 after verified T28. Preserve frozen evidence; 37 focused and234 full tests pass; safe branch push, no main merge. Next:T30, not started.
 
 | Complete | ID | Task | Status | Dependencies | Acceptance criteria |
 | --- | --- | --- | --- | --- | --- |
@@ -34,5 +34,11 @@ Current execution: **T28 — DONE**. Independent as-of inference only on researc
 | [x] | T26 | 其他数据适配与合法性验证 | DONE | T24 | Verify Social Evolution/workplace source access, reading/quality, independent per-source eligibility without fabricated negatives. |
 | [x] | T27 | 研究交付与最终验证 | DONE | T25, T26 | Research/window/catalog reports, reproducible outputs and full tests; reviewed Git changes, no unauthorized push. |
 | [x] | T28 | Independent as-of-time inference | DONE | T27 | Direct1d historical candidates; bounded1/3/7d inputs without evaluation cohort/future coverage; dataset/window/all label-deadline guards; honest blind replay vs fresh anchored prospective mode; explicit independent outcome reveal; strict offline leakage tests and full pytest pass; frozen artifacts unchanged. |
+| [x] | T29 | Time Machine 历史预测模拟器 | DONE | T28 | Independent UI uses as-of candidates/features and saved models; Select→Predict→Freeze→Reveal ordering; all context/data/model versions invalidate old state; correct Contact/No Contact/Unknown explanations and live clock/freshness guard; Streamlit/T28/full tests pass. |
+| [ ] | T30 | 预测质量与选择偏差审计 | TODO | T29 | Separate all as-of candidates/reliably labeled/Unknown sets; daily funnels, paired1/3/7d metrics/reliability/error and population-bias diagnostics; local sample recomputation, no test retuning or unsupported significance. |
+| [ ] | T31 | 多数据集探索性研究 | TODO | T30 | Separate source quality/topology/positive-retrieval exploration, verified tick units/access/license; no invented negatives/AP or identity merging; clear descriptive vs predictive charts. |
+| [ ] | T32 | 数据处理和前端性能优化 | TODO | T31 | Measure real time/memory before/after; equivalent candidates/features/probabilities; safe version/time/window/policy caches and consistent snapshots; distinguish event and ingestion time; tests pass. |
+| [ ] | T33 | GitHub Actions 自动化测试 | TODO | T32 | Python3.11 public synthetic pytest/UI smoke and repository-safety CI; no private artifacts required; actual pushed commit Actions success verified, not merely claimed. |
+| [ ] | T34 | 最终科研验收与项目交付 | TODO | T33 | Audit T17–T33 evidence/frozen preservation; distinguish cohorts/prevalence/research scopes; final audit/reproduction/limits/index docs, full tests/security/remote CI, verified research branch push only. |
 
 T01 excludes Streamlit navigation/pages, dataset downloads, preprocessing, features, training and predictions. These belong to later tasks.
