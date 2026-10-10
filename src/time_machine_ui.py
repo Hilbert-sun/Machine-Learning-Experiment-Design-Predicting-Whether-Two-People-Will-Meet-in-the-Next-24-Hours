@@ -107,6 +107,8 @@ def render_time_machine(root,config):
     prediction=session.prediction()
     if prediction:
         st.subheader('历史预测（未作为新评估指标）')
+        if 'future_label_policy' in prediction:
+            st.caption(f"核验的未来标签策略：两端扫描覆盖均须达到{prediction['future_label_policy']['min_scan_coverage']:.0%}，才能判定无接触负例。")
         if any(r.get('source_kind')!='real_public_dataset' for r in prediction['models'].values()):
             st.warning('模型来源为合成测试或未核验类别；只展示实际计算结果，不作为真实研究证据。')
         for w,case in prediction['cases'].items():
@@ -115,6 +117,7 @@ def render_time_machine(root,config):
         st.caption('历史统计均来自t前；缺失统计保持未知。旧评估指标不能保证扩大候选总体的概率校准。')
         with st.expander('模型版本与标签信息截止时间'):
             st.json({'selection_version':prediction['selection_version'],'models':prediction['models'],
+                     'future_label_policy':prediction.get('future_label_policy'),
                      'label_information_ends':{w:c['label_information_ends'] for w,c in prediction['cases'].items()}})
         if session.frozen_sha256:
             st.success('预测已冻结：'+session.frozen_sha256)

@@ -2,42 +2,41 @@
 
 Date:2026-10-10 (Asia/Kuala_Lumpur)
 
-**T29 — DONE** on research-v2.2, baseline541804c with T28 DONE. Initial worktree clean and branch tracking origin/research-v2.2. Only Time Machine was authorized. T30–T34 were registered TODO, not implemented. Safe current-branch commit/push follows verification; never merge main. Stop after T29 and wait for next.
+**T29-FIX — DONE** on research-v2.2, baseline4bad994. Only the accepted Time Machine label-coverage propagation defect was fixed. T30–T34 remain TODO. Safe commit/push current research branch after verification; no main merge, production model retraining or data acquisition.
 
-## Actual functionality
+## Defect and fix
 
-New independent pages/10_Time_Machine.py (eleventh navigation page), src/time_machine.py and src/time_machine_ui.py reuse unchanged T28 candidate/prediction/reveal APIs and metadata discovery. No offline Window Study or old case_keys/predict_case call is required. Dataset/model family/date/hour/A/B/1d3d7d controls show actual saved-model probabilities, historical contact/bin/recency/network/coverage statistics, model versions and label-information deadlines. Invalid sources/models/times produce explanatory empty/error states.
+reveal_prediction() previously omitted min_scan_coverage, silently taking reveal_outcome's default0.5 even when a selected model used0.25/0.75. This could produce incorrect No Contact vsUnknown outcomes.
 
-Select→Predict→Freeze→Reveal is enforced in both UI and state controller. Predict does not read future outcomes. Freeze requires a completed prediction and serializes an immutable private record plusSHA256, binding selection version/model artifact versions and actual predictions. Reveal requires valid frozen integrity, independently calls explicit T28 backtest, and displays Contact/No Contact/Unknown with reason. Repeated Reveal reuses the same result; frozen probabilities/digest stay unchanged. Missing numeric historical fields serialize asnull, not fabricated zeros.
+make_prediction() now obtains each selected model's verified contract via unchanged T28 read_model_contract(). It checks dataset/window binding and requires all selected models' label coverage policies to agree; mixed policies raise label_coverage_policy_mismatch before any probabilities or outcome read. Arbitrary descriptor/widget threshold fields are ignored.
 
-All relevant selection, source/data/model/evidence versions participate in context invalidation. Edits clear current prediction/freeze/outcome; actions recheck versions before/after and reject changed context. Future-data edits preserve an already frozen record, invalidate the active version, and give identical historical features/probabilities when re-predicted under the new version. Static archives cannot supply a credible live clock; prospective mode delegates to T28 and rejects verified_clock_required with no displayed probabilities.
+The common future_label_policy (verified threshold,24h horizon, interval, verification source) and each model's verified_min_scan_coverage are stored in the prediction packet. Existing Freeze serializes the entire record and hashes it, so actual policy participates in integrity verification. Reveal validates the frozen policy/model/window consistency and forwards min_scan_coverage explicitly to T28 reveal_outcome; no freely provided/default threshold is used. Missing legacy policy rejects with a request toPredict/Freeze again. No future contact/scan data are needed to choose the policy.
 
-Only session memory stores individual prediction/outcome records. No production model fit/save, new dataset acquisition or individual prediction export/upload. Old frozen statistical sources and T28 APIs are unchanged.
+Prediction schema2 participates in context identity, invalidating pre-fix sessions and cached Reveal outcomes. UI displays the verified label threshold and exposes it in frozen model/selection details. Old session records are not silently relabeled under a new default.
 
-## Tests and evidence
+## Tests
 
 Focused command:
-`.venv/bin/python -m pytest -q tests/test_time_machine.py tests/test_time_machine_ui.py tests/test_asof_inference.py tests/test_asof_ui.py`
-Result:**37 passed in3.65s**. Small offline synthetic fixtures only; no network/private source/model needed. Tests cover ordering and backend rejection, immutable copied payload/integrity, reveal-only future access, version/time/pair/window/model/mode/data invalidation, future perturbations with equal pre-t predictions,3 outcome states/explanations, archival realtime rejection and T28 leakage guards. Initial35 checks passed; adding complete model/version packets and Contact/No Contact UI cases brought focused total37.
+`.venv/bin/python -m pytest -q tests/test_time_machine_coverage.py tests/test_time_machine.py tests/test_time_machine_ui.py tests/test_asof_inference.py tests/test_asof_ui.py`
+Result:**53 passed in5.71s**.
 
 Full command:`.venv/bin/python -m pytest -q`
-Result:**234 passed in11.95s**, including11-page navigation and all existing tests. No test failed during T29. Nonfatal PyArrow CPU-probe/bare Streamlit warnings remain.
+Result:**250 passed in14.07s**. All tests passed; no failure was hidden or a threshold weakened. Nonfatal PyArrow CPU-probe/bare Streamlit warnings persisted.
 
-Manual real Copenhagen AppTest:Time Machine opens independently;1/3/7d Predict succeeds; Reveal disabled beforeFreeze; Freeze digest/probabilities unchanged after real outcome reveal; date changes clear active outputs; static prospective request refuses. This is local interface/inference evidence, not a new model-performance experiment. Receipt:/tmp/encounter-t29-check.json.
+New16 regression cases cover the full0.25/0.5/0.75 x future0.4/0.6 no-contact matrix at service and Streamlit levels, both-endpoint minimum rather than averaging, freely supplied descriptor values ignored, mixed verified policies rejected before inference/reveal, frozen-policy tampering detected before future access, legacy missing-policy rejection and cached old-session invalidation.288 daily bins represent nominal0.4/0.6 by nearest115/173 bins; actual ratios are checked, not invented.
 
-Preservation:all444 existing models/reports/processed/features files retain pre-taskSHA256 and inventory;5 original raw files match frozen source catalog checksums. Git diff confirms frozen evaluation/statistical modules and T28 source unchanged. Before receipt:/tmp/encounter-t29-before.json. Existing main remains820d080; no merge authorized.
+Expected matrix:~0.4 future coverage gives No Contact under0.25 only;~0.6 gives No Contact under0.25/0.5. Other combinations are Unknown. Both endpoints must meet the model-specific frozen threshold and the horizon must be complete. Positive-event behavior, as-of candidate/feature/time/future-label isolation are unchanged.
 
-## Changed files
+Actual Copenhagen saved-model UI check:three0.5 contracts were independently verified, the rule recorded/displayed/frozen, Reveal completed with unchanged frozenJSON/digest. This is a read-only compatibility check, not new training or research metrics.
 
-New:pages/10_Time_Machine.py, src/time_machine.py, src/time_machine_ui.py, tests/test_time_machine.py, tests/test_time_machine_ui.py, TIME_MACHINE.md.
-Updated:src/ui.py navigation;README operation link;AGENTS.md/TASKS.md/PROGRESS.md instructions and complete T29–T34 checklist. No dependency changes or alterations to old frozen reports/model weights/statistical code.
+## Preservation and files
 
-## Remaining limitations and next task
+All444 pre-existing files in models/reports/processed/features retain identicalSHA256 and inventory. All5 original raw-source hashes match frozen catalog evidence. Git diff confirms T17–T27 frozen statistical/report files and T28 APIs unchanged. No production weights/manifests/data/individual predictions modified or uploaded. Preservation receipt:/tmp/encounter-t29-fix-before.json.
 
-Current models were trained on future-observation-eligible populations; the enlarged as-of population has not been independently quality/calibration-audited. Known historical labels do not become unseen external validation simply because the UI uses blind ordering. Static archives lack trustworthy live UTC anchors and ingestion-arrival logs. Filesystem version markers catch normal edits/replacements; atomic snapshots and adversarial same-metadata edits are separate future work. Source snapshots must be stable during a call; event time alone does not prove actual past upload availability. Session-only frozen records do not survive session loss.
+Runtime changes:src/time_machine.py and src/time_machine_ui.py only. Added tests/test_time_machine_coverage.py. Updated TIME_MACHINE.md plus AGENTS/TASKS/PROGRESS. No dependency or unrelated feature change.
 
-These are disclosed limits, not relaxed guards. T29 delivers no newAP/ROC or source applicability claim. Next authorized-by-plan task:T30 — 预测质量与选择偏差审计, **not started**. T31–T34 also TODO. **STOP; wait for next.**
+## Remaining limits and stop
 
-## Publication
+Existing source scan coverage remains an availability proxy; old models were trained on future-observation-eligible populations and are not newly validated/calibrated for all as-of candidates. Static archives lack live anchors and ingestion logs; ordinary file-version guards are not atomic snapshots. These previously documented limits are unchanged by this policy fix.
 
-Per explicit user instructions and standing authorization, safe completed T29 code/docs/tests are committed and pushed to research-v2.2 only after checks. Final commit and actual remoteSHA synchronization are reported in the execution reply/Git tracking state. Raw/model/individual/credential artifacts stay excluded; main is not merged.
+Task verification is complete; safe current-branch commit/push and actual remoteSHA match are reported in the execution reply/Git tracking state. **STOP after T29-FIX. Next:T30 — 预测质量与选择偏差审计, not started; wait for next.**

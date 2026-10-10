@@ -29,7 +29,7 @@ The user subsequently instructed: “以后做完全部推送” (push all compl
 
 ## Current authorized range
 
-T29 only was authorized and is DONE on research-v2.2, following published T28 at541804c. Time Machine is an independent eleventh page using unchanged T28 APIs, with Select→Predict→Freeze→Reveal, context/data/model-version invalidation and honest static-archive live rejection.37 focused and234 full local tests pass; genuine1/3/7d UI flow verified;444 prior artifact hashes/inventory and5 raw source checksums unchanged. No real model refit/data download. Safely commit/push current research branch per standing authorization, verify remote SHA, then STOP. T30–T34 are registered TODO; next is T30 prediction quality/selection-bias audit, not started. Never auto-merge main or overwrite frozen evidence.
+T29-FIX only was authorized and is DONE on research-v2.2 after T29 at4bad994. Verified model label-coverage policy now flows into integrity-protected frozen predictions and explicitReveal, with mixed-policy rejection and no default0.5 fallback.53 focused and250 full local tests pass;444 prior artifact hashes/inventory and5 raw checksums unchanged. T28 inference/frozen statistical modules preserved; no real model refit or acquisition. Safely commit/push this fix and verify remote SHA, then STOP. T30 remains TODO until next; no main merge.
 
 ## Prediction data contract
 
@@ -85,3 +85,9 @@ T29 only was authorized and is DONE on research-v2.2, following published T28 at
 - Date/hour, pair, dataset, mode, selected windows/models and normal data/model/evidence file-version edits reset active prediction/freeze/reveal state. Future edits may invalidate a version but cannot change the stored frozen record or pre-t features/probabilities on re-prediction.
 - Records are session-only and private, not Git artifacts. Model provenance and label deadlines are shown. Static archives reject live mode via T28 clock/freshness guards.
 - Version metadata checks before/after actions are not atomic ingestion snapshots or proof of historical upload availability. Those concerns/performance caches belong to T32; new population-quality audit belongs to T30. Do not implement those tasks during T29.
+
+## T29-FIX label coverage contract
+
+- Read each selected model's min_scan_coverage through unchanged T28 read_model_contract, not freely supplied row/widget values. Selected window policies must agree for a unified prediction/reveal; reject mixed policies before inference/outcome access.
+- Freeze common future_label_policy and per-model verified_min_scan_coverage alongside probabilities; the existing full frozen JSONSHA protects these fields. Reveal validates consistency and passes the frozen threshold explicitly to reveal_outcome. Missing/invalid legacy policy never falls back to0.5.
+- Prediction schema2 is included in context identity to invalidate old sessions, including cached pre-fix revealed outcomes. New Predict/Freeze is required. Coverage-policy metadata is known before prediction; actual future scan evidence is still read only by explicitReveal.

@@ -2,7 +2,7 @@
 
 Task IDs and titles follow the user's task-board screenshot. Dependencies and acceptance criteria below are the implementation plan derived from `PROJECT_SPEC.md`, rather than additional completed functionality.
 
-Current execution: **T29 — DONE**. Time Machine only onresearch-v2.2 after verified T28. Preserve frozen evidence; 37 focused and234 full tests pass; safe branch push, no main merge. Next:T30, not started.
+Current execution: **T29-FIX — DONE**. Verified model coverage policy must be consistent, frozen and forwarded toReveal; T28/frozen experiments preserved. 53 focused and250 full tests pass; T30 remains TODO. Stop after safe branch publication.
 
 | Complete | ID | Task | Status | Dependencies | Acceptance criteria |
 | --- | --- | --- | --- | --- | --- |
@@ -35,6 +35,7 @@ Current execution: **T29 — DONE**. Time Machine only onresearch-v2.2 after ver
 | [x] | T27 | 研究交付与最终验证 | DONE | T25, T26 | Research/window/catalog reports, reproducible outputs and full tests; reviewed Git changes, no unauthorized push. |
 | [x] | T28 | Independent as-of-time inference | DONE | T27 | Direct1d historical candidates; bounded1/3/7d inputs without evaluation cohort/future coverage; dataset/window/all label-deadline guards; honest blind replay vs fresh anchored prospective mode; explicit independent outcome reveal; strict offline leakage tests and full pytest pass; frozen artifacts unchanged. |
 | [x] | T29 | Time Machine 历史预测模拟器 | DONE | T28 | Independent UI uses as-of candidates/features and saved models; Select→Predict→Freeze→Reveal ordering; all context/data/model versions invalidate old state; correct Contact/No Contact/Unknown explanations and live clock/freshness guard; Streamlit/T28/full tests pass. |
+| [x] | T29-FIX | Time Machine 标签覆盖策略传递修复 | DONE | T29 | Read verified min_scan_coverage from every T28 model contract; reject mixed policies; freeze actual policy under integrity hash; Reveal uses frozen threshold with no default fallback;0.25/0.5/0.75 x future0.4/0.6 tests plus T28/T29/full tests pass; safe branch push only. |
 | [ ] | T30 | 预测质量与选择偏差审计 | TODO | T29 | Separate all as-of candidates/reliably labeled/Unknown sets; daily funnels, paired1/3/7d metrics/reliability/error and population-bias diagnostics; local sample recomputation, no test retuning or unsupported significance. |
 | [ ] | T31 | 多数据集探索性研究 | TODO | T30 | Separate source quality/topology/positive-retrieval exploration, verified tick units/access/license; no invented negatives/AP or identity merging; clear descriptive vs predictive charts. |
 | [ ] | T32 | 数据处理和前端性能优化 | TODO | T31 | Measure real time/memory before/after; equivalent candidates/features/probabilities; safe version/time/window/policy caches and consistent snapshots; distinguish event and ingestion time; tests pass. |

@@ -8,8 +8,10 @@ from pathlib import Path
 
 import numpy as np
 
-from src.asof_inference import InferenceError, NAMESPACES, predict_as_of, reveal_outcome
+from src.asof_inference import InferenceError, NAMESPACES, predict_as_of, read_model_contract, reveal_outcome
 from src.pipeline_cache import file_signatures
+
+PREDICTION_SCHEMA_VERSION = 2  # Invalidates pre-fix sessions, including cached Reveal results.
 
 
 def _clean(value):
@@ -45,7 +47,7 @@ def context_key(processed, source, models, timestamp, a, b, mode):
     dependencies=[]
     for row in models.values():
         dependencies.extend([Path(row['directory'])/'manifest.json',Path(row['directory'])/'model.joblib',Path(row['evidence_path'])])
-    record={'data_version':data_version(processed,source),'models':models,'model_versions':file_signatures(sorted(set(dependencies))),
+    record={'prediction_schema_version':PREDICTION_SCHEMA_VERSION,'data_version':data_version(processed,source),'models':models,'model_versions':file_signatures(sorted(set(dependencies))),
             'timestamp':int(timestamp),'pair':sorted((int(a),int(b))),'mode':mode}
     return hashlib.sha256(_encode(record).encode()).hexdigest()
 
@@ -118,11 +120,22 @@ def make_prediction(processed,models,timestamp,a,b,*,mode='historical_blind_repl
     """All probabilities/history come directly from T28; no outcome read here."""
     if not models:
         raise InferenceError('Choose at least one historical window.')
-    cases={}
+    contracts={}
+    expected=NAMESPACES.get(processed.report['dataset'])
     for window,row in sorted(models.items()):
-        expected=NAMESPACES.get(processed.report['dataset'])
         if row['window']!=window or row['dataset_id']!=expected:
             raise InferenceError('Selected model dataset/window mismatch.')
+        contract=read_model_contract(row['directory'],evidence_path=row['evidence_path'])
+        if contract.dataset_id!=expected or contract.history_window_days!=window:
+            raise InferenceError('Verified model dataset/window mismatch.')
+        contracts[window]=contract
+    coverages={c.min_scan_coverage for c in contracts.values()}
+    if len(coverages)!=1:
+        raise InferenceError('label_coverage_policy_mismatch: selected model windows require different future-label coverage; choose consistent models.')
+    policy={'schema_version':1,'horizon_hours':24,'interval':'(t,t+24h]',
+            'min_scan_coverage':next(iter(coverages)),'verification_source':'T28.read_model_contract'}
+    cases={}
+    for window,row in sorted(models.items()):
         cases[window]=predict_as_of(processed,row['directory'],timestamp,a,b,dataset_id=expected,history_window_days=window,
                                     mode=mode,evidence_path=row['evidence_path'],clock_anchor=clock_anchor,now_utc=now_utc)
     versions={}
@@ -130,16 +143,40 @@ def make_prediction(processed,models,timestamp,a,b,*,mode='historical_blind_repl
         manifest=json.loads((Path(row['directory'])/'manifest.json').read_text())
         record=json.loads(Path(row['evidence_path']).read_text())
         versions[w]={'name':row['model'],'run_id':row['run_id'],'artifact_version':manifest['version'],
-                     'artifact_sha256':manifest['sha256'],'source_kind':record.get('source_kind','unverified')}
-    return {'dataset_id':expected,'timestamp':int(timestamp),'pair':sorted((int(a),int(b))),
-            'mode':mode,'models':versions,'cases':cases}
+                     'artifact_sha256':manifest['sha256'],'source_kind':record.get('source_kind','unverified'),
+                     'verified_min_scan_coverage':contracts[w].min_scan_coverage}
+    return {'prediction_schema_version':PREDICTION_SCHEMA_VERSION,'dataset_id':expected,'timestamp':int(timestamp),'pair':sorted((int(a),int(b))),
+            'mode':mode,'models':versions,'cases':cases,'future_label_policy':policy}
+
+
+def _frozen_coverage(prediction):
+    """Consume the integrity-protected policy, never a current UI value or default.
+
+    Legacy session records without verified policy must be predicted/frozen again.
+    The enclosing TimeMachineSession verifies the full frozen JSON SHA before Reveal.
+    """
+    policy=prediction.get('future_label_policy')
+    models=prediction.get('models')
+    if not isinstance(policy,dict) or not isinstance(models,dict) or not models:
+        raise InferenceError('frozen_label_policy_missing: regenerate Predict and Freeze; no default coverage is permitted.')
+    threshold=policy.get('min_scan_coverage')
+    if (policy.get('schema_version')!=1 or policy.get('horizon_hours')!=24 or policy.get('interval')!='(t,t+24h]'
+        or policy.get('verification_source')!='T28.read_model_contract'
+        or isinstance(threshold,bool) or not isinstance(threshold,(int,float)) or not math.isfinite(threshold) or not 0<threshold<=1):
+        raise InferenceError('frozen_label_policy_invalid: regenerate Predict and Freeze.')
+    if set(map(str,models))!=set(map(str,prediction.get('cases',{}))):
+        raise InferenceError('frozen_label_policy_invalid: model/window evidence differs.')
+    if any(m.get('verified_min_scan_coverage')!=threshold for m in models.values()):
+        raise InferenceError('label_coverage_policy_mismatch: frozen selected model policies differ.')
+    return float(threshold)
 
 
 def reveal_prediction(processed,prediction):
     if prediction['mode']!='historical_blind_replay':
         raise InferenceError('Reveal is an explicit historical backtest, not prospective inference.')
+    threshold=_frozen_coverage(prediction)
     a,b=prediction['pair']
-    return reveal_outcome(processed,prediction['timestamp'],a,b,backtest=True)
+    return reveal_outcome(processed,prediction['timestamp'],a,b,backtest=True,min_scan_coverage=threshold)
 
 
 OUTCOME_REASONS={
