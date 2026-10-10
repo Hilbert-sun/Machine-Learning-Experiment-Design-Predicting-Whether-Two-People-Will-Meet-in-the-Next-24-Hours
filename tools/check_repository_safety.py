@@ -19,7 +19,8 @@ FROZEN_DOCUMENTS = ('RESEARCH_REPORT.md', 'WINDOW_STUDY.md', 'ASOF_INFERENCE.md'
 PRIVATE_FIELDS = {'user_id', 'participant_id', 'user_min', 'user_max', 'user_a', 'user_b', 'pair_id',
                   'person_a', 'person_b', 'label_24h', 'prediction_probability', 'p_xgboost', 'p_logistic_regression'}
 FORBIDDEN_EXTENSIONS = {'.parquet', '.joblib', '.pkl', '.pickle', '.sqlite', '.sqlite3', '.db', '.h5', '.hdf5',
-                        '.pt', '.pth', '.onnx', '.safetensors', '.npy', '.npz', '.pem', '.key', '.html', '.htm'}
+                        '.pt', '.pth', '.onnx', '.safetensors', '.npy', '.npz', '.bin', '.ubj', '.bst', '.model', '.cbm',
+                        '.pem', '.key', '.html', '.htm'}
 SECRET_PATTERNS = {
     'github-token': re.compile(r'\b(?:gh[pousr]_[A-Za-z0-9]{36,255}|github_pat_[A-Za-z0-9_]{60,255})\b'),
     'openai-style-key': re.compile(r'\bsk-(?:proj-|svcacct-)?[A-Za-z0-9_-]{24,}\b'),
@@ -75,7 +76,7 @@ def approved_reports(root, baseline=FROZEN_BASELINE):
 
 def _private_structure(value):
     if isinstance(value, dict):
-        return any(str(k).lower() in PRIVATE_FIELDS or _private_structure(v) for k,v in value.items())
+        return any(str(k).lower() in PRIVATE_FIELDS|{'learner','gradient_booster','gbtree_model_param'} or _private_structure(v) for k,v in value.items())
     if isinstance(value, list):
         return any(_private_structure(v) for v in value)
     return False
@@ -85,13 +86,13 @@ def check_content(name, content, allow_reports):
     problems = []
     path = PurePosixPath(name)
     marker = path.name=='.gitkeep' and content==b''
-    if path.parts[0] in {'data','models','.venv','venv','secrets','credentials'} and not marker:
+    if (path.parts[0] in {'data','models'} and not marker) or path.parts[0] in {'.venv','venv','secrets','credentials'}:
         problems.append('forbidden-private-path')
     if name=='.streamlit/secrets.toml' or path.name=='.env' or (path.name.startswith('.env.') and path.name!='.env.example'):
         problems.append('credential-file')
     if path.suffix.lower() in FORBIDDEN_EXTENSIONS:
         problems.append('forbidden-artifact-extension')
-    if content.startswith((b'PAR1', b'\x80\x04', b'\x80\x05', b'SQLite format 3', b'\x89HDF')):
+    if content.startswith((b'PAR1', b'\x80\x04', b'\x80\x05', b'SQLite format 3', b'\x89HDF', b'tree\nversion=')):
         problems.append('disguised-binary-artifact')
     if len(content)>MAX_BYTES:
         problems.append('oversized-file')

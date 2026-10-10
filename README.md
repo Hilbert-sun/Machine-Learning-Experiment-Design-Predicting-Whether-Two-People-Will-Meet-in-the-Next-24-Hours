@@ -329,7 +329,7 @@ MIT Reality Mining冷缓存峰值RSS439.69→318.36MiB，下降27.59%，达到25
 公共测试不依赖私人数据/模型；真实性能复现需合法同源本地档案、原保存模型和原测量收据。原baseline/已完成stage禁止覆盖。原始测量、权重副本、私人缓存与逐配对结果均留在忽略目录，仅三份安全聚合报告入Git。专项109项、全量307项通过。推送research-v2.2并核对远程SHA，不合并main。下一任务T33，尚未开始。
 
 
-## T33 — Public GitHub Actions CI（验收进行中）
+## T33 — Public GitHub Actions CI
 
 新增 [CI_VERIFICATION.md](CI_VERIFICATION.md) 说明测试清单、公开验证与本地真实研究复现的不同范围。工作流在research-v2.2的push/PR触发，采用Ubuntu/Python3.11和只读权限；unit-tests运行全量pytest，streamlit-smoke覆盖全部导航/交互，repository-safety检查实际Git索引、51份历史冻结公开材料及Gitleaks全可达历史/跟踪内容。没有私人数据/模型恢复、数据集下载、正式模型重训或main合并。
 
@@ -343,4 +343,4 @@ python -m tools.run_secret_scan
 
 最后一条仅下载经固定SHA256核验的官方Gitleaks软件，不下载研究数据；仅支持当前核验的Linux x64/macOS ARM64。macOS requirements-lock.txt不冒充Linux依赖锁。测试中的真实HTTP请求默认拒绝，downloader使用mock；安装依赖/扫描器可联网。仓库扫描不是形式化匿名性保证。
 
-目前本地307项原有测试及335项候选全量测试通过，远程验收仍待实际Actions。最终完成必须以最新提交SHA对应的三个Job全部success为准，不能用本地结果替代；详细实际运行记录将更新于CI_VERIFICATION.md。T34尚未开始。
+首次真实Linux实现运行 [38053176593](https://github.com/Hilbert-sun/Machine-Learning-Experiment-Design-Predicting-Whether-Two-People-Will-Meet-in-the-Next-24-Hours/actions/runs/38053176593) 全部成功：335项全量、61项页面、24项安全及12项原生依赖检查，pip check通过，51份冻结公开材料不变。最终工作流不恢复任何依赖/home/研究缓存，并增加模型格式拒绝测试。文档/配置提交也必须重跑三个Job，最终验收以最新SHA对应的真实Actions为准；详见CI_VERIFICATION.md及交付回复。T34尚未开始。

@@ -2,7 +2,7 @@
 
 Task IDs and titles follow the user's task-board screenshot. Dependencies and acceptance criteria below are the implementation plan derived from `PROJECT_SPEC.md`, rather than additional completed functionality.
 
-Current execution: **T33 — IN_PROGRESS**. Public CI/preflight/security/frozen evidence only. T32 dependency DONE; actual final-head Linux Actions success required. T34 not started.
+Current execution: **T33 — DONE at verified implementation8d0ea53 / run38053176593**; final delivery remains gated on a new successful Actions run for the final documentation/security commit. Three Linux jobs,335 full/61 smoke/24 safety/12 native tests and pip check passed.51 frozen files unchanged. T34 not started.
 
 | Complete | ID | Task | Status | Dependencies | Acceptance criteria |
 | --- | --- | --- | --- | --- | --- |
@@ -39,7 +39,7 @@ Current execution: **T33 — IN_PROGRESS**. Public CI/preflight/security/frozen 
 | [x] | T30 | 预测质量与选择偏差审计 | DONE | T29 | Separate all as-of candidates/reliably labeled/Unknown sets; daily funnels, paired1/3/7d metrics/reliability/error and population-bias diagnostics; local sample recomputation, no test retuning or unsupported significance. |
 | [x] | T31 | 多数据集探索性研究 | DONE | T30 | Separate source quality/topology/positive-retrieval exploration, verified tick units/access/license; no invented negatives/AP or identity merging; clear descriptive vs predictive charts. |
 | [x] | T32 | 数据处理和前端性能优化 | DONE | T31 | Measure real time/memory before/after; equivalent candidates/features/probabilities; safe version/time/window/policy caches and consistent snapshots; distinguish event and ingestion time; tests pass. |
-| [ ] | T33 | GitHub Actions 自动化测试 | IN_PROGRESS | T32 | Python3.11 public synthetic pytest/UI smoke and repository-safety CI; no private artifacts required; actual pushed commit Actions success verified, not merely claimed. |
+| [x] | T33 | GitHub Actions 自动化测试 | DONE | T32 | Python3.11 public synthetic pytest/UI smoke and repository-safety CI; no private artifacts required; actual pushed commit Actions success verified, not merely claimed. |
 | [ ] | T34 | 最终科研验收与项目交付 | TODO | T33 | Audit T17–T33 evidence/frozen preservation; distinguish cohorts/prevalence/research scopes; final audit/reproduction/limits/index docs, full tests/security/remote CI, verified research branch push only. |
 
 T01 excludes Streamlit navigation/pages, dataset downloads, preprocessing, features, training and predictions. These belong to later tasks.

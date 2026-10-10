@@ -40,6 +40,7 @@ def test_workflow_retains_complete_tests_and_minimal_read_only_permissions():
         for step in job['steps']:
             if 'uses' in step:
                 assert len(step['uses'].split('@')[-1])==40
+                assert 'cache' not in step.get('with',{})
             if 'run' in step:
                 assert '${{' not in step['run'] and '--ignore' not in step['run'] and ' -k ' not in step['run']
     commands='\n'.join(s.get('run','') for s in workflow['jobs']['unit-tests']['steps'])

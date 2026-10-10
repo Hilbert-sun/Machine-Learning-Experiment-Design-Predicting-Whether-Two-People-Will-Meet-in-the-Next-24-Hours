@@ -1,6 +1,6 @@
 # T33 — Public CI Verification
 
-Status: IN_PROGRESS. Baseline branch research-v2.2 at5f3be86bebe089af5dea9b671ce25fe8e0c279f0. Remote success has NOT yet been claimed. T34 not started.
+Status: implementation remotely verified; final delivery requires the NEW final-head run to pass after this documentation/configuration commit. Baseline research-v2.2 at5f3be86bebe089af5dea9b671ce25fe8e0c279f0. T34 not started.
 
 ## Test/data preflight
 
@@ -56,7 +56,7 @@ Inventory numbers describe actual preflight collection, not a hardcoded CI asser
 
 ## Workflow and scopes
 
-.github/workflows/ci.yml uses ubuntu-latest/Python3.11, official checkout/setup-python pinned to verified complete v6 commit SHAs, contents:read, persist-credentials:false, full Git history, bounded timeouts, push/PR targeting research-v2.2 plus optional workflow_dispatch. No pull_request_target, shell interpolation of PR text, PAT/license/dataset secrets, write permission, continue-on-error or pytest exclusions. libgomp1 provides Linux OpenMP runtime; ML libraries are not removed. Each ML job installs requirements.txt with pip, runs pip check; unit additionally verifies native imports and collects/runs the entire suite. setup-python's pip cache contains package downloads only, never research data/cache/models or personal credentials; runners do not restore private experiment caches.
+.github/workflows/ci.yml uses ubuntu-latest/Python3.11, official checkout/setup-python pinned to verified complete v6 commit SHAs, contents:read, persist-credentials:false, full Git history, bounded timeouts, push/PR targeting research-v2.2 plus optional workflow_dispatch. No pull_request_target, shell interpolation of PR text, PAT/license/dataset secrets, write permission, continue-on-error or pytest exclusions. libgomp1 provides Linux OpenMP runtime; ML libraries are not removed. Each ML job installs requirements.txt with pip, runs pip check; unit additionally verifies native imports and collects/runs the entire suite. The FINAL workflow restores no dependency/home/research caches; every runner installs its dependencies anew. The first implementation run used only public pip-download caching; it did not restore private data. Normal installer-created caches/toolchains are not historical research data or personal configuration.
 
 Three mandatory task-acceptance jobs:
 
@@ -80,6 +80,17 @@ This is a bounded repository/credential audit, not formal anonymity, comprehensi
 
 ## Real remote acceptance record
 
-Pending first implementation push. Required evidence: workflow name, repository, Run ID/URL, event, branch, exact head_sha, completed/success, each job conclusion, timestamps, actual test totals and dependency/safety results. Local passes and empty commit-status records do not substitute for Actions.
+Verified implementation run (read directly from GitHub API and complete job logs):
+
+- Repository: Hilbert-sun/Machine-Learning-Experiment-Design-Predicting-Whether-Two-People-Will-Meet-in-the-Next-24-Hours.
+- Workflow: Encounter Lab Public CI.
+- Run ID:38053176593; [actual run](https://github.com/Hilbert-sun/Machine-Learning-Experiment-Design-Predicting-Whether-Two-People-Will-Meet-in-the-Next-24-Hours/actions/runs/38053176593).
+- Branch:research-v2.2; event:push; head_sha:8d0ea53d87da17e23f76e3407ff654c1de7bd1c4.
+- status:completed; conclusion:success; started2026-10-10T12:46:08Z; completed/updated2026-10-10T12:48:50Z.
+- unit-tests success:335 passed in102.80s; native imports12 passed in2.17s; pip check reports no broken requirements.
+- streamlit-smoke success:61 passed in14.87s; pip check succeeds.
+- repository-safety success:24 tests passed in0.43s;51 frozen files unchanged; both Gitleaks history/index scans no credential findings after the documented exact digest exception; risky provider-token self-test rejected.
+
+This record proves ONLY that exact implementation commit. The new final commit additionally disables dependency-cache restoration and adds three model-format rejection cases; it MUST obtain its own successful run. Expected test totals are never substituted for final logs. The final SHA/run URL/result are verified again in the delivery reply and public Actions history; no further untested commit is appended.
 
 After an implementation run passes, its verified metadata can be recorded in a documentation commit. That new commit must itself run all three jobs successfully before final delivery. The final response/GitHub run attests the final SHA; a commit cannot contain its own future run ID without changing that SHA again. No unvalidated documentation commit is appended after final acceptance.
