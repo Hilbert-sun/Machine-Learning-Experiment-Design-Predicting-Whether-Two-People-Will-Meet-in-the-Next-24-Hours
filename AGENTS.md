@@ -25,7 +25,7 @@ The first execution was limited to T01 and is complete. The user subsequently au
 
 ## Current authorized range
 
-The user authorized and completed T23–T27 together, following prior T01–T22. All27 task statuses are DONE within explicitly documented source eligibility limits. Stop now; no new task or remote push automatically. Frozen T17–T22 evidence is preserved. T23 adds true backend research UI (new configurations validation-only) and T24 a source catalog. T25/T26 public source diagnostics are complete; that does not mean all sources support training. Reality Mining processed time ticks and scan evidence are unverified; Workplace7d evaluation days/online logs are insufficient; Social Evolution official live access/license/header remain unverified and no real file was acquired. Preserve these outcomes. Read RESEARCH_REPORT.md, WINDOW_STUDY.md, DATASET_CATALOG.md and reports/T27_VERIFICATION.json for delivery. Raw data/per-sample predictions/models stay local; no push was authorized.
+T28 only was authorized and is DONE on research-v2.2, based on published main820d080. Stop and wait for next; no push or further task authorized. Independent inference is in asof_inference.py/asof_ui.py, documented in ASOF_INFERENCE.md. Existing T17–T27 reports, models, evaluation data and statistical sources (including window_ui.py/window_features.py) remain frozen and unchanged. The old window_ui case_keys/predict_case APIs are offline/frozen legacy only: their candidate bank was filtered using future coverage, so they must not be reused for blind/prospective inference. The active Case Explorer uses direct pre-t contacts and can run without an offline study. Full pytest223 and focused compatibility48 passed;444 existing artifact hashes and5 original raw source checksums unchanged. No real model refit, network/download or remote push occurred.
 
 ## Prediction data contract
 
@@ -60,8 +60,16 @@ The user authorized and completed T23–T27 together, following prior T01–T22.
 ## Research edition delivery (T23–T27)
 
 - History Window Study default settings reuse verified frozen evidence. Altered settings produce separately versioned validation-only jobs. Never use displayed frozen test scores to choose new parameters/windows/coverage.
-- Future Case Explorer must read only historical feature banks and use times after the saved selection-information deadline. Read actual targets only on explicit backtest; unavailable target stays Unknown.
+- Case Explorer must generate candidates from[t-1d,t) contacts and bounded features from raw pre-t contacts/observations, never a future-filtered evaluation bank. Use times strictly after every saved training/selection-label deadline. Actual outcomes belong to the separate explicit-backtest reveal API; unreliable absence stays Unknown.
 - DatasetAdapter namespaces every source, validates schema/time/IDs and keeps calendar capacity separate from reliable observation. Unknown processed tick units must not become seconds/days. Missing contacts must not become negatives.
 - New public source downloads require verified license/real URL and a bounded schema probe first. Do not infer data license from a site's source-code footer, or infer access restriction from an outage. No bypass of restricted sources.
 - Manual imports validate before publishing and refuse replacement of existing raw files. Schema/time/license policy changes invalidate adapter caches. Parsed data and manifests are local except reviewed aggregate deliverables.
 - Full verification uses project .venv pytest, window_verify, research_delivery and real UI/export checks. Ten navigation pages are delivered. Research interfaces use hidden bounded-window model registries; legacy model UI contracts remain intact.
+
+## T28 as-of inference contract
+
+- Use as_of_candidates/as_of_features/predict_as_of; no evaluation cohort, eligibility field, future scan coverage or stored evaluation-bank membership may determine inference inputs. All reads constructing inputs are clipped strictly beforet.
+- Verify namespace, source time origin,24h target, bounded_window_v1 feature/window identity, saved model checksum/calibration identity and training/validation/threshold/calibration label endpoints. Unknown provenance or any endpoint>=t rejects. Existing metadata is adapted read-only; do not edit old manifests to invent earlier cutoffs.
+- historical_blind_replay is historical simulation, with an already time-valid model. prospective_inference requires an independently verified aware UTC anchor and fresh pre-t observations for both devices; file mtime/download date is not evidence. Static archives without an anchor reject live mode.
+- reveal_outcome is a separate explicit backtest action, never called by blind inference. Only adequately observed complete horizons justify negative outcomes; unique observed bins, not duplicate row counts, determine coverage.
+- Expanded as-of membership is not covered by old future-filtered-cohort performance/calibration guarantees. Re-evaluation and trusted live clock/feed provenance are suggested future work, not started by T28.

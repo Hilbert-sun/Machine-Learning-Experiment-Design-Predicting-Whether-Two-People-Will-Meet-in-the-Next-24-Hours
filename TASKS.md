@@ -2,7 +2,7 @@
 
 Task IDs and titles follow the user's task-board screenshot. Dependencies and acceptance criteria below are the implementation plan derived from `PROJECT_SPEC.md`, rather than additional completed functionality.
 
-Current execution: **T23–T27 — DONE**. All27 tasks completed within documented source-access/eligibility limits.196 tests pass;10-page real UI/export/startup checks and frozen36-model verification pass. Stop; no remote push.
+Current execution: **T28 — DONE**. Independent as-of inference only on research-v2.2 from820d080; all frozen T17–T27 artifacts/statistical sources preserved. No refit or push.223 full tests and48 focused compatibility checks pass; stop after T28.
 
 | Complete | ID | Task | Status | Dependencies | Acceptance criteria |
 | --- | --- | --- | --- | --- | --- |
@@ -33,5 +33,6 @@ Current execution: **T23–T27 — DONE**. All27 tasks completed within document
 | [x] | T25 | MIT Reality Mining 接入 | DONE | T24 | Verify legal source/schema/coverage; exploratory-only unless reliable negative observation evidence. |
 | [x] | T26 | 其他数据适配与合法性验证 | DONE | T24 | Verify Social Evolution/workplace source access, reading/quality, independent per-source eligibility without fabricated negatives. |
 | [x] | T27 | 研究交付与最终验证 | DONE | T25, T26 | Research/window/catalog reports, reproducible outputs and full tests; reviewed Git changes, no unauthorized push. |
+| [x] | T28 | Independent as-of-time inference | DONE | T27 | Direct1d historical candidates; bounded1/3/7d inputs without evaluation cohort/future coverage; dataset/window/all label-deadline guards; honest blind replay vs fresh anchored prospective mode; explicit independent outcome reveal; strict offline leakage tests and full pytest pass; frozen artifacts unchanged. |
 
 T01 excludes Streamlit navigation/pages, dataset downloads, preprocessing, features, training and predictions. These belong to later tasks.
