@@ -1,0 +1,89 @@
+{
+  "status": "passed",
+  "rtol": 1e-12,
+  "atol": 1e-12,
+  "integer_counts_and_candidate_order": "exact",
+  "operation_checks": [
+    {
+      "operation": "network:highschool2013",
+      "status": "passed"
+    },
+    {
+      "operation": "network:reality_mining_mendeley",
+      "status": "passed"
+    },
+    {
+      "operation": "network:workplace2015",
+      "status": "passed"
+    },
+    {
+      "operation": "network:workplace2013",
+      "status": "passed"
+    },
+    {
+      "operation": "retrieval:workplace2013",
+      "status": "passed"
+    },
+    {
+      "operation": "retrieval:workplace2015",
+      "status": "passed"
+    },
+    {
+      "operation": "candidates",
+      "status": "passed"
+    },
+    {
+      "operation": "features",
+      "status": "passed"
+    },
+    {
+      "operation": "predict_models",
+      "status": "passed"
+    },
+    {
+      "operation": "model_load",
+      "status": "passed"
+    },
+    {
+      "operation": "page_prepare",
+      "status": "passed"
+    },
+    {
+      "operation": "public_reports",
+      "status": "passed"
+    }
+  ],
+  "frozen_preservation": {
+    "protected_files": 836,
+    "frozen_public_and_private_reports": 106,
+    "status": "unchanged",
+    "report_hashes_sha256": "9571bc0df8461fde5ce0723676b6154b082dbf2266b3063cd876f1bad140acef"
+  },
+  "real_research": {
+    "T30": {
+      "status": "passed",
+      "candidate_rows": 38005,
+      "known": 27820,
+      "unknown": 10185,
+      "dates": 4,
+      "model_window_combinations": 9,
+      "checks": "per-row probabilities, exact masks/keys/counts, daily funnels, all metrics/reliability/subgroups/aggregates"
+    },
+    "T31": {
+      "status": "passed",
+      "score_files": 40,
+      "aggregate_rows": 117,
+      "exact_full_unique_records_pair_counts_node_edge_degree_component_sources": [
+        "highschool2013",
+        "reality_mining_mendeley",
+        "workplace2015",
+        "workplace2013"
+      ],
+      "optimized_run_id": "e9d1fce951d86ca0",
+      "checks": "all source states/topology/unique records, scores, complete rankings, hits/capture/reach and aggregates"
+    }
+  },
+  "intentional_record_changes": [
+    "prediction_schema_version2\u21923; source snapshot binding/time/ingestion status added; cases/models/label coverage policy unchanged"
+  ]
+}

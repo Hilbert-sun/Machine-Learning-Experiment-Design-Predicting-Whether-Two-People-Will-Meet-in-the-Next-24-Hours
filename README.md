@@ -307,3 +307,23 @@ HighSchool只有2个完整1d时点，短窗口结果仅有限描述；3/7d不运
 ```
 
 固定规则/时间/源哈希先冻结，纯历史排名保存后独立揭晓；重跑同协议核对原排名。无隐式下载。5份公开聚合输出可由本地522条时点/窗口/规则/K统计重算成117行；逐配对记录及交互HTML均忽略。小分组抑制不是形式化匿名保证。T28/T29/T31专项76项、全量282项测试通过，五来源真实页面验证通过。推送research-v2.2并核对远程SHA，不合并main。下一任务T32，尚未开始。
+
+
+## T32 — 性能、安全缓存与稳定档案快照
+
+见 [PERFORMANCE_AUDIT.md](PERFORMANCE_AUDIT.md)、[真实性能CSV](reports/performance/T32_BENCHMARK.csv)、[结果一致性](reports/performance/T32_PARITY.json) 和 [快照保障/限制](reports/performance/T32_SNAPSHOT_AUDIT.json)。每个真实路径/缓存状态5个独立进程，记录原生峰值RSS、中位耗时及范围；冷指应用缓存为空，未声称清空操作系统缓存。
+
+MIT Reality Mining冷缓存峰值RSS439.69→318.36MiB，下降27.59%，达到25%目标。Copenhagen热缓存1/3/7d特征0.7675→0.0159秒，Time Machine已保存模型预测0.7827→0.0391秒；均与同样热状态的冻结T31源码比较。冷候选/检索/模型加载等请求因完整哈希、只读快照和缓存校验而变慢，具体例外完整公开，不宣称所有路径都加速。
+
+候选/窗口/评分/排名/概率不变；整数和顺序精确一致，浮点容限1e-12。T30全38,005候选/9模型窗口组合及Known/Unknown/全部指标、T31全4来源唯一记录/图/配对频率/40份评分与完整排名/117行聚合结果均重现。36个冻结模型完整预测一致，836个受保护文件（含106份旧报告）不变。没有重训、调参或下载。
+
+稳定快照绑定规范化来源与模型版本；中途变更报source_snapshot_changed并取消结果/缓存发布。损坏的非活动副本从相同核验来源建立新版本；缓存损坏/临时文件不被接受。Time Machine仍遵循Select→Predict→Freeze→Reveal，schema3使旧活动记录失效；真实模型全流程、修改日期失效及静态档案实时拒绝已验证。事件时间回放缺少ingestion_time，不能代表当时的在线采集；检查后TOCTOU、跨文件实时原子采集和孤立缓存版本清理仍有限制。
+
+```bash
+.venv/bin/python -m pytest -q
+.venv/bin/python -m src.performance_benchmark --stage NEW_STAGE --repeats 5
+.venv/bin/python -m src.performance_benchmark --stage NEW_STAGE --cache-mode warm --repeats 5
+.venv/bin/python -m src.performance_audit
+```
+
+公共测试不依赖私人数据/模型；真实性能复现需合法同源本地档案、原保存模型和原测量收据。原baseline/已完成stage禁止覆盖。原始测量、权重副本、私人缓存与逐配对结果均留在忽略目录，仅三份安全聚合报告入Git。专项109项、全量307项通过。推送research-v2.2并核对远程SHA，不合并main。下一任务T33，尚未开始。

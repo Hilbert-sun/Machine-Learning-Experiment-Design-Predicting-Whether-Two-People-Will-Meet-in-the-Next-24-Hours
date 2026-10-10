@@ -10,6 +10,7 @@ def render(root):
     st.title('多数据集探索 · Multi-Dataset Exploration')
     st.warning('Descriptive Network Analysis / Observed Positive Retrieval。未记录接触保持 Unknown；检索捕获率不代表全部真实接触召回率。')
     result = load_public_results(root)
+    st.caption('聚合报告缓存按文件内容版本隔离；不缓存或显示其他会话的私人预测。')
     if result is None:
         st.info('尚无真实 T31 聚合报告。请在合法本地数据准备好后运行 python -m src.multisource_exploration。')
         return

@@ -1,0 +1,22 @@
+{
+  "version": 1,
+  "status": "stable_archive_snapshots_only",
+  "ingestion_time_status": "unavailable",
+  "source_identity": "namespace, normalized content hashes, processing/report policy, model/evidence content, protocol and prediction time",
+  "reads": "byte-verified read-only copied inputs; nested calculations require bound dependency subset",
+  "publication": "versioned hash-verified JSON/Parquet bundles; final pointer after outer snapshot check; interruptions keep prior pointers; corrupt inactive snapshot copies re-pin the same verified source into a new version",
+  "change_response": "source_snapshot_changed; discard pending cache pointers; do not display predictions; no silent retry",
+  "limitations": [
+    "No cross-file atomic capture guarantee from live writers; stable archive bytes required.",
+    "No atomic live acquisition, ingestion chronology or adversarial same-owner immutable filesystem guarantee.",
+    "A writer may change the live files after final verification; final-check/publication TOCTOU remains.",
+    "Concurrent processes may publish separate valid versions; no global multi-request transaction.",
+    "Orphan versions may remain after interruption; automatic eviction/retention not implemented."
+  ],
+  "preservation": {
+    "protected_files": 836,
+    "frozen_public_and_private_reports": 106,
+    "status": "unchanged",
+    "report_hashes_sha256": "9571bc0df8461fde5ce0723676b6154b082dbf2266b3063cd876f1bad140acef"
+  }
+}

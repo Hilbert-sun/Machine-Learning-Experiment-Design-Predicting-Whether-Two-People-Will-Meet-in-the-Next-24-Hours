@@ -111,7 +111,7 @@ Only the five exact reviewed reports/multisource filenames are whitelisted. T17â
     (Path(private) / 'T31_REPORT.html').write_text(body)
 
 
-def load_public_results(root):
+def _load_public_results(root):
     directory = Path(root) / 'reports/multisource'
     summary = directory / 'T31_SOURCE_SUMMARY.json'
     if not summary.exists():
@@ -120,3 +120,8 @@ def load_public_results(root):
     result['retrieval'] = pd.read_csv(directory / 'T31_RETRIEVAL_METRICS.csv').where(lambda f: f.notna(), None).to_dict('records')
     result['feasibility'] = json.loads((directory / 'T31_FEASIBILITY.json').read_text())
     return result
+
+
+def load_public_results(root):
+    from src.public_cache import load_public
+    return load_public(root, _load_public_results)

@@ -80,3 +80,8 @@ credentials*.json
 !reports/multisource/T31_RETRIEVAL_METRICS.csv
 !reports/multisource/T31_FEASIBILITY.json
 !reports/multisource/T31_PROTOCOL.json
+
+# T32: reviewed performance/parity/snapshot aggregates only. Measurements and caches stay private.
+!reports/performance/T32_BENCHMARK.csv
+!reports/performance/T32_PARITY.json
+!reports/performance/T32_SNAPSHOT_AUDIT.json

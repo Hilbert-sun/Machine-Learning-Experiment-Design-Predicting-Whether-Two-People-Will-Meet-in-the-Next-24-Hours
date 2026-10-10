@@ -24,8 +24,25 @@ class ContactSource:
     last: int
     unit: str
 
+    def iter_unique(self, expression=None):
+        """Drop repeated records before retaining detail; cross-batch keys remain exact."""
+        seen = set()
+        for frame in parquet_frames(self.path, ['dataset_id', 'timestamp', 'user_min', 'user_max'], expression):
+            if frame.empty:
+                continue
+            if set(frame.dataset_id) != {self.dataset_id}:
+                raise ValueError('Mixed dataset namespaces are forbidden.')
+            if (frame.user_min >= frame.user_max).any() or (frame.user_min < 0).any():
+                raise ValueError('Require valid canonical undirected pairs.')
+            frame = frame.drop_duplicates(['timestamp', *KEYS])
+            fresh = []
+            for key in frame[['timestamp', 'user_min', 'user_max']].itertuples(index=False, name=None):
+                fresh.append(key not in seen)
+                seen.add(key)
+            yield frame.loc[fresh].reset_index(drop=True)
+
     def read(self, expression=None):
-        frames = list(parquet_frames(self.path, ['dataset_id', 'timestamp', 'user_min', 'user_max'], expression))
+        frames = list(self.iter_unique(expression))
         frame = pd.concat(frames, ignore_index=True) if frames else pd.DataFrame(columns=['timestamp', *KEYS])
         if not frame.empty:
             if set(frame.dataset_id) != {self.dataset_id}:
@@ -53,6 +70,27 @@ def historical_scores(source, t, window):
     if window not in (1, 3, 7) or t - window * DAY < source.first:
         raise ValueError('insufficient_history: incomplete declared historical source span.')
     past = source.read((ds.field('timestamp') >= t - window * DAY) & (ds.field('timestamp') < t))
+    return _historical_scores(past, t, window)
+
+
+def historical_scores_multi(source, t, windows=(1, 3, 7)):
+    source.require_seconds()
+    if not windows or any(w not in (1, 3, 7) or t-w*DAY < source.first for w in windows):
+        raise ValueError('insufficient_history: incomplete historical source span.')
+    from src.snapshot_manager import snapshot_context
+    from src.safe_cache import SafeCache
+    with snapshot_context([source.path], {'dataset_id': source.dataset_id, 'timestamp': t, 'algorithm': ALGORITHM_VERSION}) as snapshot:
+        identity = {'object': 'positive_scores', 'dataset_id': source.dataset_id, 'source_hash': snapshot.hashes[str(source.path.resolve())],
+                    'timestamp': t, 'windows': list(windows), 'candidate_policy': '[t-1d,t)', 'unit': source.unit,
+                    'source_first': source.first, 'algorithm_version': ALGORITHM_VERSION, 'implementation': 'T32-stream1'}
+        def produce():
+            past = source.read((ds.field('timestamp') >= t-max(windows)*DAY) & (ds.field('timestamp') < t))
+            return {str(w): _historical_scores(past.loc[past.timestamp >= t-w*DAY], t, w) for w in windows}
+        result = SafeCache().get(identity, produce, guard=snapshot.check_live)
+        return {int(w): frame for w, frame in result.items()}
+
+
+def _historical_scores(past, t, window):
     candidates = past.loc[past.timestamp >= t - DAY, KEYS].drop_duplicates().sort_values(KEYS).reset_index(drop=True)
     columns = [*KEYS, *METHODS]
     if candidates.empty:

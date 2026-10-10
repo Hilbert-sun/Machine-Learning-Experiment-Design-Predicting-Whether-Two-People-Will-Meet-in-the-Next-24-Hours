@@ -16,6 +16,7 @@ from src.pipeline_cache import parquet_frames
 from src.temporal_split import TrainingDataError
 from src.window_cohort import DAY, KEYS, past_pairs
 from src.window_features import FEATURE_VERSION, WINDOW_FEATURES, snapshot_features
+from src.snapshot_manager import snapshot_context, processed_paths, model_paths, resolve_path, read_json
 
 MODES = ("historical_blind_replay", "prospective_inference")
 NAMESPACES = {"Copenhagen": "copenhagen", "SocioPatterns": "highschool2013"}
@@ -72,7 +73,12 @@ def as_of_candidates(processed, timestamp, *, dataset_id):
     t = _integer(timestamp, "timestamp")
     _source(processed, dataset_id)
     try:
-        pairs = past_pairs(processed, t, 1)
+        from src.safe_cache import SafeCache
+        path = processed.directory/'contacts.parquet'
+        with snapshot_context([path], {'dataset_id': dataset_id, 'timestamp': t, 'candidate_policy': '[t-1d,t)'}) as snapshot:
+            identity = {'object': 'asof_candidates', 'dataset_id': dataset_id, 'timestamp': t,
+                        'source_sha256': snapshot.hashes[str(path.resolve())], 'candidate_policy': '[t-1d,t)', 'version': 1}
+            pairs = SafeCache().get(identity, lambda: {'pairs': past_pairs(processed, t, 1)}, guard=snapshot.check_live)['pairs']
     except OSError as exc:
         raise InferenceError("historical_contact_evidence_missing") from exc
     if (pairs.user_min < 0).any() or (pairs.user_min >= pairs.user_max).any():
@@ -91,17 +97,28 @@ def as_of_features(processed, timestamp, *, dataset_id, windows=(1, 3, 7), min_s
         raise InferenceError("Windows must be distinct1/3/7-day integers.")
     if not np.isfinite(min_scan_coverage) or not 0 < min_scan_coverage <= 1:
         raise InferenceError("Coverage threshold must be in (0,1].")
-    keys = as_of_candidates(processed, t, dataset_id=dataset_id)
+    _source(processed, dataset_id)
+    from src.bounded_history import BANKS, bounded_reader
+    from src.safe_cache import SafeCache, frame_identity
+    prepared = BANKS.get()
+    if prepared is not None and prepared['directory'] == processed.directory.resolve() and prepared['t'] == t and prepared['coverage'] == min_scan_coverage and set(windows) <= set(prepared['banks']):
+        return {w: prepared['banks'][w].copy(deep=True) for w in windows}
     try:
         start = processed.report["source_timestamp_min"] - processed.report["time_origin_seconds"]
         if any(t-w*DAY < start for w in windows):
             raise InferenceError("insufficient_past_history: selected history span is incomplete.")
-        result = {}
-        for w in windows:
-            frame = snapshot_features(processed, keys, t, w, min_scan_coverage).to_pandas()
-            frame.attrs["history_window_days"] = w
-            result[w] = frame
-        return result
+        with snapshot_context(processed_paths(processed), {'dataset_id': dataset_id, 'timestamp': t, 'feature_version': FEATURE_VERSION}) as snapshot:
+            identity = frame_identity('asof_features', processed, t, list(windows), min_scan_coverage)
+            def produce():
+                keys = as_of_candidates(processed, t, dataset_id=dataset_id)
+                result = {}
+                with bounded_reader(processed, t, max(windows)):
+                    for w in windows:
+                        frame = snapshot_features(processed, keys, t, w, min_scan_coverage).to_pandas()
+                        frame.attrs['history_window_days'] = w
+                        result[str(w)] = frame
+                return result
+            return {int(w): frame for w, frame in SafeCache().get(identity, produce, guard=snapshot.check_live).items()}
     except (OSError, KeyError) as exc:
         raise InferenceError("historical_evidence_missing: restore validated contact/observation files.") from exc
 
@@ -114,7 +131,7 @@ def _read_model_contract(model_directory, *, evidence_path=None):
     Missing time provenance is a rejection, not a guessed early cutoff.
     """
     directory = Path(model_directory).resolve()
-    manifest = json.loads((directory/"manifest.json").read_text())
+    manifest = read_json(directory/"manifest.json")
     metadata = manifest.get("metadata", {})
     if metadata.get("test_used_for_selection") is True:
         raise InferenceError("model_information_unknown: test-informed selection is not supported by this time provenance.")
@@ -133,7 +150,7 @@ def _read_model_contract(model_directory, *, evidence_path=None):
     else:
         if evidence_path is None:
             raise InferenceError("model_information_unknown: verified training/validation/threshold label cutoffs are required.")
-        record = json.loads(Path(evidence_path).read_text())
+        record = read_json(evidence_path)
         if record.get("test_used_for_selection") is True:
             raise InferenceError("model_information_unknown: test-informed selection deadline is unverified.")
         mapping = record.get("model_artifacts", record.get("models", {}))
@@ -195,7 +212,7 @@ def _read_model_contract(model_directory, *, evidence_path=None):
     if coverage is None or not np.isfinite(coverage) or not 0 < coverage <= 1:
         raise InferenceError("Historical feature coverage policy is unknown.")
     origin = _integer(origin, "source time origin")
-    if sha256(directory/"model.joblib") != manifest["sha256"]:
+    if sha256(resolve_path(directory/"model.joblib")) != manifest["sha256"]:
         raise InferenceError("Model artifact checksum changed.")
     return ModelContract(dataset_id, days, ends, float(coverage), origin, manifest["sha256"], manifest.get("calibration_method"), evidence)
 
@@ -235,7 +252,7 @@ def _prospective_guard(processed, timestamp, pair, anchor, now_utc, max_age_seco
         raise InferenceError("recent_observations_missing: both devices require fresh pre-t observation evidence.")
 
 
-def predict_as_of(processed, model_directory, timestamp, a, b, *, dataset_id, history_window_days,
+def _predict_as_of(processed, model_directory, timestamp, a, b, *, dataset_id, history_window_days,
                   mode="historical_blind_replay", evidence_path=None, clock_anchor=None, now_utc=None, max_age_seconds=600):
     """Blind/realtime inference; never opens label tables, stored cohorts or evaluation banks."""
     t = _integer(timestamp, "timestamp")
@@ -264,7 +281,8 @@ def predict_as_of(processed, model_directory, timestamp, a, b, *, dataset_id, hi
         raise InferenceError("historical_scan_evidence_missing: both endpoints require pre-t scan evidence.")
     X = row.loc[:, WINDOW_FEATURES].copy()
     X.attrs["history_window_days"] = history_window_days
-    model = ModelRegistry.load(model_directory)
+    from src.readonly_models import load_model
+    model = load_model(model_directory)
     base = getattr(model, "base", model)
     if getattr(base, "feature_contract", None) != "bounded_window_v1" or model.feature_window_days != history_window_days or getattr(model, "method", None) != contract.calibration_method:
         raise InferenceError("Loaded model feature/window contract differs.")
@@ -273,6 +291,14 @@ def predict_as_of(processed, model_directory, timestamp, a, b, *, dataset_id, hi
             "information_deadline": contract.information_deadline, "label_information_ends": dict(contract.label_information_ends),
             "historical_features": X.iloc[0].to_dict(), "candidate_policy": "[t-1d,t) contacts only",
             "observation_note": "Positive historical scan evidence is required; partial coverage is not continuous device presence."}
+
+
+def predict_as_of(processed, model_directory, timestamp, a, b, *, dataset_id, history_window_days,
+                  mode='historical_blind_replay', evidence_path=None, clock_anchor=None, now_utc=None, max_age_seconds=600):
+    with snapshot_context(processed_paths(processed)+model_paths(model_directory, evidence_path),
+                          {'dataset_id': dataset_id, 'timestamp': int(timestamp), 'protocol': 'T28/T32-stable-archive'}):
+        return _predict_as_of(processed, model_directory, timestamp, a, b, dataset_id=dataset_id, history_window_days=history_window_days,
+                              mode=mode, evidence_path=evidence_path, clock_anchor=clock_anchor, now_utc=now_utc, max_age_seconds=max_age_seconds)
 
 
 def reveal_outcome(processed, timestamp, a, b, *, backtest=False, min_scan_coverage=0.5):

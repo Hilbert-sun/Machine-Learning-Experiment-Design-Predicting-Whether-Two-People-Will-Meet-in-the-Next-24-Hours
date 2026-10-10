@@ -24,7 +24,13 @@ def file_signatures(paths) -> list[dict]:
 
 
 def parquet_frames(path, columns, expression=None):
-    for batch in ds.dataset(path, format="parquet").to_batches(columns=columns, filter=expression, batch_size=65536):
+    from src.bounded_history import cached_batches
+    from src.snapshot_manager import resolve_path
+    batches = cached_batches(path, columns, expression)
+    if batches is None:
+        batches = ds.dataset(resolve_path(path), format="parquet").to_batches(columns=columns, filter=expression, batch_size=65536,
+                                                                            batch_readahead=1, fragment_readahead=1, use_threads=False)
+    for batch in batches:
         yield batch.to_pandas()
 
 

@@ -9,6 +9,7 @@ import streamlit as st
 from src.asof_inference import MODES, NAMESPACES, as_of_candidates, predict_as_of, read_model_contract, reveal_outcome
 from src.preprocessing import cached_dataset
 from src.window_ui import location, source_path
+from src.safe_cache import cached_json
 
 
 def available_models(root, config, dataset):
@@ -19,7 +20,7 @@ def available_models(root, config, dataset):
     records += list((reports/"ui_jobs").glob("*/result.json"))
     rows = []
     for path in sorted(records):
-        record = json.loads(path.read_text())
+        record = cached_json(path)
         mapping = record.get("model_artifacts", record.get("models", {}))
         for window, models in mapping.items():
             for name, directory in models.items():

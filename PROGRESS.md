@@ -2,61 +2,60 @@
 
 Date:2026-10-10 (Asia/Kuala_Lumpur)
 
-**T31 — DONE**, research-v2.2, baseline fa6c965. Only multi-source descriptive networks/observed-positive retrieval authorized. T32–T34 TODO. No refit, changed thresholds, invented negatives, or alteration to frozen T17–T30 statistical source/results/models. Safe branch publication and remote SHA verification, then STOP.
+**T32 — DONE**, research-v2.2, baseline5c745530e60b3cfda341b1878ebd98175e9aa223. Only performance, safe caching and stable archive snapshots authorized. No refit, downloads, changed scientific rules or frozen result replacement. T33–T34 remain TODO. Safe code/docs/three aggregate reports only; current-branch publication and remote SHA verification, then STOP.
 
-## Implementation and real evidence
+## Baseline first and actual measurements
 
-New src/positive_retrieval.py, multisource_exploration.py, multisource_report.py, multisource_ui.py, pages/11_Multi_Dataset_Exploration.py; now12 navigation pages. Reused DatasetAdapter v3, verified read-only catalog caches, Arrow time-filtered chunk IO, NetworkX and Plotly. No source acquisition. Copenhagen binary evidence remains frozen/separate.
+Before any performance code edits, captured850 original file hashes in ignored data/processed/performance/T32_PRESERVATION.json, generated immutable T32_INPUTS.json and T32_BASELINE.json, then froze its SHA in T32_BASELINE_RECEIPT.json. Verified all preexisting src hashes unchanged at this gate. Baseline covers12 genuine workloads x5 independent Python processes: four source networks; Workplace2013/2015 1/3/7d rankings; Copenhagen candidates/features/saved-model prediction/loading/selection-data preparation; public aggregate loading. All required local real sources/models were present; no synthetic substitution or download.
 
-Run **6d5df52b7fd76419**, real_public_dataset. Publisher pages rechecked: Workplaces seconds/20s intervals/CC0; HighSchool UNIXctime seconds/20s intervals/CC BY-NC-SA; Mendeley processed CC BY4.0 but no verified tick conversion. SocialEvolution overview/dictionary returned502; no actual lawful source/license/header/timezone/raw-only interpolation provenance verified. No bypass/download or successful integration claim. SourceSummary gives relative paths, hashes, schema, unit/origin and independent source status.
+Same Apple M5/16GiB/Python3.11.15 environment; native ru_maxrss captures Arrow/NumPy allocations, including interpreter/imports. Wall time excludes imports/setup. Cold=empty APPLICATION cache, not a claim to clear OS pages. Warm reference executes immutable T31 git-exported source at5c74553, with the same inputs and priming. Each mode has5 fresh processes, median/min/max reported. Baseline hardware receipt captures actual available-memory proxy3,124,461,568 bytes (free+inactive+speculative, not guaranteed allocatable memory). OS/desktop noise remains explicit.
 
-| Source | Contact IDs | Valid records | Unique canonical records | Pairs | Span days | Status |
-| --- | --- | --- | --- | --- | --- | --- |
-|Workplace2013|92|9,827|9,827|755|11.430787|positive_retrieval_ready; descriptive_ready|
-|Workplace2015|217|78,249|78,249|4,274|11.499306|positive_retrieval_ready; descriptive_ready|
-|HighSchool2013|327|188,508|188,508|5,818|4.207870|insufficient_history; descriptive_ready|
-|RealityMining processed|96|1,086,403|27,572|2,539|unknown|time_unit_unverified; descriptive_ready|
-|SocialEvolution|unknown|unknown|unknown|unknown|unknown|source_unavailable|
+Final series **optimized_release**; previous optimized/optimized_v2/optimized_final are retained diagnostic iterations, not final reported values. All timed implementation hashes match final code except the untimed report/audit generator. Performance comparisons use exactly identical input metadata/hashes and environments.
 
-Each Workplace has2 dates without contact records (not proven contact-free days). Complete1/3/7d+24h times9/7/3, nonempty candidates7/5/3, positive-pool times6/4/3. HighSchool times2/0/0. MIT ticks0–233 unconverted;1,058,831 exact repeats diagnosed, no time-based retrieval. No identity merging; exact canonical timestamp/pair repeats count once only in new analysis. Records are not physical meetings or conversations.
+| Operation | Cache | Before | After | Change |
+| --- | --- | --- | --- | --- |
+|RealityMining network peak RSS|cold|439.6875MiB|318.3594MiB|27.5942% reduction; meets25% target|
+|Copenhagen1/3/7d features|warm|0.767504s|0.015926s|97.9250% time reduction|
+|TimeMachine saved-model prediction|warm|0.782652s|0.039108s|95.0032% time reduction|
 
-## Fixed retrieval protocol and results
+Copenhagen features physical Parquet source opens7→3 cold; selected-model prediction9→3. Workplace multi-window ranks3→1. Warm private feature/ranking hits require0 raw Parquet event scans, but still verify opaque source bytes and cached payload hashes. Private payload reads reported separately. Model clones and public aggregate cache have distinct hit counters. No probability cache exists. Report24 cold/warm comparison rows, actual source rows/inventory bytes, processed Parquet rows, read/repeat counts, RSS/time ranges, versions and explicit exceptions.
 
-Fixed daily08:00 source-clock snapshots, K5/10/20, frequency/last-recency/common-neighbors, descending score/ascending namespace/minID/maxID ties. Source/processed/code hashes, versions, times and rules freeze first. Candidates only[t-1d,t), scoring/graphs only[t-window,t). Scores saved and rankings fixed BEFORE explicit backtest reads(t,t+24h]. No fitted estimator or implicit negative labels.
+Cold requests pay for snapshot hashing/copying, private bundle verification and isolated model loading: candidates0.009567→0.026207s, model loading0.01905→~0.0280s, selection-data preparation0.02118→~0.0399s; Workplace cold rankings also slower. These are explicit security exceptions, not hidden gains or comparisons against warm requests. Attribution is inferred from added work, not a separately timed decomposition. Whole Streamlit render/context-hash speed was not benchmarked; selection preparation was. Other measured paths/ranges are in PERFORMANCE_AUDIT.md and CSV. No all-path, cross-machine or significance claim.
 
-Capture@K divides observed hits by observed future positives IN the pool; capture-all and candidate reach separately use ALL future recorded positives. Empty denominator=null. Absent recorded contacts remain Unknown; no Accuracy/Precision/F1/AP/ROC/Brier/LogLoss. Public actual_k sums selected ranks across snapshots; private rows retain min(K,candidate_count) per time. Per_window dates differ; common_7d shares dates and1d candidates across windows.
+## Implemented safeguards and optimization
 
-Common_7d covers only3 dates per Workplace. Snapshot-pair totals (not distinct persons or independent trials):
+New snapshot_manager, safe_cache, bounded_history, readonly_models, public_cache, performance_benchmark and performance_audit modules. Relevant T28/T29/T31 data paths updated; frozen window_features/model_registry/evaluate/statistical code unchanged. Incremental exact canonical dedup and streamed graph statistics avoid retaining all repeated MIT rows. Arrow readahead bounded to1; a single max-history pre-t scan feeds independently filtered windows through original T20 math. Real source window/unit rules remain unchanged.
 
-| Source | Candidates | All observed future positives | In-pool | Outside-pool | Frequency Top20 hits1/3/7d | Capture@20 1/3/7d |
-| --- | --- | --- | --- | --- | --- | --- |
-|Workplace2013|458|469|147|322|31/34/35|0.210884/0.231293/0.238095|
-|Workplace2015|2,349|2,143|533|1,610|31/35/34|0.058161/0.065666/0.063790|
+Snapshot contexts copy/hash-verify normalized contacts/scans plus selected model manifest/weights/provenance, bind dataset/report/processing/protocol/timestamp identity, and require nested dependencies to be bound. Complete calculations read pinned bytes; source or active-copy change raises source_snapshot_changed and discards pending cache pointers/results. Corrupt INACTIVE copies re-pin the SAME verified source bytes into a fresh version without overwriting old files. No silent source-version retry.
 
-Candidate reach31.3433%/24.8717%. Outside-pool does not mean first-ever appearance. No significance/generalization or cross-source leaderboard. HighSchool two-date1d results flagged insufficient;3/7d skipped. Network components/density, broad degree/pair-frequency histograms, daily/repeat activity and mean bounded historical density are real aggregates.
+Private caches use versioned JSON/Parquet, content hashes, final commit manifest and atomic pointer; publishing waits for outer snapshot verification. Keys include relevant namespace/source/t/window/coverage/candidate/feature or algorithm policy. Corrupt/missing/incomplete caches recompute; interrupted writes retain previous valid pointers. Read-only model cache keys manifest/weights, rechecks dependency/object contract and returns clones. Model deadline/window/dataset/calibration/coverage/prospective clock guards always execute on prediction, including cache hits. Public aggregate memoization is hashed and copied; no shared private predictions.
 
-## Deliverables and reproduction
+TimeMachine schema3 binds snapshot identity/establishment/event-time and ingestion_time_status=unavailable in frozen records, invalidating old active sessions. Coverage policy and separate Reveal unchanged. Source changes during actions clear active UI state. Metadata/debug counters expose no individual predictions. Actual snapshot establishment/download/mtime/StudyDay are NOT ingestion time. DatasetCatalog explicit scans and frozen HistoryWindowStudy statistical/invalidation flows retained; no measured need justified rewriting them.
 
-MULTISOURCE_STUDY.md and README index. Five exact reviewed reports/multisource files: T31_SOURCE_SUMMARY.json, T31_NETWORK_METRICS.csv, T31_RETRIEVAL_METRICS.csv, T31_FEASIBILITY.json, T31_PROTOCOL.json. Only these filenames newly whitelisted; no participant/pair IDs. Small nonzero count/ratio families and histogram groups suppressed; this is not a formal anonymity guarantee.
+## Full real parity and frozen preservation
 
-Ignored data/processed/multisource/6d5df52b7fd76419 contains frozen protocol, per-time/window scores, future positive pairs, retrieval_rows.parquet, RESULTS.json and standalone T31_REPORT.html. All522 private time/window/method/K rows exactly recompute117 public aggregate rows. Public/private JSON agree; CSV agrees within1e-12 serialization tolerance after column alignment. Source/code hashes match protocol. Every private file Git-ignored. Real AppTest across all5 sources passed, including SocialEvolution with no placeholder metrics.
+T28/T29 baseline candidates, each feature column, scores/rank ordering, selected model probabilities, model metadata and future coverage policy reproduce (integer counts/order exact, float rtol=atol=1e-12). Schema3/source-binding fields are intentional new metadata; cases/models/probabilities unchanged. Real Copenhagen Select/Predict/Freeze/Reveal, immutable frozen JSON/hash, date invalidation and static-prospective verified_clock_required rejection passed.
 
-```bash
-.venv/bin/python -m src.multisource_exploration
-.venv/bin/python -m pytest -q tests/test_positive_retrieval.py tests/test_multisource_exploration.py tests/test_multisource_ui.py tests/test_asof_inference.py tests/test_asof_ui.py tests/test_time_machine.py tests/test_time_machine_ui.py tests/test_time_machine_coverage.py
-.venv/bin/python -m pytest -q
-```
+T30: all38,005 candidates over4 dates and9 model/window combinations match saved per-row probabilities/past statistics/validity masks. Future outcomes separately reconciled:27,820 Known/10,185 Unknown; daily funnels, AP/ROC/Brier/LogLoss, reliability/errors/subgroups and all summary fields reproduce. Unknown never becomes0.
 
-## Verification and corrected failures
+T31: all four actual canonical source record sets, per-pair counts, node IDs/edge sets/degrees/components match old full-concat dedup reference exactly.40 saved score files and COMPLETE rankings plus117 aggregate rows/source states/topology/hits/capture/reach reproduce. Optimized research run e9d1fce951d86ca0 writes only data/processed/performance/research/<run_id>/aggregate_export; old T31 reports/root study/old run untouched.
 
-Final focused **76 passed in7.02s**. Final full **282 passed in17.93s**.23 new T31 tests plus new router case cover future replacement/addition/deletion invariance, history changes, shared1d candidates, exact interval boundaries, dedup/stable ties, explicit reveal, Unknown/empty/disjoint pools, hand-counted Top5/10/20/actual_k, unverified ticks/incomplete windows, namespaces, disclosure, missing required source, corrupted cache, SocialEvolution provenance guard, freeze-before-reveal, repeatability/recomputation, aggregate exports, old sentinel and UI switching/unavailable states.
+836 protected old files, including106 prior public/private reports, unchanged from original850-file inventory; excluded14 files are explicitly authorized workflow/performance modules. No frozen raw data/model/features/report/statistical source changed. Read-only window_verify independently passes5 statistical stages and36 saved-model full prediction equivalence plus T17 immutability.
 
-Initial4 failed/17 passed: empty-window assertion selected a fixture time containing an edge, and three fixtures omitted citation. Corrected fixtures. Next1 failed/20 passed exposed NumPy group-key JSON serialization; normalized declared numeric metadata to Python int. Initial real run hit the same export failure before public results; final version reran successfully. Earlier full280 passed preceded two extra tests. Independent verification first compared sorted JSON column order with CSV insertion order; aligned fields, then all values passed. Status stayed IN_PROGRESS until checks passed. A progress-document patch rejected duplicate Delete/Add operations before changing that file; wrote it with one replacement. No unresolved failures; PyArrow sandbox CPU warnings nonfatal.
+## Tests and corrected failures
 
-Preservation snapshot /tmp/encounter-t31-before.json covers582 prior files. **576 protected files unchanged**, excluding six intentionally maintained workflow/navigation files(.gitignore,AGENTS,PROGRESS,TASKS,README,src/ui.py). Includes prior raw/processed/features/models/reports/statistical code. No old experiment rerun or overwritten. Final real recomputation/UI/safety receipt /tmp/encounter-t31-verification.json.
+Final focused **109 passed in20.77s**:
+`.venv/bin/python -m pytest -q tests/test_safe_cache.py tests/test_snapshot_consistency.py tests/test_performance_parity.py tests/test_streaming_performance.py tests/test_performance_benchmark.py tests/test_asof_inference.py tests/test_time_machine.py tests/test_time_machine_coverage.py tests/test_asof_audit.py tests/test_positive_retrieval.py tests/test_multisource_exploration.py tests/test_multisource_ui.py tests/test_time_machine_ui.py tests/test_asof_ui.py`
 
-## Limits, publication and stop
+Final full **307 passed in29.22s**: `.venv/bin/python -m pytest -q`.
+25 new tests cover exact chunk dedup (same-time different pairs/adjacent legal records), multi-window parity/boundaries, warm/miss equivalence, namespace/source/window/coverage/model changes, valid weight replacement, cached deadline/dependency checks, cloned model isolation, damaged/incomplete caches, interrupted pointer/measurement writes, mid-copy/mid-prediction source changes, deferred publication abort, corrupt inactive snapshot recovery, public same-mtime changes, unavailable ingestion provenance, immutable baseline and independent-process200,000-row synthetic RSS stress (not a real performance result).
 
-No independent scanner-online logs: Unknown cannot justify binary evaluation. Complete archive span is not continuous coverage or historical ingestion evidence. Only3 complete7d Workplace dates/2 short HighSchool dates; repeated users/pairs and different sensors limit conclusions. MIT units and SocialEvolution legal/raw provenance remain unresolved source-level limitations, not successful time experiments. Both required real Workplace experiments, quality/topology, UI, tests, recomputation and preservation pass within these stated limits; no current T31 task blocker.
+Initial T28–T31 regression4 failed/70 passed: empty Arrow batch incorrectly rejected as mixed namespace; two legacy anti-evaluation-read tests saw pandas API used on new private feature-cache payloads; persistent cross-fixture private cache prevented an expected instrumented source read. Fixed empty-batch handling, used direct verified Arrow reads for the NEW private cache (never evaluation banks), and added per-test private cache isolation. Existing leakage assertions remained unchanged; all then passed. One new stress test initially compared differing COLUMN order; aligned reference with the original ContactSource API, preserving exact row/count checks. Warm-reference export first rejected the archive root entry src; safely allowed that directory and reran frozen source export. No frozen measurements replaced. Mid-task full304/306 passes preceded added model-version/repair tests; final307 passes above. No unresolved failure. Nonfatal sandbox PyArrow CPU-probe warnings remain.
 
-Safe code/docs/five aggregate reports only committed/pushed to research-v2.2; actual remote SHA verified in execution reply/tracking state. No raw/model/pair/ranking/private HTML/credentials staged; no main merge. **STOP. Next:T32 — 数据处理和前端性能优化, not started.**
+## Deliverables, limits and publication
+
+PERFORMANCE_AUDIT.md and exactly three reviewed reports/performance files: T32_BENCHMARK.csv, T32_PARITY.json, T32_SNAPSHOT_AUDIT.json. README/TASKS/AGENTS updated. All raw measurements, host-sensitive input paths, source/model copies, cache bundles, private pickle parity receipts, predictions/scores and UI receipts remain under ignored data/processed/performance or t32_cache. No new dependencies, data acquisition or real fitting.
+
+Guarantee is stable TRUSTED archive consistency, not atomic live acquisition or historical ingestion chronology. An external writer can change files after final verification (TOCTOU); there is no global cross-file live transaction, adversarial same-owner immutability, atomic multi-pointer commit or power-loss durability guarantee. Orphan versions may remain after interruption; no automatic retention/cleanup policy. Full-archive source validation costs cold time; not every operation improves. These explicit limits do not weaken candidates, temporal checks, labels or metrics.
+
+Safe code/docs/aggregate-only current-branch commit/push; remote SHA verified in execution reply/tracking state. No datasets, model weights, per-pair outputs, keys or private paths staged. No main merge. **STOP. Next:T33 — GitHub Actions 自动化测试, not started.**

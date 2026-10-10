@@ -33,10 +33,29 @@ def grouped_histogram(values, bins, *, minimum=5):
 
 
 def network_summary(source):
+    from src.snapshot_manager import snapshot_context
+    with snapshot_context([source.path], {'dataset_id': source.dataset_id, 'adapter_version': ADAPTER_VERSION, 'operation': 'network_summary'}):
+        return _network_summary(source)
+
+
+def _network_summary(source):
     """One source at a time; Arrow chunk reads. Exact canonical duplicates count once."""
-    frame = source.read()
-    graph = nx.from_pandas_edgelist(frame, 'user_min', 'user_max')
-    pair_counts = frame.groupby(['user_min', 'user_max']).size()
+    graph = nx.Graph()
+    pair_counts, daily = Counter(), Counter()
+    day_pairs, pair_days = {}, {}
+    unique_records = 0
+    for frame in source.iter_unique():
+        unique_records += len(frame)
+        counts = frame.groupby(['user_min', 'user_max']).size()
+        pair_counts.update(counts.to_dict())
+        graph.add_edges_from(counts.index)
+        if source.unit == 'seconds':
+            for day, group in frame.groupby(frame.timestamp // DAY):
+                daily[int(day)] += len(group)
+                pairs = set(group[['user_min', 'user_max']].itertuples(index=False, name=None))
+                day_pairs.setdefault(int(day), set()).update(pairs)
+                for pair in pairs:
+                    pair_days.setdefault(pair, set()).add(int(day))
     degrees = list(dict(graph.degree()).values())
     components = [len(c) for c in nx.connected_components(graph)]
     seconds = source.unit == 'seconds'
@@ -45,22 +64,20 @@ def network_summary(source):
     if seconds:
         previous = set()
         for day in range(source.first // DAY, source.last // DAY + 1):
-            group = frame.loc[frame.timestamp // DAY == day]
-            pairs = set(group[['user_min', 'user_max']].itertuples(index=False, name=None))
+            pairs = day_pairs.get(day, set())
             # These source-level daily totals are public aggregates; tiny days are suppressed in full.
             activity.append({'study_day': day - source.first // DAY + 1,
-                             'records': len(group) if len(group) == 0 or len(group) >= 5 else None,
+                             'records': daily[day] if daily[day] == 0 or daily[day] >= 5 else None,
                              'active_pairs': len(pairs) if len(pairs) == 0 or len(pairs) >= 5 else None,
                              'previous_day_repeated_pairs': len(pairs & previous) if len(pairs & previous) == 0 or len(pairs & previous) >= 5 else None})
             previous = pairs
-        pair_days = frame.assign(day=frame.timestamp // DAY).drop_duplicates(['day', 'user_min', 'user_max']).groupby(['user_min', 'user_max']).size()
-        repeated = int((pair_days >= 2).sum())
+        repeated = sum(len(days) >= 2 for days in pair_days.values())
     return {'dataset_id': source.dataset_id, 'analysis_type': 'Descriptive Network Analysis',
-            'nodes': len(graph), 'edges': graph.number_of_edges(), 'unique_contact_records': len(frame),
+            'nodes': len(graph), 'edges': graph.number_of_edges(), 'unique_contact_records': unique_records,
             'components': len(components), 'largest_component_nodes': max(components, default=0),
             'density': nx.density(graph), 'mean_degree': sum(degrees) / len(degrees) if degrees else None,
             'degree_histogram': grouped_histogram(degrees, [(0, 5, '0–5'), (6, 20, '6–20'), (21, 50, '21–50'), (51, float('inf'), '>50')]),
-            'pair_record_histogram': grouped_histogram(pair_counts, [(1, 5, '1–5'), (6, 20, '6–20'), (21, 100, '21–100'), (101, float('inf'), '>100')]),
+            'pair_record_histogram': grouped_histogram(pair_counts.values(), [(1, 5, '1–5'), (6, 20, '6–20'), (21, 100, '21–100'), (101, float('inf'), '>100')]),
             'activity': activity, 'pairs_active_on_multiple_days': repeated,
             'time_activity_status': 'relative_study_days' if seconds else 'unavailable_unverified_tick_scale',
             'scope': 'Entire archived observed graph; never used as a historical ranking graph.'}
@@ -186,7 +203,9 @@ def run_study(root):
         raise ValueError('BLOCKED: required real Workplace source missing: ' + ','.join(missing_required))
     # Freeze full rules/time lists/hash provenance BEFORE any ranking or future reveal.
     run_id = hashlib.sha256(json.dumps(protocol, sort_keys=True).encode()).hexdigest()[:16]
-    private = root / config['paths']['processed'] / 'multisource' / run_id
+    published = root/'reports/multisource/T31_PROTOCOL.json'
+    t32_version = published.is_file() and json.loads(published.read_text()).get('code_sha256') != protocol['code_sha256']
+    private = root / config['paths']['processed'] / ('performance/research' if t32_version else 'multisource') / run_id
     private.mkdir(parents=True, exist_ok=True)
     frozen = private / 'PROTOCOL_FROZEN.json'
     if frozen.exists() and json.loads(frozen.read_text()) != protocol:
@@ -212,12 +231,17 @@ def run_study(root):
             by_window = base['prediction_times']
             common = by_window['7']
             window_status = {}
+            from src.positive_retrieval import historical_scores_multi
+            precomputed = {}
+            for t in sorted({t for times in by_window.values() for t in times}):
+                supported = tuple(w for w in (1, 3, 7) if t in by_window[str(w)])
+                precomputed[t] = historical_scores_multi(source, t, supported)
             for w in (1, 3, 7):
                 times = by_window[str(w)]
                 valid_times = 0
                 positive_times = 0
                 for t in times:
-                    scores = historical_scores(source, t, w)
+                    scores = precomputed[t][w]
                     # Freeze scores/rank inputs locally before explicit future access. No participant results published.
                     filename = private / f'{name}-{w}d-{t}-scores.parquet'
                     if filename.exists():
@@ -258,7 +282,8 @@ def run_study(root):
                   networks=networks, retrieval=aggregate_retrieval(detailed), feasibility=feasibility)
     _write_json(private / 'RESULTS.json', result)
     from src.multisource_report import write_report
-    write_report(result, root, private)
+    # Optimized source hashes NEVER replace the frozen T31 public files or root report.
+    write_report(result, private/'aggregate_export' if t32_version else root, private)
     return result
 
 

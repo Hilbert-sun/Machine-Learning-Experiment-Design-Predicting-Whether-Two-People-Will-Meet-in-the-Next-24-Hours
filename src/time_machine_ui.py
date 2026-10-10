@@ -9,11 +9,13 @@ from src.dataset_catalog import sources
 from src.preprocessing import cached_dataset
 from src.time_machine import TimeMachineSession,context_key,data_version,make_prediction,reveal_prediction,OUTCOME_REASONS
 from src.window_ui import location,source_path
+from src.snapshot_manager import SnapshotChanged
 
 
 def render_time_machine(root,config):
     session=st.session_state.setdefault('time_machine_session',TimeMachineSession())
     st.caption('Select → Predict → Freeze → Reveal。只预测匿名设备未来24小时接近；历史回放按记录事件时间模拟。')
+    st.caption('ingestion_time_status = unavailable：没有真实到达日志；这是历史事件时间回放，不能复现当时在线采集可用性。')
     datasets=['Copenhagen','SocioPatterns']+[s['name'] for s in sources(root) if s['dataset_id'] not in {'copenhagen','highschool2013'}]
     dataset=st.selectbox('Time Machine Dataset',datasets)
     def unavailable(message):
@@ -80,7 +82,11 @@ def render_time_machine(root,config):
         if current!=key:
             session.select(current)
             raise InferenceError('data_or_model_version_changed: reselect and predict.')
-        value=action()
+        try:
+            value=action()
+        except SnapshotChanged:
+            session.select('source_snapshot_changed')
+            raise
         current=context_key(processed,source,models,timestamp,int(a),int(b),mode)
         if current!=key:
             session.select(current)
@@ -104,6 +110,9 @@ def render_time_machine(root,config):
         except (ValueError,OSError,KeyError,RuntimeError) as exc:
             st.error(str(exc))
     stage_display.write('当前阶段：'+session.stage)
+    from src.safe_cache import cache_stats
+    with st.expander('缓存调试 · 仅运行计数'):
+        st.json(cache_stats())
     prediction=session.prediction()
     if prediction:
         st.subheader('历史预测（未作为新评估指标）')

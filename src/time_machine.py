@@ -8,10 +8,11 @@ from pathlib import Path
 
 import numpy as np
 
-from src.asof_inference import InferenceError, NAMESPACES, predict_as_of, read_model_contract, reveal_outcome
+from src.asof_inference import InferenceError, NAMESPACES, predict_as_of, read_model_contract, reveal_outcome, as_of_features
 from src.pipeline_cache import file_signatures
+from src.snapshot_manager import snapshot_context, processed_paths, model_paths, file_hash, read_json
 
-PREDICTION_SCHEMA_VERSION = 2  # Invalidates pre-fix sessions, including cached Reveal results.
+PREDICTION_SCHEMA_VERSION = 3  # Invalidates records predating pinned T32 source/model snapshots.
 
 
 def _clean(value):
@@ -39,7 +40,7 @@ def data_version(processed, source):
     paths=[Path(source),processed.directory/'contacts.parquet',processed.directory/'observations.parquet']
     present=[p for p in paths if p.is_file()]
     record={'directory':str(processed.directory.resolve()),'report':processed.report,
-            'files':file_signatures(present),'missing':[str(p) for p in paths if not p.is_file()]}
+            'files':{str(p.resolve()):file_hash(p) for p in present},'missing':[str(p) for p in paths if not p.is_file()]}
     return hashlib.sha256(_encode(record).encode()).hexdigest()
 
 
@@ -47,7 +48,7 @@ def context_key(processed, source, models, timestamp, a, b, mode):
     dependencies=[]
     for row in models.values():
         dependencies.extend([Path(row['directory'])/'manifest.json',Path(row['directory'])/'model.joblib',Path(row['evidence_path'])])
-    record={'prediction_schema_version':PREDICTION_SCHEMA_VERSION,'data_version':data_version(processed,source),'models':models,'model_versions':file_signatures(sorted(set(dependencies))),
+    record={'prediction_schema_version':PREDICTION_SCHEMA_VERSION,'data_version':data_version(processed,source),'models':models,'model_versions':{str(p.resolve()):file_hash(p) for p in sorted(set(dependencies))},
             'timestamp':int(timestamp),'pair':sorted((int(a),int(b))),'mode':mode}
     return hashlib.sha256(_encode(record).encode()).hexdigest()
 
@@ -116,7 +117,7 @@ class TimeMachineSession:
         return json.loads(self.outcome_json) if self.outcome_json else None
 
 
-def make_prediction(processed,models,timestamp,a,b,*,mode='historical_blind_replay',clock_anchor=None,now_utc=None):
+def _make_prediction(processed,models,timestamp,a,b,*,mode='historical_blind_replay',clock_anchor=None,now_utc=None):
     """All probabilities/history come directly from T28; no outcome read here."""
     if not models:
         raise InferenceError('Choose at least one historical window.')
@@ -135,18 +136,39 @@ def make_prediction(processed,models,timestamp,a,b,*,mode='historical_blind_repl
     policy={'schema_version':1,'horizon_hours':24,'interval':'(t,t+24h]',
             'min_scan_coverage':next(iter(coverages)),'verification_source':'T28.read_model_contract'}
     cases={}
-    for window,row in sorted(models.items()):
-        cases[window]=predict_as_of(processed,row['directory'],timestamp,a,b,dataset_id=expected,history_window_days=window,
-                                    mode=mode,evidence_path=row['evidence_path'],clock_anchor=clock_anchor,now_utc=now_utc)
+    if any(timestamp <= c.information_deadline for c in contracts.values()):
+        raise InferenceError('model_information_conflict: selected model label deadline is at or after t.')
+    # Preload each independent window once. Every predict call still verifies its complete model/time/clock contract.
+    from src.bounded_history import BANKS
+    banks=as_of_features(processed,timestamp,dataset_id=expected,windows=tuple(sorted(models)),min_scan_coverage=policy['min_scan_coverage'])
+    token=BANKS.set({'directory':processed.directory.resolve(),'t':timestamp,'coverage':policy['min_scan_coverage'],'banks':banks})
+    try:
+        for window,row in sorted(models.items()):
+            cases[window]=predict_as_of(processed,row['directory'],timestamp,a,b,dataset_id=expected,history_window_days=window,
+                                        mode=mode,evidence_path=row['evidence_path'],clock_anchor=clock_anchor,now_utc=now_utc)
+    finally:
+        BANKS.reset(token)
     versions={}
     for w,row in models.items():
-        manifest=json.loads((Path(row['directory'])/'manifest.json').read_text())
-        record=json.loads(Path(row['evidence_path']).read_text())
+        manifest=read_json(Path(row['directory'])/'manifest.json')
+        record=read_json(row['evidence_path'])
         versions[w]={'name':row['model'],'run_id':row['run_id'],'artifact_version':manifest['version'],
                      'artifact_sha256':manifest['sha256'],'source_kind':record.get('source_kind','unverified'),
                      'verified_min_scan_coverage':contracts[w].min_scan_coverage}
     return {'prediction_schema_version':PREDICTION_SCHEMA_VERSION,'dataset_id':expected,'timestamp':int(timestamp),'pair':sorted((int(a),int(b))),
             'mode':mode,'models':versions,'cases':cases,'future_label_policy':policy}
+
+
+def make_prediction(processed,models,timestamp,a,b,*,mode='historical_blind_replay',clock_anchor=None,now_utc=None):
+    paths=processed_paths(processed)
+    for row in models.values():
+        paths.extend(model_paths(row['directory'],row['evidence_path']))
+    with snapshot_context(paths,{'dataset_id':NAMESPACES.get(processed.report['dataset']),'timestamp':int(timestamp),
+                                 'preprocessing_version':1,'report_sha256':hashlib.sha256(_encode(processed.report).encode()).hexdigest(),
+                                 'protocol':'T28/T29/T32-stable-archive'}) as snapshot:
+        result=_make_prediction(processed,models,timestamp,a,b,mode=mode,clock_anchor=clock_anchor,now_utc=now_utc)
+        result['data_snapshot']=snapshot.public_identity()
+        return result
 
 
 def _frozen_coverage(prediction):
@@ -176,7 +198,8 @@ def reveal_prediction(processed,prediction):
         raise InferenceError('Reveal is an explicit historical backtest, not prospective inference.')
     threshold=_frozen_coverage(prediction)
     a,b=prediction['pair']
-    return reveal_outcome(processed,prediction['timestamp'],a,b,backtest=True,min_scan_coverage=threshold)
+    with snapshot_context(processed_paths(processed),{'dataset_id':prediction['dataset_id'],'timestamp':prediction['timestamp'],'action':'explicit_reveal'}):
+        return reveal_outcome(processed,prediction['timestamp'],a,b,backtest=True,min_scan_coverage=threshold)
 
 
 OUTCOME_REASONS={
