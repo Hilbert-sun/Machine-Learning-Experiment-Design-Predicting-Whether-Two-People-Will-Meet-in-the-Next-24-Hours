@@ -4,7 +4,9 @@
 
 A Python research application that asks whether a pair of anonymous devices will have a recorded proximity contact in the next 24 hours. It compares bounded historical windows, simulates historical predictions, and audits what incomplete observation lets us conclude. Device proximity is a proxy for encounters; this does not predict relationships or track live locations.
 
-T01–T34 are implemented and locally verified. **T34 final delivery** requires all three CI jobs to succeed at the current `research-v2.2` HEAD; the execution reply attests the observed final SHA/run without an extra unverified receipt commit.
+**T01–T34 已完成 / Research Edition 2.2 delivered.** T34 release commit `9f9164f` passed all three jobs in [Actions 38065140435](https://github.com/Hilbert-sun/Machine-Learning-Experiment-Design-Predicting-Whether-Two-People-Will-Meet-in-the-Next-24-Hours/actions/runs/38065140435): 384 full tests, 68 Streamlit smoke tests, 27 repository-safety tests and 12 native dependency checks. These are observed counts for that commit; later commits require their own CI.
+
+本项目包含可交互的 Streamlit 科研前端：查看接触网络与数据质量、比较 1/3/7 天历史窗口，并用 Time Machine 独立完成历史预测、冻结与实际结果揭晓。真实数据和模型权重仅保存在本地，GitHub 提供代码、已审查的聚合报告和公开测试。
 
 ## Research and implemented features
 
@@ -36,6 +38,29 @@ T32 measured five separate processes per configuration on the same machine/input
 ## Architecture and stack
 
 Python, pandas, NumPy, scikit-learn, XGBoost and LightGBM provide preparation, baselines, model persistence and synthetic/native regression coverage. Copenhagen window results use XGBoost, logistic regression and historical frequency; LightGBM is supported but is not the reported window-study winner. NetworkX supports historical networks; Streamlit and Plotly provide the application. Parquet/PyArrow and SHA256 snapshot/cache identities preserve data contracts. [Actual module architecture](PORTFOLIO_GUIDE.md).
+
+## 前端预览 / Frontend walkthrough
+
+前端由 Python + Streamlit 构建，图表使用 Plotly，页面导航在 [app.py](app.py) 和 [src/ui.py](src/ui.py) 中定义。无需额外构建 JavaScript 应用；后端推理与研究逻辑位于独立的 src 模块。
+
+安装依赖后运行：
+
+```sh
+streamlit run app.py
+```
+
+打开终端显示的本地地址，默认是 http://localhost:8501。应用提供中文优先的深色界面和 12 个导航页面；窗口较窄时，其余页面收纳在顶部的 more 菜单中。
+
+建议按以下顺序查看：
+
+1. **Overview**：查看本地数据、匿名参与者/接触记录规模和整体分布。
+2. **History Window Study**：保留默认配置，点击 Run Study 读取并验签已有冻结结果，查看同一队列的 1/3/7 天比较。匹配的本地数据、模型和运行记录是必要条件。
+3. **Time Machine**：选择历史研究日、配对及窗口，按 Select → Predict → Freeze → Reveal 操作。揭晓不足以验证无接触时显示 Unknown；静态档案不作为实时预测。
+4. **Multi-Dataset Exploration**：查看各来源的描述网络与正接触检索，区分可用、历史不足、时间单位未知和不可用状态。
+
+首次克隆没有真实数据或模型时，相关页面显示明确空状态；公共报告与测试仍可直接查看。T30 审计通过文档和聚合表呈现，没有单独的应用页面。完整操作说明见 [五分钟演示](DEMO_GUIDE.md) 和 [分级复现指南](REPRODUCIBILITY.md)。
+
+查看前端代码时，从 app.py 的导航进入下面各页面；Time Machine 的具体交互在 [src/time_machine_ui.py](src/time_machine_ui.py)，多数据集展示在 [src/multisource_ui.py](src/multisource_ui.py)。
 
 ## Application pages
 

@@ -29,7 +29,7 @@ The user subsequently instructed: “以后做完全部推送” (push all compl
 
 ## Current authorized range
 
-The user authorized T34 phase two with 二阶段. Phase one f49db01f1115428fc68f031c1819098ef24ae3dc passed Actions38063195569 (377 unit/61 smoke/27 safety/12 native checks). Close the documented Case Explorer coverage-policy defect using existing verified inference services, run regression/full/safety checks and browser visual acceptance, then update final status and safely commit/push research-v2.2. Final DONE acceptance requires this final commit's own three successful jobs at exact remote HEAD; repair and reverify failures, never substitute old CI. Preserve all frozen reports/models/statistical code, no refits/downloads/main merge/tags/new task. STOP after final CI success; do not append an untested receipt commit.
+T34 completed at9f9164fe12a3d93ae39e1f2f5789c8ce7e1856e8 with Actions38065140435 (384 unit/68 smoke/27 safety/12 native). The new user request authorizes one README/frontend-preview maintenance task: update GitHub README on research-v2.2, verify focused docs/safety and this commit's CI, safely commit/push, and open README/frontend source plus a localhost preview for the user. No new UI feature, data download, training, main merge, deployment or T35 is authorized. Keep T17–T34 research artifacts intact. Leave the requested localhost preview available for the user; stop after publication/verification.
 
 ## Prediction data contract
 

@@ -1,3 +1,19 @@
+# Encounter Lab — Latest Progress
+
+Date:2026-10-11 (Asia/Kuala_Lumpur)
+
+**README-FRONTEND — DONE locally; awaiting this documentation commit's own CI.** User requested GitHub README update and opening files/frontend. T34 remains DONE:9f9164fe12a3d93ae39e1f2f5789c8ce7e1856e8 / Actions38065140435 actually completed/success (384 unit/68 smoke/27 safety/12 native), reverified before editing.
+
+README now includes a Chinese frontend introduction, actual Streamlit/Plotly structure, startup/local URL, four-step viewing route, missing-data states, source entry points and the accepted T34 record. Research metrics/limitations unchanged. Changed only README.md, AGENTS.md, TASKS.md and this progress file. No UI/source/data/model/report changes, new research task or main merge.
+
+Verification:39 focused documentation/public-audit tests passed in2.00s; public CLI PASS with51 trusted frozen objects unchanged. Existing internal links,12 navigation paths and scientific metric claims pass. Exact staged-index safety PASS (195 files,44 approved reports,51 frozen objects); pinned Gitleaks history/index scans and provider-risk self-test PASS.191 other pre-existing tracked files remain byte-identical. New SHA/run is attested in the execution reply. No new low-impact mirror tests were added.
+
+Opened README.md, app.py and src/time_machine_ui.py in Codex panels (queued by the app). The actual local frontend at http://127.0.0.1:8514 was loaded, its Overview heading/real aggregate cards visually checked, shown using Browser visibility and marked as a deliverable. A queued app-browser tab initially lacked an attached webview; a fresh tab successfully loaded the app. Keep the localhost-only preview running for the user's requested inspection. Its cache stays outside Git; no private/pair screenshots or data are published.
+
+Safely push current research-v2.2 only and verify its own three CI jobs at the exact remote head. Report the new run in the final reply without another unvalidated receipt commit. Stop after this maintenance task; no deployment, new features, training, data acquisition or branch merge. Previous scientific completion evidence follows as a historical record.
+
+---
+
 # Encounter Lab — Final Progress
 
 Date: 2026-10-10 (Asia/Kuala_Lumpur)

@@ -2,7 +2,7 @@
 
 Task IDs and titles follow the user's task-board screenshot. Dependencies and acceptance criteria below are the implementation plan derived from `PROJECT_SPEC.md`, rather than additional completed functionality.
 
-Current execution: **T34 — DONE locally; final publication gated on this final commit's own CI.** Phase one f49db01 passed run38063195569. Phase two fixes the Case Explorer verified-coverage handoff, passes384 full tests and real browser visual acceptance of five critical pages, preserves frozen materials, and publishes only safe changes. The final execution reply must verify exact remote HEAD and all3 successful jobs before final DONE acceptance. STOP after success; no new task/main merge.
+Current execution: **README-FRONTEND — DONE locally; publication requires this new head's CI.** README frontend guide and source/local preview opened;39 focused documentation/public-audit tests passed. T01–T34 remain DONE. Safely publish research-v2.2 and attest its own exact-head CI. No new research task or main merge.
 
 | Complete | ID | Task | Status | Dependencies | Acceptance criteria |
 | --- | --- | --- | --- | --- | --- |
@@ -43,3 +43,9 @@ Current execution: **T34 — DONE locally; final publication gated on this final
 | [x] | T34 | 最终科研验收与项目交付 | DONE | T33 | Audit T17–T33 evidence/frozen preservation; distinguish cohorts/prevalence/research scopes; final audit/reproduction/limits/index docs, full tests/security/remote CI, verified research branch push only. |
 
 T01 excludes Streamlit navigation/pages, dataset downloads, preprocessing, features, training and predictions. These belong to later tasks.
+
+## Post-delivery maintenance
+
+| ID | Task | Status | Dependencies | Acceptance criteria |
+| --- | --- | --- | --- | --- |
+| README-FRONTEND | GitHub README 更新与前端查看 | DONE | T34 | Document actual frontend startup/navigation/source and accepted T34 evidence; focused docs/public-audit/safety checks pass; safely publish research-v2.2 and verify own CI; open README and frontend source/live localhost preview. No research or UI feature change. |
