@@ -29,7 +29,9 @@ The user subsequently instructed: “以后做完全部推送” (push all compl
 
 ## Current authorized range
 
-T33 only authorized; implementation8d0ea53 remotely verified DONE by push run38053176593 (all three jobs success;335 unit/61 smoke/24 safety/12 native checks, pip check). FINAL DELIVERY still requires the NEW final documentation/security commit to pass all jobs at its exact SHA; never substitute this older run for new-head acceptance. First successful run evidence in CI_VERIFICATION.md; final response attests the final current-head run. No extra unvalidated commit after acceptance. T34 not started; STOP after safe research-v2.2 push and final CI/SHA verification, never merge main.
+The user resumed T34 phase one with 继续 after preserving partial work. Continue only the phase-one implementation/verification/publication scope below; phase two remains unauthorized.
+
+T34 phase one only: implement final public audit and documentation, run full local tests and read-only local research checks, preserve all frozen evidence, commit/push research-v2.2 and verify this exact head's three CI jobs. Keep T34 IN_PROGRESS even after phase-one CI succeeds. Do not perform phase two (DONE status commit), merge main, refit models, download data or begin another task. T33 final accepted baseline is ae623111871407a74185777f4d3a74c642b0dcde / Actions38054089678. Historical CI never substitutes for current-head validation.
 
 ## Prediction data contract
 

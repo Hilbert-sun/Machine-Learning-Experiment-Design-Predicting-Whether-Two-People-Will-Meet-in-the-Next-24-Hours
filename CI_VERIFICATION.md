@@ -1,6 +1,6 @@
 # T33 — Public CI Verification
 
-Status: implementation remotely verified; final delivery requires the NEW final-head run to pass after this documentation/configuration commit. Baseline research-v2.2 at5f3be86bebe089af5dea9b671ce25fe8e0c279f0. T34 not started.
+Status: T33 final delivery remotely verified at ae623111871407a74185777f4d3a74c642b0dcde. T34 phase one requires a NEW current-head run; historical T33 success is not T34 acceptance.
 
 ## Test/data preflight
 
@@ -70,7 +70,7 @@ Jobs must all conclude success for the FINAL head SHA. This task does not change
 
 The scanner reads actual Git index blobs, including force-added ignored files; .gitignore alone is insufficient. Reject private data/model/cache paths (empty directory markers only), Parquet/joblib/pickle/database/weights/HTML/env/key files, disguised binary magic, large files, private pair/sample JSON/CSV structures, malformed report structures, common credential patterns and personal home paths. Reports are limited to44 exact reviewed names read from the TRUSTED historical baseline .gitignore, not the candidate's potentially edited ignore rules. Future legitimate report additions require explicit policy review.
 
-Frozen protection compares44 prior public reports plus7 research documents against commit5f3be86bebe089af5dea9b671ce25fe8e0c279f0 using SHA256 of Git blobs. The expected bytes are taken from that immutable historical commit, never regenerated from the current candidate. Changed/deleted evidence fails. This public CI cannot inspect ignored genuine data/weights or rerun the actual research. Full local commands such as window_verify, asof_audit --verify-only and performance_audit need lawful matching sources, saved36 models and private artifacts; they are not run or imitated by CI.
+Frozen protection compares44 prior public reports plus7 research documents against commit5f3be86bebe089af5dea9b671ce25fe8e0c279f0 using SHA256 of Git blobs. The expected bytes are taken from that immutable historical commit, never regenerated from the current candidate. Changed/deleted evidence fails. This public CI cannot inspect ignored genuine data/weights or rerun the actual research. Read-only local commands window_verify and asof_audit --verify-only need lawful matching sources, saved36 models and private artifacts; they are not run or imitated by CI.
 
 Gitleaks8.30.1 comes from the official release, exact archive SHA256 checked before extracting only its executable. The scanner runs with redaction and failure exit status; all reachable commits in checkout refs plus exact index export are scanned. A runtime-generated inert GitHub-token shape must be rejected inside a normally reviewed report path before real scanning. No online credential verification and no inaccessible/deleted server-side history audit is claimed.
 
@@ -80,17 +80,15 @@ This is a bounded repository/credential audit, not formal anonymity, comprehensi
 
 ## Real remote acceptance record
 
-Verified implementation run (read directly from GitHub API and complete job logs):
+The latest T33 accepted run was rechecked through GitHub during T34 preflight:
 
-- Repository: Hilbert-sun/Machine-Learning-Experiment-Design-Predicting-Whether-Two-People-Will-Meet-in-the-Next-24-Hours.
-- Workflow: Encounter Lab Public CI.
-- Run ID:38053176593; [actual run](https://github.com/Hilbert-sun/Machine-Learning-Experiment-Design-Predicting-Whether-Two-People-Will-Meet-in-the-Next-24-Hours/actions/runs/38053176593).
-- Branch:research-v2.2; event:push; head_sha:8d0ea53d87da17e23f76e3407ff654c1de7bd1c4.
-- status:completed; conclusion:success; started2026-10-10T12:46:08Z; completed/updated2026-10-10T12:48:50Z.
-- unit-tests success:335 passed in102.80s; native imports12 passed in2.17s; pip check reports no broken requirements.
-- streamlit-smoke success:61 passed in14.87s; pip check succeeds.
-- repository-safety success:24 tests passed in0.43s;51 frozen files unchanged; both Gitleaks history/index scans no credential findings after the documented exact digest exception; risky provider-token self-test rejected.
+- SHA: ae623111871407a74185777f4d3a74c642b0dcde; branch research-v2.2; event push.
+- Run ID: 38054089678; [GitHub Actions run](https://github.com/Hilbert-sun/Machine-Learning-Experiment-Design-Predicting-Whether-Two-People-Will-Meet-in-the-Next-24-Hours/actions/runs/38054089678).
+- Status completed, conclusion success; started 2026-10-10T13:00:48Z, updated 2026-10-10T13:03:35Z.
+- unit-tests: 338 passed; 12 native dependency checks; pip check successful.
+- streamlit-smoke: 61 passed; all 12 navigation pages included; pip check successful.
+- repository-safety: 27 passed; 51 frozen files unchanged; history/index Gitleaks passed.
 
-This record proves ONLY that exact implementation commit. The new final commit additionally disables dependency-cache restoration and adds three model-format rejection cases; it MUST obtain its own successful run. Expected test totals are never substituted for final logs. The final SHA/run URL/result are verified again in the delivery reply and public Actions history; no further untested commit is appended.
+The earlier implementation run 38053176593 at 8d0ea53 passed 335/61/24 tests and is historical evidence only.
 
-After an implementation run passes, its verified metadata can be recorded in a documentation commit. That new commit must itself run all three jobs successfully before final delivery. The final response/GitHub run attests the final SHA; a commit cannot contain its own future run ID without changing that SHA again. No unvalidated documentation commit is appended after final acceptance.
+T34 phase one must push its own implementation commit and verify all three jobs at that exact SHA. Its run ID cannot be known before the commit exists; report the observed SHA, run URL and counts in the execution reply without creating another unverified documentation commit. T34 remains IN_PROGRESS until the separately authorized phase two status commit and its own CI succeed.

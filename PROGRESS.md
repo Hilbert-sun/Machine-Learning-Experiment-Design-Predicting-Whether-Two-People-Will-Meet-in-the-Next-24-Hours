@@ -1,54 +1,43 @@
 # Encounter Lab — Progress
 
-Date:2026-10-10 (Asia/Kuala_Lumpur)
+Date: 2026-10-10 (Asia/Kuala_Lumpur)
 
-**T33 — implementation verified DONE; FINAL delivery gated on new-head CI.** Branch research-v2.2, initial trusted baseline5f3be86. Actual push run38053176593 for8d0ea53 succeeded in all3 Linux jobs. This final documentation/security/cache-restoration update must itself get a new completed/success run at its exact SHA before the final reply. T34 not started; no main merge, real data download, formal model refit or frozen result changes.
+**T34 — IN_PROGRESS / phase one awaiting this implementation commit's remote CI.** The user resumed with 继续 after saving partial work. Only phase one is authorized: implement/audit/test, safe commit and push research-v2.2, verify all three jobs at the new exact SHA, then STOP. Do not perform phase two DONE confirmation. The accepted starting commit is ae623111871407a74185777f4d3a74c642b0dcde (T33 run38054089678); its CI does not establish T34 acceptance.
 
-## Implemented public CI
+## Delivered implementation and documentation
 
-.github/workflows/ci.yml supports push/PR to research-v2.2 and optional dispatch, Ubuntu/Python3.11, read-only contents, verified full-SHA official checkout/setup-python, persist-credentials=false, full Git history and10/20-minute timeouts. Final version restores NO dependency/home/research caches. Each ML job installs requirements.txt anew, pip check and libgomp1; macOS ARM64 requirements-lock.txt is documented but not used as a Linux lock. No new constraint is fabricated, no native XGBoost/LightGBM coverage removed, no skip/ignore/-k or continue-on-error.
+- src/final_audit.py is a read-only public CLI: validate historical frozen Git bytes first, then reconcile T17/T21/T22/T30 CSV/JSON metrics and cohort prevalence, the T30 reliable/predictable/Unknown partitions, T31 source/time/retrieval/network formulas, T32 before/after arithmetic/cache modes/snapshot limitations, and historical T33 evidence references. Output safe aggregate JSON only; fail nonzero with a located inconsistency. No source/model reads, fitting, network or report rewriting.
+- Public output explicitly says public_aggregate_verified and not_verifiable_without_local_artifacts. It does not claim independent raw reconstruction or query current Actions.
+- Added tests/test_final_audit.py and tests/test_documentation.py: public-only execution, frozen tampering/deletion, count/formula/Unknown/source failures, valid local links, all12 real navigation paths, metric claims, inference/reveal semantics and unchanged CI/security policies.
+- FINAL_RESEARCH_AUDIT.md indexes T17–T33 with evidence, populations, contracts, real results and limits. REPRODUCIBILITY.md defines public/saved-local/interactive levels and verified read-only commands. PORTFOLIO_GUIDE.md diagrams actual boundaries; DEMO_GUIDE.md offers a bounded five-minute script. FINAL_RELEASE_CHECKLIST.md keeps both phases distinct.
+- README.md now presents Research Edition2.2; prior README preserved as historical DEVELOPMENT_HISTORY.md. CI_VERIFICATION.md records the actual accepted final T33 run; TASKS.md and AGENTS.md preserve phase-one scope.
+- No UI feature, new dependency, dataset acquisition, model refit, threshold selection, main merge or tag.
 
-Three required task-acceptance jobs: unit-tests(full collection/full pytest and native imports), streamlit-smoke(all12 navigation pages plus specified interactive/empty/coverage cases), repository-safety(stdlib scanner/pytest only, frozen evidence and pinned Gitleaks). No PAT, dataset keys, cloud credentials, write permissions or untrusted PR-text shell interpolation. Branch protection/settings unchanged.
+## Tests and checks actually performed
 
-Original307 tests collected; fresh tracked-only export passed307 in29.07s with no data/models/private runs/venv. Candidate335 passed locally31.22s and clean Git-index clone31.32s with ENCOUNTER_CI_PUBLIC=1. All existing test modules/assertions retained. Default pytest requests/urllib HTTP guards prevent live dataset requests; downloads use mocks. New tests check fresh-runner artifacts, workflow invariants, actually tracked forbidden files, binary/model disguises, risk-shaped inert credentials, frozen historical commits and exact digest-exception scope. Final3 extra model-format rejection cases expand candidates to338, locally338 passed in31.29s; no fixed307 assertion.
+- Full `.venv/bin/python -m pytest -q`:377 passed in33.34s.
+- New audit/documentation focused suite:39 passed in1.85s.
+- Workflow-equivalent Streamlit smoke command (the10 explicit existing UI test files):61 passed in7.60s, covering all12 registered pages and interactive/empty/coverage cases.
+- Repository safety rejection tests:27 passed in1.45s. Actual staged-index scanner PASS:195 tracked files,44 approved reports and51 frozen objects unchanged. Pinned Gitleaks provider rejection self-test plus full reachable-history and exact index scans PASS. Current-head remote CI is still pending and will be attested in the execution reply.
+- pip check: no broken requirements. Public CLI PASS:51 frozen public objects,117 retrieval aggregate rows and24 benchmark aggregate rows checked; distinct test/population counts260170/25569/38005/27820/10185/27802.
+- Read-only `python -m src.window_verify`: exit0, five stages,36 saved-model full-prediction equivalence checks, metric recomputation and statistical freeze passed; T17 unchanged.
+- Read-only `python -m src.asof_audit --verify-only`: exit0; all T30 aggregate metrics/funnels/reliability/errors reproduced from frozen private samples. These are saved-artifact checks, not a new raw acquisition/reconstruction.
+- Real-local-artifact AppTest semantic review: Overview (3 charts), Catalog, History Window Study (8 frozen charts), Time Machine (actual saved1/3/7d model Predict→Freeze→Reveal, frozen probabilities unchanged), Multi-Dataset Exploration (real graphs and unavailable-source empty state). No individual receipts/screenshots are published.
+- Preservation inventory:2708 protected pre-existing files unchanged out of2713 entries (only the five current doc/progress files allowed to change).44 public reports and7 research documents match trusted T32 commit5f3be86; original research/statistical source, local data/model weights and experiment files preserved. CI workflow, Gitleaks policy, scanner and existing security tests unchanged.
+- Local temporary receipts use encounter-t34-* filenames outside Git. Arrow sandbox CPU-cache sysctl warnings occurred during successful real-artifact checks; they were not test failures.
 
-## Safety and frozen scientific evidence
+## Failures found and repaired
 
-New tools/check_repository_safety.py scans actual staged/tracked Git blob bytes, including force-added ignored files. Reject private data/model/cache paths, nonempty markers, virtualenv/secrets, serialized/native weights including XGBoost JSON and LightGBM text, disguised Parquet/database payloads, HTML/env/keys, large files, private pair/label JSON/CSV fields and personal home paths. Only44 exact reviewed aggregate-report names from trusted historical .gitignore are approved. Compare44 reports plus7 research documents against immutable commit5f3be86 using SHA256, never current-candidate-generated hashes. Deletion/tampering fails. Future frozen changes require separate authorization.
+Initial saved test draft had invalid parametrization syntax and failed collection; corrected. After adding stricter duplicate-source comparisons, one negative test expected a later error rather than the earlier CSV inconsistency; corrected expected location. A public-only missing-input fixture initially omitted trusted Git metadata and failed at historical object lookup; fixture now supplies read-only object access and verifies the missing frozen filename is reported. Final suites pass; no assertions or CI rules were weakened. README's nonexistent LICENSE link was removed; project code licensing is explicitly unspecified.
 
-New tools/run_secret_scan.py downloads official Gitleaks8.30.1 with verified exact platform archive SHA256, extracts executable only and scans ALL reachable Git history plus exact index export with redaction/fail status. No private logs/credentials are committed. Runtime inert GitHub-token fixture under a reviewed report pathname must produce github-pat finding and fail exit before real scanning; no online credential validation.
+## Outstanding acceptance and scientific limits
 
-First unconfigured history scan FAILED with39 generic-api-key findings. Each historical JSON line verified:28 sample_key_hash and11 key_hash values, all64-hex SHA256 generated by window_cohort.row_hash. Five frozen paths/13 exact digest values are excluded only by generic-rule AND(path, exact metadata field/value line); every provider/default rule remains enabled. No whole-path/commit ignore, real credential suppression or old report edit. Directory scan initially retained39 false findings because it supplied absolute paths; fixed only the boundary to the same frozen path suffix. Subsequent full-history/index scans and provider-risk self-test pass. Further model-weight formats were added to fail-closed coverage before final commit.
+- Legacy History Window Study Case Explorer reveal in src/asof_ui.py still omits model min_scan_coverage and defaults to0.5. Nondefault-policy absence outcomes there are not validated. Independent Time Machine uses the verified frozen common policy correctly. This audit records the issue without altering frozen modules; final completion needs explicit disposition or a separately authorized fix.
+- No callable browser-control runtime is available in this session. Real-artifact AppTest semantic checks passed, but manual browser visual/layout acceptance is NOT verified. Do not report it as passed.
+- Four principal test dates, proxy scan evidence, selected reliable T30 subset and previously exposed dates do not establish long-term/independent population generalization or significance.
+- Workplace retrieval is not binary AP/Precision; High School lacks7d support, MIT tick mapping is unverified and Social Evolution unavailable. T31 complete raw ranking reconstruction and the original T32 benchmark were not rerun by T34; aggregate checks only for those experiments.
+- Snapshot ingestion_time remains unavailable, with stable-archive and disclosed TOCTOU/live-transaction limits. Anonymous IDs are not a privacy guarantee. Public CI checks synthetic code/aggregate/frozen evidence, not genuine raw research reproduction.
 
-2701 prior protected local files unchanged from2706-file pre-task inventory; exceptions only AGENTS/PROGRESS/TASKS/README/tests-conftest. No research/model/source/results files altered.51 public frozen objects unchanged. Original research statistical sources, labels/windows/coverage/thresholds and T17–T32 scores remain untouched.
+## Publication gate and next action
 
-## Actual first Linux run — verified, not final-head substitution
-
-Repository:Hilbert-sun/Machine-Learning-Experiment-Design-Predicting-Whether-Two-People-Will-Meet-in-the-Next-24-Hours.
-Workflow:Encounter Lab Public CI.
-Run:https://github.com/Hilbert-sun/Machine-Learning-Experiment-Design-Predicting-Whether-Two-People-Will-Meet-in-the-Next-24-Hours/actions/runs/38053176593
-Event:push; branch:research-v2.2; head_sha:8d0ea53d87da17e23f76e3407ff654c1de7bd1c4.
-status=completed; conclusion=success; started2026-10-10T12:46:08Z; completed/updated2026-10-10T12:48:50Z.
-
-- unit-tests success:335 passed in102.80s;12 native imports in2.17s; pip check has no broken requirements.
-- streamlit-smoke success:61 passed in14.87s; pip check succeeds.
-- repository-safety success:24 passed in0.43s;51 frozen files unchanged; actual full-history/index Gitleaks no credential findings after reviewed scientific exceptions.
-
-The first run used only ordinary public pip caching, not private artifacts; final workflow removes even that restore. Final code adds3 weight-format tests, so current expected total differs. Do not treat the older successful SHA as proof of the final commit. After this documentation/configuration commit/push, wait for its own all3-job success and extract actual test counts. Final run URL/SHA/timestamps/conclusions are attested in final response/GitHub history; no unvalidated commit appended afterward (avoids self-referential run-ID/SHA churn).
-
-## Commands, deliverables and limits
-
-Local/public commands:
-python -m pip install -r requirements.txt
-python -m pip check
-python -m pytest -q
-python tools/check_repository_safety.py
-python -m tools.run_secret_scan
-
-No fixture/test failure required weakening assertions. Initial scanner failure and safe false-positive investigation are documented above; temporary-source archive/read checks and local public clones do not represent Linux installation proof. That proof comes from actual Actions API/job logs. Local pip check also passes.
-
-Changed files:.github/workflows/ci.yml,.gitleaks.toml,tools/check_repository_safety.py,tools/run_secret_scan.py,tests/conftest.py,tests/test_repository_safety.py,tests/test_ci_environment.py,CI_VERIFICATION.md,README.md,AGENTS.md,TASKS.md,PROGRESS.md. No private artifact/report whitelist expansion.
-
-CI verifies synthetic correctness, public UI and frozen public bytes; cannot replace genuine Copenhagen36-model/full-source research reproduction. HTTP guards are process-local transports, not an OS firewall. Full scan covers reachable checkout Git refs, not inaccessible/deleted server history; credential patterns/structure checks are bounded, not formal anonymity/DLP. Workflow policy changes need human review; branch protection not configured. Gitleaks binaries limited to verified Linux x64/macOS ARM64. No unresolved implementation blocker; final-head success is still required for final acceptance.
-
-**After exact final-head success: STOP. Next:T34 — Final Research Audit, only after user next.**
+Review and publish only safe T34 source/tests/docs. Keep T34 IN_PROGRESS while awaiting its own new-head Actions. Verify status completed/conclusion success and all unit-tests/streamlit-smoke/repository-safety jobs, with exact remote HEAD=headSha; report actual run ID, URL, SHA and counts in the final reply. Never use historical T33 CI as substitute or append an unvalidated receipt commit just to record a future run ID. STOP after phase one. Phase two is a separate instruction and must address outstanding acceptance limits before final DONE.

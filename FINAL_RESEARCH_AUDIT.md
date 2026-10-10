@@ -1,0 +1,119 @@
+# Final research audit — Encounter Lab Research Edition 2.2
+
+Date: 2026-10-10 (Asia/Kuala_Lumpur). **T34 IN_PROGRESS, phase one only.** This document audits existing evidence; no new model is fitted, no parameters selected and no frozen result rewritten. Phase-one publication requires its own successful three-job CI run. The execution reply records the resulting SHA/run, which cannot be known before committing. Phase two completion confirmation is separate.
+
+## Verification meanings and evidence boundaries
+
+`public_aggregate_verified` means committed aggregate values, equations and duplicate CSV/JSON fields agree, with frozen bytes matching trusted T32 commit 5f3be86bebe089af5dea9b671ce25fe8e0c279f0. This is executable with `python -m src.final_audit` in a full Git clone without private data or models. It does not reconstruct raw contacts, candidate keys, labels or probabilities independently. Those operations remain `not_verifiable_without_local_artifacts` in public-only output.
+
+Local saved-artifact verification was also performed: window_verify passed five stages and all 36 saved-model full-prediction equivalence checks, recomputed exported metrics and verified frozen T17/statistical sources. asof_audit --verify-only reproduced all T30 summaries from checksum-verified frozen private samples. These are read-only checks of saved artifacts, not independent raw-data acquisition or raw-to-label replication. T31 retrieval and T32 timings are publicly verified at the aggregate/formula level here; their complete raw ranking/performance experiments were not rerun by T34. No claim of `independently_reproduced_from_raw_data` is made.
+
+## Task-by-task evidence index
+
+All source/model dependencies in this table remain local and excluded from Git. Public CI covers code with synthetic fixtures, boundary regressions and reviewed aggregates, not the original private experiments. The population/source/protocol sections below supply the common definitions referenced by these task entries.
+
+| Task | Objective, actual scope and scale | Committed evidence and implementation | Local prerequisite; CI coverage and verification limit |
+| --- | --- | --- | --- |
+| T17 | Genuine Copenhagen feasibility, constant/frequency/logistic and raw/sigmoid XGBoost; 260,170 test rows, six dates | [diagnostics](reports/T17_DATA_DIAGNOSTICS.md), [metrics](reports/T17_METRICS.json), [metadata](reports/T17_SAFE_METADATA.json), [experiment](reports/T17_REAL_EXPERIMENT.md), [implementation](src/real_experiment.py) | Matching source/preprocessing, full feature bank, saved models/predictions; [synthetic tests](tests/test_real_experiment.py). Aggregate verified; frozen hashes locally verified; raw reconstruction not rerun. |
+| T18 | Freeze original T17 protocol, files/models/statistics; distinguish original multiwindow feature bank from strict budgets | [manifest](reports/window_study/T18_BASELINE_MANIFEST.json), [audit](reports/window_study/T18_AUDIT.md), [code](src/baseline_audit.py) | Original hash-matching artifacts; [freeze tests](tests/test_baseline_audit.py). Public manifest integrity and local frozen verification. |
+| T19 | Shared past-1d candidate cohort with full 7d source span and 0.5 scan policy; 100,485 rows before chronological purge | [manifest](reports/window_study/T19_COHORT_MANIFEST.json), [cohort audit](reports/window_study/T19_COHORT_AUDIT.md), [code](src/window_cohort.py) | Source contacts/scans, cohort/split Parquet; [cohort tests](tests/test_window_cohort.py). Public counts/hashes; saved cohort used in local model verification, not independently rebuilt. |
+| T20 | Bound all neutral pair/activity/network/RSSI/scan/frequency features to each 1/3/7d history; 100,485 rows per bank | [feature audit](reports/window_study/T20_FEATURE_AUDIT.md), [features](src/window_features.py) | Matching three historical banks; [perturbation tests](tests/test_window_features.py). Public contract and synthetic isolation; local banks used read-only. |
+| T21 | Fixed 1d-vs-7d frequency/logistic/XGBoost comparison on shared 25,569 test rows | [results](reports/window_study/T21_RESULTS.json), [metrics](reports/window_study/T21_METRICS.csv), [code](src/window_study.py) | Saved models/predictions; [study tests](tests/test_window_study.py). Aggregates and full saved predictions verified, no refit. |
+| T22 | Add 3d, paired daily/leave-one-day-out and prespecified dependent folds | [robustness](reports/window_study/T22_ROBUSTNESS.json), [all windows](reports/window_study/T22_METRICS.csv), [fold metrics](reports/window_study/T22_WALK_FORWARD.csv), [code](src/window_robustness.py) | Same frozen cohort/banks plus fold models; [tests](tests/test_window_robustness.py). Four principal dates; no CI/significance; all saved stages locally verified. |
+| T23 | UI for frozen comparisons and separately versioned validation jobs | [History Window Study](pages/8_History_Window_Study.py), [backend](src/window_ui.py), [historical window report](WINDOW_STUDY.md) | Frozen run for real charts; [UI tests](tests/test_window_ui.py). Do not launch altered-setting jobs during acceptance. |
+| T24 | Namespaced source catalog with schema/time/license and observation gates | [catalog](reports/DATASET_CATALOG.json), [page](pages/9_Dataset_Catalog.py), [adapter](src/dataset_catalog.py) | Legal source files/adapter manifests; [tests](tests/test_dataset_catalog.py). Availability shown honestly; historical catalog counts are snapshots. |
+| T25 | MIT Reality Mining legal source/processed-record diagnostics | [report](reports/T25_REALITY_MINING.md), [diagnostics](reports/T25_REALITY_MINING_DIAGNOSTICS.json) | Original processed archive and source provenance; [catalog tests](tests/test_dataset_catalog.py). Unknown tick mapping prevents 24h/7d inference. |
+| T26 | Independent Workplace adapters and Social Evolution feasibility | [source evidence](reports/T26_SOURCE_VERIFICATION.md), [workplace](reports/T26_WORKPLACE_DIAGNOSTICS.json), [Social status](reports/T26_SOCIAL_EVOLUTION_STATUS.json) | Matching legal files; no verified Social file. Catalog tests cover gates; no reliable workplace negatives. |
+| T27 | Research delivery and saved-model checks, historically 10 pages/196 tests | [verification](reports/T27_VERIFICATION.json), [historical report](RESEARCH_REPORT.md), [delivery tests](tests/test_delivery.py) | Local frozen study/artifacts. Counts describe that historical commit, not today's 12-page/full-suite totals. Delivery writer is not used for final verification. |
+| T28 | Independent past-only candidates, bounded features and time-valid model contract | [as-of contract](ASOF_INFERENCE.md), [API](src/asof_inference.py), [tests](tests/test_asof_inference.py) | Raw canonical contacts/scans, lawful source identity, saved model/evidence; no future-filtered bank. Public perturbation/deadline/missingness tests; expanded-population performance not implied. |
+| T29 / FIX | Independent Select → Predict → Freeze → Reveal; session/version invalidation; verified common coverage policy | [Time Machine](TIME_MACHINE.md), [service](src/time_machine.py), [UI](src/time_machine_ui.py), [interaction tests](tests/test_time_machine_ui.py), [coverage tests](tests/test_time_machine_coverage.py) | Matching pre-t observations and models; 0.25/0.5/0.75 policies tested with fixtures. Static archives cannot establish live freshness/ingestion. |
+| T30 | Exposed-period descriptive quality/selection audit of 38,005 historical candidates, nine model/window combinations | [audit](ASOF_AUDIT.md), [results](reports/asof_audit/T30_RESULTS.json), [daily](reports/asof_audit/T30_DAILY.csv), [metrics](reports/asof_audit/T30_METRICS.csv), [code](src/asof_audit.py) | Frozen private predictions/outcomes/samples; [tests](tests/test_asof_audit.py). Aggregate audit plus local saved-sample recomputation; reliable subset is selected. |
+| T31 | Five source states, four descriptive graphs, 117 observed-positive retrieval aggregate rows | [study](MULTISOURCE_STUDY.md), [source summary](reports/multisource/T31_SOURCE_SUMMARY.json), [feasibility](reports/multisource/T31_FEASIBILITY.json), [retrieval](reports/multisource/T31_RETRIEVAL_METRICS.csv), [code](src/multisource_exploration.py) | Separate legal source Parquet/rankings; [retrieval tests](tests/test_positive_retrieval.py), [UI tests](tests/test_multisource_ui.py). Public formula/source checks, not new binary evaluation or complete T34 raw rerun. |
+| T32 | Snapshot/cache parity and five-process cold/warm timing/RSS measurements: 12 operations, 24 configurations | [performance](PERFORMANCE_AUDIT.md), [measurements](reports/performance/T32_BENCHMARK.csv), [parity](reports/performance/T32_PARITY.json), [snapshot limits](reports/performance/T32_SNAPSHOT_AUDIT.json) | Original private benchmark payloads/receipts; [cache tests](tests/test_safe_cache.py), [snapshot tests](tests/test_snapshot_consistency.py), [parity tests](tests/test_performance_parity.py). Arithmetic verified; original performance experiment not rerun. |
+| T33 | Public Python3.11/Linux CI, native dependencies, 12-page smoke and actual Git-index/history safety | [workflow](.github/workflows/ci.yml), [verified record](CI_VERIFICATION.md), [safety](tools/check_repository_safety.py), [secret scan](tools/run_secret_scan.py), [safety tests](tests/test_repository_safety.py) | No private dependencies. Historical accepted ae623111 / run38054089678:338 unit/61 smoke/27 safety/12 native. T34 requires its own actual head/run. |
+
+## What is predicted, and when is information available?
+
+The Copenhagen target is a recorded valid anonymous device proximity contact in `(t,t+24h]`. Inputs use contacts/observations strictly before t. Recorded positives can be known even when scan coverage is incomplete; reliable absent outcomes require complete horizons and sufficient scan evidence. Unknown remains outside binary metrics. Bluetooth is an imperfect encounter proxy; probabilities do not describe friendship, romance, intent or live location.
+
+Copenhagen times are relative seconds: 0–2,418,900, spanning 27.996528 days and touching 28 Study Days. [T17 diagnostics](reports/T17_DATA_DIAGNOSTICS.md) report 5,474,289 raw Bluetooth rows, 2,426,279 valid contact records, 706 recorded and 692 contact participants. These are event records, not unique pair count or independent samples. A sample is a namespaced pair at a prediction snapshot, normally 08:00 Study Day, with a 24-hour horizon. No civil calendar dates are invented.
+
+T28 candidates come only from `[t-1d,t)` contacts, independently of future coverage. Features use `[t-window,t)` for 1/3/7 days. Every selected model must match dataset/time origin, bounded_window_v1, window, target, checksums and all training/validation/calibration/threshold-label deadlines, each strictly before t. T29 freezes verified common min_scan_coverage, model/input versions and probabilities; Reveal explicitly invokes future evidence independently. Mixed coverage policies reject unified Reveal. Candidate filtering by future eligibility is confined to offline evaluation.
+
+Static archive event times do not prove contemporaneous arrival in a live system: ingestion_time is unavailable. Prospective inference requires a verified aware clock anchor plus recent pre-t observations for both endpoints; static Copenhagen cannot be presented as live prediction.
+
+## Copenhagen populations and genuine metrics
+
+| Population | Train / validation / test rows | Test positives / negatives | Dates and protocol |
+| --- | --- | --- | --- |
+| T17 legacy history bank | 269,757 / 155,368 / 260,170 | 26,594 / 233,576 (10.221778%) | Six test dates; snapshots1843200–2275200 relative seconds. Past-known pairs, up to14d inputs; 84,332 outer-purged rows; 0.5 coverage. |
+| T19–T22 common cohort | 54,677 / 14,816 / 25,569 | 5,467 / 20,102 (21.381360%) | Four test times2016000,2102400,2188800,2275200 (Study Days24–27); 5,423 purged rows. Shared1d candidates, full7d source span, identical keys/labels/splits for all bounded budgets. |
+| T30 predictable reliable subset | No new training/split | 7,700 / 20,102 in27,802 (27.695849%) | Same exposed four dates and existing frozen models/thresholds; descriptive audit, not a new untouched test. |
+
+T17 sigmoid XGBoost test: AP0.381491, ROC-AUC0.750717, Brier0.077673, LogLoss0.278910, Precision0.380099, Recall0.417989, F1 0.398145. Raw-vs-sigmoid probability scores are preserved in the [original report](reports/T17_REAL_EXPERIMENT.md), including worse logistic probability performance. Calibration used35,666 early-validation rows at one date; XGBoost thresholds used81,830 later rows at two dates. Baseline validation scores use all155,368 rows; these validation results must not be ranked as a common cohort.
+
+| T22 XGBoost history | AP (average precision) | ROC-AUC | Brier | LogLoss | Precision | Recall | F1 |
+| --- | --- | --- | --- | --- | --- | --- | --- |
+| 1d | 0.588723 | 0.770656 | 0.128026 | 0.415109 | 0.603148 | 0.455643 | 0.519121 |
+| 3d | 0.627494 | 0.799719 | 0.120801 | 0.394671 | 0.643180 | 0.494238 | 0.558957 |
+| 7d | 0.691366 | 0.841494 | 0.109107 | 0.360995 | 0.680299 | 0.599415 | 0.637301 |
+
+Each number above is taken from main_metrics in [T22_ROBUSTNESS.json](reports/window_study/T22_ROBUSTNESS.json), cross-checked against CSV and T21's overlapping windows. Bounded history controls all features, not just column names. Source span is not continuous observation. Fixed protocol/seed/threshold selection and strict chronological purge prevent label windows touching the next split. No test-driven parameter selection is performed. Three validation dates cannot support independent calibration and enough later tuning dates, so these window models remain raw.
+
+The 7d−1d pooled AP difference is0.102644. Leave-one-day-out range0.093727–0.112168 is descriptive sensitivity, not a confidence interval. Four primary dates fall below the frozen eight-date CI gate. Prespecified expanding folds starting Study Days16/19/22 are dependent robustness evidence, not independent replications. These results concern the observed cohort/time period only.
+
+## T30 selection audit and calibration interpretation
+
+| Set | Rows | Positive | Negative | Unknown |
+| --- | --- | --- | --- | --- |
+| All historical candidates | 38,005 | 7,718 | 20,102 | 10,185 |
+| Old T22 cohort | 25,569 | 5,467 | 20,102 | 0 |
+| Added as-of candidates | 12,436 | 2,251 | 0 | 10,185 |
+| Reliable labels | 27,820 | 7,718 | 20,102 | 0 |
+| Predictable and reliable intersection | 27,802 | 7,700 | 20,102 | 0 |
+
+37,913 of38,005 candidates have common valid predictions;92 are rejected (18 known positives and74 Unknown). Predictable Unknown =10,111. The overall Unknown rate is26.799105%; added Unknown rate81.899325%. Reliable-label and metric denominators are different. Positive-only added known subsets can have AP1 mechanically and do not show perfect discrimination.
+
+On the27,802 common reliable predictions, XGBoost AP is0.669281/0.701926/0.758930 for1/3/7d. Seven-day Brier0.128114 is worse than T22's0.109107 despite higher AP; LogLoss0.411076 versus0.360995 also worsens. The T30 old-cohort overlap exactly reconciles the original T22 scores. This identifies population/observability shift rather than a model improvement. Reliable-subset metrics cannot identify unbiased all-candidate performance; Unknown are never converted to negatives. Existing [reliability, error and subgroup aggregates](reports/asof_audit/T30_RESULTS.json) diagnose probabilities descriptively; no calibrator/threshold is refitted on these exposed dates.
+
+## Other sources: topology and Observed Positive Retrieval
+
+Counts below are from [T31_SOURCE_SUMMARY.json](reports/multisource/T31_SOURCE_SUMMARY.json); availability/time capacity is cross-referenced with [T31_FEASIBILITY.json](reports/multisource/T31_FEASIBILITY.json). Source citation, URL, download/license evidence and verification date remain in the source summary and frozen [source verification](reports/T26_SOURCE_VERIFICATION.md); T34 does not redownload or claim a new live-source verification.
+
+| Source | Participants / unique pairs | Valid records / canonical unique events | Time support and allowed interpretation |
+| --- | --- | --- | --- |
+| Workplace2013 | 92 / 755 | 9,827 / 9,827 | Seconds28820–1016440,11.430787days; only3 complete7d comparison dates. Positive retrieval, no reliable binary negatives. |
+| Workplace2015 | 217 / 4,274 | 78,249 / 78,249 | Seconds28840–1022380,11.499306days; only3 complete7d comparison dates. Positive retrieval, no reliable binary negatives. |
+| HighSchool2013 | 327 / 5,818 | 188,508 / 188,508 | Verified source UNIX seconds, normalized study seconds39620–403180,4.207870days; no complete7d experiment;1d has only2 dates. Limited descriptive retrieval. |
+| MIT Reality Mining processed archive | 96 / 2,539 | 1,086,403 / 27,572 | Integer ticks0–233; mapping to real durations unverified. Topology/distribution only; no24h/7d metrics. |
+| MIT Social Evolution | unavailable | unavailable | Actual file/schema/time/license/raw-only provenance not verified; no acquisition or fabricated statistics. |
+
+Workplace/High School contact records describe20s intervals, but no independent continuous badge-online evidence is available. Contact-free dates are not reliable negative evidence. Anonymous source IDs stay isolated. A full archive graph is descriptive and never substituted for the historical ranking graph.
+
+Fixed frequency/recency/common-neighbor rules rank historical1d candidate pairs using selected1/3/7d inputs. Future recorded positives are the retrieval target; unrecorded candidates remain Unknown. For pooled snapshot counts, Hits@K is the numerator; Capture@K = hits / recorded positives within the candidate pool; CaptureAll@K = hits / all recorded future positive pairs; CandidateReach = in-pool positives / all future positives. Zero denominators produce null; disclosure suppression applies to count/ratio families together. These are not binary Precision/AP/ROC-AUC or true recall over all real encounters. Counts can repeat a pair across dates.
+
+For common7d comparison at times720000,806400,892800: Workplace2013 has458 candidate-snapshot pairs,469 recorded future positive pairs,147 in-pool and322 outside. Frequency Top20 hits1/3/7d=31/34/35; Capture=0.210884/0.231293/0.238095. Workplace2015 has2,349 candidates,2,143 future positives,533 in-pool and1,610 outside; hits31/35/34 and Capture0.058161/0.065666/0.063790. Three dates support description, not a robust inference claim. No ranking result is placed on the Copenhagen AP leaderboard.
+
+## Performance, snapshots, public CI and preservation
+
+[T32 measured CSV](reports/performance/T32_BENCHMARK.csv) contains five independent-process repetitions per cold/warm operation on the same machine/input. MIT cold peak RSS439.6875→318.359375 MiB reduces27.594172%; warm Copenhagen multiwindow features reduce time97.925% and warm saved-model prediction95.003%. Before/after arithmetic, cache modes and parity status are executable audit checks. Cold verification overhead makes some operations slower; no whole-Streamlit-render, universal95% speedup or cross-OS performance claim is supported.
+
+Snapshots bind namespace, normalized hashes, policy, prediction time, models and evidence. Atomic version/pointer publication is bounded; live multi-file capture, historical ingestion chronology, adversarial same-owner immutability, global multi-request transactions and crash-durable ingestion are not established. Final-check/publication TOCTOU and orphan versions remain disclosed. T34 does not silently strengthen these guarantees.
+
+The public safety scanner protects44 exact approved reports plus7 frozen documents against immutable T32 Git bytes. A separate local inventory protects2708 pre-existing source/data/model/report files (five current docs excluded). Both must remain unchanged. Workflow/safety code and Gitleaks exceptions are not weakened. Anonymous IDs are not a formal privacy guarantee; no participants/pairs/weights/individual exports/screenshots are published.
+
+T33 accepted SHA ae623111871407a74185777f4d3a74c642b0dcde and [run38054089678](https://github.com/Hilbert-sun/Machine-Learning-Experiment-Design-Predicting-Whether-Two-People-Will-Meet-in-the-Next-24-Hours/actions/runs/38054089678) are historical evidence only. New T34 tests enter the unchanged full unit job. Current-head success for unit-tests, streamlit-smoke and repository-safety must be read from actual Actions; the public offline audit does not claim to query it.
+
+AppTest covers all12 pages and Time Machine ordering/coverage/version/Unknown behavior. Local semantic inspection of critical pages can check returned Streamlit elements without publishing private details. Manual browser visual acceptance requires a browser-control capability; when unavailable it is explicitly outstanding, not counted as passed. Startup health or AppTest is not proof of visual layout acceptance.
+
+## Outstanding application acceptance limits
+
+The older History Window Study Case Explorer reveal path in src/asof_ui.py still calls reveal_outcome without forwarding the selected model coverage policy; it therefore uses default0.5. This can misclassify absence for saved0.25/0.75-policy models. T29-FIX corrected the independent Time Machine path, which reads and freezes verified common coverage. Use Time Machine for policy-consistent Reveal; do not interpret nondefault-policy Case Explorer outcomes as validated. This audit records the existing issue without modifying frozen modules or training. Final completion needs an explicit disposition or separately authorized fix.
+
+Current capabilities do not expose a callable browser-control runtime. Five critical pages were inspected through real local-artifact AppTest, including frozen charts and actual saved-model Predict/Freeze/Reveal; this is semantic UI verification, not manual browser visual/layout acceptance. That visual check remains outstanding. No screenshots were generated or published.
+
+## Delivery scope and next action
+
+A fresh clone directly verifies code, synthetic boundary behavior, public UI/empty states, aggregate consistency, frozen Git evidence and safety. Lawful matching source/preprocessing/models/private prediction records are needed for genuine saved-artifact verification and real Time Machine probabilities. Independent raw reproduction, more untouched dates/cohorts, trusted ingestion and broader benchmark environments remain future work.
+
+Read [REPRODUCIBILITY.md](REPRODUCIBILITY.md), [PORTFOLIO_GUIDE.md](PORTFOLIO_GUIDE.md), [DEMO_GUIDE.md](DEMO_GUIDE.md) and [release checklist](FINAL_RELEASE_CHECKLIST.md). Historical frozen reports retain their original task states/page counts; the current [TASKS.md](TASKS.md) and [PROGRESS.md](PROGRESS.md) govern status. Only stage-one publication is authorized; do not mark T34 DONE, refit, merge main, tag or start another task.
