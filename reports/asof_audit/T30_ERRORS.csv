@@ -1,0 +1,10 @@
+model,window_days,tag,threshold,rows,true_positive,false_positive,true_negative,false_negative,high_confidence_false_positive,high_confidence_false_negative
+historical_frequency,1,historical_frequency_1d,0.20487590760283117,27802,7700,20102,0,0,17535,0
+logistic_regression,1,logistic_regression_1d,0.34925852636036164,27802,2976,1352,18750,4724,50,3003
+xgboost,1,xgboost_1d,0.3174563944339752,27802,3689,1639,18463,4011,69,2748
+historical_frequency,7,historical_frequency_7d,0.5,27802,3339,1826,18276,4361,215,1552
+logistic_regression,7,logistic_regression_7d,0.3458729111465327,27802,3761,1036,19066,3939,96,2494
+xgboost,7,xgboost_7d,0.3169858753681183,27802,4739,1540,18562,2961,76,2136
+historical_frequency,3,historical_frequency_3d,1.0,27802,1879,1450,18652,5821,1450,640
+logistic_regression,3,logistic_regression_3d,0.3327946006945454,27802,3220,1255,18847,4480,56,2837
+xgboost,3,xgboost_3d,0.3532690703868866,27802,3953,1499,18603,3747,94,2433

@@ -1,0 +1,221 @@
+{
+  "protocol": {
+    "task": "T30",
+    "version": 1,
+    "dataset_id": "copenhagen",
+    "study_days": [
+      24,
+      25,
+      26,
+      27
+    ],
+    "snapshot_hour": 8,
+    "windows": [
+      1,
+      3,
+      7
+    ],
+    "models": [
+      "historical_frequency",
+      "logistic_regression",
+      "xgboost"
+    ],
+    "model_run_id": "102140b8cf3df83f",
+    "candidate_interval": "[t-1d,t)",
+    "label_interval": "(t,t+24h]",
+    "known_label_rule": "observed positive OR complete sufficiently scanned absent event; otherwise Unknown",
+    "prediction_rule": "common T28-valid past input across all windows/models; rejected rows retained in candidate counts",
+    "label_policy": "verified common ModelContract.min_scan_coverage; never a free/default threshold",
+    "classification_thresholds": "existing frozen validation-selected values, never reselected",
+    "uncertainty": {
+      "minimum_days_for_bootstrap_ci": 8,
+      "bootstrap_repetitions": 1000
+    },
+    "reliability_bins": 10,
+    "high_confidence_error_cutoffs": [
+      0.2,
+      0.8
+    ],
+    "fit_models": false,
+    "tune_parameters": false,
+    "test_used_for_selection": false,
+    "interpretation": "post-hoc descriptive selection audit of already exposed dates, not independent external validation"
+  },
+  "verified_label_coverage": 0.5,
+  "source_hashes": {
+    "data/processed/copenhagen/d5f24b031eb28a95-7v_fnwmo/contacts.parquet": "7c4c3c61b43179d407c149e7f7126133ccbcca97bba18cbf889277303155d21b",
+    "data/processed/copenhagen/d5f24b031eb28a95-7v_fnwmo/observations.parquet": "984a51e94b3a5d34514d93f5e06b8c3fe54cb75acd92c49e71f71e6212ccc12c",
+    "data/raw/copenhagen/bt_symmetric.csv": "1c620f0f0f25d59730dc3427b051d5ab9e7c0b70173d9f92c04cf7c2d8b97e44"
+  },
+  "models": [
+    {
+      "model": "historical_frequency",
+      "window_days": 1,
+      "tag": "historical_frequency_1d",
+      "threshold": 0.20487590760283117,
+      "directory": "models/.window_study/102140b8cf3df83f/1d/historical_frequency-3a3fb7132c76",
+      "manifest_sha256": "21fc9e23c9c9b387e57904e232a26364c4814a6b27a93c2c2dba8063cbf6d132",
+      "model_sha256": "c0205b03e2545c92800f4b287055c549c10b9d4e24bae3fdece239e6453d1b3d",
+      "evidence_path": "reports/window_study/102140b8cf3df83f/T21_RESULTS.json",
+      "evidence_sha256": "ac5255e5c58abe614481e2130014c9c328a4d0b504a8543aa397324a0f0ace6f",
+      "label_information_ends": {
+        "training_labels_end": 1584000,
+        "validation_labels_end": 1929600,
+        "threshold_labels_end": 1929600
+      }
+    },
+    {
+      "model": "logistic_regression",
+      "window_days": 1,
+      "tag": "logistic_regression_1d",
+      "threshold": 0.34925852636036164,
+      "directory": "models/.window_study/102140b8cf3df83f/1d/logistic_regression-b99260e0116e",
+      "manifest_sha256": "36a6d4d42932b9d4f9b61bd982accdb1ee6d8cab6023fc77a914a749bfeeee7e",
+      "model_sha256": "ae88401941a8c7208e5764f9cec0c10669fb8b98e67bab475d74eeab4878acc5",
+      "evidence_path": "reports/window_study/102140b8cf3df83f/T21_RESULTS.json",
+      "evidence_sha256": "ac5255e5c58abe614481e2130014c9c328a4d0b504a8543aa397324a0f0ace6f",
+      "label_information_ends": {
+        "training_labels_end": 1584000,
+        "validation_labels_end": 1929600,
+        "threshold_labels_end": 1929600
+      }
+    },
+    {
+      "model": "xgboost",
+      "window_days": 1,
+      "tag": "xgboost_1d",
+      "threshold": 0.3174563944339752,
+      "directory": "models/.window_study/102140b8cf3df83f/1d/xgboost-c8061429ff26",
+      "manifest_sha256": "126b6a1dad0770c3b686fbda8c1ad5a5c4781ab3cd01a39bc22ffdef5f1d7d8b",
+      "model_sha256": "28174926770c467852cdea6a3247539a2d35a721e51f02e14b44783175db22da",
+      "evidence_path": "reports/window_study/102140b8cf3df83f/T21_RESULTS.json",
+      "evidence_sha256": "ac5255e5c58abe614481e2130014c9c328a4d0b504a8543aa397324a0f0ace6f",
+      "label_information_ends": {
+        "training_labels_end": 1584000,
+        "validation_labels_end": 1929600,
+        "threshold_labels_end": 1929600
+      }
+    },
+    {
+      "model": "historical_frequency",
+      "window_days": 7,
+      "tag": "historical_frequency_7d",
+      "threshold": 0.5,
+      "directory": "models/.window_study/102140b8cf3df83f/7d/historical_frequency-c70ac7ed35b9",
+      "manifest_sha256": "c8483a485359a9c0722a67925cb46a53a2d614208983f0ed22e7509168565a48",
+      "model_sha256": "856c70023a494fbfb09565aa6b6656edc9d1a516c9e329cbd319aa4a10a33983",
+      "evidence_path": "reports/window_study/102140b8cf3df83f/T21_RESULTS.json",
+      "evidence_sha256": "ac5255e5c58abe614481e2130014c9c328a4d0b504a8543aa397324a0f0ace6f",
+      "label_information_ends": {
+        "training_labels_end": 1584000,
+        "validation_labels_end": 1929600,
+        "threshold_labels_end": 1929600
+      }
+    },
+    {
+      "model": "logistic_regression",
+      "window_days": 7,
+      "tag": "logistic_regression_7d",
+      "threshold": 0.3458729111465327,
+      "directory": "models/.window_study/102140b8cf3df83f/7d/logistic_regression-2152b3bd5c51",
+      "manifest_sha256": "0eaa00d5b1cd07d99809156cbb55ab2b13d43da791ca248ab57106d163c4d8d3",
+      "model_sha256": "1f6de0fd4e7975d284a5022b98151d7b9397513ce6d0fb1025f8e25215cc92fa",
+      "evidence_path": "reports/window_study/102140b8cf3df83f/T21_RESULTS.json",
+      "evidence_sha256": "ac5255e5c58abe614481e2130014c9c328a4d0b504a8543aa397324a0f0ace6f",
+      "label_information_ends": {
+        "training_labels_end": 1584000,
+        "validation_labels_end": 1929600,
+        "threshold_labels_end": 1929600
+      }
+    },
+    {
+      "model": "xgboost",
+      "window_days": 7,
+      "tag": "xgboost_7d",
+      "threshold": 0.3169858753681183,
+      "directory": "models/.window_study/102140b8cf3df83f/7d/xgboost-caaf5f275c93",
+      "manifest_sha256": "4e813653af9ddef5a3359e93c41c614e20b204b2eb1a765082da6c556d30b07b",
+      "model_sha256": "3cc46ea6219683e156d669b454536b843bf23765e0e6950c73e51ab6c0ed6439",
+      "evidence_path": "reports/window_study/102140b8cf3df83f/T21_RESULTS.json",
+      "evidence_sha256": "ac5255e5c58abe614481e2130014c9c328a4d0b504a8543aa397324a0f0ace6f",
+      "label_information_ends": {
+        "training_labels_end": 1584000,
+        "validation_labels_end": 1929600,
+        "threshold_labels_end": 1929600
+      }
+    },
+    {
+      "model": "historical_frequency",
+      "window_days": 3,
+      "tag": "historical_frequency_3d",
+      "threshold": 1.0,
+      "directory": "models/.window_study/102140b8cf3df83f/3d/historical_frequency-abb53b7244c3",
+      "manifest_sha256": "56d22d0ec6710e3736cb9a176e22318bf1848318cd2c9025391e5d0f2266077d",
+      "model_sha256": "45f3a004479d40dcbcfd36ae069abca09eddffa003ba4a015914396222218d17",
+      "evidence_path": "reports/window_study/102140b8cf3df83f/T22_RESULTS.json",
+      "evidence_sha256": "5a0b130090b390979b894d545791743a5b9e1acd2226c70f7aa6e17f014bd545",
+      "label_information_ends": {
+        "training_labels_end": 1584000,
+        "validation_labels_end": 1929600,
+        "threshold_labels_end": 1929600
+      }
+    },
+    {
+      "model": "logistic_regression",
+      "window_days": 3,
+      "tag": "logistic_regression_3d",
+      "threshold": 0.3327946006945454,
+      "directory": "models/.window_study/102140b8cf3df83f/3d/logistic_regression-28edd4f3f75d",
+      "manifest_sha256": "f659f3c1f5803fd6932b1ff17b7df00e7b22da22401f264ad1e60b96f5ae8724",
+      "model_sha256": "92418301a5b3ec149cf18f92b1a3705107cea9b7ea8c335d4a40650f3b2e1046",
+      "evidence_path": "reports/window_study/102140b8cf3df83f/T22_RESULTS.json",
+      "evidence_sha256": "5a0b130090b390979b894d545791743a5b9e1acd2226c70f7aa6e17f014bd545",
+      "label_information_ends": {
+        "training_labels_end": 1584000,
+        "validation_labels_end": 1929600,
+        "threshold_labels_end": 1929600
+      }
+    },
+    {
+      "model": "xgboost",
+      "window_days": 3,
+      "tag": "xgboost_3d",
+      "threshold": 0.3532690703868866,
+      "directory": "models/.window_study/102140b8cf3df83f/3d/xgboost-6d799d2402b2",
+      "manifest_sha256": "e2dd41d2492f54e4d2c80393f2abcd4da7d64fca23b485412b9f852a0355c27d",
+      "model_sha256": "c0a5fd573050f4304863e5ce1f8dfc6182f7f0a31bc0dcb7f4e92eadbb175199",
+      "evidence_path": "reports/window_study/102140b8cf3df83f/T22_RESULTS.json",
+      "evidence_sha256": "5a0b130090b390979b894d545791743a5b9e1acd2226c70f7aa6e17f014bd545",
+      "label_information_ends": {
+        "training_labels_end": 1584000,
+        "validation_labels_end": 1929600,
+        "threshold_labels_end": 1929600
+      }
+    }
+  ],
+  "old_t22_files": [
+    {
+      "window": 1,
+      "path": "reports/window_study/102140b8cf3df83f/T21_predictions_1d.parquet",
+      "sha256": "e974ca4baadadc818b5a3bfbf20f1bcbe6718535f4615344943999342cbd8054"
+    },
+    {
+      "window": 7,
+      "path": "reports/window_study/102140b8cf3df83f/T21_predictions_7d.parquet",
+      "sha256": "88f8a273dc3c95a019e182dd14baae7c817dd77d5248c4db7d10d679923bc15e"
+    },
+    {
+      "window": 3,
+      "path": "reports/window_study/102140b8cf3df83f/T22_predictions_3d.parquet",
+      "sha256": "252aa8622a2ba458a2a2135aadd7c0b3a6dcdc60a0cde2c25bea920861ba8091"
+    }
+  ],
+  "code_hashes": {
+    "src/asof_audit.py": "a5083efbfb3fcbb14b0df8c43b4d770a5155580f5c54e0cc7529df63677fb2bd",
+    "src/asof_inference.py": "6008c85f1f54a0d17223d13a5218063f999d621e3edca5f873ff5bfef46e6edb",
+    "src/window_features.py": "b9569679f23a130deb8e1e5f92ab3d126efbb344e93859bea395b053b9cee380",
+    "src/window_models.py": "ca9e313841152bc31e77a260944191334cf8cdb5a4c14ce09b6513f5541ef7ed",
+    "src/model_registry.py": "369840717b8a09b12ba73194694ef8e60dc87fa8ce7a7f1299916e3d5b60472c",
+    "src/evaluate.py": "84f48036325970cc8e5f84a33dae2c1136c4114c92861d11eb8b628ec0cbe1c4"
+  }
+}

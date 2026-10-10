@@ -64,3 +64,12 @@ credentials*.json
 !reports/T26_WORKPLACE_DIAGNOSTICS.json
 !reports/T26_SOCIAL_EVOLUTION_STATUS.json
 !reports/T27_VERIFICATION.json
+
+# T30: reviewed aggregate-only as-of audit; local samples/errors/HTML remain ignored.
+!reports/asof_audit/T30_PROTOCOL.json
+!reports/asof_audit/T30_RESULTS.json
+!reports/asof_audit/T30_METRICS.csv
+!reports/asof_audit/T30_DAILY.csv
+!reports/asof_audit/T30_GROUPS.csv
+!reports/asof_audit/T30_ERRORS.csv
+!reports/asof_audit/T30_SELECTION_BIAS.csv

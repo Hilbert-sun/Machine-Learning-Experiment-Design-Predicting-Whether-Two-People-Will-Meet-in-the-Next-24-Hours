@@ -29,7 +29,7 @@ The user subsequently instructed: “以后做完全部推送” (push all compl
 
 ## Current authorized range
 
-T29-FIX only was authorized and is DONE on research-v2.2 after T29 at4bad994. Verified model label-coverage policy now flows into integrity-protected frozen predictions and explicitReveal, with mixed-policy rejection and no default0.5 fallback.53 focused and250 full local tests pass;444 prior artifact hashes/inventory and5 raw checksums unchanged. T28 inference/frozen statistical modules preserved; no real model refit or acquisition. Safely commit/push this fix and verify remote SHA, then STOP. T30 remains TODO until next; no main merge.
+T30 only was authorized and is DONE on research-v2.2 after e1fe901. Fixed-model as-of audit run7521ebdeb40f0b55 covers already published Study Days24–27, not a pristine test.38,005 past-only candidates,37,913 T28-valid predictions,27,820 known labels/10,185 Unknown; metrics use27,802 common known/predicted rows. OldT22's25,569-row cohort/probabilities/labels/metrics reproduce.49 focused and258 full local tests pass;444 old artifact hashes and5 raw checksums unchanged. No model refit/tuning/download. Safely publish only reviewed code/docs/aggregate reports, verify remote SHA, then STOP. T31–T34 remain TODO; next:T31 multiple-dataset exploratory research. Never merge main.
 
 ## Prediction data contract
 
@@ -43,7 +43,7 @@ T29-FIX only was authorized and is DONE on research-v2.2 after T29 at4bad994. Ve
 - Evaluation uses frozen models/thresholds and exact saved input signatures. All window/communication ablations run on validation only. E3 stays unavailable without verified communication availability; never fabricate scores.
 - Native TreeSHAP applies to XGBoost/LightGBM base raw margins, not calibrated probabilities. Other local sensitivity methods must not be labeled SHAP or causal. Keep synthetic-fixture provenance in pages, figures and exports.
 - T17's held-out test scores have now been reported. Do not use them to choose new thresholds/features/hyperparameters; later tuning needs a new validation design. Preserve the original T17 results, including worse Logistic Regression probability scores and raw/calibrated XGBoost variants.
-- Reports remain ignored except the five T17, fifteen T18–T22 and nine T23–T27 reviewed aggregate deliverables explicitly whitelisted by filename in .gitignore. Do not broaden that whitelist to per-run private manifests, individual samples, large HTML bundles or model files.
+- Reports remain ignored except the five T17, fifteen T18–T22, nine T23–T27 and seven T30 reviewed aggregate deliverables explicitly whitelisted by filename in .gitignore. Do not broaden that whitelist to per-run private manifests, individual samples, large HTML bundles or model files.
 
 ## Local environment
 
@@ -91,3 +91,11 @@ T29-FIX only was authorized and is DONE on research-v2.2 after T29 at4bad994. Ve
 - Read each selected model's min_scan_coverage through unchanged T28 read_model_contract, not freely supplied row/widget values. Selected window policies must agree for a unified prediction/reveal; reject mixed policies before inference/outcome access.
 - Freeze common future_label_policy and per-model verified_min_scan_coverage alongside probabilities; the existing full frozen JSONSHA protects these fields. Reveal validates consistency and passes the frozen threshold explicitly to reveal_outcome. Missing/invalid legacy policy never falls back to0.5.
 - Prediction schema2 is included in context identity to invalidate old sessions, including cached pre-fix revealed outcomes. New Predict/Freeze is required. Coverage-policy metadata is known before prediction; actual future scan evidence is still read only by explicitReveal.
+
+## T30 audit interpretation
+
+- asof_audit.py freezes all pre-t candidate probabilities before any outcome/old-cohort read. Common prediction validity is past-only; future known/Unknown and strict covered populations are separate.
+- Observed positive evidence is known even with low future coverage; absent events need complete sufficiently scanned horizons. Unknown never becomes0 and never enters binary metrics. Reliable-subset metrics do not identify unbiased performance of all candidates.
+- Extra candidates have strongly selective positive-only known labels; AP=1 in added known-only samples is degenerate, not perfect prediction. Compare population/prevalence/Unknown rates alongside model metrics.
+- Four dates and repeated participants/pairs allow descriptive differences/leave-one-day sensitivity only, no significance/CI claim. No threshold/parameter/calibration selection on these exposed dates.
+- Individual predictions/labels/errors/HTML stay under ignored data/processed/asof_audit/<run_id>. Seven aggregate report files are explicitly whitelisted; no broad report/data whitelist. --verify-only recomputes metrics/funnels/groups/reliability/errors from local frozen samples.
