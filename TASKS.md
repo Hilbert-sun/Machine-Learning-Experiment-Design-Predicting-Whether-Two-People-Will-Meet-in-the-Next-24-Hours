@@ -2,7 +2,7 @@
 
 Task IDs and titles follow the user's task-board screenshot. Dependencies and acceptance criteria below are the implementation plan derived from `PROJECT_SPEC.md`, rather than additional completed functionality.
 
-Current execution: **T28 — DONE**. Independent as-of inference only on research-v2.2 from820d080; all frozen T17–T27 artifacts/statistical sources preserved. No refit or push.223 full tests and48 focused compatibility checks pass; stop after T28.
+Current execution: **T28 — DONE**. Independent as-of inference only on research-v2.2 from820d080; all frozen T17–T27 artifacts/statistical sources preserved. No refit. Branch publication follows subsequent standing user authorization.223 full tests and48 focused compatibility checks pass; stop after T28.
 
 | Complete | ID | Task | Status | Dependencies | Acceptance criteria |
 | --- | --- | --- | --- | --- | --- |

@@ -48,3 +48,8 @@ No dependency changes, old statistical module edits, frozen report/model/evaluat
 Current models were still trained on future-coverage-eligible offline populations; new candidate coverage may shift distribution and calibration. Old AP/ROC/Brier must not be applied as guarantees for all as-of candidates. Source scan coverage is an availability proxy, not continuous presence. Model-time and live-clock authenticity depend on trustworthy producer provenance; source snapshots must remain consistent during a call, and actual ingestion availability under delayed uploads/revisions needs upstream provenance. Relative static archives do not supply live wall-clock evidence. The frozen old case APIs remain legacy only and are not used by the active page.
 
 Recommended next task (not started):independent evaluation of the as-of population plus auditable model/live-clock/source manifests. **STOP after T28; wait for next.** Local commit, if made, is identified in the final reply/Git history; no push authorized.
+
+
+## Subsequent publication authorization
+
+The user then instructed “以后做完全部推送”. Completed and verified tasks now default to safe commits and pushing all unpublished completed-task commits on their current development branch. This includes the completed T28 research-v2.2 branch; main remains820d080 unless separately authorized. The earlier no-push statements describe implementation-time scope and are superseded by this later instruction. No new task starts. Publication is verified in the execution reply/Git tracking state. Future explicit no-push instructions take precedence; raw/private/model artifacts remain excluded.
