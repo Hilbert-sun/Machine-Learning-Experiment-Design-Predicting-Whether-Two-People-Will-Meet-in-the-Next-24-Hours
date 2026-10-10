@@ -2,7 +2,7 @@
 
 Date:2026-10-10 (Asia/Kuala_Lumpur)
 
-**T32 — DONE**, research-v2.2, baseline5c745530e60b3cfda341b1878ebd98175e9aa223. Only performance, safe caching and stable archive snapshots authorized. No refit, downloads, changed scientific rules or frozen result replacement. T33–T34 remain TODO. Safe code/docs/three aggregate reports only; current-branch publication and remote SHA verification, then STOP.
+**T33 — IN_PROGRESS**, research-v2.2, baseline5f3be86.307 existing tests collected; GitHub Actions enabled and remote branch synchronized. Public fresh-checkout audit, three-job workflow, tracked-file safety/secret scanning and trusted historical frozen-report protection pending. No real downloads/refits or frozen result changes. T34 not started. T32 completion evidence below is historical.
 
 ## Baseline first and actual measurements
 

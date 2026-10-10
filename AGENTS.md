@@ -29,7 +29,7 @@ The user subsequently instructed: “以后做完全部推送” (push all compl
 
 ## Current authorized range
 
-T32 only is authorized and DONE on research-v2.2 after5c74553. Original cold baseline frozen before performance edits;5 independent processes/12 real operations, comparable warm reference from immutable T31 code. MIT cold peak RSS439.69→318.36MiB (27.59% reduction).109 focused/307 full tests,36 frozen model predictions, T30/T31 full parity and real UI pass;836 protected files/106 prior reports unchanged. No refit/download/frozen report replacement. Commit/push only safe code/docs/three performance aggregates, verify remote SHA, then STOP. T33–T34 remain TODO; next:T33 GitHub Actions. Never merge main.
+T33 only is authorized and IN_PROGRESS on research-v2.2 after5f3be86. All307 original tests pass in a tracked-only export; candidate335 public tests pass locally. Three-job Linux/Python3.11 workflow, Git-index safety/frozen51-file checks and pinned Gitleaks implemented.39 initial generic-key findings were verified scientific digests; narrowly reviewed exact-field/digest/path exceptions retain credential detection. Do not mark final acceptance before actual successful Actions on the final SHA; after documentation updates wait again. No real downloads/refits/frozen reports, no main merge. T34 not started.
 
 ## Prediction data contract
 
