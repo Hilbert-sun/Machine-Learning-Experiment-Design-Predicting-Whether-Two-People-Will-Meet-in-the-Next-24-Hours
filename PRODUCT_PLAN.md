@@ -6,7 +6,7 @@ P01 adds Play alongside Research; P02 adds Explore and a minimal three-entry hom
 | --- | --- | --- |
 | P01 · Play | Questionnaire, pure-rule index, keyword explanations, edit/reset, entry welcome and one added page | DONE at ab4dc3f / Actions38108921172; unchanged scoring/welcome |
 | P02 · Explore | Session-only Keyword explanations/clue graph, actual public T22/T31 stories, minimal three-entry homepage | DONE at bb05d4a / Actions38111188664 (473 full/70 smoke/27 safety) |
-| P03 · Product delivery | Four primary native entries, Research Hub, presentation and responsive improvements | Implemented; final acceptance requires its own exact-head three-job CI |
+| P03 · Product delivery | Four primary native entries, Research Hub, presentation and responsive improvements | DONE: local and code-candidate Actions38115216049 verified; final status commit also requires exact-head CI |
 
 ## Product and scientific boundary
 

@@ -2,7 +2,7 @@
 
 Date:2026-10-11 (Asia/Kuala_Lumpur)
 
-**P03 — IN_PROGRESS: implementation and local tests pass; final exact-head remote CI still required.** Baseline bb05d4ae709e64643a3d436aeeb7e73f880b6202, accepted P02 Actions38111188664. Only P03 is authorized; P01–P03 end here, with no next task, training, download, main merge or release.
+**P03 — DONE: implementation, local tests and code-candidate remote acceptance verified.** The final status-document commit must also pass its own exact-head CI before execution reports PASS. Baseline bb05d4ae709e64643a3d436aeeb7e73f880b6202, accepted P02 Actions38111188664. Only P03 is authorized; P01–P03 end here, with no next task, training, download, main merge or release.
 
 ## Implemented and preserved
 
@@ -20,9 +20,11 @@ Date:2026-10-11 (Asia/Kuala_Lumpur)
 - Actual browser390/768/1440px: four-entry navigation and responsive Home/Research; fictional seven-answer flow66→Explore66→edit(no stale index)→resubmit71; mutual summary/touch description/A focus/restore; Research roundtrip and reset; normal full same-tab refresh did not repeat welcome (dialog count0). Empty personal guidance, real Workplace public charts, MIT unknown-time and Social unavailable states checked. Training/Evaluation/Time Machine opened without running actions. No page-wide horizontal overflow at the measured three widths. Detailed evidence/limits in PRODUCT_DELIVERY.md.
 - New navigation tests explicitly exercise the actual modern-router entrypoint despite AppTest resetting legacy directory detection between runs; no production testing bypass. Existing standalone research/UI and welcome tests remain enabled. Initial focused failures were corrected: moved-renderer import binding under tests, new test input type and AppTest entrypoint selection. No known failed test remains.
 
-## Publication gate and next action
+## Verified publication and final-head gate
 
-Safely stage/review code, tests and product documents; run exact Git-index safety and pinned Gitleaks history/index/provider-risk checks; push only research-v2.2 and verify all three Jobs completed/success at the same actual remote HEAD. P03 acceptance stays IN_PROGRESS until that check; final execution reply records actual SHA/URL/counts, without an untested receipt commit. Stop and await final user acceptance; do not create P04/T35.
+Code candidate `4e0476d060497aaea70dfdba408548049c6bbec7` was safely pushed to research-v2.2 and [Actions38115216049](https://github.com/Hilbert-sun/Machine-Learning-Experiment-Design-Predicting-Whether-Two-People-Will-Meet-in-the-Next-24-Hours/actions/runs/38115216049) completed/success for unit-tests, streamlit-smoke and repository-safety. Linux logs show500 full tests in92.88s,71 smoke in25.70s,27 safety in0.48s and12 native imports in2.25s. Exact Git-index scanner PASS:216 files/44 approved reports/51 frozen objects; pinned Gitleaks full-history/index/provider-risk self-test PASS, locally and remotely. Preflight hashes confirm2728 protected existing objects unchanged, with only17 authorized UI/tests/current-document changes; old modified test names and assertion counts preserved.
+
+Completion status is updated only after that observed verification. This status-only commit must itself be safely pushed and independently pass all three CI Jobs at its final remote HEAD before reporting P03 PASS. Overall publication acceptance remains IN_PROGRESS until this final check. The final execution reply records the actual new SHA/URL/counts; do not create an additional untested receipt commit after CI. No main merge/tag/release/deployment. Local preview is bound only127.0.0.1; no private screenshots/inputs are published. Stop and await final user acceptance; do not create P04/T35.
 
 ## Earlier P02/T34 evidence (historical)
 
