@@ -45,13 +45,15 @@ def clue_figure(graph,focus='all'):
     nodes=sorted(graph)
     active=set(graph) if focus=='all' or focus not in graph else {focus,*graph.neighbors(focus)}
     figure.add_scatter(x=[positions[n][0] for n in nodes],y=[positions[n][1] for n in nodes],mode='markers+text',
-        text=[graph.nodes[n]['label'] for n in nodes],textposition='top center',ids=nodes,customdata=[[n] for n in nodes],
+        text=[graph.nodes[n]['label'].replace('（','<br>（') for n in nodes],
+        textposition=['top center' if positions[n][1]>=0 else 'bottom center' for n in nodes],cliponaxis=False,ids=nodes,customdata=[[n] for n in nodes],
         hovertext=[html.escape(graph.nodes[n]['description']) for n in nodes],hovertemplate='%{hovertext}<extra></extra>',
         marker={'size':[28 if graph.nodes[n]['kind']=='person' else 22 if graph.nodes[n]['kind']=='summary' else 15+graph.nodes[n]['points']/10 for n in nodes],
                 'color':['#EEF3FA' if graph.nodes[n]['kind']=='person' else COLORS.get(graph.nodes[n]['kind'],'#B4C4D1') for n in nodes],
                 'opacity':[1 if n in active else .25 for n in nodes],'line':{'width':2,'color':'#273344'}},showlegend=False)
-    figure.update_layout(title='A 和 B 的线索如何关联？',paper_bgcolor='#10141C',plot_bgcolor='#10141C',font={'color':'#E4E9F2'},
-        xaxis={'visible':False},yaxis={'visible':False,'scaleanchor':'x'},height=440,margin={'l':45,'r':45,'t':65,'b':35},
+    figure.update_layout(title={'text':'A 和 B 的线索如何关联？','font':{'size':16}},paper_bgcolor='#10141C',plot_bgcolor='#10141C',font={'color':'#E4E9F2'},
+        xaxis={'visible':False,'range':[-1.65,1.65],'fixedrange':True},
+        yaxis={'visible':False,'range':[-1.65,1.65],'fixedrange':True},height=400,margin={'l':18,'r':18,'t':65,'b':40},
         clickmode='event+select',uirevision='questionnaire-clues-v1')
     return figure
 

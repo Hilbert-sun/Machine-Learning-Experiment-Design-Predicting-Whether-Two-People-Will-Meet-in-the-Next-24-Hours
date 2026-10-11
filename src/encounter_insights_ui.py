@@ -6,12 +6,14 @@ from src.encounter_graph import MUTUAL_OPTIONS, clue_graph, clue_figure, clicked
 from src.encounter_insights import (submitted_analysis, factor_figure, load_window_comparison, window_figure,
                                    load_group_insights, source_insights, activity_figure, degree_figure)
 
+from src.product_ui import keyword_cards, readable_figure
+
 PLAY='pages/12_Chance_Encounter.py'
-ICONS={'frequency':'🕰️','distance':'📍','area':'🧭','timing':'⏱️','recency':'🗓️'}
 
 
 def _default_view():
     st.session_state['_explore_focus']='all'
+    st.session_state.pop('_explore_node_details',None)
     st.session_state['_explore_graph_epoch']=st.session_state.get('_explore_graph_epoch',0)+1
 
 
@@ -26,14 +28,10 @@ def render_personal():
     result=analysis.result
     st.metric('当前会话的趣味偶遇指数',f'{result.score} / 100')
     st.write(analysis.message)
-    for offset in range(0,len(result.keywords),3):
-        for column,card in zip(st.columns(3),result.keywords[offset:offset+3]):
-            with column:
-                with st.container(border=True):
-                    st.subheader(ICONS.get(card.field,'🔎')+' '+card.name)
-                    st.write(card.source)
-                    st.caption(card.direction+' · '+card.explanation)
-    st.plotly_chart(factor_figure(result),width='stretch',key='explore_factors')
+    keyword_cards(result.keywords)
+    factors=factor_figure(result)
+    factors.update_layout(title={'text':'哪些已知线索更突出？','font':{'size':16}},margin={'l':8,'r':18,'t':65,'b':65})
+    st.plotly_chart(factors,width='stretch',key='explore_factors')
     st.write('这些分值来自固定娱乐规则，并非机器学习模型测出的真实影响程度。')
     st.caption('为什么这样看：只比较你已填写的线索；不确定项不补0，也不参与平均。')
     with st.expander('了解个人线索与方法'):
@@ -47,6 +45,14 @@ def render_personal():
     graph=clue_graph(result,mutual)
     event=st.plotly_chart(clue_figure(graph,focus),width='stretch',on_select='rerun',selection_mode='points',
                           key='explore_clues_'+str(st.session_state.get('_explore_graph_epoch',0)))
+    if st.session_state.get('_explore_node_details') not in graph:
+        st.session_state.pop('_explore_node_details',None)
+    described=st.selectbox('查看节点说明（支持触屏）',tuple(sorted(graph)),index=None,
+                          format_func=lambda node:graph.nodes[node]['label'],key='_explore_node_details',
+                          placeholder='选择一个节点查看来源')
+    if described:
+        st.write('节点说明：'+graph.nodes[described]['label'])
+        st.caption(graph.nodes[described]['description'])
     selected=clicked_clue(event,graph)
     if selected:
         st.write('当前选中：'+graph.nodes[selected]['label'])
@@ -54,16 +60,16 @@ def render_personal():
     st.caption('颜色区分线索类别；线索节点大小表示该项娱乐规则分值；A/B 和共同熟人汇总节点均固定大小。灰淡节点位于当前焦点之外；悬停或点击可查看来源。共同熟人仅显示一个自述汇总节点，不参与指数。')
     if st.button('修改我的信息'):
         _edit();st.switch_page(PLAY)
-    st.markdown('[看看真实研究中的相遇规律](#real-patterns)')
+    st.caption('想看看研究群体？切换上方“真实数据中的相遇规律”标签。')
 
 
 def render_public(root):
     st.header('真实数据中的相遇规律',anchor='real-patterns')
-    st.write('这里描述研究群体的匿名设备接触记录，与上方 A/B 的个人问卷独立。研究记录不能当作你的生活经历。')
+    st.write('这里描述研究群体的匿名设备接触记录，与 A/B 的个人问卷独立。研究记录不能当作你的生活经历。')
     try:
         comparison=load_window_comparison(root)
         st.caption('Copenhagen 固定实验 · 下方研究群体选择只影响接触活动与邻居分组图。')
-        st.plotly_chart(window_figure(comparison),width='stretch',key='explore_windows')
+        st.plotly_chart(readable_figure(window_figure(comparison)),width='stretch',key='explore_windows')
         st.write(comparison['story'])
         st.caption('为什么这样看：让不同历史长度使用同一组测试样本，比较模型对记录中接触的排序表现；这不是个人偶遇概率。')
         with st.expander('了解窗口比较的数据与方法'):
@@ -88,13 +94,13 @@ def render_public(root):
             for column,key,label in zip(st.columns(3),('nodes','edges','unique_contact_records'),('有记录的匿名参与者','有记录的配对','去重后的接触记录')):
                 column.metric(label,f'{network[key]:,}')
             if view['daily']:
-                st.plotly_chart(activity_figure(view),width='stretch',key='explore_activity')
+                st.plotly_chart(readable_figure(activity_figure(view)),width='stretch',key='explore_activity')
                 st.write(view['daily_story'])
                 st.caption('为什么这样看：比较各研究日实际公开的记录量。记录条数不等于见面次数；0只表示无记录，不证明无人接触。缺失或被抑制的值保留空白。')
             else:
                 st.info('时间单位未经核实或没有日级汇总，不能生成日级趋势。')
             if view['bins']:
-                st.plotly_chart(degree_figure(view),width='stretch',key='explore_degree')
+                st.plotly_chart(readable_figure(degree_figure(view)),width='stretch',key='explore_degree')
                 st.write(view['degree_story'])
             else:
                 st.info('邻居分组未公开或被隐私规则抑制，不补0、不推断个体差异。')
@@ -113,10 +119,11 @@ def render_public(root):
 
 def render(root):
     st.title('偶遇分析 · Encounter Insights')
-    st.caption('Explore · 先看自己的线索，再看研究群体的真实记录。')
-    render_personal()
-    st.divider()
-    render_public(root)
+    st.caption('Explore · 分析你填写的偶遇线索，也看看真实研究数据中发现的规律。')
+    personal,public=st.tabs(['我的偶遇分析','真实数据中的相遇规律'],
+                            default='我的偶遇分析' if submitted_analysis(st.session_state).status=='ready' else '真实数据中的相遇规律')
+    with personal: render_personal()
+    with public: render_public(root)
     with st.expander('独立的科研接触网络入口'):
         st.write('公开聚合文件不含真实网络边列表，因此本页不会编造科研网络。若本地有合法、已验证的处理后记录，可主动进入原有历史接触网络；它不代表你和TA的人际关系。')
         st.page_link('pages/3_Encounter_Network.py',label='查看历史科研接触网络')

@@ -2,6 +2,7 @@
 import streamlit as st
 
 from src.chance_encounter import OPTIONS, QUESTIONS, Questionnaire, evaluate_questionnaire
+from src.product_ui import keyword_cards
 
 
 def _clear_explore():
@@ -34,31 +35,28 @@ def render():
         st.write(result.message)
         if result.unknown_fields:
             st.caption(f'{len(result.unknown_fields)}项不确定或未填写的信息未参与计分，也未被当作负面证据。')
-        for offset in range(0,len(result.keywords),3):
-            for column,card in zip(st.columns(3),result.keywords[offset:offset+3]):
-                with column:
-                    with st.container(border=True):
-                        st.subheader(card.name)
-                        st.caption(card.direction)
-                        st.write(card.explanation)
-                        st.caption(card.source)
-        left,right=st.columns(2)
-        left.button('修改信息',on_click=_edit)
-        right.button('重新开始',on_click=_restart)
-        if st.button('查看我的偶遇分析'):
+        keyword_cards(result.keywords)
+        if st.button('查看我的偶遇分析', type='primary', width='stretch'):
             st.switch_page('pages/13_Encounter_Insights.py')
+        left,right=st.columns(2)
+        left.button('修改信息',on_click=_edit,width='stretch')
+        right.button('重新开始',on_click=_restart,width='stretch')
         return
     saved=st.session_state.get('_chance_answers',{})
     with st.form('chance_questionnaire'):
         st.caption('过去30天的次数与最近一次时间都只填写未提前安排的偶遇；至少提供3项有效历史或日常线索。不确定可以如实选择。')
+        st.caption('关系类型与见面约定需明确；其余5项线索至少回答3项。约定见面不属于偶遇。')
         values={}
         for field,choices in OPTIONS.items():
+            if field=='relationship': st.subheader('1 · 你和TA')
+            elif field=='frequency': st.subheader('2 · 过去的偶遇与日常')
+            elif field=='arrangement': st.subheader('3 · 确认未来约定')
             key='chance_input_'+field
             if key not in st.session_state:
                 st.session_state[key]=saved.get(field)
             values[field]=st.selectbox(QUESTIONS[field],tuple(choices),index=None,format_func=choices.get,
-                                       key=key,placeholder='请选择')
-        submitted=st.form_submit_button('计算趣味偶遇指数',type='primary')
+                                       key=key,placeholder='请选择',help=('只选择粗略范围，无需提供身份或具体地点。' if field=='distance' else '按实际情况选择；不确定时请如实选择，不会自动记为0。'))
+        submitted=st.form_submit_button('计算趣味偶遇指数',type='primary',width='stretch')
     if submitted:
         result=evaluate_questionnaire(Questionnaire.from_mapping(values))
         st.session_state['_chance_answers']=values

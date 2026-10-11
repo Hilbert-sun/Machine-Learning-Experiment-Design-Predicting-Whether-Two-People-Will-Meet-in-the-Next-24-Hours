@@ -2,7 +2,7 @@
 
 Task IDs and titles follow the user's task-board screenshot. Dependencies and acceptance criteria below are the implementation plan derived from `PROJECT_SPEC.md`, rather than additional completed functionality.
 
-Current execution: **P02 — DONE locally; remote PASS awaits its own final-head CI.**37 new dedicated tests;473 full tests pass, including all14 routes. Session-only personal graph/explanations and public T22/T31 stories, three-entry/lazy homepage and real desktop/390px browser checks verified. P01 rules/welcome and12 research pages preserved. Safely publish research-v2.2, verify exact remote SHA and all3 successful CI jobs, then STOP. P03 remains TODO and unauthorized.
+Current execution: **P03 — IN_PROGRESS; local500 full/71 smoke/27 safety tests pass.** Baseline P02 bb05d4a / successful Actions38111188664. Four global entries and Research Hub retain all12 original research routes; presentation only, no scoring/scientific changes. Actual browser390/768/1440px checks and final exact-head three-job CI are required. Stop after P03; no automatic next task.
 
 | Complete | ID | Task | Status | Dependencies | Acceptance criteria |
 | --- | --- | --- | --- | --- | --- |
@@ -56,4 +56,4 @@ T01 excludes Streamlit navigation/pages, dataset downloads, preprocessing, featu
 | --- | --- | --- | --- | --- |
 | P01 | 趣味偶遇预测 Play | DONE | T34, README-FRONTEND | Pure deterministic self-report index, valid/unknown/conflict/arrangement gates,3–5 sourced keyword cards, session edit/reset, native welcome with tested refresh scope,13-page navigation preserving12 research pages, focused/full/public/safety and exact-head three-job CI. |
 | P02 | Explore 分析、线索图谱与三入口 | DONE | P01 | Reuse submitted P01 Keywords without rescoring policy; bounded deterministic self-report diagram, optional mutual-summary only; actual T22/T31 public stories with missingness/source/cohort guards; lazy three-entry homepage; edit/reset isolation; all14 pages/public/full/safety/browser/narrow/own-head CI pass. |
-| P03 | 整体页面与入口调整 | TODO | P02 | Scope to be confirmed in its own authorized specification; no implementation in P01. |
+| P03 | 最终体验、导航与产品交付 | IN_PROGRESS | P02 DONE bb05d4a | Four native primary entries, all12 research routes/opt-in statistics retained; Play/Explore presentation and session invariants; real390/768/1440px browser checks; full/smoke/audit/safety and exact pushed HEAD three-job CI pass; STOP |

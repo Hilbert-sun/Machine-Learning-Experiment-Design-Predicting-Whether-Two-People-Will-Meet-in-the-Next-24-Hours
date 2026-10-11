@@ -103,8 +103,12 @@ def test_home_three_entries_lazy_research_and_old_metrics_preserved(monkeypatch)
     app=AppTest.from_file(APP).run()
     assert not app.exception and not calls and not app.metric
     labels=[p.proto.label for p in app.get('page_link')]
-    assert '开始偶遇预测 · Play' in labels and '看看数据分析 · Explore' in labels
-    button(app,'深入研究').click().run()
+    assert '玩一玩 Play' in labels and '数据分析 Explore' in labels
+    assert {'开始偶遇预测','探索相遇的规律','进入科研中心'} <= {b.label for b in app.button}
+    button(app,'进入科研中心').click().run()
+    assert not calls and not app.metric
+    app.switch_page('pages/14_Research_Hub.py').run()
+    button(app,'打开科研概览').click().run()
     assert not app.exception and calls and len(app.metric)==6
     assert all(m.value=='—' for m in app.metric)
     button(app,'收起科研概览').click().run()

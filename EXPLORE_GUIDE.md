@@ -1,12 +1,12 @@
 # Explore — P02 usage and data boundaries
 
-Planning baseline:ab4dc3f20e5bcd587a5d4caf5611f5bc3fb0afbb. P02 is incremental: P01 scoring rules/welcome and the12 research routes remain intact. P03 redesign, new models, datasets, training, downloads, report regeneration, tags and main merge are outside scope.
+Current product delivery: P03, based on accepted P02 bb05d4a / Actions38111188664. The P01 score/welcome, P02 public data calculation and12 original research routes remain intact. No training, downloads, data regeneration or main merge is included.
 
-## Three entry points
+## Four global entry points
 
-Overview presents Play, Explore and Research. Play opens the existing questionnaire; Explore opens [Encounter Insights](pages/13_Encounter_Insights.py); 深入研究 opens the original Overview statistics/data links on demand. First load does not scan raw/processed/model inventories. 收起科研概览 hides the research area. The existing Data Manager/Model Training/Prediction Lab links and research statistics remain available there and through original navigation.
+Home / Play / Explore / Research are native page links on every routed page. All15 routes remain registered; the old research pages are reached through the categorized [Research Hub](pages/14_Research_Hub.py). Original Overview statistics and quick actions are preserved behind “打开科研概览”; Home and the unopened directory do not scan private files. Native links wrap and cards stack on narrow screens.
 
-There are14 registered pages:12 original research pages, P01 Play and P02 Explore. This is a small entry adjustment, not a new routing system or P03 redesign. Narrow windows use Streamlit's existing more menu and responsive columns.
+Explore has two tabs: **我的偶遇分析** and **真实数据中的相遇规律**. Without a valid submitted questionnaire, the public tab opens by default; the personal tab provides guidance with no sample index. With a valid result, personal analysis opens first. Switching tabs does not modify answers or score. The tiny public aggregates also render while their tab is hidden; no raw/model loading is involved.
 
 ## Personal explanation flow
 
@@ -18,7 +18,7 @@ Known Keyword structures determine the result text, source-grounded cards and fa
 
 ## The A/B clue diagram
 
-[Graph implementation](src/encounter_graph.py) uses existing NetworkX + Plotly only. A canonical node/edge order, fixed seed42 and80 spring-layout iterations provide repeatable force-directed positions. Dark background, soft edges, hover explanations, point-selection details, A/B focus controls and 恢复默认视图 are provided. The layout is static and reproducible, not a continuously simulated or draggable-node force engine.
+[Graph implementation](src/encounter_graph.py) uses existing NetworkX + Plotly only. A canonical node/edge order, fixed seed42 and80 spring-layout iterations provide repeatable force-directed positions. Dark background, soft edges, hover explanations, point-selection details, A/B focus controls and 恢复默认视图 are provided. A separate “查看节点说明（支持触屏）” selector exposes the same node provenance without requiring hover. Restore clears selected descriptions; removing the optional mutual summary also clears its obsolete selection. Labels use outward positioning, a wrapped mutual label and padded axes to reduce clipping; complex labels can still overlap on narrow screens, so the selector remains the complete accessible explanation. The layout is static and reproducible, not a continuously simulated or draggable-node force engine.
 
 A/B are symbolic questionnaire endpoints, not research IDs. Nodes represent only known Keyword fields; a known weak/conflicting-routine clue is labeled as such, not asserted to be a shared schedule. Unknown factors produce no node. Edges associate self-reported questionnaire fields with endpoints; they do not assert friendship, identical routines or causal influence. Color distinguishes factor type with text labels; clue-node size follows the P01 rule points, while A/B and mutual-summary sizes are fixed display markers, with no score assigned to the summary. Focus dims nodes outside the selected endpoint's neighborhood.
 
@@ -57,4 +57,4 @@ python tools/check_repository_safety.py
 python -m tools.run_secret_scan
 ```
 
-Final acceptance requires the actual P02 final-head unit-tests, streamlit-smoke and repository-safety jobs all completed/success, matching remote SHA. Historical P01 green CI is not substituted; final SHA/run/counts are attested in the execution reply without an untested receipt commit. Stop after P02; P03 remains TODO.
+P02 was accepted at bb05d4a / Actions38111188664. P03 requires its own exact pushed SHA's unit-tests, streamlit-smoke and repository-safety jobs all completed/success. See [current product delivery](PRODUCT_DELIVERY.md) for actual browser scope, test results and remaining limits. No untested post-CI receipt commit; stop after P03.

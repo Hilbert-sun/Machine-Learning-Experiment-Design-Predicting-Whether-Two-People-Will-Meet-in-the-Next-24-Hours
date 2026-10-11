@@ -2,6 +2,30 @@
 
 Date:2026-10-11 (Asia/Kuala_Lumpur)
 
+**P03 — IN_PROGRESS: implementation and local tests pass; final exact-head remote CI still required.** Baseline bb05d4ae709e64643a3d436aeeb7e73f880b6202, accepted P02 Actions38111188664. Only P03 is authorized; P01–P03 end here, with no next task, training, download, main merge or release.
+
+## Implemented and preserved
+
+- app.py/src/ui.py:15 registered routes, four native global page links. Original12 route tuples remain unchanged. Lightweight pages/14_Research_Hub.py groups all original tools with Chinese explanations and links to existing reports/reproduction.
+- pages/0_Overview.py: pure public Home with headline and three cards; Play primary action. Research statistics move to opt-in src/research_overview_ui.py using identical original rendering body and unchanged src/overview.py. Home and unopened Hub never scan raw/model inventories, including after a previous opened research visit.
+- src/product_ui.py shares actual Keyword cards and display-only figure styling; Play groups seven existing questions and emphasizes result→full analysis→edit/reset. No scoring/state privacy changes.
+- Explore uses two native tabs, preserves exact src/encounter_insights.py loaders/calculations and real T22/T31 values. src/encounter_graph.py changes presentation only: padded fixed axes, outward/wrapped labels, smaller title; deterministic positions/edges/points remain identical. Touch node selector and restore/removal guards expose descriptions without hovering.
+- P01 pure scoring/welcome bytes, scientific training/features/labels/evaluation/inference/model code, datasets, reports and model weights are unchanged. No cache/URL/log/export/persistence for questionnaires, new JS/CSS/framework/third-party tracking or security-policy edits.
+
+## Observed local verification
+
+- Focused product/navigation/P01/P02/old-route tests:127 passed in5.63s; product/documentation checks50 passed in2.92s. New dedicated product tests24; existing navigation/docs parametrization adds3 more cases, taking473→500. Old tests retain every scientific/business assertion; only access steps/page totals change.
+- Full .venv/bin/python -m pytest -q:500 passed in37.33s. Workflow-equivalent ten-file Streamlit Smoke:71 passed in9.14s. Safety rejection tests27 passed in1.20s. pip check: no broken requirements.
+- Public final_audit PASS:51 frozen files unchanged, correct distinct research populations. Preflight2745 file hashes: authorized UI/tests/current docs only changed;0 pre-existing data/model/report changes. Original Overview calculation/render body matches P02 after relocation/indentation. CI/security files are byte-preserved.
+- Actual browser390/768/1440px: four-entry navigation and responsive Home/Research; fictional seven-answer flow66→Explore66→edit(no stale index)→resubmit71; mutual summary/touch description/A focus/restore; Research roundtrip and reset; normal full same-tab refresh did not repeat welcome (dialog count0). Empty personal guidance, real Workplace public charts, MIT unknown-time and Social unavailable states checked. Training/Evaluation/Time Machine opened without running actions. No page-wide horizontal overflow at the measured three widths. Detailed evidence/limits in PRODUCT_DELIVERY.md.
+- New navigation tests explicitly exercise the actual modern-router entrypoint despite AppTest resetting legacy directory detection between runs; no production testing bypass. Existing standalone research/UI and welcome tests remain enabled. Initial focused failures were corrected: moved-renderer import binding under tests, new test input type and AppTest entrypoint selection. No known failed test remains.
+
+## Publication gate and next action
+
+Safely stage/review code, tests and product documents; run exact Git-index safety and pinned Gitleaks history/index/provider-risk checks; push only research-v2.2 and verify all three Jobs completed/success at the same actual remote HEAD. P03 acceptance stays IN_PROGRESS until that check; final execution reply records actual SHA/URL/counts, without an untested receipt commit. Stop and await final user acceptance; do not create P04/T35.
+
+## Earlier P02/T34 evidence (historical)
+
 **P02 — DONE locally; remote acceptance requires this final P02 commit's own three completed/success CI jobs at exact remote HEAD.** Baselineab4dc3f20e5bcd587a5d4caf5611f5bc3fb0afbb / P01 Actions38108921172 (433 unit/69 smoke/27 safety). Only P02 is authorized; P03 remains TODO. No new data, model fit, experimental result export, main merge, tag/release or deployment.
 
 ## Implemented

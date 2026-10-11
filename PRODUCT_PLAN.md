@@ -1,12 +1,12 @@
 # Encounter Lab product extensions
 
-P01 adds Play alongside Research; P02 adds Explore and a minimal three-entry homepage. P03 broader redesign remains future work. Research Edition2.2 T01–T34, its12 original pages,51 frozen public materials, saved local models/labels/features and CI/security rules remain intact. Planning baseline:13192b741f5f81dae9af3563ad27e81767072d57.
+P01 adds Play alongside Research; P02 adds Explore and a minimal three-entry homepage. P03 now organizes four global entries and a lightweight Research Hub, with final presentation and responsive checks. Research Edition2.2 T01–T34, its12 original pages,51 frozen public materials, saved local models/labels/features and CI/security rules remain intact. Planning baseline:13192b741f5f81dae9af3563ad27e81767072d57.
 
 | Task | Scope | Status |
 | --- | --- | --- |
 | P01 · Play | Questionnaire, pure-rule index, keyword explanations, edit/reset, entry welcome and one added page | DONE at ab4dc3f / Actions38108921172; unchanged scoring/welcome |
-| P02 · Explore | Session-only Keyword explanations/clue graph, actual public T22/T31 stories, minimal three-entry homepage | Implemented/locally verified; remote acceptance requires its own final-head CI |
-| P03 · Product navigation | Future overall homepage/Play/Explore/Research layout; specification required | TODO; not implemented or authorized by P01 |
+| P02 · Explore | Session-only Keyword explanations/clue graph, actual public T22/T31 stories, minimal three-entry homepage | DONE at bb05d4a / Actions38111188664 (473 full/70 smoke/27 safety) |
+| P03 · Product delivery | Four primary native entries, Research Hub, presentation and responsive improvements | Implemented; final acceptance requires its own exact-head three-job CI |
 
 ## Product and scientific boundary
 
@@ -34,9 +34,9 @@ A positive past30d frequency conflicts with older/never recency; zero past30d co
 
 Each of3–5 keyword cards cites its exact user-selected source, names the factor, explains the rule and shows strong/general/weak evidence status. Unknown factors produce no fabricated card. All descriptions are explicitly based on user input, not sensors, real schedules or shared-friend records.
 
-## User path and state
+## P01 original user path and state (current navigation below)
 
-[Overview](pages/0_Overview.py) → 开始偶遇预测 · Play → [Chance Encounter](pages/12_Chance_Encounter.py). The13th navigation page follows all12 unchanged research entries. No new overall navigation redesign is included.
+[Overview](pages/0_Overview.py) → 开始偶遇预测 · Play → [Chance Encounter](pages/12_Chance_Encounter.py). At P01 delivery, the13th navigation page followed all12 research entries; P03 now supplies the four-entry navigation described below.
 
 After selecting answers, calculate the index; excluded/invalid/insufficient cases show an explanation with no score. A valid result displays n keyword cards. 修改信息 restores submitted answers; a new submit recalculates. 重新开始 clears only Play questionnaire/result/widget state, preserving research selection and welcome acknowledgement. Page switching can retain Play answers within the same server session; refresh starts a new server session and clears answers.
 
@@ -64,10 +64,10 @@ python -m tools.run_secret_scan
 
 Local P01 verification:34 pure-engine tests,12 page/welcome/privacy tests,16 navigation tests and22 documentation tests pass (84 focused); full suite433 passes. This expands the original384 tests by46 dedicated P01 cases plus3 new navigation/documentation cases. The original12 research paths are checked byte-for-byte as a tuple against the planning baseline and still exercised individually. Native browser checks confirm welcome acknowledgement, same-tab reload on Overview/Play without repetition, new independent tab welcome, questionnaire/result/edit/reset; only explicitly fictional test choices were used, with no filled-form export or screenshot. AppTest uses isolated temporary config paths, never private research artifacts.
 
-Final SHA, observed test totals and actual completed/success CI are attested in the execution reply; previous green T34/README runs are not P01 acceptance. Never publish actual questionnaire logs, filled-form screenshots or per-person artifacts. That paragraph describes P01 scope. P02 is now separately authorized and documented below; P03, word clouds, new datasets/model training, main merge and tags/releases remain outside the current scope.
+Final SHA, observed test totals and actual completed/success CI are attested in the execution reply; previous green T34/README runs are not P01 acceptance. Never publish actual questionnaire logs, filled-form screenshots or per-person artifacts. That paragraph describes historical P01 scope. P02 and P03 were separately authorized; no new datasets/model training, main merge, tags/releases or further task is included.
 
 
-## P02 delivery
+## P02 accepted delivery (historical layout)
 
 Planning baseline ab4dc3f20e5bcd587a5d4caf5611f5bc3fb0afbb. [Explore guide](EXPLORE_GUIDE.md) documents the actual public data paths, privacy/cohort/time boundaries, graph semantics and user flow.14 pages retain all12 research entries and Play. Home has Play/Explore/Research entries; research statistics load only when requested.
 
@@ -75,4 +75,12 @@ Personal analysis reuses the submitted P01 Keyword/result and unchanged scoring 
 
 Public window bars read the fixed T22 cohort; group activity and neighbor bins read actual T31 aggregates. No suppressed/missing values are zero-filled, no tick/calendar conversion is invented, and no personal questionnaire is cached globally. Source/provenance and plain-language explanations accompany each chart. P01 rules/welcome,51 frozen materials, data/models/statistical code and CI/security policy are preserved.
 
-Local P02 tests and actual browser desktop/390px checks are recorded in PROGRESS; remote PASS requires the new final SHA's actual unit-tests/streamlit-smoke/repository-safety success. P03 remains TODO and needs an explicit new specification/instruction.
+Local P02 tests and actual browser desktop/390px checks are recorded in PROGRESS; remote PASS requires the new final SHA's actual unit-tests/streamlit-smoke/repository-safety success. P02 accepted bb05d4a / Actions38111188664. P03 is separately authorized below.
+
+## P03 final product extension
+
+Baseline bb05d4ae709e64643a3d436aeeb7e73f880b6202. Four global native page links replace the flat14-page menu. All original12 routes remain registered; the original Overview statistics are moved intact into an opt-in Research Hub renderer. The new15th route categorizes the original tools without copying research functions. Home never imports or scans the research overview, even after a prior visit opened it.
+
+Play groups the same seven questions, clarifies support/gates and places full analysis before edit/reset. Shared Keyword cards preserve actual source/direction/explanation. Explore separates personal and public views with native tabs; the same genuine public loaders and figure values remain unchanged. The stable seed42 diagram keeps nodes/edges/points, adds label spacing and a touch-friendly description selector; restore clears focus and selected details. All P01 scoring/welcome bytes remain unchanged.
+
+No new private storage, external scripts, custom navigation JavaScript, CSS framework or analytics. This task ends Product Extension P01–P03; no next development task is authorized. Current operation/verification details are in [PRODUCT_DELIVERY.md](PRODUCT_DELIVERY.md); final exact-head Actions receipt is reported after remote success.

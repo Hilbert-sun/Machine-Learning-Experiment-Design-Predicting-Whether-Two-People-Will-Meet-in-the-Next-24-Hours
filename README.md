@@ -1,12 +1,53 @@
-# Encounter Lab — Research Edition 2.2
+# Encounter Lab · 相遇实验室
 
-**未来24小时匿名设备接近预测与研究审计 / Auditable 24-hour device-contact prediction.**
+**世界这么大，明天我们会不会刚好遇见？**
 
-A Python research application that asks whether a pair of anonymous devices will have a recorded proximity contact in the next 24 hours. It compares bounded historical windows, simulates historical predictions, and audits what incomplete observation lets us conclude. Device proximity is a proxy for encounters; this does not predict relationships or track live locations.
+回答七个简单问题，获得0–100的趣味偶遇指数；用关键词、因素图和 A/B 线索图理解自己的填写信息，也可以查看真实研究群体的接触规律。无需注册、原始数据或模型即可使用 Play 与 Explore。**趣味指数来自固定规则，不是真实相遇概率。**
 
-**T01–T34 已完成 / Research Edition 2.2 delivered.** T34 release commit `9f9164f` passed all three jobs in [Actions 38065140435](https://github.com/Hilbert-sun/Machine-Learning-Experiment-Design-Predicting-Whether-Two-People-Will-Meet-in-the-Next-24-Hours/actions/runs/38065140435): 384 full tests, 68 Streamlit smoke tests, 27 repository-safety tests and 12 native dependency checks. These are observed counts for that commit; later commits require their own CI.
+应用只有四个一级入口：**首页 Home / 玩一玩 Play / 数据分析 Explore / 科研中心 Research**。首页点击“开始偶遇预测”，提交问卷后进入完整分析；也可直接进入 Explore 的公开数据区。原有科研功能全部保留在 Research 分类目录，科研统计需主动打开。安装与一分钟操作见 [产品交付说明](PRODUCT_DELIVERY.md)。
 
-本项目包含可交互的 Streamlit 科研前端：查看接触网络与数据质量、比较 1/3/7 天历史窗口，并用 Time Machine 独立完成历史预测、冻结与实际结果揭晓。真实数据和模型权重仅保存在本地，GitHub 提供代码、已审查的聚合报告和公开测试。
+Research Edition 2.2 的 T01–T34 已交付；P01/P02 分别在提交 ab4dc3f / bb05d4a 的三项 CI 验收通过。P03 整理导航和展示，保留冻结研究结果。P03 的最终远程验收仅以本次最终 HEAD 对应的三个成功 CI Job 为准，执行回执记录实际 SHA 与运行链接。
+
+科研部分研究未来24小时的匿名设备接近记录，比较历史窗口、模拟历史预测并审计不完整观测。设备接近是相遇的代理证据，不能预测关系或追踪实时位置。真实数据、权重及逐样本结果仅在本地，GitHub 提供代码、已审查聚合报告和公开测试。
+
+## Play · 趣味偶遇预测（P01）
+
+从首页点击“开始偶遇预测”，或在全局导航选择“玩一玩 Play”。无需登录、数据集或模型；填写七项粗粒度选择题即可体验。首次访问显示一次娱乐提示，同标签页刷新在浏览器会话存储可用时不重复；问卷答案只留在服务器当前会话，刷新会清空。
+
+输出是0–100的**固定规则趣味指数，不能当作真实偶遇概率**。五类已知历史/日常线索等权平均，不确定项不当成零分；关系类型不加权。少于三项有效线索、已约定见面、约定不明或明显矛盾时不出指数。结果提供3–5张仅引用实际填写信息的关键词卡片，支持修改与重新开始。
+
+原 Copenhagen 模型没有用该问卷训练，也不能区分约定见面与偶遇；Play 与 Research 的结果保持独立。完整规则、刷新限制与 P02/P03 边界见 [PRODUCT_PLAN.md](PRODUCT_PLAN.md)。
+
+## Explore · 看看偶遇分析（P02）
+
+一级导航提供 Home / Play / Explore / Research；科研概览移至科研中心，在点击“打开科研概览”后才加载。Play 结果页点击“查看我的偶遇分析”，即可解释当前问卷的真实 Keyword、因素分值和 A/B 线索关联；没有提交问卷时不生成示例个人分数。
+
+深色线索图使用稳定力导向布局、悬停/点击说明、A/B 焦点切换和恢复视图；触屏可使用节点说明选择器。可选共同熟人数仅画一个自述汇总节点，不改变 P01 指数，不制造个体朋友或真实社交链路。个人信息只在当前会话中处理；修改/重置问卷会使旧分析失效。
+
+Explore 使用“我的偶遇分析 / 真实数据中的相遇规律”两个标签；无问卷时默认打开公开数据。公开群体区无需原始数据或模型：直接读取 T22 同一测试总体的窗口排序结果、T31 相对研究日接触活动及已公开邻居分组。隐私抑制/缺失不补0；MIT 未核实时间单位不画日趋势，Social Evolution 不画虚构曲线。真实科研接触网络通过独立入口访问，不混入 A/B 图谱。见 [EXPLORE_GUIDE.md](EXPLORE_GUIDE.md)。
+
+## 前端预览 / Frontend walkthrough
+
+前端由 Python + Streamlit 构建，图表使用 Plotly，页面导航在 [app.py](app.py) 和 [src/ui.py](src/ui.py) 中定义。无需额外构建 JavaScript 应用；后端推理与研究逻辑位于独立的 src 模块。
+
+安装依赖后运行：
+
+```sh
+streamlit run app.py
+```
+
+打开终端显示的本地地址，默认是 http://localhost:8501。应用提供中文优先的深色界面：四个全局一级入口、Research 分类目录和15个注册页面（原12条路由 + Play + Explore + Research Hub）。窄屏导航自动换行、卡片纵向排列，不再平铺全部科研页面。
+
+建议按以下顺序查看：
+
+1. **Home / Research**：首页选择 Play、Explore 或科研中心；Research 目录中点击“打开科研概览”查看原有六项指标，首页和未打开概览的目录不扫描本地研究数据。
+2. **History Window Study**：保留默认配置，点击 Run Study 读取并验签已有冻结结果，查看同一队列的 1/3/7 天比较。匹配的本地数据、模型和运行记录是必要条件。
+3. **Time Machine**：选择历史研究日、配对及窗口，按 Select → Predict → Freeze → Reveal 操作。揭晓不足以验证无接触时显示 Unknown；静态档案不作为实时预测。
+4. **Multi-Dataset Exploration**：查看各来源的描述网络与正接触检索，区分可用、历史不足、时间单位未知和不可用状态。
+
+首次克隆没有真实数据或模型时，相关页面显示明确空状态；公共报告与测试仍可直接查看。T30 审计通过文档和聚合表呈现，没有单独的应用页面。完整操作说明见 [五分钟演示](DEMO_GUIDE.md) 和 [分级复现指南](REPRODUCIBILITY.md)。
+
+查看前端代码时，从 app.py 的导航进入下面各页面；Time Machine 的具体交互在 [src/time_machine_ui.py](src/time_machine_ui.py)，多数据集展示在 [src/multisource_ui.py](src/multisource_ui.py)。
 
 ## Research and implemented features
 
@@ -17,7 +58,7 @@ Copenhagen supports the main binary experiment with scan-coverage proxy evidence
 - Independent Time Machine: Select → Predict → Freeze → Reveal; unreliable absence remains Unknown.
 - Population/selection-bias audit, source-specific network exploration and fixed-rule Top-K retrieval.
 - Parquet/PyArrow processing, stable archive snapshots and versioned caches with output-parity checks.
-- 12 research pages plus independent Play and Explore pages, pytest, Python 3.11/Linux GitHub Actions and repository/secret scanning.
+- 12 original research routes plus independent Play, Explore and Research Hub pages, pytest, Python 3.11/Linux GitHub Actions and repository/secret scanning.
 
 ## Genuine findings and their populations
 
@@ -39,50 +80,11 @@ T32 measured five separate processes per configuration on the same machine/input
 
 Python, pandas, NumPy, scikit-learn, XGBoost and LightGBM provide preparation, baselines, model persistence and synthetic/native regression coverage. Copenhagen window results use XGBoost, logistic regression and historical frequency; LightGBM is supported but is not the reported window-study winner. NetworkX supports historical networks; Streamlit and Plotly provide the application. Parquet/PyArrow and SHA256 snapshot/cache identities preserve data contracts. [Actual module architecture](PORTFOLIO_GUIDE.md).
 
-## Play · 趣味偶遇预测（P01）
-
-从首页点击“开始偶遇预测 · Play”，或在顶部 more 菜单选择 Chance Encounter。无需登录、数据集或模型；填写七项粗粒度选择题即可体验。首次访问显示一次娱乐提示，同标签页刷新在浏览器会话存储可用时不重复；问卷答案只留在服务器当前会话，刷新会清空。
-
-输出是0–100的**固定规则趣味指数，不能当作真实偶遇概率**。五类已知历史/日常线索等权平均，不确定项不当成零分；关系类型不加权。少于三项有效线索、已约定见面、约定不明或明显矛盾时不出指数。结果提供3–5张仅引用实际填写信息的关键词卡片，支持修改与重新开始。
-
-原 Copenhagen 模型没有用该问卷训练，也不能区分约定见面与偶遇；Play 与 Research 的结果保持独立。完整规则、刷新限制与 P02/P03 边界见 [PRODUCT_PLAN.md](PRODUCT_PLAN.md)。
-
-## Explore · 看看偶遇分析（P02）
-
-首页提供 Play / Explore / Research 三入口；科研概览在点击“深入研究”后才加载。Play 结果页点击“查看我的偶遇分析”，即可解释当前问卷的真实 Keyword、因素分值和 A/B 线索关联；没有提交问卷时不生成示例个人分数。
-
-深色线索图使用稳定力导向布局、悬停/点击说明、A/B 焦点切换和恢复视图。可选共同熟人数仅画一个自述汇总节点，不改变 P01 指数，不制造个体朋友或真实社交链路。个人信息只在当前会话中处理；修改/重置问卷会使旧分析失效。
-
-公开群体区无需原始数据或模型：直接读取 T22 同一测试总体的窗口排序结果、T31 相对研究日接触活动及已公开邻居分组。隐私抑制/缺失不补0；MIT 未核实时间单位不画日趋势，Social Evolution 不画虚构曲线。真实科研接触网络通过独立入口访问，不混入 A/B 图谱。见 [EXPLORE_GUIDE.md](EXPLORE_GUIDE.md)。
-
-## 前端预览 / Frontend walkthrough
-
-前端由 Python + Streamlit 构建，图表使用 Plotly，页面导航在 [app.py](app.py) 和 [src/ui.py](src/ui.py) 中定义。无需额外构建 JavaScript 应用；后端推理与研究逻辑位于独立的 src 模块。
-
-安装依赖后运行：
-
-```sh
-streamlit run app.py
-```
-
-打开终端显示的本地地址，默认是 http://localhost:8501。应用提供中文优先的深色界面和 14 个导航页面（12 个科研页面 + Play + Explore）；窗口较窄时，其余页面收纳在顶部的 more 菜单中。
-
-建议按以下顺序查看：
-
-1. **Overview**：先选择 Play 或 Explore；点击“深入研究”后再查看原有科研指标，首次进入不扫描全量研究数据。
-2. **History Window Study**：保留默认配置，点击 Run Study 读取并验签已有冻结结果，查看同一队列的 1/3/7 天比较。匹配的本地数据、模型和运行记录是必要条件。
-3. **Time Machine**：选择历史研究日、配对及窗口，按 Select → Predict → Freeze → Reveal 操作。揭晓不足以验证无接触时显示 Unknown；静态档案不作为实时预测。
-4. **Multi-Dataset Exploration**：查看各来源的描述网络与正接触检索，区分可用、历史不足、时间单位未知和不可用状态。
-
-首次克隆没有真实数据或模型时，相关页面显示明确空状态；公共报告与测试仍可直接查看。T30 审计通过文档和聚合表呈现，没有单独的应用页面。完整操作说明见 [五分钟演示](DEMO_GUIDE.md) 和 [分级复现指南](REPRODUCIBILITY.md)。
-
-查看前端代码时，从 app.py 的导航进入下面各页面；Time Machine 的具体交互在 [src/time_machine_ui.py](src/time_machine_ui.py)，多数据集展示在 [src/multisource_ui.py](src/multisource_ui.py)。
-
 ## Application pages
 
 | Page | Purpose |
 | --- | --- |
-| [Overview](pages/0_Overview.py) | Available local artifacts and project overview |
+| [Overview](pages/0_Overview.py) | Public Home with Play/Explore/Research entries; original statistics available in Research Hub |
 | [Data Manager](pages/1_Data_Manager.py) | Explicit download, validation and preprocessing |
 | [Data Explorer](pages/2_Data_Explorer.py) | Contact distributions |
 | [Encounter Network](pages/3_Encounter_Network.py) | Historical network visualization |
@@ -96,6 +98,7 @@ streamlit run app.py
 | [Multi-Dataset Exploration](pages/11_Multi_Dataset_Exploration.py) | Descriptive topology and positive retrieval |
 | [Chance Encounter · Play](pages/12_Chance_Encounter.py) | Session-only rule-based entertainment index and sourced keyword cards |
 | [Encounter Insights · Explore](pages/13_Encounter_Insights.py) | Personal clue explanations/diagram and separate public research stories |
+| [Research Hub](pages/14_Research_Hub.py) | Categorized research directory, opt-in original overview and report links |
 
 T30 has no dedicated application page: read [ASOF_AUDIT.md](ASOF_AUDIT.md) and its public aggregate tables. Local private HTML, when present, is an additional research artifact.
 
@@ -119,7 +122,7 @@ No dataset or model download is needed for public tests or the public audit. The
 
 ## Research limitations, sources and licenses
 
-Only four principal window-study test dates; exposed historical periods; coverage is a proxy, not continuous device-online evidence; missing contact is not automatically negative. Stable archive event time does not establish historical ingestion availability. Static archives cannot be advertised as real-time forecasts. Snapshots retain disclosed TOCTOU/atomic-publication limits and lack live ingestion transactions. Anonymous identifiers can still carry reidentification risk; no individual demo exports are published. Case Explorer now reuses the verified Time Machine policy/snapshot service; mixed policies reject before prediction or future reads. Five critical pages passed real browser visual acceptance, alongside the 14-page AppTest suite. See [final acceptance evidence](FINAL_RESEARCH_AUDIT.md).
+Only four principal window-study test dates; exposed historical periods; coverage is a proxy, not continuous device-online evidence; missing contact is not automatically negative. Stable archive event time does not establish historical ingestion availability. Static archives cannot be advertised as real-time forecasts. Snapshots retain disclosed TOCTOU/atomic-publication limits and lack live ingestion transactions. Anonymous identifiers can still carry reidentification risk; no individual demo exports are published. Case Explorer now reuses the verified Time Machine policy/snapshot service; mixed policies reject before prediction or future reads. Five critical pages passed real browser visual acceptance, alongside the 15-route AppTest suite. See [final acceptance evidence](FINAL_RESEARCH_AUDIT.md).
 
 Source links, citations and dataset-specific licensing evidence are preserved in [source quality metadata](reports/multisource/T31_SOURCE_SUMMARY.json), [dataset catalog](reports/DATASET_CATALOG.json), and [multi-source study](MULTISOURCE_STUDY.md). Copenhagen: [official Figshare record](https://figshare.com/articles/dataset/The_Copenhagen_Networks_Study_interaction_data/7267433). Do not infer a dataset license from website source-code licenses; MIT Social Evolution acquisition/license remain unverified. Contact-only sources cannot support reliable binary negatives. No project code LICENSE file is currently provided; do not assume permission for unrestricted redistribution. Dataset-specific licenses govern third-party data separately.
 
@@ -127,7 +130,7 @@ Source links, citations and dataset-specific licensing evidence are preserved in
 
 [![Public CI](https://github.com/Hilbert-sun/Machine-Learning-Experiment-Design-Predicting-Whether-Two-People-Will-Meet-in-the-Next-24-Hours/actions/workflows/ci.yml/badge.svg?branch=research-v2.2)](https://github.com/Hilbert-sun/Machine-Learning-Experiment-Design-Predicting-Whether-Two-People-Will-Meet-in-the-Next-24-Hours/actions/workflows/ci.yml)
 
-Three jobs verify full public pytest, 14-page Streamlit smoke, and repository/secret safety. Synthetic fixtures and public aggregates are distinct from lawful local research reproduction. No raw data, weights, per-sample predictions, credentials or personal paths belong in Git. [Verified historical T33 CI record and current-head gate](CI_VERIFICATION.md).
+Three jobs verify full public pytest, 15-route Streamlit smoke, and repository/secret safety. Synthetic fixtures and public aggregates are distinct from lawful local research reproduction. No raw data, weights, per-sample predictions, credentials or personal paths belong in Git. [Verified historical T33 CI record and current-head gate](CI_VERIFICATION.md).
 
 - [Final research audit and task evidence index](FINAL_RESEARCH_AUDIT.md)
 - [Reproducibility](REPRODUCIBILITY.md), [portfolio architecture](PORTFOLIO_GUIDE.md), [demo](DEMO_GUIDE.md), [release checklist](FINAL_RELEASE_CHECKLIST.md)
