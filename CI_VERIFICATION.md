@@ -1,6 +1,25 @@
-# T33 — Public CI Verification
+# Encounter Lab — CI Verification and Publication Records
 
-Status: T33 final delivery remotely verified at ae623111871407a74185777f4d3a74c642b0dcde. T34 phase one subsequently passed at f49db01; final phase two requires its own NEW current-head run. Historical success is not final-head acceptance.
+## Latest verified product delivery
+
+已发布产品版本：P03，分支 research-v2.2，提交 `390384ca27b9e9e89788a6d17e5c436552d28873`。已直接核验 [Actions38115466252](https://github.com/Hilbert-sun/Machine-Learning-Experiment-Design-Predicting-Whether-Two-People-Will-Meet-in-the-Next-24-Hours/actions/runs/38115466252)：status completed、conclusion success，三个 Job 都对应这个相同 SHA。
+
+| Job / check | Actual result from Linux logs |
+| --- | --- |
+| unit-tests | 500 passed in114.63s |
+| streamlit-smoke | 71 passed in23.17s; all15 registered routes covered |
+| repository-safety | 27 passed in0.52s; exact tracked-index scanner PASS;51 frozen objects unchanged; pinned Gitleaks full-history/index/provider self-test PASS |
+| Native dependencies | 12 passed in2.01s; pip check successful |
+
+P03 本地浏览器390/768/1440px检查的范围与限制见 [产品交付说明](PRODUCT_DELIVERY.md)，不由 pytest/CI 代替。公开 CI 验证代码、合成边界样本、公开聚合结果及冻结字节；不验证本地真实模型重训练或独立原始数据复现。
+
+科研交付 T34 也已核验：`9f9164fe12a3d93ae39e1f2f5789c8ce7e1856e8` / [Actions38065140435](https://github.com/Hilbert-sun/Machine-Learning-Experiment-Design-Predicting-Whether-Two-People-Will-Meet-in-the-Next-24-Hours/actions/runs/38065140435) 三个 Job 全部 completed/success。P03 前的阶段记录保留在下方，日期与测试总数属于各自历史版本。
+
+以上是已核验的发布快照。后续文档维护或其他提交须检查自己的 headSha、远程分支 SHA 与三个 Job；不能使用历史绿色状态代替当前提交验收。
+
+## Historical T33 verification
+
+T33 final delivery was remotely verified at ae623111871407a74185777f4d3a74c642b0dcde. T34 and P01–P03 were subsequently accepted at their own commits; the latest verified product record is above.
 
 ## Test/data preflight
 
@@ -99,4 +118,4 @@ The earlier implementation run 38053176593 at 8d0ea53 passed 335/61/24 tests and
 - unit-tests377 passed in82.63s; native imports12 passed in2.13s; pip check successful.
 - streamlit-smoke61 passed in12.40s; repository-safety27 passed in0.46s;51 frozen public objects unchanged and both secret scans passed.
 
-The user then authorized phase two. Its Case Explorer policy regression tests and final status/documentation change require a new complete successful run at the exact final remote SHA. The run ID cannot be known before committing; the final execution reply records actual SHA/run URL/counts without creating another untested receipt commit. DONE acceptance is conditional on that actual current-head success. If it fails, repair and retain IN_PROGRESS until reverified. Neither the T33 nor phase-one run substitutes for final-head verification.
+Phase two subsequently completed at9f9164fe12a3d93ae39e1f2f5789c8ce7e1856e8 / [Actions38065140435](https://github.com/Hilbert-sun/Machine-Learning-Experiment-Design-Predicting-Whether-Two-People-Will-Meet-in-the-Next-24-Hours/actions/runs/38065140435), with all three mandatory Jobs successful. P01–P03 followed separately; P03 final acceptance is recorded above. Each later commit needs its own successful run at the exact remote SHA. If CI fails, repair and retain IN_PROGRESS until reverified; no prior success substitutes for current-head verification.

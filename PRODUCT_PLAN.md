@@ -6,7 +6,7 @@ P01 adds Play alongside Research; P02 adds Explore and a minimal three-entry hom
 | --- | --- | --- |
 | P01 · Play | Questionnaire, pure-rule index, keyword explanations, edit/reset, entry welcome and one added page | DONE at ab4dc3f / Actions38108921172; unchanged scoring/welcome |
 | P02 · Explore | Session-only Keyword explanations/clue graph, actual public T22/T31 stories, minimal three-entry homepage | DONE at bb05d4a / Actions38111188664 (473 full/70 smoke/27 safety) |
-| P03 · Product delivery | Four primary native entries, Research Hub, presentation and responsive improvements | DONE: local and code-candidate Actions38115216049 verified; final status commit also requires exact-head CI |
+| P03 · Product delivery | Four primary native entries, Research Hub, presentation and responsive improvements | DONE at390384c / [Actions38115466252](https://github.com/Hilbert-sun/Machine-Learning-Experiment-Design-Predicting-Whether-Two-People-Will-Meet-in-the-Next-24-Hours/actions/runs/38115466252);500 full/71 smoke/27 safety/12 native |
 
 ## Product and scientific boundary
 
@@ -83,4 +83,4 @@ Baseline bb05d4ae709e64643a3d436aeeb7e73f880b6202. Four global native page links
 
 Play groups the same seven questions, clarifies support/gates and places full analysis before edit/reset. Shared Keyword cards preserve actual source/direction/explanation. Explore separates personal and public views with native tabs; the same genuine public loaders and figure values remain unchanged. The stable seed42 diagram keeps nodes/edges/points, adds label spacing and a touch-friendly description selector; restore clears focus and selected details. All P01 scoring/welcome bytes remain unchanged.
 
-No new private storage, external scripts, custom navigation JavaScript, CSS framework or analytics. This task ends Product Extension P01–P03; no next development task is authorized. Current operation/verification details are in [PRODUCT_DELIVERY.md](PRODUCT_DELIVERY.md); final exact-head Actions receipt is reported after remote success.
+No new private storage, external scripts, custom navigation JavaScript, CSS framework or analytics. This task ends Product Extension P01–P03; no next development task is authorized. Current operation/verification details are in [PRODUCT_DELIVERY.md](PRODUCT_DELIVERY.md). Final P03 publication390384c / [Actions38115466252](https://github.com/Hilbert-sun/Machine-Learning-Experiment-Design-Predicting-Whether-Two-People-Will-Meet-in-the-Next-24-Hours/actions/runs/38115466252) is verified; later documentation maintenance does not reopen product development.

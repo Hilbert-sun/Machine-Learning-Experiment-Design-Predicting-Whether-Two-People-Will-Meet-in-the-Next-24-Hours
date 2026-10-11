@@ -4,6 +4,14 @@ Encounter Lab investigates whether anonymous device pairs will have a recorded c
 
 The implementation covers data adapters, bounded historical feature engineering, chronological purging, frequency/logistic/XGBoost baselines, calibration where validation support permits, model persistence, network exploration, Streamlit interaction, parity-preserving caching and CI/security. Technical decisions and evidence can be inspected in the [final task index](FINAL_RESEARCH_AUDIT.md).
 
+## Product entry points and research separation
+
+The delivered app adds a public-facing product layer: Home introduces the experience; Play computes a transparent questionnaire index; Explore explains the submitted factors and shows separately sourced public research charts; Research Hub categorizes the original tools. The15 registered pages retain all12 research routes. [Product delivery](PRODUCT_DELIVERY.md), [Explore guide](EXPLORE_GUIDE.md) and [demo path](DEMO_GUIDE.md) document actual interactions and responsive browser checks.
+
+Play uses no trained Copenhagen model. Its questionnaire index is not calibrated probability; the A/B clue diagram is not a true social network. Personal answers stay in the current server session, while public charts use reviewed T22/T31 aggregates. P01 scoring and welcome logic, frozen research objects and all scientific modules remain unchanged by the presentation work. [Verified CI records](CI_VERIFICATION.md) distinguish actual published results from future current-head checks.
+
+## Research architecture
+
 ```mermaid
 flowchart TD
   Sources[Public contact sources] --> Validate[Schema, license and time-unit validation]

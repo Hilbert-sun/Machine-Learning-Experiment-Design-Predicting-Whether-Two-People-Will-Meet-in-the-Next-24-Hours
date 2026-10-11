@@ -2,7 +2,21 @@
 
 Date:2026-10-11 (Asia/Kuala_Lumpur)
 
-**P03 — DONE: implementation, local tests and code-candidate remote acceptance verified.** The final status-document commit must also pass its own exact-head CI before execution reports PASS. Baseline bb05d4ae709e64643a3d436aeeb7e73f880b6202, accepted P02 Actions38111188664. Only P03 is authorized; P01–P03 end here, with no next task, training, download, main merge or release.
+**DOCS-P03 — DONE：README 与配套文档补齐及本地验证完成。** 用户本次仅授权完善文档并推送。P03 已在 `390384ca27b9e9e89788a6d17e5c436552d28873` / [Actions38115466252](https://github.com/Hilbert-sun/Machine-Learning-Experiment-Design-Predicting-Whether-Two-People-Will-Meet-in-the-Next-24-Hours/actions/runs/38115466252) 正式验收，三个 Job completed/success；500全量、71 Smoke、27安全、12原生依赖检查。维护前核验的远程 research-v2.2 与该 SHA 相同，main 仍为820d080；本轮不修改任何功能或科研结果。
+
+## 本轮范围
+
+README 补充明确开发分支、可直接执行的克隆/安装/启动、不同入口的材料要求与文档索引；产品交付/计划/Explore/CI 记录正式 P03 验收；演示指南、交付清单及作品集同步四入口/15页产品结构。任务与长期指令限定为文档维护。
+
+本轮实际检查：.venv/bin/python -m pytest -q tests/test_documentation.py tests/test_final_audit.py tests/test_repository_safety.py：72 passed in2.88s。python -m src.final_audit PASS，51份冻结材料不变；pip check 无依赖冲突。2751个预检对象中，仅11份授权 Markdown 文档改变，2740个原有对象保留；所有源码、测试、配置、安全规则、数据、模型及报告不变。没有新增测试、浏览器实测或模型实验；原 P03 浏览器记录仅作为历史已验证证据保留。
+
+发布步骤：精确 Git-index 与 pinned Gitleaks 检查成功后，安全提交推送 research-v2.2 并核验本维护提交自己的三个 CI Job及远程 SHA。最终维护提交/Actions 回执由本次执行回复给出；上述500/71/27/12是已发布 P03 的实测记录，不能代替新提交的 CI。每个新提交的验收都依赖其实际成功状态，不在文档中预填未来运行编号。
+
+下一步仅完成本轮发布验证，随后 STOP，等待用户最终验收；不自动创建产品或研究开发任务。
+
+## 已验收的 P03 交付记录
+
+**P03 — DONE: final publication verified at390384c / [Actions38115466252](https://github.com/Hilbert-sun/Machine-Learning-Experiment-Design-Predicting-Whether-Two-People-Will-Meet-in-the-Next-24-Hours/actions/runs/38115466252).** All three mandatory Jobs completed/success;500 full,71 Smoke,27 safety,12 native checks. The following implementation notes are historical P03 evidence. Baseline bb05d4ae709e64643a3d436aeeb7e73f880b6202, accepted P02 Actions38111188664. Only P03 is authorized; P01–P03 end here, with no next task, training, download, main merge or release.
 
 ## Implemented and preserved
 
@@ -24,7 +38,7 @@ Date:2026-10-11 (Asia/Kuala_Lumpur)
 
 Code candidate `4e0476d060497aaea70dfdba408548049c6bbec7` was safely pushed to research-v2.2 and [Actions38115216049](https://github.com/Hilbert-sun/Machine-Learning-Experiment-Design-Predicting-Whether-Two-People-Will-Meet-in-the-Next-24-Hours/actions/runs/38115216049) completed/success for unit-tests, streamlit-smoke and repository-safety. Linux logs show500 full tests in92.88s,71 smoke in25.70s,27 safety in0.48s and12 native imports in2.25s. Exact Git-index scanner PASS:216 files/44 approved reports/51 frozen objects; pinned Gitleaks full-history/index/provider-risk self-test PASS, locally and remotely. Preflight hashes confirm2728 protected existing objects unchanged, with only17 authorized UI/tests/current-document changes; old modified test names and assertion counts preserved.
 
-Completion status is updated only after that observed verification. This status-only commit must itself be safely pushed and independently pass all three CI Jobs at its final remote HEAD before reporting P03 PASS. Overall publication acceptance remains IN_PROGRESS until this final check. The final execution reply records the actual new SHA/URL/counts; do not create an additional untested receipt commit after CI. No main merge/tag/release/deployment. Local preview is bound only127.0.0.1; no private screenshots/inputs are published. Stop and await final user acceptance; do not create P04/T35.
+Final P03 status commit `390384ca27b9e9e89788a6d17e5c436552d28873` subsequently passed [Actions38115466252](https://github.com/Hilbert-sun/Machine-Learning-Experiment-Design-Predicting-Whether-Two-People-Will-Meet-in-the-Next-24-Hours/actions/runs/38115466252) with500 full tests in114.63s,71 Smoke in23.17s,27 safety in0.52s and12 native checks in2.01s. Remote HEAD matched headSha. P03 acceptance is complete; no pending gate remains for that published version. Later maintenance needs its own current-head CI. No main merge/tag/release/deployment. Local preview is bound only127.0.0.1; no private screenshots/inputs are published. Stop and await final user acceptance; do not create P04/T35.
 
 ## Earlier P02/T34 evidence (historical)
 

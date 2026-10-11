@@ -6,9 +6,35 @@
 
 应用只有四个一级入口：**首页 Home / 玩一玩 Play / 数据分析 Explore / 科研中心 Research**。首页点击“开始偶遇预测”，提交问卷后进入完整分析；也可直接进入 Explore 的公开数据区。原有科研功能全部保留在 Research 分类目录，科研统计需主动打开。安装与一分钟操作见 [产品交付说明](PRODUCT_DELIVERY.md)。
 
-Research Edition 2.2 的 T01–T34 已交付；P01/P02 分别在提交 ab4dc3f / bb05d4a 的三项 CI 验收通过。P03 整理导航和展示，保留冻结研究结果。P03 的最终远程验收仅以本次最终 HEAD 对应的三个成功 CI Job 为准，执行回执记录实际 SHA 与运行链接。
+**T01–T34 与 Product Extension P01–P03 已交付。** P03 最终提交 [`390384c`](https://github.com/Hilbert-sun/Machine-Learning-Experiment-Design-Predicting-Whether-Two-People-Will-Meet-in-the-Next-24-Hours/commit/390384ca27b9e9e89788a6d17e5c436552d28873) 的 [GitHub Actions](https://github.com/Hilbert-sun/Machine-Learning-Experiment-Design-Predicting-Whether-Two-People-Will-Meet-in-the-Next-24-Hours/actions/runs/38115466252) 已核实三个必需 Job 全部成功：500项全量测试、71项 Streamlit Smoke、27项安全测试及12项原生依赖检查。该记录对应已发布的 P03；后续文档提交须通过自己的 CI。
+
+当前产品版本位于 [`research-v2.2`](https://github.com/Hilbert-sun/Machine-Learning-Experiment-Design-Predicting-Whether-Two-People-Will-Meet-in-the-Next-24-Hours/tree/research-v2.2)。在 GitHub 查看代码、README 或克隆时请选择这个分支。
 
 科研部分研究未来24小时的匿名设备接近记录，比较历史窗口、模拟历史预测并审计不完整观测。设备接近是相遇的代理证据，不能预测关系或追踪实时位置。真实数据、权重及逐样本结果仅在本地，GitHub 提供代码、已审查聚合报告和公开测试。
+
+## 快速开始
+
+使用 Python 3.11，在 macOS/Linux 终端执行：
+
+```sh
+git clone --branch research-v2.2 https://github.com/Hilbert-sun/Machine-Learning-Experiment-Design-Predicting-Whether-Two-People-Will-Meet-in-the-Next-24-Hours.git encounter-lab
+cd encounter-lab
+python3.11 -m venv .venv
+source .venv/bin/activate
+python -m pip install -r requirements.txt
+python -m streamlit run app.py
+```
+
+浏览器打开终端显示的地址，通常为 http://localhost:8501。仅在本机预览时可在启动命令后加 `--server.address 127.0.0.1`。Linux 原生树模型需要 OpenMP 运行时（CI 使用 libgomp1）；macOS 原生依赖及平台限制见下方安装说明。
+
+| 想体验什么 | 操作入口 | 是否需要本地真实数据/模型 |
+| --- | --- | --- |
+| 趣味偶遇指数 | Home → Play，填写七项选择题 | 不需要 |
+| 个人线索与图谱 | Play 结果 → 查看我的偶遇分析 | 只需当前会话的有效问卷 |
+| 公开群体规律 | Explore → 真实数据中的相遇规律 | 不需要，使用仓库中的已审查聚合报告 |
+| 历史科研与模型 | Research 分类目录 | 具体研究操作需要对应本地数据、模型及版本证据；缺失时显示空状态 |
+
+普通用户路径：**开始偶遇预测 → 七项问卷 → 查看指数 → 查看我的偶遇分析 → 修改或重置**。科研复现路径和娱乐体验互相独立。
 
 ## Play · 趣味偶遇预测（P01）
 
@@ -102,7 +128,7 @@ Python, pandas, NumPy, scikit-learn, XGBoost and LightGBM provide preparation, b
 
 T30 has no dedicated application page: read [ASOF_AUDIT.md](ASOF_AUDIT.md) and its public aggregate tables. Local private HTML, when present, is an additional research artifact.
 
-## Install, test and run
+## 环境与验证 / Environment and verification
 
 Use Python 3.11 and a full Git clone on branch `research-v2.2` so the trusted frozen baseline is available. Linux native tree libraries require an OpenMP runtime (CI uses libgomp1); macOS may require libomp. The archived requirements-lock.txt describes a macOS ARM64 environment, not a Linux lock.
 
@@ -126,11 +152,20 @@ Only four principal window-study test dates; exposed historical periods; coverag
 
 Source links, citations and dataset-specific licensing evidence are preserved in [source quality metadata](reports/multisource/T31_SOURCE_SUMMARY.json), [dataset catalog](reports/DATASET_CATALOG.json), and [multi-source study](MULTISOURCE_STUDY.md). Copenhagen: [official Figshare record](https://figshare.com/articles/dataset/The_Copenhagen_Networks_Study_interaction_data/7267433). Do not infer a dataset license from website source-code licenses; MIT Social Evolution acquisition/license remain unverified. Contact-only sources cannot support reliable binary negatives. No project code LICENSE file is currently provided; do not assume permission for unrestricted redistribution. Dataset-specific licenses govern third-party data separately.
 
-## CI, safety and document index
+## CI、验收证据与文档索引
 
 [![Public CI](https://github.com/Hilbert-sun/Machine-Learning-Experiment-Design-Predicting-Whether-Two-People-Will-Meet-in-the-Next-24-Hours/actions/workflows/ci.yml/badge.svg?branch=research-v2.2)](https://github.com/Hilbert-sun/Machine-Learning-Experiment-Design-Predicting-Whether-Two-People-Will-Meet-in-the-Next-24-Hours/actions/workflows/ci.yml)
 
-Three jobs verify full public pytest, 15-route Streamlit smoke, and repository/secret safety. Synthetic fixtures and public aggregates are distinct from lawful local research reproduction. No raw data, weights, per-sample predictions, credentials or personal paths belong in Git. [Verified historical T33 CI record and current-head gate](CI_VERIFICATION.md).
+Three jobs verify full public pytest, 15-route Streamlit smoke, and repository/secret safety. Synthetic fixtures and public aggregates are distinct from lawful local research reproduction. No raw data, weights, per-sample predictions, credentials or personal paths belong in Git. [已核验的研究及产品 CI 记录](CI_VERIFICATION.md)。最新维护提交仍以该 SHA 自己的 Actions 状态为准。
+
+| 文档 | 内容 |
+| --- | --- |
+| [产品交付说明](PRODUCT_DELIVERY.md) | 当前功能、操作路径、三档浏览器验收、图谱与隐私限制 |
+| [Explore 使用指南](EXPLORE_GUIDE.md) | 个人线索、公开图表、来源口径与 Unknown 处理 |
+| [产品计划与固定规则](PRODUCT_PLAN.md) | P01–P03 完成情况、字段、计分和会话行为 |
+| [演示指南](DEMO_GUIDE.md) | 无私有数据的产品演示与科研五分钟路径 |
+| [交付清单](FINAL_RELEASE_CHECKLIST.md) | 已完成验收及不可等同于研究泛化的边界 |
+| [CI 验证记录](CI_VERIFICATION.md) | 已发布 SHA、实际 Actions、公开测试验证范围 |
 
 - [Final research audit and task evidence index](FINAL_RESEARCH_AUDIT.md)
 - [Reproducibility](REPRODUCIBILITY.md), [portfolio architecture](PORTFOLIO_GUIDE.md), [demo](DEMO_GUIDE.md), [release checklist](FINAL_RELEASE_CHECKLIST.md)

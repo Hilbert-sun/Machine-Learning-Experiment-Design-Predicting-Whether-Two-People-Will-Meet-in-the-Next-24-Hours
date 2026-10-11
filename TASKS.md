@@ -2,7 +2,7 @@
 
 Task IDs and titles follow the user's task-board screenshot. Dependencies and acceptance criteria below are the implementation plan derived from `PROJECT_SPEC.md`, rather than additional completed functionality.
 
-Current execution: **P03 — DONE: implementation verified locally and in its code-candidate remote CI.** Baseline P02 bb05d4a / successful Actions38111188664. Four global entries and Research Hub retain all12 original research routes; presentation only, no scoring/scientific changes. Actual browser390/768/1440px checks completed; code candidate4e0476d / Actions38115216049 passed500 full/71 smoke/27 safety/12 native. Final status commit must also pass its own exact-head CI before execution reports PASS. Stop after P03; no automatic next task.
+Current execution: **DOCS-P03 — DONE** (README and related documentation completed and locally verified; publication is checked against the maintenance commit's own CI). P03 is already DONE at `390384ca27b9e9e89788a6d17e5c436552d28873` / [Actions38115466252](https://github.com/Hilbert-sun/Machine-Learning-Experiment-Design-Predicting-Whether-Two-People-Will-Meet-in-the-Next-24-Hours/actions/runs/38115466252), verified500 full/71 smoke/27 safety/12 native. This maintenance corrects pending-publication wording, updates usage/navigation/demo/CI indexes, and preserves all scientific/product code and frozen results. Verify focused checks and this new commit's own CI; push research-v2.2 only, then STOP. No next development task is authorized.
 
 | Complete | ID | Task | Status | Dependencies | Acceptance criteria |
 | --- | --- | --- | --- | --- | --- |
@@ -57,3 +57,9 @@ T01 excludes Streamlit navigation/pages, dataset downloads, preprocessing, featu
 | P01 | 趣味偶遇预测 Play | DONE | T34, README-FRONTEND | Pure deterministic self-report index, valid/unknown/conflict/arrangement gates,3–5 sourced keyword cards, session edit/reset, native welcome with tested refresh scope,13-page navigation preserving12 research pages, focused/full/public/safety and exact-head three-job CI. |
 | P02 | Explore 分析、线索图谱与三入口 | DONE | P01 | Reuse submitted P01 Keywords without rescoring policy; bounded deterministic self-report diagram, optional mutual-summary only; actual T22/T31 public stories with missingness/source/cohort guards; lazy three-entry homepage; edit/reset isolation; all14 pages/public/full/safety/browser/narrow/own-head CI pass. |
 | P03 | 最终体验、导航与产品交付 | DONE | P02 DONE bb05d4a | Four native primary entries, all12 research routes/opt-in statistics retained; Play/Explore presentation and session invariants; real390/768/1440px browser checks; full/smoke/audit/safety and exact pushed HEAD three-job CI pass; STOP |
+
+## Product documentation maintenance
+
+| ID | Task | Status | Dependencies | Acceptance criteria |
+| --- | --- | --- | --- | --- |
+| DOCS-P03 | README 与配套产品/科研交付文档补齐 | DONE | P03 DONE390384c | Accurate current branch/quick start/navigation/product flow and verified P03 SHA/CI counts; demo/checklist/portfolio/index/task/progress synchronized; no source/data/models/frozen changes; focused docs/public audit/safety and exact maintenance-head three-job CI verified; safe branch push and STOP |

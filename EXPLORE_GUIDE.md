@@ -1,6 +1,6 @@
 # Explore — P02 usage and data boundaries
 
-Current product delivery: P03, based on accepted P02 bb05d4a / Actions38111188664. The P01 score/welcome, P02 public data calculation and12 original research routes remain intact. No training, downloads, data regeneration or main merge is included.
+Current product delivery: P03, accepted at390384c / [Actions38115466252](https://github.com/Hilbert-sun/Machine-Learning-Experiment-Design-Predicting-Whether-Two-People-Will-Meet-in-the-Next-24-Hours/actions/runs/38115466252), based on P02 bb05d4a / Actions38111188664. The P01 score/welcome, P02 public data calculation and12 original research routes remain intact. No training, downloads, data regeneration or main merge is included.
 
 ## Four global entry points
 
@@ -57,4 +57,4 @@ python tools/check_repository_safety.py
 python -m tools.run_secret_scan
 ```
 
-P02 was accepted at bb05d4a / Actions38111188664. P03 requires its own exact pushed SHA's unit-tests, streamlit-smoke and repository-safety jobs all completed/success. See [current product delivery](PRODUCT_DELIVERY.md) for actual browser scope, test results and remaining limits. No untested post-CI receipt commit; stop after P03.
+P03 最终产品提交390384c 的 [Actions38115466252](https://github.com/Hilbert-sun/Machine-Learning-Experiment-Design-Predicting-Whether-Two-People-Will-Meet-in-the-Next-24-Hours/actions/runs/38115466252) 已核实三个 Job 全部成功：500 full /71 Smoke /27 safety /12 native。See [current product delivery](PRODUCT_DELIVERY.md) for actual browser scope, test results and remaining limits. 本轮后续文档维护不改变页面或分析逻辑；每个新提交仍需独立验证 CI。P01–P03 开发已结束，无自动后续任务。
