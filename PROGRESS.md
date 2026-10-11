@@ -2,6 +2,47 @@
 
 Date:2026-10-11 (Asia/Kuala_Lumpur)
 
+**P01 — DONE locally; remote acceptance awaits this P01 commit's own exact-head three-job CI.** Baseline13192b741f5f81dae9af3563ad27e81767072d57. Only Play is authorized; P02/P03 remain TODO. No new research experiment, model fit, data acquisition, main merge, tag or release.
+
+## Implemented
+
+- src/chance_encounter.py: standard-library-only, deterministic questionnaire validation and structured entertainment result/keyword/issue contract. Stable machine option keys; relationship description only; arrangement explicitly yes/unknown/missing refuses scoring. Contradictory past30d frequency/recency refuses scoring.
+- Fixed public rule: five past/usual factors mapped to0–100 design points, equal mean of known factors rounded half-up; at least3 known. Unknown/missing omitted from numerator and denominator, never imputed as zero. Levels0–34偏低 /35–69中等 /70–100偏高. These are entertainment design choices, no trained/calibrated probability or measured predictive performance.
+- pages/12_Chance_Encounter.py and src/chance_encounter_ui.py: seven choice questions, clear no-login/no-dataset operation, correct excluded/insufficient/conflict messages, index/level and3–5 source-grounded cards, modify/resubmit and Play-only reset. Answers/results are local server-session memory only; no identifiers, geolocation, free text, writes/cache, background analytics, exports or model/API calls.
+- src/welcome.py and app.py: native nondismissible st.dialog plus an invisible built-in Streamlit v2 component. Only Boolean acknowledgement is sent; one nonidentifying sessionStorage marker survives normal same-tab refresh. No questionnaire data in browser storage, URL, file or third-party service. Browser hydration is awaited; AppTest storage responses are explicitly simulated, not claimed to execute JavaScript.
+- src/ui.py appends the13th page, preserving all12 original research entries exactly; Overview gains one prominent Play link while all prior indicators/functions remain. PRODUCT_PLAN.md documents rule/fields/privacy/refresh/scope; README adds a small Play section/navigation row; task/session instructions updated.
+
+## Actual verification
+
+- Pure engine:34 passed in0.05s; dedicated page/welcome/privacy tests12 pass in the focused/full suites.46 new dedicated tests plus3 expanded navigation/document cases produce49 additional collected tests over original384.
+- P01 engine/UI + all navigation + documentation focused suite:84 passed in2.77s.
+- Full `.venv/bin/python -m pytest -q`:433 passed in35.26s after isolating all new app tests from private research paths.
+- All-page test_ui suite:16 passed in1.99s (13 registered pages plus existing3 behavior tests). No previous research test removed or skipped; documentation page-count assertion expands to13 and the new test verifies the exact original12-path tuple against baseline13192b7.
+- Workflow-equivalent Streamlit smoke:69 passed in9.58s. Safety regressions27 pass; exact staged-index scanner PASS (202 files,44 approved reports,51 frozen objects unchanged). Pinned Gitleaks full history/index scans and provider-risk self-test PASS; pip check reports no broken requirements. Public audit PASS. Workflow, safety scanner, secret rules and original security tests remain unchanged.
+- Actual browser: first visit welcome shows correct text/button; acknowledgement closes it; Overview same-tab refresh and navigation to Play do not repeat it. Play reload also does not repeat. A new independent tab displays welcome. A fictional seven-answer fixture produces the exact rule result; modifying one answer recomputes, reset returns seven empty choices with no stale score. No filled-form screenshots, real user answers or private logs are saved. Only the public welcome dialog was captured locally outside Git; the blank Play tab is left available.
+- AppTest cannot execute component JavaScript. Python gate/restore/pending hydration are separately tested, along with acknowledgement-only bridge payload. Browser checks supply the actual reload evidence.
+- P01 inventory2730 existing files;2722 protected files unchanged, excluding only8 authorized shared UI/current-doc/navigation-test files. All51 frozen public objects, old research reports/code/data/models and metrics remain unchanged. Current public audit must pass before publication.
+
+## Failures corrected and remaining limits
+
+Initial old navigation tests exposed a Streamlit v2 component lifetime issue: a module-level renderer survived an AppTest runtime reset but its registration did not (1 failure/15 passes). Registering the identical static definition in the current runtime resolves it using the public API; final existing navigation/all tests pass. No test-only production bypass or disabled welcome was added. New UI tests were explicitly isolated from actual local research paths before final verification.
+
+A first manual check used combobox innerText to infer selection, which does not represent this searchable widget's selected display. The actual recomputed result and DOM reset state confirmed edit/clear behavior; no product defect was concealed. No answers or screenshots of filled forms were exported.
+
+Normal same-tab reload is verified after the acknowledgement write. Blocked/cleared browser sessionStorage or immediate reload before the post-click write may repeat the welcome; native server-session navigation still remembers it. Browser tab duplication/session restore may copy/retain the marker. These limits are documented in PRODUCT_PLAN.md. Questionnaire answers intentionally disappear on refresh. JavaScript/component hydration is required; it is not misreported as acknowledgement. Play scores have no empirical accuracy/calibration claim and must remain separate from Copenhagen device-contact results.
+
+## Publication and STOP
+
+Run public audit, exact staged-index safety and pinned Gitleaks; commit only safe P01 source/tests/docs and push research-v2.2. Verify actual remote HEAD plus its new completed/success unit-tests, streamlit-smoke and repository-safety jobs; report actual SHA/run/counts in the final reply without a new untested receipt commit. If CI fails, retain IN_PROGRESS/BLOCKED and fix/reverify. Stop after P01; next suggested task is P02 only on a new explicit instruction.
+
+---
+
+## Previous README/frontend maintenance record (historical)
+
+# Encounter Lab — Latest Progress
+
+Date:2026-10-11 (Asia/Kuala_Lumpur)
+
 **README-FRONTEND — DONE locally; awaiting this documentation commit's own CI.** User requested GitHub README update and opening files/frontend. T34 remains DONE:9f9164fe12a3d93ae39e1f2f5789c8ce7e1856e8 / Actions38065140435 actually completed/success (384 unit/68 smoke/27 safety/12 native), reverified before editing.
 
 README now includes a Chinese frontend introduction, actual Streamlit/Plotly structure, startup/local URL, four-step viewing route, missing-data states, source entry points and the accepted T34 record. Research metrics/limitations unchanged. Changed only README.md, AGENTS.md, TASKS.md and this progress file. No UI/source/data/model/report changes, new research task or main merge.

@@ -29,7 +29,7 @@ The user subsequently instructed: “以后做完全部推送” (push all compl
 
 ## Current authorized range
 
-T34 completed at9f9164fe12a3d93ae39e1f2f5789c8ce7e1856e8 with Actions38065140435 (384 unit/68 smoke/27 safety/12 native). The new user request authorizes one README/frontend-preview maintenance task: update GitHub README on research-v2.2, verify focused docs/safety and this commit's CI, safely commit/push, and open README/frontend source plus a localhost preview for the user. No new UI feature, data download, training, main merge, deployment or T35 is authorized. Keep T17–T34 research artifacts intact. Leave the requested localhost preview available for the user; stop after publication/verification.
+P01 only: add an independent, pure-rule entertainment index, session-only questionnaire/keyword explanations, one native welcome dialog and minimal navigation/Overview link. Preserve all12 research pages,51 frozen public materials, data/models/statistical code, CI and safety rules. No research-model reuse for questionnaire scores, no new training/downloads/private exports, no location/name/contact collection, no questionnaire logging/storage/third-party API. Welcome may persist only a nonidentifying acknowledgement marker per browser tab; verify actual reload behavior and document any limits. Test focused/full/public-only, safely commit/push research-v2.2 and verify its own exact-head three-job CI, then STOP. P02/P03 remain TODO and unauthorized; no main merge/tag/release.
 
 ## Prediction data contract
 

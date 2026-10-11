@@ -2,7 +2,7 @@
 
 Task IDs and titles follow the user's task-board screenshot. Dependencies and acceptance criteria below are the implementation plan derived from `PROJECT_SPEC.md`, rather than additional completed functionality.
 
-Current execution: **README-FRONTEND — DONE locally; publication requires this new head's CI.** README frontend guide and source/local preview opened;39 focused documentation/public-audit tests passed. T01–T34 remain DONE. Safely publish research-v2.2 and attest its own exact-head CI. No new research task or main merge.
+Current execution: **P01 — DONE locally; remote PASS requires this commit's own CI.** Independent pure-rule Play, seven-field form, sourced keyword cards, edit/reset and tab-scoped welcome verified.84 focused/433 full tests pass; original12 research pages and frozen evidence preserved. Safely publish research-v2.2 and verify exact-head unit/smoke/safety success. P02/P03 remain TODO and unauthorized.
 
 | Complete | ID | Task | Status | Dependencies | Acceptance criteria |
 | --- | --- | --- | --- | --- | --- |
@@ -49,3 +49,11 @@ T01 excludes Streamlit navigation/pages, dataset downloads, preprocessing, featu
 | ID | Task | Status | Dependencies | Acceptance criteria |
 | --- | --- | --- | --- | --- |
 | README-FRONTEND | GitHub README 更新与前端查看 | DONE | T34 | Document actual frontend startup/navigation/source and accepted T34 evidence; focused docs/public-audit/safety checks pass; safely publish research-v2.2 and verify own CI; open README and frontend source/live localhost preview. No research or UI feature change. |
+
+## Product extensions
+
+| ID | Task | Status | Dependencies | Acceptance criteria |
+| --- | --- | --- | --- | --- |
+| P01 | 趣味偶遇预测 Play | DONE | T34, README-FRONTEND | Pure deterministic self-report index, valid/unknown/conflict/arrangement gates,3–5 sourced keyword cards, session edit/reset, native welcome with tested refresh scope,13-page navigation preserving12 research pages, focused/full/public/safety and exact-head three-job CI. |
+| P02 | Explore 扩展 | TODO | P01 | Scope to be confirmed in its own authorized specification; no implementation in P01. |
+| P03 | 整体页面与入口调整 | TODO | P02 | Scope to be confirmed in its own authorized specification; no implementation in P01. |

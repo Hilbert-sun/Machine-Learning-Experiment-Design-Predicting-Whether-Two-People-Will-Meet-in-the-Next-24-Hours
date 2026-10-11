@@ -9,4 +9,7 @@ navigation = st.navigation(
     [st.Page(path, title=title, default=index == 0) for index, (path, title) in enumerate(PAGES)],
     position="top",
 )
+from src.welcome import render_welcome
+
+render_welcome()
 navigation.run()

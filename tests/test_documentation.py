@@ -12,7 +12,7 @@ from tools.check_repository_safety import approved_reports, check_content
 
 ROOT=Path(__file__).resolve().parents[1]
 DOCS=('README.md','FINAL_RESEARCH_AUDIT.md','REPRODUCIBILITY.md','PORTFOLIO_GUIDE.md',
-      'DEMO_GUIDE.md','FINAL_RELEASE_CHECKLIST.md','CI_VERIFICATION.md','DEVELOPMENT_HISTORY.md')
+      'DEMO_GUIDE.md','FINAL_RELEASE_CHECKLIST.md','CI_VERIFICATION.md','DEVELOPMENT_HISTORY.md','PRODUCT_PLAN.md')
 
 
 @pytest.mark.parametrize('name',DOCS)
@@ -39,7 +39,8 @@ def test_readme_navigation_matches_actual_router():
     readme=(ROOT/'README.md').read_text()
     paths=re.findall(r'\]\((pages/[^)]+)\)',readme)
     assert paths==[path for path,_ in pages]
-    assert len(paths)==12
+    assert len(paths)==13
+    assert paths[-1]=="pages/12_Chance_Encounter.py"
 
 
 def test_readme_real_metric_table_matches_frozen_values():

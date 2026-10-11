@@ -16,6 +16,7 @@ def cached_overview(root, config, dataset, processed, signature):
 
 st.title("Encounter Lab · 相遇实验室")
 st.caption("Can We Predict When Two People Meet Again?")
+st.page_link("pages/12_Chance_Encounter.py",label="开始偶遇预测 · Play",icon="✨")
 dataset = dataset_picker()
 root = Path(__file__).resolve().parents[1]
 config = yaml.safe_load((root / "configs/default.yaml").read_text())
