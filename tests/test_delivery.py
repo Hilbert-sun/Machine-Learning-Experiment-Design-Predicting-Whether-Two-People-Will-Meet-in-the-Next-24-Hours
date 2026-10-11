@@ -65,6 +65,8 @@ def test_overview_uses_current_cache_counts_and_keeps_missing_rate_unknown(tmp_p
     preprocess_contacts(source, "Copenhagen", tmp_path / "processed")
     monkeypatch.setattr("yaml.safe_load", lambda _: {"paths": {"raw_copenhagen": str(raw), "raw_sociopatterns": str(raw), "processed": str(tmp_path / "processed"), "features": str(tmp_path / "features"), "models": str(tmp_path / "models")}})
     app = AppTest.from_file(str(Path(__file__).resolve().parents[1] / "app.py")).run()
+    assert not app.exception and not app.metric
+    next(button for button in app.button if button.label=="深入研究").click().run()
     assert not app.exception
     assert [metric.value for metric in app.metric] == ["3", "2", "2", "1", "未知", "未训练"]
     assert len(app.get("plotly_chart")) == 3

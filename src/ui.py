@@ -16,6 +16,7 @@ PAGES = (
     ("pages/10_Time_Machine.py", "时间机器 · Time Machine"),
     ("pages/11_Multi_Dataset_Exploration.py", "多数据集探索 · Multi-Dataset Exploration"),
     ("pages/12_Chance_Encounter.py", "趣味偶遇预测 · Chance Encounter"),
+    ("pages/13_Encounter_Insights.py", "偶遇分析 · Encounter Insights"),
 )
 
 

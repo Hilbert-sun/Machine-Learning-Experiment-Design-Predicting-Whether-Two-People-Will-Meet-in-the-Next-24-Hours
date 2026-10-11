@@ -4,12 +4,20 @@ import streamlit as st
 from src.chance_encounter import OPTIONS, QUESTIONS, Questionnaire, evaluate_questionnaire
 
 
+def _clear_explore():
+    for key in list(st.session_state):
+        if key.startswith('_explore_'):
+            del st.session_state[key]
+
+
 def _edit():
+    _clear_explore()
     st.session_state['_chance_view']='form'
     st.session_state.pop('_chance_result',None)
 
 
 def _restart():
+    _clear_explore()
     for key in list(st.session_state):
         if key.startswith(('_chance_','chance_input_')):
             del st.session_state[key]
@@ -37,6 +45,8 @@ def render():
         left,right=st.columns(2)
         left.button('修改信息',on_click=_edit)
         right.button('重新开始',on_click=_restart)
+        if st.button('查看我的偶遇分析'):
+            st.switch_page('pages/13_Encounter_Insights.py')
         return
     saved=st.session_state.get('_chance_answers',{})
     with st.form('chance_questionnaire'):

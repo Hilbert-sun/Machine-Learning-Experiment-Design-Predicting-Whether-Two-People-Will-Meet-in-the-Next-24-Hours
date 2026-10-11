@@ -1,11 +1,11 @@
 # Encounter Lab product extensions
 
-P01 adds Play alongside the existing Research application. Explore and broader navigation work remain future tasks. Research Edition2.2 T01–T34, its12 original pages,51 frozen public materials, saved local models/labels/features and CI/security rules remain intact. Planning baseline:13192b741f5f81dae9af3563ad27e81767072d57.
+P01 adds Play alongside Research; P02 adds Explore and a minimal three-entry homepage. P03 broader redesign remains future work. Research Edition2.2 T01–T34, its12 original pages,51 frozen public materials, saved local models/labels/features and CI/security rules remain intact. Planning baseline:13192b741f5f81dae9af3563ad27e81767072d57.
 
 | Task | Scope | Status |
 | --- | --- | --- |
-| P01 · Play | Questionnaire, pure-rule index, keyword explanations, edit/reset, entry welcome and one added page | Implemented and locally verified; remote acceptance gated on its own exact-head three-job CI |
-| P02 · Explore | Future expanded data/network exploration; specification required | TODO; not implemented or authorized by P01 |
+| P01 · Play | Questionnaire, pure-rule index, keyword explanations, edit/reset, entry welcome and one added page | DONE at ab4dc3f / Actions38108921172; unchanged scoring/welcome |
+| P02 · Explore | Session-only Keyword explanations/clue graph, actual public T22/T31 stories, minimal three-entry homepage | Implemented/locally verified; remote acceptance requires its own final-head CI |
 | P03 · Product navigation | Future overall homepage/Play/Explore/Research layout; specification required | TODO; not implemented or authorized by P01 |
 
 ## Product and scientific boundary
@@ -64,4 +64,15 @@ python -m tools.run_secret_scan
 
 Local P01 verification:34 pure-engine tests,12 page/welcome/privacy tests,16 navigation tests and22 documentation tests pass (84 focused); full suite433 passes. This expands the original384 tests by46 dedicated P01 cases plus3 new navigation/documentation cases. The original12 research paths are checked byte-for-byte as a tuple against the planning baseline and still exercised individually. Native browser checks confirm welcome acknowledgement, same-tab reload on Overview/Play without repetition, new independent tab welcome, questionnaire/result/edit/reset; only explicitly fictional test choices were used, with no filled-form export or screenshot. AppTest uses isolated temporary config paths, never private research artifacts.
 
-Final SHA, observed test totals and actual completed/success CI are attested in the execution reply; previous green T34/README runs are not P01 acceptance. Never publish actual questionnaire logs, filled-form screenshots or per-person artifacts. P02/P03, word clouds, relationship graphs, new datasets/model training, main merge, tags/releases are outside this task.
+Final SHA, observed test totals and actual completed/success CI are attested in the execution reply; previous green T34/README runs are not P01 acceptance. Never publish actual questionnaire logs, filled-form screenshots or per-person artifacts. That paragraph describes P01 scope. P02 is now separately authorized and documented below; P03, word clouds, new datasets/model training, main merge and tags/releases remain outside the current scope.
+
+
+## P02 delivery
+
+Planning baseline ab4dc3f20e5bcd587a5d4caf5611f5bc3fb0afbb. [Explore guide](EXPLORE_GUIDE.md) documents the actual public data paths, privacy/cohort/time boundaries, graph semantics and user flow.14 pages retain all12 research entries and Play. Home has Play/Explore/Research entries; research statistics load only when requested.
+
+Personal analysis reuses the submitted P01 Keyword/result and unchanged scoring engine; stale, edited, reset or ineligible submissions produce no index. Known factors alone become bars/nodes. Common acquaintances are optional session-only summaries, never individual friend nodes or scoring factors. The graph has deterministic spring layout, hover/click descriptions, A/B focus and restore; at most8 actual nodes, hard15-node/30-edge display caps. A/B and mutual-summary markers have fixed sizes; summaries have no rule score. Real research networks are accessed through the separate existing page, not invented from aggregate counts.
+
+Public window bars read the fixed T22 cohort; group activity and neighbor bins read actual T31 aggregates. No suppressed/missing values are zero-filled, no tick/calendar conversion is invented, and no personal questionnaire is cached globally. Source/provenance and plain-language explanations accompany each chart. P01 rules/welcome,51 frozen materials, data/models/statistical code and CI/security policy are preserved.
+
+Local P02 tests and actual browser desktop/390px checks are recorded in PROGRESS; remote PASS requires the new final SHA's actual unit-tests/streamlit-smoke/repository-safety success. P03 remains TODO and needs an explicit new specification/instruction.

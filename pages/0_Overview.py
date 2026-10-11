@@ -15,8 +15,26 @@ def cached_overview(root, config, dataset, processed, signature):
     return overview_summary(root, config, dataset, processed)
 
 st.title("Encounter Lab · 相遇实验室")
-st.caption("Can We Predict When Two People Meet Again?")
-st.page_link("pages/12_Chance_Encounter.py",label="开始偶遇预测 · Play",icon="✨")
+st.caption("未来24小时，你和TA会偶然相遇吗？")
+play,explore,research=st.columns(3)
+with play:
+    st.page_link("pages/12_Chance_Encounter.py",label="开始偶遇预测 · Play",icon="✨")
+    st.caption("填写简单问题，探索固定规则的趣味指数。")
+with explore:
+    st.page_link("pages/13_Encounter_Insights.py",label="看看数据分析 · Explore",icon="🔎")
+    st.caption("解释自己的线索，看看真实研究中的相遇规律。")
+with research:
+    if st.button("深入研究"):
+        st.session_state['_overview_research_open']=True
+    st.caption("进入原有数据、模型、接触网络和研究实验。")
+if not st.session_state.get('_overview_research_open',False):
+    st.write("Play 的问卷指数与 Research 的设备接触模型彼此独立。选择一个入口开始探索。")
+    st.stop()
+if st.button('收起科研概览'):
+    st.session_state['_overview_research_open']=False
+    st.rerun()
+st.divider()
+st.subheader('科研概览 · Research')
 dataset = dataset_picker()
 root = Path(__file__).resolve().parents[1]
 config = yaml.safe_load((root / "configs/default.yaml").read_text())

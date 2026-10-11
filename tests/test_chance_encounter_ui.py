@@ -82,8 +82,9 @@ def test_original_router_preserved_and_play_registered():
     code=subprocess.check_output(['git','-C',str(ROOT),'show','13192b741f5f81dae9af3563ad27e81767072d57:src/ui.py'],text=True)
     tree=ast.parse(code)
     original=next(ast.literal_eval(n.value) for n in tree.body if isinstance(n,ast.Assign) and any(isinstance(t,ast.Name) and t.id=='PAGES' for t in n.targets))
-    assert PAGES[:-1]==original and len(original)==12 and len(PAGES)==13
-    assert PAGES[-1][0]=='pages/12_Chance_Encounter.py'
+    assert PAGES[:12]==original and len(original)==12 and len(PAGES)==14
+    assert PAGES[12][0]=='pages/12_Chance_Encounter.py'
+    assert PAGES[13][0]=='pages/13_Encounter_Insights.py'
 
 
 def test_native_welcome_confirm_and_navigation_once(monkeypatch,tmp_path):

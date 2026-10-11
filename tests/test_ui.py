@@ -31,6 +31,9 @@ def test_all_pages_load(path, title):
 def test_empty_overview_has_no_fabricated_metrics():
     app = AppTest.from_file(APP).run()
     assert not app.exception
+    assert not app.metric
+    next(b for b in app.button if b.label=="深入研究").click().run()
+    assert not app.exception
     assert len(app.metric) == 6
     assert all(metric.value == "—" for metric in app.metric)
 

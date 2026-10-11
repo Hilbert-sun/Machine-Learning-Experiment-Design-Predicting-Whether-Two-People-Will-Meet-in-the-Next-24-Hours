@@ -17,7 +17,7 @@ Copenhagen supports the main binary experiment with scan-coverage proxy evidence
 - Independent Time Machine: Select → Predict → Freeze → Reveal; unreliable absence remains Unknown.
 - Population/selection-bias audit, source-specific network exploration and fixed-rule Top-K retrieval.
 - Parquet/PyArrow processing, stable archive snapshots and versioned caches with output-parity checks.
-- 12 research pages plus an independent Play page, pytest, Python 3.11/Linux GitHub Actions and repository/secret scanning.
+- 12 research pages plus independent Play and Explore pages, pytest, Python 3.11/Linux GitHub Actions and repository/secret scanning.
 
 ## Genuine findings and their populations
 
@@ -47,6 +47,14 @@ Python, pandas, NumPy, scikit-learn, XGBoost and LightGBM provide preparation, b
 
 原 Copenhagen 模型没有用该问卷训练，也不能区分约定见面与偶遇；Play 与 Research 的结果保持独立。完整规则、刷新限制与 P02/P03 边界见 [PRODUCT_PLAN.md](PRODUCT_PLAN.md)。
 
+## Explore · 看看偶遇分析（P02）
+
+首页提供 Play / Explore / Research 三入口；科研概览在点击“深入研究”后才加载。Play 结果页点击“查看我的偶遇分析”，即可解释当前问卷的真实 Keyword、因素分值和 A/B 线索关联；没有提交问卷时不生成示例个人分数。
+
+深色线索图使用稳定力导向布局、悬停/点击说明、A/B 焦点切换和恢复视图。可选共同熟人数仅画一个自述汇总节点，不改变 P01 指数，不制造个体朋友或真实社交链路。个人信息只在当前会话中处理；修改/重置问卷会使旧分析失效。
+
+公开群体区无需原始数据或模型：直接读取 T22 同一测试总体的窗口排序结果、T31 相对研究日接触活动及已公开邻居分组。隐私抑制/缺失不补0；MIT 未核实时间单位不画日趋势，Social Evolution 不画虚构曲线。真实科研接触网络通过独立入口访问，不混入 A/B 图谱。见 [EXPLORE_GUIDE.md](EXPLORE_GUIDE.md)。
+
 ## 前端预览 / Frontend walkthrough
 
 前端由 Python + Streamlit 构建，图表使用 Plotly，页面导航在 [app.py](app.py) 和 [src/ui.py](src/ui.py) 中定义。无需额外构建 JavaScript 应用；后端推理与研究逻辑位于独立的 src 模块。
@@ -57,11 +65,11 @@ Python, pandas, NumPy, scikit-learn, XGBoost and LightGBM provide preparation, b
 streamlit run app.py
 ```
 
-打开终端显示的本地地址，默认是 http://localhost:8501。应用提供中文优先的深色界面和 13 个导航页面（12 个科研页面 + 1 个 Play 页面）；窗口较窄时，其余页面收纳在顶部的 more 菜单中。
+打开终端显示的本地地址，默认是 http://localhost:8501。应用提供中文优先的深色界面和 14 个导航页面（12 个科研页面 + Play + Explore）；窗口较窄时，其余页面收纳在顶部的 more 菜单中。
 
 建议按以下顺序查看：
 
-1. **Overview**：查看本地数据、匿名参与者/接触记录规模和整体分布。
+1. **Overview**：先选择 Play 或 Explore；点击“深入研究”后再查看原有科研指标，首次进入不扫描全量研究数据。
 2. **History Window Study**：保留默认配置，点击 Run Study 读取并验签已有冻结结果，查看同一队列的 1/3/7 天比较。匹配的本地数据、模型和运行记录是必要条件。
 3. **Time Machine**：选择历史研究日、配对及窗口，按 Select → Predict → Freeze → Reveal 操作。揭晓不足以验证无接触时显示 Unknown；静态档案不作为实时预测。
 4. **Multi-Dataset Exploration**：查看各来源的描述网络与正接触检索，区分可用、历史不足、时间单位未知和不可用状态。
@@ -87,6 +95,7 @@ streamlit run app.py
 | [Time Machine](pages/10_Time_Machine.py) | Independent historical prediction and reveal |
 | [Multi-Dataset Exploration](pages/11_Multi_Dataset_Exploration.py) | Descriptive topology and positive retrieval |
 | [Chance Encounter · Play](pages/12_Chance_Encounter.py) | Session-only rule-based entertainment index and sourced keyword cards |
+| [Encounter Insights · Explore](pages/13_Encounter_Insights.py) | Personal clue explanations/diagram and separate public research stories |
 
 T30 has no dedicated application page: read [ASOF_AUDIT.md](ASOF_AUDIT.md) and its public aggregate tables. Local private HTML, when present, is an additional research artifact.
 
@@ -110,7 +119,7 @@ No dataset or model download is needed for public tests or the public audit. The
 
 ## Research limitations, sources and licenses
 
-Only four principal window-study test dates; exposed historical periods; coverage is a proxy, not continuous device-online evidence; missing contact is not automatically negative. Stable archive event time does not establish historical ingestion availability. Static archives cannot be advertised as real-time forecasts. Snapshots retain disclosed TOCTOU/atomic-publication limits and lack live ingestion transactions. Anonymous identifiers can still carry reidentification risk; no individual demo exports are published. Case Explorer now reuses the verified Time Machine policy/snapshot service; mixed policies reject before prediction or future reads. Five critical pages passed real browser visual acceptance, alongside the 13-page AppTest suite. See [final acceptance evidence](FINAL_RESEARCH_AUDIT.md).
+Only four principal window-study test dates; exposed historical periods; coverage is a proxy, not continuous device-online evidence; missing contact is not automatically negative. Stable archive event time does not establish historical ingestion availability. Static archives cannot be advertised as real-time forecasts. Snapshots retain disclosed TOCTOU/atomic-publication limits and lack live ingestion transactions. Anonymous identifiers can still carry reidentification risk; no individual demo exports are published. Case Explorer now reuses the verified Time Machine policy/snapshot service; mixed policies reject before prediction or future reads. Five critical pages passed real browser visual acceptance, alongside the 14-page AppTest suite. See [final acceptance evidence](FINAL_RESEARCH_AUDIT.md).
 
 Source links, citations and dataset-specific licensing evidence are preserved in [source quality metadata](reports/multisource/T31_SOURCE_SUMMARY.json), [dataset catalog](reports/DATASET_CATALOG.json), and [multi-source study](MULTISOURCE_STUDY.md). Copenhagen: [official Figshare record](https://figshare.com/articles/dataset/The_Copenhagen_Networks_Study_interaction_data/7267433). Do not infer a dataset license from website source-code licenses; MIT Social Evolution acquisition/license remain unverified. Contact-only sources cannot support reliable binary negatives. No project code LICENSE file is currently provided; do not assume permission for unrestricted redistribution. Dataset-specific licenses govern third-party data separately.
 
@@ -118,7 +127,7 @@ Source links, citations and dataset-specific licensing evidence are preserved in
 
 [![Public CI](https://github.com/Hilbert-sun/Machine-Learning-Experiment-Design-Predicting-Whether-Two-People-Will-Meet-in-the-Next-24-Hours/actions/workflows/ci.yml/badge.svg?branch=research-v2.2)](https://github.com/Hilbert-sun/Machine-Learning-Experiment-Design-Predicting-Whether-Two-People-Will-Meet-in-the-Next-24-Hours/actions/workflows/ci.yml)
 
-Three jobs verify full public pytest, 13-page Streamlit smoke, and repository/secret safety. Synthetic fixtures and public aggregates are distinct from lawful local research reproduction. No raw data, weights, per-sample predictions, credentials or personal paths belong in Git. [Verified historical T33 CI record and current-head gate](CI_VERIFICATION.md).
+Three jobs verify full public pytest, 14-page Streamlit smoke, and repository/secret safety. Synthetic fixtures and public aggregates are distinct from lawful local research reproduction. No raw data, weights, per-sample predictions, credentials or personal paths belong in Git. [Verified historical T33 CI record and current-head gate](CI_VERIFICATION.md).
 
 - [Final research audit and task evidence index](FINAL_RESEARCH_AUDIT.md)
 - [Reproducibility](REPRODUCIBILITY.md), [portfolio architecture](PORTFOLIO_GUIDE.md), [demo](DEMO_GUIDE.md), [release checklist](FINAL_RELEASE_CHECKLIST.md)

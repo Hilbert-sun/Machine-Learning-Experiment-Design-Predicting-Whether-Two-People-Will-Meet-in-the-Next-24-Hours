@@ -2,6 +2,51 @@
 
 Date:2026-10-11 (Asia/Kuala_Lumpur)
 
+**P02 — DONE locally; remote acceptance requires this final P02 commit's own three completed/success CI jobs at exact remote HEAD.** Baselineab4dc3f20e5bcd587a5d4caf5611f5bc3fb0afbb / P01 Actions38108921172 (433 unit/69 smoke/27 safety). Only P02 is authorized; P03 remains TODO. No new data, model fit, experimental result export, main merge, tag/release or deployment.
+
+## Implemented
+
+- pages/13_Encounter_Insights.py and src/encounter_insights_ui.py: independent Explore page, personal analysis and public group stories visibly separated. All12 research pages and P01 remain registered (14 total).
+- src/encounter_insights.py: validate current submitted P01 result against unchanged evaluate_questionnaire; no second formula. Missing/stale/ineligible submissions get guidance, no personal example index. Cards and factor chart consume actual Keyword fields; unknowns remain separate, not0. Group window comparison reads/reconciles T22 JSON/CSV, common cohort/protocol/sample/prevalence/date counts; all narratives derive from actual metrics. T31 source/network counts reconcile JSON/CSV; only verified relative daily records render; suppressed/null values remain gaps, genuine public0 remains only a record count. MIT unknown ticks/Social unavailable get no fabricated curves. Copenhagen window chart is explicitly independent of the group selector.
+- src/encounter_graph.py: private self-report-only A/B clue graph with canonical seed42/80-iteration layout, dark style, soft edges, hover/click descriptions, A/B focus/restore. Known weak cues are labeled as weak, unknowns omitted. Optional mutual-acquaintance range creates one aggregate node, never fake individuals; summary has no score and fixed display size. Actual graphs<=8 nodes/12 edges, hard caps15/30. Research provenance is rejected by this renderer; real historical networks use a separate explicit entry to the unchanged existing page, never default Parquet scans or invented aggregate edges.
+- Play result button enters Explore; modify/reset clears old Explore-only mutual/focus state and invalidates old personal analysis. No private st.cache_data, shared session cache, URL data, logs, export/database/API. Public aggregate cache reuses existing content versions/deep copies only.
+- Overview has Play/Explore/Research entries. The original six indicators, charts and data/training links load only after 深入研究; 收起科研概览 hides them. Default home makes no raw/processed/model scan. Existing research model/statistics logic is untouched.
+- README, PRODUCT_PLAN, EXPLORE_GUIDE, task/session/progress files updated incrementally. P01 scoring/welcome and research report/CI/safety sources unchanged.
+
+## Actual tests and verification
+
+- New P02 logic/graph/UI suite:37 passed in2.06s. Covers unknown/stale/reset/session isolation, score/relationship preservation, data-driven stories/cohort conflicts, null/suppression/unavailable/time guards, deterministic graph/focus/summary-only friends/bounds/empty/single/edgeless/click validation, lazy homepage, and byte-identical P01 rule/welcome sources.
+- Focused P02/P01/navigation/documentation/delivery suite:92 passed in4.30s.
+- Full pytest:473 passed in35.54s (original433 +37 dedicated new cases +3 expanded navigation/document cases). Original research and P01 tests/guards retained; no skips or removed assertions.
+- Workflow-equivalent smoke:70 passed in9.51s, exercising all14 navigation pages and the original interaction/security boundary cases. Public audit PASS:51 frozen files unchanged. Repository safety regressions27 pass; exact staged-index scanner PASS (210 files,44 approved reports,51 frozen objects), pinned Gitleaks full history/index plus provider-risk self-test PASS; pip check passes. Exact remote CI totals are still gated on this new P02 SHA and attested in the final reply.
+- Real browser: homepage three entries; no-questionnaire guidance with genuine public charts; virtual questionnaire Play→Explore keeps index unchanged; optional mutual range does not change it; visible A-label focus, node click details and default restore work; modify→resubmit updates displayed result; P01 reset removes personal index/optional fields. Welcome does not repeat in navigation or final same-tab reload. Actual MIT/Social source switching shows the expected unverified-time/unavailable states without invented curves. 深入研究 exposes the actual original indicators; collapsing hides them.
+- Actual390px narrow viewport: homepage entries stack legibly and clue graph/controls remain usable. Viewport restored afterward. Only public homepage screenshot saved outside Git; fictional personal inputs were checked live, with no filled-form/personal graph export.
+- Preservation inventory2737 files;2725 protected pre-existing files unchanged except12 authorized current UI/doc/test files. P01 scoring/welcome and original data/models/statistical sources/frozen reports unchanged. The public frozen51-file check and unchanged CI/security policy remain enforced.
+
+## Failures and compatibility repairs
+
+Adding a page_link from a standalone P01 test script failed3 existing cases because the new navigation target was not registered in that single-file entry. A normal button-triggered switch_page preserves standalone scoring and works in the registered app; all old score/edit/reset assertions remain. AppTest retains its explicit page hash after a programmatic switch; the new integration test first asserts the actual rendered target, then binds that observed target for subsequent widget events. Real browser navigation independently passed.
+
+The initial full suite had1 failure/472 passes: old delivery test expected immediate Overview metrics. It now explicitly opens Research and retains all original real six-value, three-chart and stale-cache assertions. An additional visual review removed a misleading arbitrary points field from the mutual-summary marker; it now has a fixed size/no score and regression assertions. A native radio-input click did not toggle in the browser harness; clicking its visible A label worked and the checked state was verified, with node details independently tested. No formula, security policy or scientific assertion was weakened.
+
+## Boundaries and remaining limitations
+
+The A/B diagram is self-reported clue association, not a social network, causal attribution, SHAP or observed GPS/schedule evidence. Optional common acquaintances are only user-described summaries. Spring positions are deterministic/static, not draggable-node live physics. No inline real research network is synthesized from aggregate counts; the explicit old-page entry needs lawful verified local caches. No hour-level source exists here, so no invented heatmap/word cloud.
+
+T22 is the fixed Copenhagen population with only4 main test dates; AP is a ranking metric, not a person's encounter probability or generalization/significance proof. T30 selection/Unknown and T31 positive-only retrieval/T32 stable-archive/performance limits remain intact. Null/suppressed counts are not zero; public0 is not proof of no contact or continuous observation. MIT tick mapping and Social Evolution availability remain unresolved as before. P01 welcome refresh/storage limits are unchanged. No private questionnaire or real participant identities are published.
+
+## Publication and STOP
+
+Run final public/frozen/safety/secret checks, commit safe P02 source/tests/docs, push research-v2.2 only and verify the new exact remote-head three-job CI. Record final run/SHA/counts in the execution reply, not a new untested receipt commit. On failure retain IN_PROGRESS/BLOCKED and repair/reverify. STOP after P02; do not execute P03 without a new instruction.
+
+---
+
+## Previous P01 delivery record (historical)
+
+# Encounter Lab — Latest Progress
+
+Date:2026-10-11 (Asia/Kuala_Lumpur)
+
 **P01 — DONE locally; remote acceptance awaits this P01 commit's own exact-head three-job CI.** Baseline13192b741f5f81dae9af3563ad27e81767072d57. Only Play is authorized; P02/P03 remain TODO. No new research experiment, model fit, data acquisition, main merge, tag or release.
 
 ## Implemented
