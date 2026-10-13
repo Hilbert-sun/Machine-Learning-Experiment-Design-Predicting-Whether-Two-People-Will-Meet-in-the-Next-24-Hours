@@ -1,6 +1,33 @@
 # Encounter Lab — Latest Progress
 
-Date:2026-10-11 (Asia/Kuala_Lumpur)
+Date:2026-10-13 (Asia/Kuala_Lumpur)
+
+**REPORT-FULL — DONE：本地正式报告及内容/排版验收完成；发布以本报告提交自己的三项CI为准。** 本轮仅生成报告。审阅基准478a320在main与research-v2.2一致；研究分支CI38130816756及main CI38131208638均已复核500全量/71 Smoke/27安全/12原生检查通过。无重训练、数据下载或新功能。
+
+## 交付与证据
+
+- deliverables/Encounter_Lab_Full_Report.md：正式完整中文报告；正文13,540个汉字（含标题/表图说明，排除重复图alt、摘要、文献及附录），451字摘要，11章、附录A-G、9图、15表、21参考文献。覆盖T01–T34/P01–P03，严格区分T17/T22/T30总体、描述检索与规则娱乐指数。
+- deliverables/Encounter_Lab_Full_Report.pdf：本地39页A4纵向，约2.5cm页边距，嵌入常规宋体/黑体，正文12pt/18pt行距、首行24pt；编号目录、三线表、黑白矢量图、统一页眉页脚。为避免中文标点悬挂，正文右侧保留一个汉字宽度；不改变字号或增加彩色元素。PDF通过本机Git exclude精确排除，不进Git，未修改.gitignore/白名单/安全规则。
+- deliverables/EVIDENCE_MAP.md、REPORT_VERIFICATION.json：章节证据映射、公开来源与代码SHA256、指标/目录/字体/颜色/页边距检查记录。参考文献外部条目在官方数据页、出版社、作者论文或技术文档核验；内部报告保留文件/版本追溯。
+- deliverables/Encounter_Lab_Report_Figures/：9幅纯黑白SVG。数据图由T17/T22/T30/T31公开JSON/CSV生成；其他图明确为源码结构示意，不包含真实参与者。build_report.py/verify_report.py是独立报告生成/校验工具，不属于应用运行或科研拟合通路；复用现有文档运行环境，项目依赖不变。
+- README仅新增报告索引；AGENTS/TASKS/PROGRESS同步当前单任务范围。可选DOCX未生成，Markdown为可编辑源。
+
+## 实际验证
+
+- 独立报告校验PASS：T22/T30 JSON-CSV与T32算术对账；T17及窗口附表独立取值核对；T31共同7d频率Top20命中/分母核对。21条正文引用与文献条目对应。图表不使用合成实验数据冒充真实结果。
+- 最终PDF39页全部实际渲染；查看全页联系图及封面/目录/关键表图放大页。最后改动仅附表窗口排序，像素比较确认仅第38页变化，已重新查看。全部文字为黑色、绘图为黑白、渲染无彩色像素、白纸背景；中文字体嵌入及字形预检通过，无方框/替代乱码；逐页页码、目录及书签对应真实页码，文本不越出页边距检查。
+- .venv/bin/python -m pytest -q tests/test_documentation.py tests/test_final_audit.py tests/test_repository_safety.py：72 passed in2.79s。python -m src.final_audit PASS，51份冻结材料不变。2751个预检对象中2747个保持原样，仅AGENTS/TASKS/PROGRESS/README四个授权当前文档改变；所有原源码、测试、配置、依赖、安全策略、数据、模型、报告均未修改。
+- 新增15个文本交付文件（Markdown/JSON/Python/SVG）经现有check_content安全预检PASS；PDF保持本地。发布前继续执行真实Git-index与固定Gitleaks历史/索引/服务商风险自检；只推research-v2.2并等待本报告HEAD三个CI Job completed/success。最终SHA/运行URL由执行回执给出，不增加未验收的自引用元数据提交。
+
+## 修正与剩余范围
+
+排版调试中的KeyError('scope')源自报告脚本误读实际population列，已按真实CSV修正；初次宋体字体面偏重已换成Regular；中文悬挂标点超边界及附表窗口排序已修正并重渲染/重验。Poppler最初字体缓存路径不可写，改用本机临时fontconfig后无渲染错误。没有未解决测试或排版失败。
+
+本次不重新跑真实模型/原始数据复现，不重做性能实测或浏览器设备测试；报告引用这些已验收历史材料并明确其范围。无机构、导师或发表身份推测。只有4个主要窗口测试日、观测代理、Unknown、时间单位/来源不可用、未验证跨群体/实时泛化仍是项目科学限制。
+
+下一步：完成本报告的安全研究分支发布与对应CI核验后STOP，等待用户审阅；不自动开发或创建新研究任务，不合并main、发Tag/Release或部署。
+
+## Earlier accepted documentation/product evidence
 
 **DOCS-P03 — DONE：README 与配套文档补齐及本地验证完成。** 用户本次仅授权完善文档并推送。P03 已在 `390384ca27b9e9e89788a6d17e5c436552d28873` / [Actions38115466252](https://github.com/Hilbert-sun/Machine-Learning-Experiment-Design-Predicting-Whether-Two-People-Will-Meet-in-the-Next-24-Hours/actions/runs/38115466252) 正式验收，三个 Job completed/success；500全量、71 Smoke、27安全、12原生依赖检查。维护前核验的远程 research-v2.2 与该 SHA 相同，main 仍为820d080；本轮不修改任何功能或科研结果。
 

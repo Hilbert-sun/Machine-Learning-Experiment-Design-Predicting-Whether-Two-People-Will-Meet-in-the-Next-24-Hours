@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE svg
+  PUBLIC '-//W3C//DTD SVG 1.0//EN'
+  'http://www.w3.org/TR/2001/REC-SVG-20010904/DTD/svg10.dtd'>
+<svg width="450" height="175" preserveAspectRatio="xMinYMin meet" viewBox="0 0 450 175" xmlns="http://www.w3.org/2000/svg" version="1.0" fill-rule="evenodd" xmlns:xlink="http://www.w3.org/1999/xlink">
+	<title>...</title>
+	<desc>...</desc>
+	<clipPath id="clip">
+		<rect x="0" y="0" width="450" height="175"/>
+	</clipPath>
+	<g id="group" transform="scale(1,-1) translate(0,-175)" style="clip-path: url(#clip)">
+		<g transform="">
+			<text x="75.0" y="155" style="font-family: Songti SC, SimSun, serif; font-size: 11px;fill: rgb(0%,0%,0%); stroke:none;" transform="translate(0,310) scale(1,-1)">历史接触语义</text>
+			<text x="305.0" y="155" style="font-family: Songti SC, SimSun, serif; font-size: 11px;fill: rgb(0%,0%,0%); stroke:none;" transform="translate(0,310) scale(1,-1)">自填线索语义</text>
+			<circle cx="45" cy="90" r="18" style="stroke: rgb(0%,0%,0%); stroke-linecap: butt; stroke-width: 1; fill: rgb(100%,100%,100%); fill-rule: evenodd;"/>
+			<text x="39.8355" y="87" style="font-family: Songti SC, SimSun, serif; font-size: 11px;fill: rgb(0%,0%,0%); stroke:none;" transform="translate(0,174) scale(1,-1)">v1</text>
+			<circle cx="165" cy="90" r="18" style="stroke: rgb(0%,0%,0%); stroke-linecap: butt; stroke-width: 1; fill: rgb(100%,100%,100%); fill-rule: evenodd;"/>
+			<text x="159.8355" y="87" style="font-family: Songti SC, SimSun, serif; font-size: 11px;fill: rgb(0%,0%,0%); stroke:none;" transform="translate(0,174) scale(1,-1)">v2</text>
+			<path d="M 63,90 L 147,90 Z" style="stroke: rgb(0%,0%,0%); stroke-linecap: butt; stroke-width: 1;"/>
+			<text x="73.5" y="118" style="font-family: Songti SC, SimSun, serif; font-size: 9px;fill: rgb(0%,0%,0%); stroke:none;" transform="translate(0,236) scale(1,-1)">窗口内接触证据</text>
+			<circle cx="263" cy="90" r="16" style="stroke: rgb(0%,0%,0%); stroke-linecap: butt; stroke-width: 1; fill: rgb(100%,100%,100%); fill-rule: evenodd;"/>
+			<text x="259.2655" y="87" style="font-family: Songti SC, SimSun, serif; font-size: 11px;fill: rgb(0%,0%,0%); stroke:none;" transform="translate(0,174) scale(1,-1)">A</text>
+			<circle cx="413" cy="90" r="16" style="stroke: rgb(0%,0%,0%); stroke-linecap: butt; stroke-width: 1; fill: rgb(100%,100%,100%); fill-rule: evenodd;"/>
+			<text x="409.601" y="87" style="font-family: Songti SC, SimSun, serif; font-size: 11px;fill: rgb(0%,0%,0%); stroke:none;" transform="translate(0,174) scale(1,-1)">B</text>
+			<rect x="303" y="45" width="70" height="32" style="stroke: rgb(0%,0%,0%); stroke-linecap: butt; stroke-width: 0.8; fill: rgb(100%,100%,100%); fill-rule: evenodd;"/>
+			<text x="320.0" y="58.0" style="font-family: Songti SC, SimSun, serif; font-size: 9px;fill: rgb(0%,0%,0%); stroke:none;" transform="translate(0,116) scale(1,-1)">距离线索</text>
+			<path d="M 278,83 L 303,61 Z" style="stroke: rgb(0%,0%,0%); stroke-linecap: butt; stroke-width: 1;"/>
+			<path d="M 398,83 L 373,61 Z" style="stroke: rgb(0%,0%,0%); stroke-linecap: butt; stroke-width: 1;"/>
+			<rect x="297" y="107" width="82" height="26" style="stroke: rgb(0%,0%,0%); stroke-linecap: butt; stroke-width: 0.8; fill: rgb(100%,100%,100%); fill-rule: evenodd;"/>
+			<text x="320.0" y="117.0" style="font-family: Songti SC, SimSun, serif; font-size: 9px;fill: rgb(0%,0%,0%); stroke:none;" transform="translate(0,234) scale(1,-1)">自述汇总</text>
+			<path d="M 278,98 L 297,120 Z" style="stroke: rgb(0%,0%,0%); stroke-linecap: butt; stroke-width: 1;"/>
+			<path d="M 398,98 L 379,120 Z" style="stroke: rgb(0%,0%,0%); stroke-linecap: butt; stroke-width: 1;"/>
+			<text x="116.99999999999999" y="10" style="font-family: Songti SC, SimSun, serif; font-size: 9px;fill: rgb(0%,0%,0%); stroke:none;" transform="translate(0,20) scale(1,-1)">结构示意；符号不是研究参与者，边不是实际抽取记录</text>
+		</g>
+	</g>
+</svg>

@@ -160,6 +160,7 @@ Three jobs verify full public pytest, 15-route Streamlit smoke, and repository/s
 
 | 文档 | 内容 |
 | --- | --- |
+| [完整中文项目研究报告](deliverables/Encounter_Lab_Full_Report.md) | 11章学术报告、可追溯实验表与黑白SVG；正式PDF保留本地 |
 | [产品交付说明](PRODUCT_DELIVERY.md) | 当前功能、操作路径、三档浏览器验收、图谱与隐私限制 |
 | [Explore 使用指南](EXPLORE_GUIDE.md) | 个人线索、公开图表、来源口径与 Unknown 处理 |
 | [产品计划与固定规则](PRODUCT_PLAN.md) | P01–P03 完成情况、字段、计分和会话行为 |

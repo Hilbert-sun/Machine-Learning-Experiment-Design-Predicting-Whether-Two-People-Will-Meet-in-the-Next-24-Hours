@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE svg
+  PUBLIC '-//W3C//DTD SVG 1.0//EN'
+  'http://www.w3.org/TR/2001/REC-SVG-20010904/DTD/svg10.dtd'>
+<svg width="450" height="205" preserveAspectRatio="xMinYMin meet" viewBox="0 0 450 205" xmlns="http://www.w3.org/2000/svg" version="1.0" fill-rule="evenodd" xmlns:xlink="http://www.w3.org/1999/xlink">
+	<title>...</title>
+	<desc>...</desc>
+	<clipPath id="clip">
+		<rect x="0" y="0" width="450" height="205"/>
+	</clipPath>
+	<g id="group" transform="scale(1,-1) translate(0,-205)" style="clip-path: url(#clip)">
+		<g transform="">
+			<rect x="0" y="148" width="140" height="44" style="stroke: rgb(0%,0%,0%); stroke-linecap: butt; stroke-width: 0.8; fill: rgb(100%,100%,100%); fill-rule: evenodd;"/>
+			<text x="50.0" y="174.0" style="font-family: Songti SC, SimSun, serif; font-size: 10px;fill: rgb(0%,0%,0%); stroke:none;" transform="translate(0,348) scale(1,-1)">来源核验</text>
+			<text x="30.0" y="160.0" style="font-family: Songti SC, SimSun, serif; font-size: 10px;fill: rgb(0%,0%,0%); stroke:none;" transform="translate(0,320) scale(1,-1)">字段、时间、许可</text>
+			<rect x="155" y="148" width="140" height="44" style="stroke: rgb(0%,0%,0%); stroke-linecap: butt; stroke-width: 0.8; fill: rgb(100%,100%,100%); fill-rule: evenodd;"/>
+			<text x="205.0" y="174.0" style="font-family: Songti SC, SimSun, serif; font-size: 10px;fill: rgb(0%,0%,0%); stroke:none;" transform="translate(0,348) scale(1,-1)">规范数据</text>
+			<text x="190.0" y="160.0" style="font-family: Songti SC, SimSun, serif; font-size: 10px;fill: rgb(0%,0%,0%); stroke:none;" transform="translate(0,320) scale(1,-1)">接触与观测分离</text>
+			<rect x="310" y="148" width="140" height="44" style="stroke: rgb(0%,0%,0%); stroke-linecap: butt; stroke-width: 0.8; fill: rgb(100%,100%,100%); fill-rule: evenodd;"/>
+			<text x="360.0" y="174.0" style="font-family: Songti SC, SimSun, serif; font-size: 10px;fill: rgb(0%,0%,0%); stroke:none;" transform="translate(0,348) scale(1,-1)">离线研究</text>
+			<text x="340.0" y="160.0" style="font-family: Songti SC, SimSun, serif; font-size: 10px;fill: rgb(0%,0%,0%); stroke:none;" transform="translate(0,320) scale(1,-1)">标签、特征、训练</text>
+			<path d="M 140,170 L 155,170 Z" style="stroke: rgb(0%,0%,0%); stroke-linecap: butt; stroke-width: 0.8;"/>
+			<polygon points="155 170, 150.6121 172.3971, 150.6121 167.6029" style="stroke: rgb(0%,0%,0%); stroke-linecap: butt; stroke-width: 1; fill: rgb(0%,0%,0%); fill-rule: evenodd;"/>
+			<path d="M 295,170 L 310,170 Z" style="stroke: rgb(0%,0%,0%); stroke-linecap: butt; stroke-width: 0.8;"/>
+			<polygon points="310 170, 305.6121 172.3971, 305.6121 167.6029" style="stroke: rgb(0%,0%,0%); stroke-linecap: butt; stroke-width: 1; fill: rgb(0%,0%,0%); fill-rule: evenodd;"/>
+			<rect x="155" y="70" width="140" height="45" style="stroke: rgb(0%,0%,0%); stroke-linecap: butt; stroke-width: 0.8; fill: rgb(100%,100%,100%); fill-rule: evenodd;"/>
+			<text x="180.0" y="96.5" style="font-family: Songti SC, SimSun, serif; font-size: 10px;fill: rgb(0%,0%,0%); stroke:none;" transform="translate(0,193) scale(1,-1)">过去候选与有界特征</text>
+			<text x="185.0" y="82.5" style="font-family: Songti SC, SimSun, serif; font-size: 10px;fill: rgb(0%,0%,0%); stroke:none;" transform="translate(0,165) scale(1,-1)">核验模型信息截止</text>
+			<rect x="310" y="70" width="140" height="45" style="stroke: rgb(0%,0%,0%); stroke-linecap: butt; stroke-width: 0.8; fill: rgb(100%,100%,100%); fill-rule: evenodd;"/>
+			<text x="342.5" y="96.5" style="font-family: Songti SC, SimSun, serif; font-size: 10px;fill: rgb(0%,0%,0%); stroke:none;" transform="translate(0,193) scale(1,-1)">历史预测 → 冻结</text>
+			<text x="350.0" y="82.5" style="font-family: Songti SC, SimSun, serif; font-size: 10px;fill: rgb(0%,0%,0%); stroke:none;" transform="translate(0,165) scale(1,-1)">独立未来揭晓</text>
+			<path d="M 225,148 L 225,115 Z" style="stroke: rgb(0%,0%,0%); stroke-linecap: butt; stroke-width: 0.8;"/>
+			<polygon points="225 115, 227.3971 119.3879, 222.6029 119.3879" style="stroke: rgb(0%,0%,0%); stroke-linecap: butt; stroke-width: 1; fill: rgb(0%,0%,0%); fill-rule: evenodd;"/>
+			<path d="M 295,92 L 310,92 Z" style="stroke: rgb(0%,0%,0%); stroke-linecap: butt; stroke-width: 0.8;"/>
+			<polygon points="310 92, 305.6121 94.39713, 305.6121 89.60287" style="stroke: rgb(0%,0%,0%); stroke-linecap: butt; stroke-width: 1; fill: rgb(0%,0%,0%); fill-rule: evenodd;"/>
+			<path d="M 380,148 L 380,115 Z" style="stroke: rgb(0%,0%,0%); stroke-linecap: butt; stroke-width: 0.8;"/>
+			<polygon points="380 115, 382.3971 119.3879, 377.6029 119.3879" style="stroke: rgb(0%,0%,0%); stroke-linecap: butt; stroke-width: 1; fill: rgb(0%,0%,0%); fill-rule: evenodd;"/>
+			<rect x="0" y="0" width="140" height="44" style="stroke: rgb(0%,0%,0%); stroke-linecap: butt; stroke-width: 0.8; fill: rgb(100%,100%,100%); fill-rule: evenodd;"/>
+			<text x="41.18" y="26.0" style="font-family: Songti SC, SimSun, serif; font-size: 10px;fill: rgb(0%,0%,0%); stroke:none;" transform="translate(0,52) scale(1,-1)">Play会话规则</text>
+			<text x="35.0" y="12.0" style="font-family: Songti SC, SimSun, serif; font-size: 10px;fill: rgb(0%,0%,0%); stroke:none;" transform="translate(0,24) scale(1,-1)">不调用研究模型</text>
+			<rect x="155" y="0" width="140" height="44" style="stroke: rgb(0%,0%,0%); stroke-linecap: butt; stroke-width: 0.8; fill: rgb(100%,100%,100%); fill-rule: evenodd;"/>
+			<text x="208.935" y="26.0" style="font-family: Songti SC, SimSun, serif; font-size: 10px;fill: rgb(0%,0%,0%); stroke:none;" transform="translate(0,52) scale(1,-1)">Explore</text>
+			<text x="180.0" y="12.0" style="font-family: Songti SC, SimSun, serif; font-size: 10px;fill: rgb(0%,0%,0%); stroke:none;" transform="translate(0,24) scale(1,-1)">个人线索与公开聚合</text>
+			<rect x="310" y="0" width="140" height="44" style="stroke: rgb(0%,0%,0%); stroke-linecap: butt; stroke-width: 0.8; fill: rgb(100%,100%,100%); fill-rule: evenodd;"/>
+			<text x="351.64" y="26.0" style="font-family: Songti SC, SimSun, serif; font-size: 10px;fill: rgb(0%,0%,0%); stroke:none;" transform="translate(0,52) scale(1,-1)">Research界面</text>
+			<text x="350.0" y="12.0" style="font-family: Songti SC, SimSun, serif; font-size: 10px;fill: rgb(0%,0%,0%); stroke:none;" transform="translate(0,24) scale(1,-1)">原有科研工具</text>
+			<path d="M 140,22 L 155,22 Z" style="stroke: rgb(0%,0%,0%); stroke-linecap: butt; stroke-width: 0.8;"/>
+			<polygon points="155 22, 150.6121 24.39713, 150.6121 19.60287" style="stroke: rgb(0%,0%,0%); stroke-linecap: butt; stroke-width: 1; fill: rgb(0%,0%,0%); fill-rule: evenodd;"/>
+			<path d="M 380,70 L 380,44 Z" style="stroke: rgb(0%,0%,0%); stroke-linecap: butt; stroke-width: 0.8;"/>
+			<polygon points="380 44, 382.3971 48.38791, 377.6029 48.38791" style="stroke: rgb(0%,0%,0%); stroke-linecap: butt; stroke-width: 1; fill: rgb(0%,0%,0%); fill-rule: evenodd;"/>
+			<text x="40.0" y="94" style="font-family: Songti SC, SimSun, serif; font-size: 10px;fill: rgb(0%,0%,0%); stroke:none;" transform="translate(0,188) scale(1,-1)">独立娱乐通路</text>
+		</g>
+	</g>
+</svg>

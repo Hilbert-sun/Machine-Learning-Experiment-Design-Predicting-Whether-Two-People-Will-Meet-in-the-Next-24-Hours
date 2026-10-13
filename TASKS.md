@@ -2,7 +2,7 @@
 
 Task IDs and titles follow the user's task-board screenshot. Dependencies and acceptance criteria below are the implementation plan derived from `PROJECT_SPEC.md`, rather than additional completed functionality.
 
-Current execution: **DOCS-P03 — DONE** (README and related documentation completed and locally verified; publication is checked against the maintenance commit's own CI). P03 is already DONE at `390384ca27b9e9e89788a6d17e5c436552d28873` / [Actions38115466252](https://github.com/Hilbert-sun/Machine-Learning-Experiment-Design-Predicting-Whether-Two-People-Will-Meet-in-the-Next-24-Hours/actions/runs/38115466252), verified500 full/71 smoke/27 safety/12 native. This maintenance corrects pending-publication wording, updates usage/navigation/demo/CI indexes, and preserves all scientific/product code and frozen results. Verify focused checks and this new commit's own CI; push research-v2.2 only, then STOP. No next development task is authorized.
+Current execution: **REPORT-FULL — DONE locally; publication requires this report commit's own successful CI**. User authorized an evidence-based Chinese full-project report, editable Markdown and black/white academic PDF, optional safe figures/source publication to research-v2.2. Baseline478a320; no app/scientific/test/CI changes, refitting, data acquisition or frozen-evidence edits. Verify citations/metrics/rendered PDF/safety and own publication CI, then STOP.
 
 | Complete | ID | Task | Status | Dependencies | Acceptance criteria |
 | --- | --- | --- | --- | --- | --- |
@@ -63,3 +63,9 @@ T01 excludes Streamlit navigation/pages, dataset downloads, preprocessing, featu
 | ID | Task | Status | Dependencies | Acceptance criteria |
 | --- | --- | --- | --- | --- |
 | DOCS-P03 | README 与配套产品/科研交付文档补齐 | DONE | P03 DONE390384c | Accurate current branch/quick start/navigation/product flow and verified P03 SHA/CI counts; demo/checklist/portfolio/index/task/progress synchronized; no source/data/models/frozen changes; focused docs/public audit/safety and exact maintenance-head three-job CI verified; safe branch push and STOP |
+
+## Full project report
+
+| ID | Task | Status | Dependencies | Acceptance criteria |
+| --- | --- | --- | --- | --- |
+| REPORT-FULL | 完整中文学术项目研究报告 | DONE | T01–T34/P01–P03 DONE;478a320 | Evidence-linked11 chapters, abstract/references/appendices; distinguish T17/T22/T30 populations and rule-based Play; accurate source-derived tables/black-white figures; A4 Chinese12pt/1.5spacing, numbered TOC/pages, rendered PDF QA; safe Markdown/SVG only in Git, local PDF, frozen51 unchanged, focused/safety/own-head CI; STOP |

@@ -29,7 +29,7 @@ The user subsequently instructed: “以后做完全部推送” (push all compl
 
 ## Current authorized range
 
-DOCS-P03 only: the user requested completing README and related documentation and publishing it. P03 is already delivered at `390384ca27b9e9e89788a6d17e5c436552d28873` / Actions38115466252, verified500 full/71 smoke/27 safety/12 native. Update current README/product/Explore/CI/demo/checklist/portfolio/task/progress instructions with accurate branch, usage and observed acceptance records. Preserve all source/UI/test/config/dependency/security files,51 frozen reports/documents, raw data/models and scientific claims. Do not reopen P03 implementation or start P04/T35. Run focused documentation/public-audit/security checks, safely commit/push only research-v2.2 and verify this maintenance commit's own three CI Jobs and exact remote SHA. STOP after this authorized documentation task; no main merge, tag/release/deployment, training or download.
+REPORT-FULL only: user authorizes a detailed Chinese academic project report based on latest verified research-v2.2 baseline478a320 (also merged to main by explicit prior authorization). Deliver editable Markdown and A4 black/white Chinese PDF with verified references, source-derived metrics/figures, evidence map and real render QA. No new UI/features/model training/datasets; preserve all existing source/tests/config/dependencies/CI/security, raw/models and51 frozen materials. Publish only safe textual documents/SVG/report-generation helpers on research-v2.2 after checks; PDF/raster QA stay local and excluded from Git, never weaken repository safety. Verify final publication three-job CI, then STOP; no further research/development, main merge, tag/release/deploy.
 
 ## Prediction data contract
 

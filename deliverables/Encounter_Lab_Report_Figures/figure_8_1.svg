@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE svg
+  PUBLIC '-//W3C//DTD SVG 1.0//EN'
+  'http://www.w3.org/TR/2001/REC-SVG-20010904/DTD/svg10.dtd'>
+<svg width="450" height="165" preserveAspectRatio="xMinYMin meet" viewBox="0 0 450 165" xmlns="http://www.w3.org/2000/svg" version="1.0" fill-rule="evenodd" xmlns:xlink="http://www.w3.org/1999/xlink">
+	<title>...</title>
+	<desc>...</desc>
+	<clipPath id="clip">
+		<rect x="0" y="0" width="450" height="165"/>
+	</clipPath>
+	<g id="group" transform="scale(1,-1) translate(0,-165)" style="clip-path: url(#clip)">
+		<g transform="">
+			<rect x="170" y="117" width="110" height="35" style="stroke: rgb(0%,0%,0%); stroke-linecap: butt; stroke-width: 0.8; fill: rgb(100%,100%,100%); fill-rule: evenodd;"/>
+			<text x="210.06" y="131.5" style="font-family: Songti SC, SimSun, serif; font-size: 12px;fill: rgb(0%,0%,0%); stroke:none;" transform="translate(0,263) scale(1,-1)">Home</text>
+			<rect x="0" y="57" width="130" height="38" style="stroke: rgb(0%,0%,0%); stroke-linecap: butt; stroke-width: 0.8; fill: rgb(100%,100%,100%); fill-rule: evenodd;"/>
+			<text x="55.298" y="73.0" style="font-family: Songti SC, SimSun, serif; font-size: 11px;fill: rgb(0%,0%,0%); stroke:none;" transform="translate(0,146) scale(1,-1)">Play</text>
+			<rect x="0" y="0" width="130" height="43" style="stroke: rgb(0%,0%,0%); stroke-linecap: butt; stroke-width: 0.8; fill: rgb(100%,100%,100%); fill-rule: evenodd;"/>
+			<text x="35.0" y="25.5" style="font-family: Songti SC, SimSun, serif; font-size: 10px;fill: rgb(0%,0%,0%); stroke:none;" transform="translate(0,51) scale(1,-1)">固定娱乐规则</text>
+			<text x="40.0" y="11.5" style="font-family: Songti SC, SimSun, serif; font-size: 10px;fill: rgb(0%,0%,0%); stroke:none;" transform="translate(0,23) scale(1,-1)">仅当前问卷</text>
+			<path d="M 225,117 L 65,95 Z" style="stroke: rgb(0%,0%,0%); stroke-linecap: butt; stroke-width: 0.8;"/>
+			<polygon points="65 95, 69.67355 93.22293, 69.02048 97.9725" style="stroke: rgb(0%,0%,0%); stroke-linecap: butt; stroke-width: 1; fill: rgb(0%,0%,0%); fill-rule: evenodd;"/>
+			<path d="M 65,57 L 65,43 Z" style="stroke: rgb(0%,0%,0%); stroke-linecap: butt; stroke-width: 0.8;"/>
+			<polygon points="65 43, 67.39713 47.38791, 62.60287 47.38791" style="stroke: rgb(0%,0%,0%); stroke-linecap: butt; stroke-width: 1; fill: rgb(0%,0%,0%); fill-rule: evenodd;"/>
+			<rect x="160" y="57" width="130" height="38" style="stroke: rgb(0%,0%,0%); stroke-linecap: butt; stroke-width: 0.8; fill: rgb(100%,100%,100%); fill-rule: evenodd;"/>
+			<text x="207.3285" y="73.0" style="font-family: Songti SC, SimSun, serif; font-size: 11px;fill: rgb(0%,0%,0%); stroke:none;" transform="translate(0,146) scale(1,-1)">Explore</text>
+			<rect x="160" y="0" width="130" height="43" style="stroke: rgb(0%,0%,0%); stroke-linecap: butt; stroke-width: 0.8; fill: rgb(100%,100%,100%); fill-rule: evenodd;"/>
+			<text x="205.0" y="25.5" style="font-family: Songti SC, SimSun, serif; font-size: 10px;fill: rgb(0%,0%,0%); stroke:none;" transform="translate(0,51) scale(1,-1)">个人线索</text>
+			<text x="195.0" y="11.5" style="font-family: Songti SC, SimSun, serif; font-size: 10px;fill: rgb(0%,0%,0%); stroke:none;" transform="translate(0,23) scale(1,-1)">独立公开聚合</text>
+			<path d="M 225,117 L 225,95 Z" style="stroke: rgb(0%,0%,0%); stroke-linecap: butt; stroke-width: 0.8;"/>
+			<polygon points="225 95, 227.3971 99.38791, 222.6029 99.38791" style="stroke: rgb(0%,0%,0%); stroke-linecap: butt; stroke-width: 1; fill: rgb(0%,0%,0%); fill-rule: evenodd;"/>
+			<path d="M 225,57 L 225,43 Z" style="stroke: rgb(0%,0%,0%); stroke-linecap: butt; stroke-width: 0.8;"/>
+			<polygon points="225 43, 227.3971 47.38791, 222.6029 47.38791" style="stroke: rgb(0%,0%,0%); stroke-linecap: butt; stroke-width: 1; fill: rgb(0%,0%,0%); fill-rule: evenodd;"/>
+			<rect x="320" y="57" width="130" height="38" style="stroke: rgb(0%,0%,0%); stroke-linecap: butt; stroke-width: 0.8; fill: rgb(100%,100%,100%); fill-rule: evenodd;"/>
+			<text x="364.804" y="73.0" style="font-family: Songti SC, SimSun, serif; font-size: 11px;fill: rgb(0%,0%,0%); stroke:none;" transform="translate(0,146) scale(1,-1)">Research</text>
+			<rect x="320" y="0" width="130" height="43" style="stroke: rgb(0%,0%,0%); stroke-linecap: butt; stroke-width: 0.8; fill: rgb(100%,100%,100%); fill-rule: evenodd;"/>
+			<text x="350.0" y="25.5" style="font-family: Songti SC, SimSun, serif; font-size: 10px;fill: rgb(0%,0%,0%); stroke:none;" transform="translate(0,51) scale(1,-1)">离线模型与审计</text>
+			<text x="355.0" y="11.5" style="font-family: Songti SC, SimSun, serif; font-size: 10px;fill: rgb(0%,0%,0%); stroke:none;" transform="translate(0,23) scale(1,-1)">历史模拟工具</text>
+			<path d="M 225,117 L 385,95 Z" style="stroke: rgb(0%,0%,0%); stroke-linecap: butt; stroke-width: 0.8;"/>
+			<polygon points="385 95, 380.9795 97.9725, 380.3265 93.22293" style="stroke: rgb(0%,0%,0%); stroke-linecap: butt; stroke-width: 1; fill: rgb(0%,0%,0%); fill-rule: evenodd;"/>
+			<path d="M 385,57 L 385,43 Z" style="stroke: rgb(0%,0%,0%); stroke-linecap: butt; stroke-width: 0.8;"/>
+			<polygon points="385 43, 387.3971 47.38791, 382.6029 47.38791" style="stroke: rgb(0%,0%,0%); stroke-linecap: butt; stroke-width: 1; fill: rgb(0%,0%,0%); fill-rule: evenodd;"/>
+		</g>
+	</g>
+</svg>

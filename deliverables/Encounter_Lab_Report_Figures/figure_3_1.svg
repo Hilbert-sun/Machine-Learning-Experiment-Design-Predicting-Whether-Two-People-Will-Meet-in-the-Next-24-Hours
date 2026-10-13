@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE svg
+  PUBLIC '-//W3C//DTD SVG 1.0//EN'
+  'http://www.w3.org/TR/2001/REC-SVG-20010904/DTD/svg10.dtd'>
+<svg width="450" height="170" preserveAspectRatio="xMinYMin meet" viewBox="0 0 450 170" xmlns="http://www.w3.org/2000/svg" version="1.0" fill-rule="evenodd" xmlns:xlink="http://www.w3.org/1999/xlink">
+	<title>...</title>
+	<desc>...</desc>
+	<clipPath id="clip">
+		<rect x="0" y="0" width="450" height="170"/>
+	</clipPath>
+	<g id="group" transform="scale(1,-1) translate(0,-170)" style="clip-path: url(#clip)">
+		<g transform="">
+			<rect x="0" y="112" width="128" height="40" style="stroke: rgb(0%,0%,0%); stroke-linecap: butt; stroke-width: 0.8; fill: rgb(100%,100%,100%); fill-rule: evenodd;"/>
+			<text x="29.0" y="136.0" style="font-family: Songti SC, SimSun, serif; font-size: 10px;fill: rgb(0%,0%,0%); stroke:none;" transform="translate(0,272) scale(1,-1)">文件与签名校验</text>
+			<text x="19.0" y="122.0" style="font-family: Songti SC, SimSun, serif; font-size: 10px;fill: rgb(0%,0%,0%); stroke:none;" transform="translate(0,244) scale(1,-1)">合法来源、真实字段</text>
+			<rect x="160" y="112" width="130" height="40" style="stroke: rgb(0%,0%,0%); stroke-linecap: butt; stroke-width: 0.8; fill: rgb(100%,100%,100%); fill-rule: evenodd;"/>
+			<text x="189.375" y="136.0" style="font-family: Songti SC, SimSun, serif; font-size: 10px;fill: rgb(0%,0%,0%); stroke:none;" transform="translate(0,272) scale(1,-1)">单位与ID规范化</text>
+			<text x="195.0" y="122.0" style="font-family: Songti SC, SimSun, serif; font-size: 10px;fill: rgb(0%,0%,0%); stroke:none;" transform="translate(0,244) scale(1,-1)">精确事件去重</text>
+			<rect x="322" y="112" width="128" height="40" style="stroke: rgb(0%,0%,0%); stroke-linecap: butt; stroke-width: 0.8; fill: rgb(100%,100%,100%); fill-rule: evenodd;"/>
+			<text x="346.0" y="136.0" style="font-family: Songti SC, SimSun, serif; font-size: 10px;fill: rgb(0%,0%,0%); stroke:none;" transform="translate(0,272) scale(1,-1)">质量与适用性报告</text>
+			<text x="353.5" y="122.0" style="font-family: Songti SC, SimSun, serif; font-size: 10px;fill: rgb(0%,0%,0%); stroke:none;" transform="translate(0,244) scale(1,-1)">已知/未知分开</text>
+			<path d="M 128,132 L 160,132 Z" style="stroke: rgb(0%,0%,0%); stroke-linecap: butt; stroke-width: 0.8;"/>
+			<polygon points="160 132, 155.6121 134.3971, 155.6121 129.6029" style="stroke: rgb(0%,0%,0%); stroke-linecap: butt; stroke-width: 1; fill: rgb(0%,0%,0%); fill-rule: evenodd;"/>
+			<path d="M 290,132 L 322,132 Z" style="stroke: rgb(0%,0%,0%); stroke-linecap: butt; stroke-width: 0.8;"/>
+			<polygon points="322 132, 317.6121 134.3971, 317.6121 129.6029" style="stroke: rgb(0%,0%,0%); stroke-linecap: butt; stroke-width: 1; fill: rgb(0%,0%,0%); fill-rule: evenodd;"/>
+			<rect x="100" y="35" width="130" height="40" style="stroke: rgb(0%,0%,0%); stroke-linecap: butt; stroke-width: 0.8; fill: rgb(100%,100%,100%); fill-rule: evenodd;"/>
+			<text x="145.0" y="59.0" style="font-family: Songti SC, SimSun, serif; font-size: 10px;fill: rgb(0%,0%,0%); stroke:none;" transform="translate(0,118) scale(1,-1)">接触记录</text>
+			<text x="125.0" y="45.0" style="font-family: Songti SC, SimSun, serif; font-size: 10px;fill: rgb(0%,0%,0%); stroke:none;" transform="translate(0,90) scale(1,-1)">时间、配对、信号</text>
+			<rect x="270" y="35" width="130" height="40" style="stroke: rgb(0%,0%,0%); stroke-linecap: butt; stroke-width: 0.8; fill: rgb(100%,100%,100%); fill-rule: evenodd;"/>
+			<text x="315.0" y="59.0" style="font-family: Songti SC, SimSun, serif; font-size: 10px;fill: rgb(0%,0%,0%); stroke:none;" transform="translate(0,118) scale(1,-1)">扫描观测</text>
+			<text x="305.0" y="45.0" style="font-family: Songti SC, SimSun, serif; font-size: 10px;fill: rgb(0%,0%,0%); stroke:none;" transform="translate(0,90) scale(1,-1)">独立覆盖证据</text>
+			<path d="M 205,112 L 165,75 Z" style="stroke: rgb(0%,0%,0%); stroke-linecap: butt; stroke-width: 0.8;"/>
+			<polygon points="165 75, 169.8489 76.21985, 166.5934 79.73931" style="stroke: rgb(0%,0%,0%); stroke-linecap: butt; stroke-width: 1; fill: rgb(0%,0%,0%); fill-rule: evenodd;"/>
+			<path d="M 245,112 L 335,75 Z" style="stroke: rgb(0%,0%,0%); stroke-linecap: butt; stroke-width: 0.8;"/>
+			<polygon points="335 75, 331.8531 78.88551, 330.0302 74.45135" style="stroke: rgb(0%,0%,0%); stroke-linecap: butt; stroke-width: 1; fill: rgb(0%,0%,0%); fill-rule: evenodd;"/>
+			<text x="103.49999999999999" y="8" style="font-family: Songti SC, SimSun, serif; font-size: 9px;fill: rgb(0%,0%,0%); stroke:none;" transform="translate(0,16) scale(1,-1)">两类规范文件为不同服务提供输入，不以无接触替代在线证据</text>
+		</g>
+	</g>
+</svg>

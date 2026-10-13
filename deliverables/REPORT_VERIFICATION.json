@@ -1,0 +1,687 @@
+{
+  "baseline": "478a320c0a8146cf8dfdcbb8c0d93b16640b8594",
+  "date": "2026-10-13",
+  "scope": "public aggregates and reviewed source only; no fitting or raw reproduction",
+  "source_sha256": {
+    "reports/T17_METRICS.json": "9f6c5851f7a6b6fb27c5d731b55008b4a4351b7124e6093ff7aa0f01bbd4ff21",
+    "reports/T17_SAFE_METADATA.json": "7e5fcf97a3de879200d40646478097d4b8e1431ccfb23688bb4bcc7d53e203e3",
+    "reports/T17_REAL_EXPERIMENT.md": "659bddc592a4f7095301f3dc4f2e12b4961fa6884c8e77c1e7ef5dfcd192bab1",
+    "reports/T17_DATA_DIAGNOSTICS.md": "edd72443d8e7fe9e48ff74b3a3c5941accb527bc90e5f7fc49ed97b2f33de952",
+    "reports/window_study/T19_COHORT_AUDIT.md": "d0421c66383bbcc69f5e1439419ca6a69ab89b829a0254635ac1f77544cc9cfb",
+    "reports/window_study/T19_COHORT_MANIFEST.json": "5dbae8440b80217a21ade2f9e960c9b5f1171fd79964ab897e055115cfcf61e0",
+    "reports/window_study/T20_FEATURE_AUDIT.md": "503550fb6c0492658465f4cefb621142c3d066f3e4948d5a0f963efad4a4851b",
+    "reports/window_study/T22_ROBUSTNESS.json": "4d6f0779b0557b5e1459bc96d900b32c30c09617d730d4d947ee410364ee6728",
+    "reports/window_study/T22_METRICS.csv": "c70000904611852e915f8f00131f4f3deffc4bac256278ccb144ca72dd4c39da",
+    "reports/window_study/T22_WINDOW_COMPARISON.md": "2b71c7586d80ba79a8b0f9b1db28f91cd0a477f0b86d0badbeb89e89a6746067",
+    "reports/asof_audit/T30_RESULTS.json": "36a4bc139a64bcbc4263e5887fa46f6bba73d3f5d7d11e16be879d5e2ff827d6",
+    "reports/asof_audit/T30_METRICS.csv": "ad0585ab1e132779f9aff378221e06ceead7c7c61476b6420d5a49c2daa731f4",
+    "reports/asof_audit/T30_SELECTION_BIAS.csv": "33bec9c35355f2137b62c3fabb33c297aef6f2774d6309cb6c6f01b23868602e",
+    "reports/multisource/T31_SOURCE_SUMMARY.json": "3014004fbd785c575e288e345d696d393c0e2cd37d939375c8e9a8adf985605f",
+    "reports/multisource/T31_RETRIEVAL_METRICS.csv": "97c6984d9d533bf7f483330279b163cdac45a90f8e8c204b88350f3d370c5654",
+    "reports/performance/T32_BENCHMARK.csv": "01a337ba3ed5dbdd547c6ac4ac0e34007ef896dbd0b599052be6191d6aa0cebe",
+    "reports/performance/T32_PARITY.json": "baca37dbf568a39b764547a4e578eb553cafd6aa1ea225f1386cca7deb34f60b",
+    "ASOF_INFERENCE.md": "a4300453fbc7763978e28edf51bb8ab2b7bf521262136bc29152ea4273994b4a",
+    "ASOF_AUDIT.md": "c4933e444f5fea09bf43c3554473db0f04d40d2888e8e60c75361457ddcb5304",
+    "MULTISOURCE_STUDY.md": "54cc8378ec5cb66d5bd7e3e4e6352425193cf615187abc4c729172a3cf1bc088",
+    "PERFORMANCE_AUDIT.md": "3bb4f71715d6fd1a8be525b48a5243b10df1f6495f4fd5b7cf8bc96e878b498b",
+    "FINAL_RESEARCH_AUDIT.md": "c1948f48e83e8353936dc5fb0915c28cb3ca971592cb3b2b90273026894fc909",
+    "PRODUCT_DELIVERY.md": "b8092f271e027a6309ef2685095f22767b01ab0ca22b638a08f526531bf0e17c",
+    "PRODUCT_PLAN.md": "1d4ec07cf2cd56a2028212947172d5a1c1dc4e0f9cbdfdc47b7dea619fd4b94d",
+    "EXPLORE_GUIDE.md": "79cba7f690fcab7b49f67cff67c191fa7634de420908a7be16fa7eb63ba4b403",
+    "REPRODUCIBILITY.md": "aed639c99aada4cfa1b03f3afcecceab351c2e47222c450874ef4e00c469ff4a",
+    "FINAL_RELEASE_CHECKLIST.md": "18cee549ee39c98e590a4c5f9debdbbdb8900b62e200fb894294e2c21031fdec",
+    "CI_VERIFICATION.md": "9bd7bfd82b549b9ac16a2f6614fea64a7f291bc76bb6fffee1bb4a8397db5096",
+    "DEVELOPMENT_HISTORY.md": "73e35fee645c528751992fb1e93dd1c70968330bbb5e4e257da6c5e771da7801",
+    "PORTFOLIO_GUIDE.md": "d34e619571f4c5970ea85fe60fa11cbee3486c2e67880f2d0160fd5b71294354",
+    "README.md": "257b629339211cfbe75e8a40501303371219934f3f2c8b517e975c1a840b27cc",
+    "PROJECT_SPEC.md": "e78cc55cfbdb5e70d52587f859cc589055291a1998e6294b2ca81cf2f65f6336",
+    "src/label_builder.py": "f568512f6a933cf65180d402298d30070c03262f9a27aa1203a8dd7616b1f014",
+    "src/window_cohort.py": "b8e2010be20744e007052c08a6f30e1f48fc4ececf97880f1778112288ddcc14",
+    "src/window_features.py": "b9569679f23a130deb8e1e5f92ab3d126efbb344e93859bea395b053b9cee380",
+    "src/feature_engineering.py": "2a1d39ae6e25599170ab07f5aad7a0c1da282ad8b64f8767eb6f71efbfc45783",
+    "src/temporal_split.py": "b794be0ee92ef9c37e8511b946c298b1b510c5f18d5aea89edb92f45250ed608",
+    "src/baselines.py": "ba1330329104a68c01a4db8c8dd4eb7d2b0df28824a775c3bd37c81da5402acd",
+    "src/model_registry.py": "369840717b8a09b12ba73194694ef8e60dc87fa8ce7a7f1299916e3d5b60472c",
+    "src/train.py": "5fc2a5fae7ef104675601c09649d6d3ff34f0c7a82bfc39daae68e4da15e2361",
+    "src/calibration.py": "43a0c87dbd4ce494b67aa49954c2fc309c01f9f9bb91ece1b2861000706bbf31",
+    "src/window_study.py": "f9604f1c08e85fa27c9b77e836acfed2c041d277af18f43ca500a25dc250227c",
+    "src/evaluate.py": "84f48036325970cc8e5f84a33dae2c1136c4114c92861d11eb8b628ec0cbe1c4",
+    "src/asof_inference.py": "90325cac1c226c217810db9f9050730dd6b1c00a0437b74e7f94540f068877bd",
+    "src/time_machine.py": "3b20bb86248ed8609aa834e6f1cb54106ed1177599f6018566ea088da90a34b5",
+    "src/network.py": "8251aee6c58b90bec09b1775e6df22afb8da7451cc8b2db78d067e86596793de",
+    "src/positive_retrieval.py": "ff74c8abf77832d843a2f7927a30f80678b502636da69e1143150f7dd7893529",
+    "src/multisource_exploration.py": "b1bbdbf541c5467ada0eef4dc501b482ee69509b38930fc0be1e20da24bd33f2",
+    "src/encounter_graph.py": "c2ca6e46002112ca26a84fb0391f456fb85c72900857f7a621c95e4ab21102a8",
+    "src/chance_encounter.py": "d6e69d4009f6621e6a5b4d8dfe219a1659f88feae1242451c586d139ff7e458d",
+    "src/chance_encounter_ui.py": "f43065ca2a044a81778f61bf047e8e34cbdfe36701b54db3a6d87d721180a193",
+    "src/encounter_insights.py": "3668b1f17a10870f647dccb57928c71d836d36355d764fadda86e63f49ff8ab9",
+    "src/welcome.py": "040f6ff9af3406534a239a42c7ef3150ec99105aefedfff1d8f83a049e8fa1e5",
+    "src/snapshot_manager.py": "1897b31890f066b14a2ac634fab13c79bdaeb6e0a115b12afd2a5577082a68a3",
+    "src/safe_cache.py": "e6e7a253c24b02f84ca24bea5e09efd205141b2663236aeb97959bab355ca07f",
+    "src/preprocessing.py": "9e57bda021693312955f33858bb45e20eb379557de1cdbe5300ccb55055bd3b9",
+    "src/loader.py": "e009fe4eaf39ac26f5a91d9a90e16e425028d64c1b3fd02fc1c9c428dc555863",
+    "src/dataset_catalog.py": "c1849b98467d88d91d0e4f026cdb79e321c803767538297e8325f7582166c410",
+    "src/ui.py": "0d8a8a4243fec9290dbd7b3160f2416fa5d91e4a7b3088a2918946b8856bc007",
+    "app.py": "4567431a1ea26b6981272dd426e62ab570cf33c44fb427cd8c634eeeacbae051",
+    ".github/workflows/ci.yml": "1ab1ed54d3c313a556301f802b1c7c44795032fe26fb0c98976d402884bf5b87",
+    "tools/check_repository_safety.py": "f550768543191d53ddc3cbd69d1a227985c46274d144db5075a630ca0ebe7e38",
+    "tests/test_asof_inference.py": "21e54eb0834886cf88b9de50c8af8da34c581b88fdaa16b2414f30001085277a",
+    "tests/test_time_machine_coverage.py": "7c4708aaf5fb43843b591e44de100faa9aec8b6dfabe797e653d112157a9535e",
+    "tests/test_product_navigation.py": "c6d234b67e4c2f8a4ef9d9ac22c2bb845aaec66c430250b5d7e14c33d5c7aeec",
+    "tests/test_product_experience.py": "6871a742ad3857fc3d7942f216bc5af467dce5afbe8bba7293024e77bfb8c8ff",
+    "tests/test_repository_safety.py": "ec4e3056756d9cf39f263dd48c3ed19fee4a4f98c4824f1ac6372e52b031d058",
+    "tests/test_final_audit.py": "4f74c1a5722642cf71d2b0d580af7524b79bf846c6a0f89c905f393e54953e0d"
+  },
+  "report_sha256": "b154057c55d209e2da23ffa968300f175c7fff37c334f77e5043f00f484d71db",
+  "pdf_sha256": "7871625f50125739189f09fceeb6ea7e6c07fa42eafcb8c79e2315a851378773",
+  "word_count_method": "Chinese Han characters in chapters1-11 including headings/tables/captions; image-alt duplication, abstract/references/appendices excluded",
+  "body_chinese_characters": 13540,
+  "abstract_chinese_characters": 451,
+  "chapters": 11,
+  "figures": 9,
+  "tables": 15,
+  "references": 21,
+  "table_hashes": {
+    "SOURCE_TABLE": "871a1cfc9933eb07a72d94dd8407451bd026bab054ae1f22c6189d7f79e371bb",
+    "SPLIT_TABLE": "c10c3f74f7709a41db3e58e648843e278ba89ba0c0e304f001a0fd7511938619",
+    "T17_RANK": "557b753d5ef2c86b4315fa0a7b16f1e7e9f1948645343ce2a892bf99c51fb855",
+    "T17_CLASSIFY": "8f4009b334978d3bf35604d085775863229ef604e0af9e0a95d7bc78269ac9ee",
+    "T22_METRICS": "30ce9d7bc5b5b649ae93be5423822976f6a3dead5c71c38fbf9277b210a305b8",
+    "T30_POPULATIONS": "f9d024092e56a2ba3c5204c0db27a3921388e145e1970a4ed2d9da91036f059f",
+    "PERFORMANCE_TABLE": "dfbe347fdbcb79121d54db1fe969c9defd2a1085185be729d987d22dd10f7368",
+    "T22_XGB_COMPLETE": "31bedee2483fa5c103c70f8cd43607eef4250aa63654148c106b265250046cbe",
+    "T30_XGB_COMPLETE": "4dc911df233e20f608767d143870b6432fe9f9eca8c01fe7b2bb03eec95fd583"
+  },
+  "metric_checks": {
+    "T22_JSON_CSV": "passed",
+    "T30_JSON_CSV": "passed",
+    "T32_arithmetic": "passed",
+    "Workplace2013_activity_sum": 9827
+  },
+  "pdf_settings": {
+    "page": "A4 portrait",
+    "margins_cm": 2.5,
+    "body_pt": 12,
+    "leading_pt": 18,
+    "first_line_indent_pt": 24,
+    "right_ink_guard_pt": 12,
+    "h1_pt": 16,
+    "h2_pt": 14,
+    "palette": "black/white"
+  },
+  "heading_pages": [
+    {
+      "level": 0,
+      "title": "中文摘要",
+      "page": 2
+    },
+    {
+      "level": 0,
+      "title": "第1章 绪论",
+      "page": 7
+    },
+    {
+      "level": 1,
+      "title": "1.1 研究背景",
+      "page": 7
+    },
+    {
+      "level": 1,
+      "title": "1.2 研究问题",
+      "page": 7
+    },
+    {
+      "level": 1,
+      "title": "1.3 研究目标",
+      "page": 7
+    },
+    {
+      "level": 1,
+      "title": "1.4 研究意义",
+      "page": 7
+    },
+    {
+      "level": 1,
+      "title": "1.5 报告结构与审查范围",
+      "page": 8
+    },
+    {
+      "level": 0,
+      "title": "第2章 系统需求与总体架构",
+      "page": 8
+    },
+    {
+      "level": 1,
+      "title": "2.1 功能与非功能需求",
+      "page": 8
+    },
+    {
+      "level": 1,
+      "title": "2.2 技术选型及职责",
+      "page": 8
+    },
+    {
+      "level": 1,
+      "title": "2.3 系统整体架构",
+      "page": 8
+    },
+    {
+      "level": 1,
+      "title": "2.4 模块关系与数据流",
+      "page": 9
+    },
+    {
+      "level": 1,
+      "title": "2.5 前后端交互",
+      "page": 9
+    },
+    {
+      "level": 1,
+      "title": "2.6 工程组织与开发过程",
+      "page": 9
+    },
+    {
+      "level": 0,
+      "title": "第3章 数据来源与数据预处理",
+      "page": 10
+    },
+    {
+      "level": 1,
+      "title": "3.1 来源核验与统计口径",
+      "page": 10
+    },
+    {
+      "level": 1,
+      "title": "3.2 Copenhagen主要来源",
+      "page": 10
+    },
+    {
+      "level": 1,
+      "title": "3.3 SocioPatterns与其他来源",
+      "page": 10
+    },
+    {
+      "level": 1,
+      "title": "3.4 字段与规范化表示",
+      "page": 11
+    },
+    {
+      "level": 1,
+      "title": "3.5 质量检查",
+      "page": 12
+    },
+    {
+      "level": 1,
+      "title": "3.6 清洗与去重",
+      "page": 12
+    },
+    {
+      "level": 1,
+      "title": "3.7 缺失与扫描覆盖",
+      "page": 12
+    },
+    {
+      "level": 1,
+      "title": "3.8 数据隐私与公开边界",
+      "page": 12
+    },
+    {
+      "level": 1,
+      "title": "3.9 初期零样本的原因与解决",
+      "page": 12
+    },
+    {
+      "level": 0,
+      "title": "第4章 预测任务定义与特征工程",
+      "page": 13
+    },
+    {
+      "level": 1,
+      "title": "4.1 样本与目标",
+      "page": 13
+    },
+    {
+      "level": 1,
+      "title": "4.2 预测时点和观察窗口",
+      "page": 13
+    },
+    {
+      "level": 1,
+      "title": "4.3 候选配对构造",
+      "page": 13
+    },
+    {
+      "level": 1,
+      "title": "4.4 标签与覆盖准入",
+      "page": 14
+    },
+    {
+      "level": 1,
+      "title": "4.5 接触频率与活动特征",
+      "page": 14
+    },
+    {
+      "level": 1,
+      "title": "4.6 最近接触时间",
+      "page": 14
+    },
+    {
+      "level": 1,
+      "title": "4.7 网络特征",
+      "page": 15
+    },
+    {
+      "level": 1,
+      "title": "4.8 1、3、7与14天的不同角色",
+      "page": 15
+    },
+    {
+      "level": 1,
+      "title": "4.9 时间泄漏与自动拒绝",
+      "page": 15
+    },
+    {
+      "level": 1,
+      "title": "4.10 事件时间与到达时间",
+      "page": 15
+    },
+    {
+      "level": 0,
+      "title": "第5章 机器学习模型与实验设计",
+      "page": 16
+    },
+    {
+      "level": 1,
+      "title": "5.1 模型选择依据",
+      "page": 16
+    },
+    {
+      "level": 1,
+      "title": "5.2 基线方法",
+      "page": 16
+    },
+    {
+      "level": 1,
+      "title": "5.3 逻辑回归",
+      "page": 16
+    },
+    {
+      "level": 1,
+      "title": "5.4 XGBoost",
+      "page": 16
+    },
+    {
+      "level": 1,
+      "title": "5.5 LightGBM的能力边界",
+      "page": 16
+    },
+    {
+      "level": 1,
+      "title": "5.6 时间切分与跨界清除",
+      "page": 16
+    },
+    {
+      "level": 1,
+      "title": "5.7 参数、阈值与模型选择",
+      "page": 17
+    },
+    {
+      "level": 1,
+      "title": "5.8 概率校准",
+      "page": 17
+    },
+    {
+      "level": 1,
+      "title": "5.9 模型保存与加载",
+      "page": 17
+    },
+    {
+      "level": 1,
+      "title": "5.10 复现与模型管理",
+      "page": 17
+    },
+    {
+      "level": 0,
+      "title": "第6章 实验结果与模型评估",
+      "page": 18
+    },
+    {
+      "level": 1,
+      "title": "6.1 评价指标与选择理由",
+      "page": 18
+    },
+    {
+      "level": 1,
+      "title": "6.2 T17基线与主模型",
+      "page": 18
+    },
+    {
+      "level": 1,
+      "title": "6.3 分类工作点与主要结果",
+      "page": 19
+    },
+    {
+      "level": 1,
+      "title": "6.4 同一候选总体下的窗口效应",
+      "page": 19
+    },
+    {
+      "level": 1,
+      "title": "6.5 概率校准的效果和支持限制",
+      "page": 20
+    },
+    {
+      "level": 1,
+      "title": "6.6 日期依赖与不确定性",
+      "page": 21
+    },
+    {
+      "level": 1,
+      "title": "6.7 T30候选扩展与评估总体",
+      "page": 21
+    },
+    {
+      "level": 1,
+      "title": "6.8 选择偏差与概率误差",
+      "page": 22
+    },
+    {
+      "level": 1,
+      "title": "6.9 误差分析及科学局限",
+      "page": 22
+    },
+    {
+      "level": 0,
+      "title": "第7章 接触网络分析与数据可视化",
+      "page": 23
+    },
+    {
+      "level": 1,
+      "title": "7.1 网络分析的作用",
+      "page": 23
+    },
+    {
+      "level": 1,
+      "title": "7.2 节点与边的定义",
+      "page": 23
+    },
+    {
+      "level": 1,
+      "title": "7.3 历史图构建与节点度数",
+      "page": 23
+    },
+    {
+      "level": 1,
+      "title": "7.4 多数据集描述结果",
+      "page": 23
+    },
+    {
+      "level": 1,
+      "title": "7.5 正接触检索与局部网络",
+      "page": 23
+    },
+    {
+      "level": 1,
+      "title": "7.6 布局与交互设计",
+      "page": 24
+    },
+    {
+      "level": 1,
+      "title": "7.7 真实接触活动趋势",
+      "page": 24
+    },
+    {
+      "level": 1,
+      "title": "7.8 黑白网络结构示意",
+      "page": 24
+    },
+    {
+      "level": 1,
+      "title": "7.9 通俗解释与缺失展示",
+      "page": 25
+    },
+    {
+      "level": 1,
+      "title": "7.10 可视化的解释边界",
+      "page": 25
+    },
+    {
+      "level": 0,
+      "title": "第8章 交互式应用系统设计与实现",
+      "page": 25
+    },
+    {
+      "level": 1,
+      "title": "8.1 用户与独立通路",
+      "page": 25
+    },
+    {
+      "level": 1,
+      "title": "8.2 Home与首次加载",
+      "page": 26
+    },
+    {
+      "level": 1,
+      "title": "8.3 Play问卷体验",
+      "page": 26
+    },
+    {
+      "level": 1,
+      "title": "8.4 Explore个人与公开分析",
+      "page": 26
+    },
+    {
+      "level": 1,
+      "title": "8.5 Research科研中心",
+      "page": 26
+    },
+    {
+      "level": 1,
+      "title": "8.6 问卷结构与校验",
+      "page": 27
+    },
+    {
+      "level": 1,
+      "title": "8.7 固定娱乐规则",
+      "page": 27
+    },
+    {
+      "level": 1,
+      "title": "8.8 关键词与分数解释",
+      "page": 27
+    },
+    {
+      "level": 1,
+      "title": "8.9 A/B线索图谱",
+      "page": 28
+    },
+    {
+      "level": 1,
+      "title": "8.10 真实研究图表",
+      "page": 28
+    },
+    {
+      "level": 1,
+      "title": "8.11 页面导航与状态管理",
+      "page": 28
+    },
+    {
+      "level": 1,
+      "title": "8.12 首次提示与隐私设计",
+      "page": 28
+    },
+    {
+      "level": 1,
+      "title": "8.13 响应式与交互限制",
+      "page": 28
+    },
+    {
+      "level": 0,
+      "title": "第9章 系统测试与工程质量",
+      "page": 29
+    },
+    {
+      "level": 1,
+      "title": "9.1 单元测试的范围",
+      "page": 29
+    },
+    {
+      "level": 1,
+      "title": "9.2 集成测试与真实产物",
+      "page": 29
+    },
+    {
+      "level": 1,
+      "title": "9.3 Streamlit页面与状态测试",
+      "page": 29
+    },
+    {
+      "level": 1,
+      "title": "9.4 防泄漏与未来扰动",
+      "page": 29
+    },
+    {
+      "level": 1,
+      "title": "9.5 保存加载与优化一致性",
+      "page": 29
+    },
+    {
+      "level": 1,
+      "title": "9.6 GitHub Actions实际验收",
+      "page": 29
+    },
+    {
+      "level": 1,
+      "title": "9.7 冻结材料与仓库边界",
+      "page": 30
+    },
+    {
+      "level": 1,
+      "title": "9.8 凭据与隐私检查",
+      "page": 30
+    },
+    {
+      "level": 1,
+      "title": "9.9 浏览器验收的证据层级",
+      "page": 30
+    },
+    {
+      "level": 1,
+      "title": "9.10 测试结果的解释",
+      "page": 31
+    },
+    {
+      "level": 1,
+      "title": "9.11 性能测量与安全代价",
+      "page": 31
+    },
+    {
+      "level": 0,
+      "title": "第10章 讨论与未来工作",
+      "page": 32
+    },
+    {
+      "level": 1,
+      "title": "10.1 研究价值",
+      "page": 32
+    },
+    {
+      "level": 1,
+      "title": "10.2 数据与来源限制",
+      "page": 32
+    },
+    {
+      "level": 1,
+      "title": "10.3 历史接触与真实偶遇",
+      "page": 32
+    },
+    {
+      "level": 1,
+      "title": "10.4 缺测与不确定性",
+      "page": 32
+    },
+    {
+      "level": 1,
+      "title": "10.5 跨群体泛化",
+      "page": 32
+    },
+    {
+      "level": 1,
+      "title": "10.6 校准与个性化限制",
+      "page": 32
+    },
+    {
+      "level": 1,
+      "title": "10.7 可能的数据采集研究",
+      "page": 33
+    },
+    {
+      "level": 1,
+      "title": "10.8 系统扩展方向",
+      "page": 33
+    },
+    {
+      "level": 0,
+      "title": "第11章 结论",
+      "page": 33
+    },
+    {
+      "level": 0,
+      "title": "参考文献",
+      "page": 34
+    },
+    {
+      "level": 0,
+      "title": "附录A 核心目录与阶段成果",
+      "page": 36
+    },
+    {
+      "level": 0,
+      "title": "附录B 配置与环境",
+      "page": 37
+    },
+    {
+      "level": 0,
+      "title": "附录C 指标与解释规则",
+      "page": 37
+    },
+    {
+      "level": 0,
+      "title": "附录D 主要结果补充",
+      "page": 38
+    },
+    {
+      "level": 0,
+      "title": "附录E 运行与复现",
+      "page": 38
+    },
+    {
+      "level": 0,
+      "title": "附录F 完整用户操作路径",
+      "page": 39
+    },
+    {
+      "level": 0,
+      "title": "附录G 已知限制与证据追溯",
+      "page": 39
+    }
+  ],
+  "fonts": "embedded Chinese Songti SC and Heiti SC; glyph preflight passed",
+  "render_review": "all final pages actually visually inspected",
+  "pdf_pages": 39,
+  "quality_checks": {
+    "citations": "21 referenced entries matched",
+    "source_identity": "passed",
+    "tables_and_figures": "source-derived tables and valid monochrome SVG",
+    "page_size": "all A4 portrait",
+    "text_colors": "all black",
+    "pdf_drawing_colors": "only black/white",
+    "render_colors": "achromatic white paper",
+    "chinese_fonts": "regular Songti and Heiti embedded; glyph preflight passed",
+    "margins": "no text outside2.5cm tolerance",
+    "page_footers": "all physical page numbers match",
+    "toc_and_outline": "all headings and displayed page numbers match actual pages",
+    "rendered_pages": 39,
+    "chinese_font_resources": 6
+  }
+}

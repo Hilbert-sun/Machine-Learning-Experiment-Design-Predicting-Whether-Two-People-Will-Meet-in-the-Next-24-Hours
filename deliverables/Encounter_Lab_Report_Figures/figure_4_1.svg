@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE svg
+  PUBLIC '-//W3C//DTD SVG 1.0//EN'
+  'http://www.w3.org/TR/2001/REC-SVG-20010904/DTD/svg10.dtd'>
+<svg width="450" height="160" preserveAspectRatio="xMinYMin meet" viewBox="0 0 450 160" xmlns="http://www.w3.org/2000/svg" version="1.0" fill-rule="evenodd" xmlns:xlink="http://www.w3.org/1999/xlink">
+	<title>...</title>
+	<desc>...</desc>
+	<clipPath id="clip">
+		<rect x="0" y="0" width="450" height="160"/>
+	</clipPath>
+	<g id="group" transform="scale(1,-1) translate(0,-160)" style="clip-path: url(#clip)">
+		<g transform="">
+			<path d="M 20,82 L 430,82 Z" style="stroke: rgb(0%,0%,0%); stroke-linecap: butt; stroke-width: 0.8;"/>
+			<polygon points="430 82, 425.6121 84.39713, 425.6121 79.60287" style="stroke: rgb(0%,0%,0%); stroke-linecap: butt; stroke-width: 1; fill: rgb(0%,0%,0%); fill-rule: evenodd;"/>
+			<path d="M 35,70 L 35,95 Z" style="stroke: rgb(0%,0%,0%); stroke-linecap: butt; stroke-width: 1;"/>
+			<text x="26.905" y="54" style="font-family: Songti SC, SimSun, serif; font-size: 10px;fill: rgb(0%,0%,0%); stroke:none;" transform="translate(0,108) scale(1,-1)">t-7d</text>
+			<path d="M 135,70 L 135,95 Z" style="stroke: rgb(0%,0%,0%); stroke-linecap: butt; stroke-width: 1;"/>
+			<text x="126.905" y="54" style="font-family: Songti SC, SimSun, serif; font-size: 10px;fill: rgb(0%,0%,0%); stroke:none;" transform="translate(0,108) scale(1,-1)">t-3d</text>
+			<path d="M 235,70 L 235,95 Z" style="stroke: rgb(0%,0%,0%); stroke-linecap: butt; stroke-width: 1;"/>
+			<text x="226.905" y="54" style="font-family: Songti SC, SimSun, serif; font-size: 10px;fill: rgb(0%,0%,0%); stroke:none;" transform="translate(0,108) scale(1,-1)">t-1d</text>
+			<path d="M 320,70 L 320,95 Z" style="stroke: rgb(0%,0%,0%); stroke-linecap: butt; stroke-width: 1;"/>
+			<text x="318.385" y="54" style="font-family: Songti SC, SimSun, serif; font-size: 10px;fill: rgb(0%,0%,0%); stroke:none;" transform="translate(0,108) scale(1,-1)">t</text>
+			<path d="M 415,70 L 415,95 Z" style="stroke: rgb(0%,0%,0%); stroke-linecap: butt; stroke-width: 1;"/>
+			<text x="402.7" y="54" style="font-family: Songti SC, SimSun, serif; font-size: 10px;fill: rgb(0%,0%,0%); stroke:none;" transform="translate(0,108) scale(1,-1)">t+24h</text>
+			<path d="M 35,140 L 318,140 Z" style="stroke: rgb(0%,0%,0%); stroke-linecap: butt; stroke-width: 1.2;"/>
+			<text x="40" y="143" style="font-family: Songti SC, SimSun, serif; font-size: 9px;fill: rgb(0%,0%,0%); stroke:none;" transform="translate(0,286) scale(1,-1)">7天</text>
+			<path d="M 135,121 L 318,121 Z" style="stroke: rgb(0%,0%,0%); stroke-linecap: butt; stroke-width: 1.2;"/>
+			<text x="140" y="124" style="font-family: Songti SC, SimSun, serif; font-size: 9px;fill: rgb(0%,0%,0%); stroke:none;" transform="translate(0,248) scale(1,-1)">3天</text>
+			<path d="M 235,102 L 318,102 Z" style="stroke: rgb(0%,0%,0%); stroke-linecap: butt; stroke-width: 1.2;"/>
+			<text x="240" y="105" style="font-family: Songti SC, SimSun, serif; font-size: 9px;fill: rgb(0%,0%,0%); stroke:none;" transform="translate(0,210) scale(1,-1)">1天</text>
+			<path d="M 320,25 L 320,150 Z" style="stroke: rgb(0%,0%,0%); stroke-linecap: butt; stroke-width: 1; stroke-dasharray: 3, 3;"/>
+			<path d="M 325,112 L 415,112 Z" style="stroke: rgb(0%,0%,0%); stroke-linecap: butt; stroke-width: 0.8;"/>
+			<polygon points="415 112, 410.6121 114.3971, 410.6121 109.6029" style="stroke: rgb(0%,0%,0%); stroke-linecap: butt; stroke-width: 1; fill: rgb(0%,0%,0%); fill-rule: evenodd;"/>
+			<text x="351.0" y="131" style="font-family: Songti SC, SimSun, serif; font-size: 10px;fill: rgb(0%,0%,0%); stroke:none;" transform="translate(0,262) scale(1,-1)">未来标签</text>
+			<text x="96.345" y="12" style="font-family: Songti SC, SimSun, serif; font-size: 10px;fill: rgb(0%,0%,0%); stroke:none;" transform="translate(0,24) scale(1,-1)">输入：[t-w,t)，不读取t及以后</text>
+			<text x="340.4575" y="12" style="font-family: Songti SC, SimSun, serif; font-size: 9px;fill: rgb(0%,0%,0%); stroke:none;" transform="translate(0,24) scale(1,-1)">标签：(t,t+24h]</text>
+		</g>
+	</g>
+</svg>
