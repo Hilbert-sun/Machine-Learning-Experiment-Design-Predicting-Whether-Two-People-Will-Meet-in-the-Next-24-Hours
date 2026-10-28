@@ -2,6 +2,14 @@
 
 Date:2026-10-28
 
+**T39 — DONE：日间表现差异分析。** 新增 src/day_analysis.py、tests/test_day_analysis.py、studies/day_analysis/{README.md,T39_RESULTS.json}。纯描述，不拟合。
+
+- 7 天 XGBoost 的日 AP 范围 0.43–0.91，AP/正例率范围 1.64–7.93。日 AP 与正例率 ρ = +0.74，与距上次接触时间 ρ = −0.86；活跃度和覆盖率与 AP 基本无关。研究日 21 正例率只有 5.4%，AP 为 0.43，但提升倍数是 11 天中最高的 7.9 倍。
+- 验证：2 passed；`--verify-only` 一致。T38 的 CI 40634169183 三个 Job 均通过。
+
+
+Date:2026-10-28
+
 **T38 — DONE：留出参与者验证。** 新增 src/participant_holdout.py、tests/test_participant_holdout.py、studies/participant_holdout/{README.md,T38_RESULTS.json}。
 
 - 预设 5 种哈希划分 × 11 个 T35 折，全部满足样本门槛。只用 A–A 配对训练（占全部训练行的 23%–29%），在 B–B 和 A–B 配对上测试。真实运行约 11 分 25 秒。

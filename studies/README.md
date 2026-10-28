@@ -8,3 +8,4 @@
 | [T36 Hawkes 基线](hawkes_baseline/README.md) | 不用标签、按配对拟合的指数核自激过程 | 合并 AP 0.629，比 XGBoost 低 0.033 |
 | [T37 Hawkes 特征](hawkes_features/README.md) | 把 Hawkes 分数作为 XGBoost 的输入 | +0.003，可以忽略 |
 | [T38 留出参与者验证](participant_holdout/README.md) | 只用 A 组参与者之间的配对训练，在没见过的 B 组参与者上测试 | B–B 配对 AP 0.651，比见过所有人的模型低约 0.017 |
+| [T39 日间差异分析](day_analysis/README.md) | 描述各测试日的难度：正例率、最近接触程度、样本量 | AP 低的日子主要是正例少；距上次接触时间与 AP 的 ρ = −0.86 |

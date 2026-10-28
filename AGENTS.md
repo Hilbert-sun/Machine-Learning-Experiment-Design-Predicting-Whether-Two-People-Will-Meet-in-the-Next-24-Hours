@@ -163,3 +163,7 @@ T35 only (2026-10-28): user chose to strengthen baselines by first re-evaluating
 
 - src/participant_holdout.py: 5 prespecified salted hash partitions; train/threshold only on A–A pairs of each frozen T35 fold; test B–B and A–B; unchanged T21/T22 protocol. References are T35 all-participant XGBoost and T36 Hawkes on the same rows.
 - The A–A training set is 23–29% of full training rows, so the −0.009 to −0.023 AP gap mixes unseen people with less data; never report it as a pure stranger effect. Partitions share people and are not independent replications.
+
+## T39 day-analysis contract
+
+- src/day_analysis.py is descriptive only: frozen T35/T36 predictions and T20 7d features, per-day AP, AP/prevalence and Spearman rho over 11 dependent days. No fitting/selection. Never label days as weekdays/weekends (origin unconfirmed); compare days on AP/prevalence as well as AP.
