@@ -2,7 +2,7 @@
 
 Task IDs and titles follow the user's task-board screenshot. Dependencies and acceptance criteria below are the implementation plan derived from `PROJECT_SPEC.md`, rather than additional completed functionality.
 
-Current execution: **DEMO-DEPLOY — DONE (repository ready; the actual deployment needs the user's Streamlit account)** (user authorized 2026-10-28: online demo). DOCS-PRESENT DONE. T35–T37 DONE. T36 DONE (see studies/hawkes_baseline/README.md). T35 DONE (11 rolling test days; see studies/rolling_validation/README.md). User chose (2026-10-28) to strengthen baselines by first building a new rolling-origin validation design, then adding a Hawkes baseline (T36) plus per-participant ranking metrics, and to push completed work. T35 only; T36 stays TODO until separately started. REPORT-FULL is DONE.
+Current execution: **DEMO-DEPLOY — DONE (user deployed demo_app.py; live demo checked and linked from README)** (user authorized 2026-10-28: online demo). DOCS-PRESENT DONE. T35–T37 DONE. T36 DONE (see studies/hawkes_baseline/README.md). T35 DONE (11 rolling test days; see studies/rolling_validation/README.md). User chose (2026-10-28) to strengthen baselines by first building a new rolling-origin validation design, then adding a Hawkes baseline (T36) plus per-participant ranking metrics, and to push completed work. T35 only; T36 stays TODO until separately started. REPORT-FULL is DONE.
 
 | Complete | ID | Task | Status | Dependencies | Acceptance criteria |
 | --- | --- | --- | --- | --- | --- |

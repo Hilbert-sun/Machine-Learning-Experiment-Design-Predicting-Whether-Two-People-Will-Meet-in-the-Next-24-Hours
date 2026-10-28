@@ -2,7 +2,9 @@
 
 **两个人在未来 24 小时内会不会相遇？** 本项目用 Copenhagen Networks Study 的匿名蓝牙接近记录研究这个问题：只看 t 之前的历史，预测 (t, t+24h] 内是否会再次接近，并严格防止数据泄漏、不把缺失观测当成"没相遇"。项目同时提供一个 Streamlit 应用，包括趣味问卷、公开数据分析和完整的科研工具。
 
-[![Public CI](https://github.com/Hilbert-sun/Machine-Learning-Experiment-Design-Predicting-Whether-Two-People-Will-Meet-in-the-Next-24-Hours/actions/workflows/ci.yml/badge.svg?branch=research-v2.2)](https://github.com/Hilbert-sun/Machine-Learning-Experiment-Design-Predicting-Whether-Two-People-Will-Meet-in-the-Next-24-Hours/actions/workflows/ci.yml)
+[![Public CI](https://github.com/Hilbert-sun/Machine-Learning-Experiment-Design-Predicting-Whether-Two-People-Will-Meet-in-the-Next-24-Hours/actions/workflows/ci.yml/badge.svg?branch=research-v2.2)](https://github.com/Hilbert-sun/Machine-Learning-Experiment-Design-Predicting-Whether-Two-People-Will-Meet-in-the-Next-24-Hours/actions/workflows/ci.yml) [![在线体验](https://static.streamlit.io/badges/streamlit_badge_black_white.svg)](https://hjm59payrde6ronekgiqsn.streamlit.app/)
+
+**[在线体验 →](https://hjm59payrde6ronekgiqsn.streamlit.app/)** 不用安装，直接试 Play 趣味问卷和 Explore 公开数据分析；科研工具需要本地数据，只能本地运行。
 
 ![滚动验证合并 AP：XGBoost 1/3/7 天历史对比，以及 7 天历史下五个模型的对比](docs/figures/rolling_ap.svg)
 
@@ -27,7 +29,7 @@ python -m pip install -r requirements.txt
 python -m streamlit run app.py
 ```
 
-浏览器打开终端显示的地址（通常是 http://localhost:8501）。在线演示只开放 Play、Explore 和公开报告，部署方法见[在线演示部署](docs/DEPLOY.md)。如果只在本机预览，可以在启动命令后加 `--server.address 127.0.0.1`。Linux 上的原生树模型需要 OpenMP 运行时（CI 使用 libgomp1），macOS 可能需要 libomp。当前版本在 [`research-v2.2`](https://github.com/Hilbert-sun/Machine-Learning-Experiment-Design-Predicting-Whether-Two-People-Will-Meet-in-the-Next-24-Hours/tree/research-v2.2) 分支。
+浏览器打开终端显示的地址（通常是 http://localhost:8501）。[在线演示](https://hjm59payrde6ronekgiqsn.streamlit.app/)只开放 Play、Explore 和公开报告，部署方法见[在线演示部署](docs/DEPLOY.md)。如果只在本机预览，可以在启动命令后加 `--server.address 127.0.0.1`。Linux 上的原生树模型需要 OpenMP 运行时（CI 使用 libgomp1），macOS 可能需要 libomp。当前版本在 [`research-v2.2`](https://github.com/Hilbert-sun/Machine-Learning-Experiment-Design-Predicting-Whether-Two-People-Will-Meet-in-the-Next-24-Hours/tree/research-v2.2) 分支。
 
 | 想体验什么 | 入口 | 是否需要本地真实数据/模型 |
 | --- | --- | --- |

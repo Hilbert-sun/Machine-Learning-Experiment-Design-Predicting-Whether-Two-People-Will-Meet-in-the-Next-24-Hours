@@ -7,6 +7,7 @@ Date:2026-10-28
 - 新增 demo_app.py（默认锁定的公开入口）、src/demo_mode.py、packages.txt（libgomp1）、docs/DEPLOY.md 和 tests/test_demo_mode.py。app.py 只增加了锁定判断，普通入口的行为不变。
 - 在线只开放首页、数据来源、Play、Explore 和科研中心；其余 10 个页面显示"需本地运行"，不渲染任何下载、训练或选择控件。
 - 验证：tests 526 passed（新增 16 项）。用 git checkout-index 导出一份不含数据和模型的干净副本，运行 demo_app.py，在真实浏览器中逐页检查：5 个开放页面正常，没有异常；被锁页面显示提示，没有控件。
+- 用户已部署到 https://hjm59payrde6ronekgiqsn.streamlit.app/（入口 demo_app.py）。在线检查结果：首页、Play 问卷页、Explore 公开数据（窗口图和 SocioPatterns 统计）正常；Data_Manager 和 Time_Machine 显示锁定提示。README 顶部已加入在线体验链接。在线上没有完整提交一份问卷，这部分由本地 AppTest 覆盖。
 - 预览工具在这台机器上启动不了服务器（进程挂起，没有日志），所以改用 Bash 在后台启动来做浏览器检查。干净副本放在被忽略的 data/processed/demo_clone，检查完已删除。
 
 

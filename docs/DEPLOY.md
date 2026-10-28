@@ -1,5 +1,7 @@
 # 在线演示部署（Streamlit Community Cloud）
 
+当前线上地址：<https://hjm59payrde6ronekgiqsn.streamlit.app/>（2026-10-28 部署，入口为 `demo_app.py`）。
+
 在线演示必须使用 [`demo_app.py`](../demo_app.py) 作为入口，**不要用 `app.py`**。`demo_app.py` 默认锁定：只开放首页、Play、Explore、科研中心目录和数据来源说明，这五个页面只读取仓库里已审查的公开文件。其余 10 个科研页面（数据管理、训练、预测、Time Machine 等）在线上只显示"需本地运行"的提示，不渲染下载、导入、训练或选择控件，也不会在服务器上执行任何操作。锁定范围定义在 [src/demo_mode.py](../src/demo_mode.py)，由 [tests/test_demo_mode.py](../tests/test_demo_mode.py) 逐页验证。
 
 部署环境中没有 `data/` 和 `models/` 的真实内容，也不应该上传任何原始数据、模型或逐样本结果。
