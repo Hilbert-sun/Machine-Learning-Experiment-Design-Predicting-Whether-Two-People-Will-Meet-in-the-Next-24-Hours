@@ -85,3 +85,7 @@ credentials*.json
 !reports/performance/T32_BENCHMARK.csv
 !reports/performance/T32_PARITY.json
 !reports/performance/T32_SNAPSHOT_AUDIT.json
+
+# Typeset report PDFs and page renders stay local.
+deliverables/**/*.pdf
+deliverables/**/*.png

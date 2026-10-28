@@ -11,7 +11,7 @@ import pytest
 from tools.check_repository_safety import approved_reports, check_content
 
 ROOT=Path(__file__).resolve().parents[1]
-DOCS=('README.md',*('docs/'+name for name in ('FINAL_RESEARCH_AUDIT.md','REPRODUCIBILITY.md','PORTFOLIO_GUIDE.md',
+DOCS=('README.md','README.en.md',*('docs/'+name for name in ('FINAL_RESEARCH_AUDIT.md','REPRODUCIBILITY.md','PORTFOLIO_GUIDE.md',
       'DEMO_GUIDE.md','FINAL_RELEASE_CHECKLIST.md','CI_VERIFICATION.md','DEVELOPMENT_HISTORY.md','PRODUCT_PLAN.md','EXPLORE_GUIDE.md','PRODUCT_DELIVERY.md')))
 
 
@@ -83,3 +83,12 @@ def test_current_status_and_ci_security_policy_not_weakened():
                  'tools/run_secret_scan.py','tests/test_repository_safety.py','tests/conftest.py'):
         expected=subprocess.check_output(['git','-C',str(ROOT),'show',baseline+':'+name])
         assert (ROOT/name).read_bytes()==expected,name
+
+
+def test_english_readme_mirrors_chinese_metrics_and_cross_links():
+    zh=(ROOT/'README.md').read_text(); en=(ROOT/'README.en.md').read_text()
+    assert '[English](README.en.md)' in zh and '[中文](README.md)' in en
+    rows=lambda text:[line for line in text.splitlines() if line.startswith(('| T17 ','| T22 ','| T30 '))]
+    assert rows(en)==rows(zh) and len(rows(en))==5
+    for marker in ('Only four principal test dates','not a same-population model improvement','hjm59payrde6ronekgiqsn.streamlit.app'):
+        assert marker in en

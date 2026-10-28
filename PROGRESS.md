@@ -2,6 +2,11 @@
 
 Date:2026-10-28
 
+**README-EN — DONE：英文 README。** 新增 README.en.md，内容与中文 README 一一对应，两者顶部互相链接。tests/test_documentation.py 增加一项测试：英文版的 T17/T22/T30 数值行必须与中文版完全一致，并且保留关键限制说明。中文 README 同时更新了 T35–T40 的 verify 命令和 studies 索引描述。.gitignore 新增 deliverables 下 PDF/PNG 的忽略规则，确保排版产物只留在本地。
+
+
+Date:2026-10-28
+
 **REPORT-UPDATE — DONE：完整报告第二版。** 新增 deliverables/v2/（Markdown、章节草稿、构建脚本、校验 JSON、图 11-1）。第一版报告、图和校验记录不变；build_report.py 的 make_pdf 增加了可选的输出路径和封面参数，默认值与第一版相同。
 
 - 第二版共 12 章、10 幅图、18 张表、24 条参考文献，正文 15,047 个汉字，PDF 44 页（本地）。新增参考文献：Tashman（2000）滚动起点检验、Hawkes（1971）自激过程，以及本项目的 studies 目录。

@@ -1,5 +1,7 @@
 # Encounter Lab · 相遇实验室
 
+中文 | [English](README.en.md)
+
 **两个人在未来 24 小时内会不会相遇？** 本项目用 Copenhagen Networks Study 的匿名蓝牙接近记录研究这个问题：只看 t 之前的历史，预测 (t, t+24h] 内是否会再次接近，并严格防止数据泄漏、不把缺失观测当成"没相遇"。项目同时提供一个 Streamlit 应用，包括趣味问卷、公开数据分析和完整的科研工具。
 
 [![Public CI](https://github.com/Hilbert-sun/Machine-Learning-Experiment-Design-Predicting-Whether-Two-People-Will-Meet-in-the-Next-24-Hours/actions/workflows/ci.yml/badge.svg?branch=research-v2.2)](https://github.com/Hilbert-sun/Machine-Learning-Experiment-Design-Predicting-Whether-Two-People-Will-Meet-in-the-Next-24-Hours/actions/workflows/ci.yml) [![在线体验](https://static.streamlit.io/badges/streamlit_badge_black_white.svg)](https://hjm59payrde6ronekgiqsn.streamlit.app/)
@@ -8,7 +10,7 @@
 
 ![滚动验证合并 AP：XGBoost 1/3/7 天历史对比，以及 7 天历史下五个模型的对比](docs/figures/rolling_ap.svg)
 
-**结论（T35–T37 滚动验证，11 个测试日）**
+**结论（T35–T40 补充研究，11 个滚动测试日）**
 
 1. **历史越长越准。** 7 天历史比 1 天高 +0.090 AP（日块 95% 区间 [0.073, 0.103]），11 天全部为正。
 2. **信号主要来自最近接触的时间结构。** 不用标签、每对只有两个参数的 Hawkes 自激过程 AP 为 0.629，接近 XGBoost 的 0.662；把 Hawkes 分数再加进 XGBoost，只多 +0.003。
@@ -103,7 +105,7 @@ python tools/check_repository_safety.py
 python -m tools.run_secret_scan
 ```
 
-公开测试和公开审计都不需要下载数据或模型。公开审计核对聚合结果之间的算术关系，以及 51 份冻结材料与可信基线是否一致，但不会从原始数据重算 AP。有本地 Copenhagen 数据时，`python -m src.rolling_validation --verify-only`、`python -m src.hawkes_baseline --verify-only` 和 `python -m src.hawkes_features --verify-only` 会从本地逐样本结果重算公开聚合。CI 有三个 Job：全量 pytest、15 条路由的 Streamlit smoke，以及仓库与密钥安全扫描。见[分级复现指南](docs/REPRODUCIBILITY.md)和 [CI 验证记录](docs/CI_VERIFICATION.md)。
+公开测试和公开审计都不需要下载数据或模型。公开审计核对聚合结果之间的算术关系，以及 51 份冻结材料与可信基线是否一致，但不会从原始数据重算 AP。有本地 Copenhagen 数据时，`python -m src.rolling_validation --verify-only` 以及 `hawkes_baseline`、`hawkes_features`、`participant_holdout`、`day_analysis`、`hawkes_short` 各模块的 `--verify-only` 会从本地逐样本结果重算公开聚合。CI 有三个 Job：全量 pytest、15 条路由的 Streamlit smoke，以及仓库与密钥安全扫描。见[分级复现指南](docs/REPRODUCIBILITY.md)和 [CI 验证记录](docs/CI_VERIFICATION.md)。
 
 ## 局限、数据来源与许可
 
@@ -117,6 +119,6 @@ python -m tools.run_secret_scan
 | --- | --- |
 | [完整中文项目研究报告（第二版）](deliverables/v2/Encounter_Lab_Full_Report_v2.md) | 12 章学术报告，第 11 章为 T35–T40 补充研究；[第一版](deliverables/Encounter_Lab_Full_Report.md)基于 478a320，保留为历史记录 |
 | [docs/README.md](docs/README.md) | 产品交付、Explore 指南、产品计划、演示、复现、审计、交付清单、CI 记录、开发历史 |
-| [studies/README.md](studies/README.md) | T35–T37 滚动验证、Hawkes 基线、Hawkes 特征 |
+| [studies/README.md](studies/README.md) | T35–T40：滚动验证、Hawkes 基线与特征、留出参与者、日间差异、更短半衰期 |
 | [TASKS.md](TASKS.md) · [PROGRESS.md](PROGRESS.md) · [AGENTS.md](AGENTS.md) | 任务看板、最新进展、会话规则 |
 | 冻结的历史快照 | [研究报告](RESEARCH_REPORT.md)、[窗口研究](WINDOW_STUDY.md)、[as-of 契约](ASOF_INFERENCE.md)、[Time Machine](TIME_MACHINE.md)、[总体审计](ASOF_AUDIT.md)、[多数据源](MULTISOURCE_STUDY.md)、[性能](PERFORMANCE_AUDIT.md)、[数据集目录](DATASET_CATALOG.md)。这些文档受可信基线保护，必须保留在根目录；其中的任务状态是历史记录 |
