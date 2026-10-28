@@ -1,5 +1,19 @@
 # Encounter Lab — Latest Progress
 
+Date:2026-10-28
+
+**T35 — DONE：滚动起点重评估与按人排序指标。** 用户选择先补强基线：先做新的滚动验证，再单独做 Hawkes 基线（T36，TODO）。
+
+- 新增 src/rolling_validation.py、tests/test_rolling_validation.py、studies/rolling_validation/{README.md,T35_RESULTS.json}。没有修改冻结的 window_study/window_features/model_registry/evaluate/baselines，也没有改动 reports/ 白名单或安全基线。
+- 协议与折计划先冻结、后拟合。20 个队列时刻中，11 个满足条件并完成评估（研究日 17–27），9 个历史不足；没有拟合失败。真实运行约 3 分 47 秒。
+- 结果（合并 AP）：7d XGBoost 0.6619，3d 0.6120，1d 0.5716；7d logistic 0.5907，7d historical_frequency 0.4762。7d−1d XGBoost 差 +0.0902，95% 日块区间 [0.0728, 0.1033]，11/11 天为正；7d XGBoost−logistic 差 +0.0712，区间 [0.0275, 0.1238]，9/11 天为正。按人 NDCG@5 为 0.7856（3,350 个单位）。
+- 限制：测试日都曾被看过；区间只描述日间波动；与 T22 总体不同，AP 不能直接比较。
+- 验证：tests/test_rolling_validation.py 4 passed；`python -m src.rolling_validation --verify-only` 从本地预测重算公开 JSON，一致。两次独立的完整重跑得到逐样本完全相同的预测。公开 JSON 的哈希字段改名为 cohort_rows_sha256，以免触发 Gitleaks generic-api-key 误报，没有扩大豁免。全量 pytest 504 passed；final_audit PASS（51 份冻结材料不变）；仓库安全扫描和 Gitleaks 历史/索引扫描均 PASS。
+
+下一步建议：T36 Hawkes 自激过程基线，复用本冻结折计划；需要用户授权。
+
+## Earlier record
+
 Date:2026-10-13 (Asia/Kuala_Lumpur)
 
 **REPORT-FULL — DONE：本地正式报告及内容/排版验收完成；发布以本报告提交自己的三项CI为准。** 本轮仅生成报告。审阅基准478a320在main与research-v2.2一致；研究分支CI38130816756及main CI38131208638均已复核500全量/71 Smoke/27安全/12原生检查通过。无重训练、数据下载或新功能。

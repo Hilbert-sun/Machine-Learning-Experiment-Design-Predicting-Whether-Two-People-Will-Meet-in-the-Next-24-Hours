@@ -2,7 +2,7 @@
 
 Task IDs and titles follow the user's task-board screenshot. Dependencies and acceptance criteria below are the implementation plan derived from `PROJECT_SPEC.md`, rather than additional completed functionality.
 
-Current execution: **REPORT-FULL — DONE locally; publication requires this report commit's own successful CI**. User authorized an evidence-based Chinese full-project report, editable Markdown and black/white academic PDF, optional safe figures/source publication to research-v2.2. Baseline478a320; no app/scientific/test/CI changes, refitting, data acquisition or frozen-evidence edits. Verify citations/metrics/rendered PDF/safety and own publication CI, then STOP.
+Current execution: **T35 — DONE** (11 rolling test days; see studies/rolling_validation/README.md). User chose (2026-10-28) to strengthen baselines by first building a new rolling-origin validation design, then adding a Hawkes baseline (T36) plus per-participant ranking metrics, and to push completed work. T35 only; T36 stays TODO until separately started. REPORT-FULL is DONE.
 
 | Complete | ID | Task | Status | Dependencies | Acceptance criteria |
 | --- | --- | --- | --- | --- | --- |
@@ -69,3 +69,10 @@ T01 excludes Streamlit navigation/pages, dataset downloads, preprocessing, featu
 | ID | Task | Status | Dependencies | Acceptance criteria |
 | --- | --- | --- | --- | --- |
 | REPORT-FULL | 完整中文学术项目研究报告 | DONE | T01–T34/P01–P03 DONE;478a320 | Evidence-linked11 chapters, abstract/references/appendices; distinguish T17/T22/T30 populations and rule-based Play; accurate source-derived tables/black-white figures; A4 Chinese12pt/1.5spacing, numbered TOC/pages, rendered PDF QA; safe Markdown/SVG only in Git, local PDF, frozen51 unchanged, focused/safety/own-head CI; STOP |
+
+## Research extension: stronger baselines
+
+| ID | Task | Status | Dependencies | Acceptance criteria |
+| --- | --- | --- | --- | --- |
+| T35 | 滚动起点重评估与按人排序指标 | DONE | T21/T22 frozen cohort/features/protocol | Protocol and complete fold plan frozen before any fit: every cohort prediction time with >=4 earlier train times and 3 validation times, each set's t+24h strictly before the next set's first t, >=20 rows of each class per set; unchanged T21/T22 models/parameters/seed/threshold rule, no calibration, no tuning; a fold is dropped for all models if any fit fails. Report pooled/per-day AP, ROC-AUC, Brier for 1/3/7d; paired day-block bootstrap (>=8 test days, 1000 reps, seed42) for prespecified contrasts; per-participant Precision/Recall/NDCG@5/10 on reliably labeled candidates. Disclose that all test dates were previously exposed (T17/T21/T22). Private predictions stay under ignored data/processed/rolling/<run_id>; public aggregates only outside reports/ (no CSV, no IDs); --verify-only recomputes metrics from local predictions; synthetic tests pass. |
+| T36 | Hawkes 自激过程基线 | TODO | T35 | Per-pair exponential-kernel Hawkes intensity fitted only on [t-7d,t) contacts of training times; any decay grid chosen on fold validation only; evaluated in the frozen T35 fold plan with the same metrics and contrasts against XGBoost; no test-driven choices. |

@@ -100,6 +100,8 @@ T22 compares the same historical candidates, labels and purged splits; only the 
 
 T30 has 38,005 historical candidates: 27,820 reliable labels and 10,185 Unknown (26.80%); 37,913 candidates can be predicted, of which 27,802 have reliable labels. The added 12,436 candidates contain 10,185 Unknown and 2,251 known positives, with no known negatives. Its higher AP is **not a same-population model improvement**; Brier worsens relative to T22. Reliable-subset performance does not identify unbiased performance over all candidates. [Audit evidence and interpretation](FINAL_RESEARCH_AUDIT.md).
 
+**T35 rolling-origin re-evaluation** (unchanged T21/T22 protocol, 11 previously exposed test days, 59,140 samples): 7d XGBoost pooled AP 0.6619 vs 1d 0.5716 (Δ+0.090, day-block 95% interval [0.073, 0.103], positive on 11/11 days) and vs 7d historical frequency 0.4762; per-participant NDCG@5 0.786. Different population from T22; descriptive of day-to-day variation, not population inference. [Rolling validation](studies/rolling_validation/README.md).
+
 T32 measured five separate processes per configuration on the same machine/input. MIT cold peak RSS fell 27.59%; specific Copenhagen warm feature/prediction operations reduced elapsed time about 97.9%/95.0%. Some cold paths became slower. Whole-page rendering and cross-OS performance were not measured. [Performance evidence](PERFORMANCE_AUDIT.md).
 
 ## Architecture and stack

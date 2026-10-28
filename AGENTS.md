@@ -29,7 +29,7 @@ The user subsequently instructed: “以后做完全部推送” (push all compl
 
 ## Current authorized range
 
-REPORT-FULL only: user authorizes a detailed Chinese academic project report based on latest verified research-v2.2 baseline478a320 (also merged to main by explicit prior authorization). Deliver editable Markdown and A4 black/white Chinese PDF with verified references, source-derived metrics/figures, evidence map and real render QA. No new UI/features/model training/datasets; preserve all existing source/tests/config/dependencies/CI/security, raw/models and51 frozen materials. Publish only safe textual documents/SVG/report-generation helpers on research-v2.2 after checks; PDF/raster QA stay local and excluded from Git, never weaken repository safety. Verify final publication three-job CI, then STOP; no further research/development, main merge, tag/release/deploy.
+T35 only (2026-10-28): user chose to strengthen baselines by first re-evaluating the unchanged T21/T22 protocol with a rolling-origin design and per-participant ranking metrics, then (separately) a Hawkes baseline as T36. T35 is DONE; T36 is TODO and needs the user's go-ahead. Standing push authorization applies. REPORT-FULL is complete.
 
 ## Prediction data contract
 
@@ -127,3 +127,11 @@ REPORT-FULL only: user authorizes a detailed Chinese academic project report bas
 - tools/check_repository_safety.py scans actual Git index bytes, not merely ignore rules. Only44 reviewed report paths and empty data/model markers; private/binary/model/env/oversized/credential/personal-path content rejects. Frozen44 reports plus7 research documents compare against trusted commit5f3be86, not candidate-generated hashes. Changing frozen evidence or trusted baseline needs separate human authorization.
 - Pinned/hash-verified upstream Gitleaks8.30.1 scans all reachable history and exact tracked/staged content with redaction and fail exits. Provider-risk runtime self-test must fail. .gitleaks.toml preserves every default/provider rule; only13 reviewed row_hash digests in exact sample_key_hash/key_hash fields under five frozen paths are exempt from generic-api-key. Do not broaden to whole paths/commits or ignore actual credentials.
 - Success requires actual completed/success run with exact FINAL HEAD and all3 jobs success, actual counts/timestamps/pip/native/safety evidence. After editing documentation/status and pushing a new commit, wait again; final run metadata can be attested in final response to avoid self-referential commit churn. No private raw logs/envs/tokens in Git. CI is not full real-data reproduction, formal anonymity, unreviewable immutable policy or branch protection configuration. T34 was the final research task. The separately authorized current product scope above controls this session; after its final acceptance STOP and await a new instruction.
+
+## T35 rolling-origin contract
+
+- src/rolling_validation.py freezes protocol plus the full fold plan (data/processed/rolling/<run_id>/PROTOCOL_FROZEN.json) before fitting. Folds: one test time; 3 validation times; >=4 train times; t+24h strictly before the next set; >=20 per class per set. Unchanged T21/T22 models/parameters/seed/max-F1 threshold, no calibration/tuning. Any fit failure drops the fold for all models.
+- 11 evaluated test days (study days 17–27) were all previously exposed (T17/T22 walk-forward/T21–T22 test); report as fixed-protocol re-evaluation, never a pristine holdout. Day-block bootstrap intervals describe day-to-day variation only; participants/pairs repeat.
+- Pooled rows mix folds with different training sizes and include T19 train/purged/validation dates; never compare T35 AP to T22 AP as the same population.
+- Private predictions/receipt stay in ignored data/processed/rolling/<run_id>. Public aggregates live only in studies/rolling_validation/ (JSON/Markdown, no CSV, no IDs) because reports/ is fixed by the trusted baseline whitelist. --verify-only recomputes the public JSON from local predictions.
+- T36 Hawkes must reuse this frozen fold plan and contrasts; decay choices only on fold validation.
