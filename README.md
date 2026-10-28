@@ -102,6 +102,8 @@ T30 has 38,005 historical candidates: 27,820 reliable labels and 10,185 Unknown 
 
 **T35 rolling-origin re-evaluation** (unchanged T21/T22 protocol, 11 previously exposed test days, 59,140 samples): 7d XGBoost pooled AP 0.6619 vs 1d 0.5716 (Δ+0.090, day-block 95% interval [0.073, 0.103], positive on 11/11 days) and vs 7d historical frequency 0.4762; per-participant NDCG@5 0.786. Different population from T22; descriptive of day-to-day variation, not population inference. [Rolling validation](studies/rolling_validation/README.md).
 
+**T36 Hawkes baseline** on the same T35 folds: a label-free per-pair exponential-kernel Hawkes process reaches pooled AP 0.6285 (7d XGBoost 0.6619, Δ+0.033, interval [0.017, 0.048]; above 7d logistic 0.5907), with nearly identical per-participant NDCG@5 (0.784 vs 0.786). Every fold selected the smallest half-life in the grid. [Hawkes baseline](studies/hawkes_baseline/README.md).
+
 T32 measured five separate processes per configuration on the same machine/input. MIT cold peak RSS fell 27.59%; specific Copenhagen warm feature/prediction operations reduced elapsed time about 97.9%/95.0%. Some cold paths became slower. Whole-page rendering and cross-OS performance were not measured. [Performance evidence](PERFORMANCE_AUDIT.md).
 
 ## Architecture and stack

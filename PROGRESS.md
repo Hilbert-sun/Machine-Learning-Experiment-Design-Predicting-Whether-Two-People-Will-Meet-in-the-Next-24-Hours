@@ -2,6 +2,17 @@
 
 Date:2026-10-28
 
+**T36 — DONE：Hawkes 自激过程基线。** 新增 src/hawkes_baseline.py、tests/test_hawkes_baseline.py、studies/hawkes_baseline/{README.md,T36_RESULTS.json}；T35 代码与冻结材料未改动。
+
+- 每个（t，配对）只用该配对 [t-7d,t) 的接触时间做极大似然估计，不用标签，共拟合 77,604 个样本。半衰期每折只在验证集上选，11 折都选中 0.5 小时（网格下边界）。
+- 结果（7 天，11 个测试日）：Hawkes 合并 AP 0.6285，XGBoost 0.6619，Logistic 0.5907，历史频率 0.4762。XGBoost−Hawkes 差 +0.0334，区间 [0.0171, 0.0485]，8/11 天为正；Hawkes−Logistic 差 +0.0378，区间 [0.0023, 0.0828]。按人 NDCG@5：Hawkes 0.7836，XGBoost 0.7856。
+- 验证：tests/test_hawkes_baseline.py 4 passed；`--verify-only` 重算一致；真实运行约 3 分 49 秒。
+
+下一步建议（需授权）：在新的验证设计中检验更短的半衰期，或把 Hawkes 强度作为 XGBoost 的输入特征。
+
+
+Date:2026-10-28
+
 **T35 — DONE：滚动起点重评估与按人排序指标。** 用户选择先补强基线：先做新的滚动验证，再单独做 Hawkes 基线（T36，TODO）。
 
 - 新增 src/rolling_validation.py、tests/test_rolling_validation.py、studies/rolling_validation/{README.md,T35_RESULTS.json}。没有修改冻结的 window_study/window_features/model_registry/evaluate/baselines，也没有改动 reports/ 白名单或安全基线。

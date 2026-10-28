@@ -29,7 +29,7 @@ The user subsequently instructed: “以后做完全部推送” (push all compl
 
 ## Current authorized range
 
-T35 only (2026-10-28): user chose to strengthen baselines by first re-evaluating the unchanged T21/T22 protocol with a rolling-origin design and per-participant ranking metrics, then (separately) a Hawkes baseline as T36. T35 is DONE; T36 is TODO and needs the user's go-ahead. Standing push authorization applies. REPORT-FULL is complete.
+T35 only (2026-10-28): user chose to strengthen baselines by first re-evaluating the unchanged T21/T22 protocol with a rolling-origin design and per-participant ranking metrics, then (separately) a Hawkes baseline as T36. T35 is DONE. User then authorized T36 only (Hawkes baseline on the frozen T35 fold plan); T36 is DONE. Stop and await a new instruction. Standing push authorization applies. REPORT-FULL is complete.
 
 ## Prediction data contract
 
@@ -135,3 +135,9 @@ T35 only (2026-10-28): user chose to strengthen baselines by first re-evaluating
 - Pooled rows mix folds with different training sizes and include T19 train/purged/validation dates; never compare T35 AP to T22 AP as the same population.
 - Private predictions/receipt stay in ignored data/processed/rolling/<run_id>. Public aggregates live only in studies/rolling_validation/ (JSON/Markdown, no CSV, no IDs) because reports/ is fixed by the trusted baseline whitelist. --verify-only recomputes the public JSON from local predictions.
 - T36 Hawkes must reuse this frozen fold plan and contrasts; decay choices only on fold validation.
+
+## T36 Hawkes contract
+
+- src/hawkes_baseline.py fits per-(t, pair) exponential-kernel Hawkes (mu, alpha<=0.99) by MLE on that pair's distinct [t-7d,t) contact times only; no labels. Forecast 1-exp(-Lambda) ignores within-horizon excitation (lower bound).
+- Half-life grid {0.5,2,8,24}h is chosen per T35 fold on validation AP only. Every fold chose the 0.5h boundary; extending the grid now would be post-exposure selection and needs a new validation design.
+- Reads the verified frozen T35 receipt/predictions; private scores stay in ignored data/processed/hawkes/<run_id>; public aggregates only in studies/hawkes_baseline/ (no IDs, no 'key' field names). --verify-only recomputes them.
