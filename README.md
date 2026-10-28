@@ -111,7 +111,7 @@ python -m tools.run_secret_scan
 
 覆盖率只是代理指标，不代表设备持续在线；缺少接触记录也不会自动当成负例。静态归档不能当作实时预测。快照仍有已披露的 TOCTOU 和原子发布限制。匿名 ID 仍有被重新识别的风险，因此不发布任何个人层面的导出结果。原始数据、模型权重和逐样本预测都不进入 Git。
 
-数据来源、引用与各数据集的许可证据见[来源质量元数据](reports/multisource/T31_SOURCE_SUMMARY.json)和[数据集目录](reports/DATASET_CATALOG.json)。Copenhagen 数据来自其 [Figshare 官方页面](https://figshare.com/articles/dataset/The_Copenhagen_Networks_Study_interaction_data/7267433)。不能根据网站源码的许可证推断数据集许可证。本项目代码目前没有 LICENSE 文件，不代表允许不受限制地再分发；第三方数据各自适用其数据集许可证。
+数据来源、引用与各数据集的许可证据见[来源质量元数据](reports/multisource/T31_SOURCE_SUMMARY.json)和[数据集目录](reports/DATASET_CATALOG.json)。Copenhagen 数据来自其 [Figshare 官方页面](https://figshare.com/articles/dataset/The_Copenhagen_Networks_Study_interaction_data/7267433)。不能根据网站源码的许可证推断数据集许可证。本项目代码以 [GNU GPL-3.0](LICENSE) 许可发布（Copyright © 2026 Hilbert-sun）：可以使用、修改和再分发，但分发修改版时必须同样以 GPL-3.0 开源。这一许可只覆盖本仓库的代码和文档，**不覆盖第三方数据**：Copenhagen、SocioPatterns 等数据集各自适用其原始许可证（例如 SocioPatterns 的 CC BY-NC-SA），使用前须分别遵守。
 
 ## 文档索引
 

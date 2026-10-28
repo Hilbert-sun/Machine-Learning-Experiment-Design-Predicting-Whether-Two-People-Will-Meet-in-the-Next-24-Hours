@@ -2,6 +2,11 @@
 
 Date:2026-10-28
 
+**LICENSE — DONE：GPL-3.0。** 用户选择 GPL-3.0。LICENSE 是从 gnu.org 下载的官方原文，sha256 与标准 COPYING 文件一致，由测试断言。中英文 README 都写明：许可只覆盖本项目的代码和文档，第三方数据集各自适用其原始许可证。README-EN 的 CI 40637350888 三个 Job 均通过。
+
+
+Date:2026-10-28
+
 **README-EN — DONE：英文 README。** 新增 README.en.md，内容与中文 README 一一对应，两者顶部互相链接。tests/test_documentation.py 增加一项测试：英文版的 T17/T22/T30 数值行必须与中文版完全一致，并且保留关键限制说明。中文 README 同时更新了 T35–T40 的 verify 命令和 studies 索引描述。.gitignore 新增 deliverables 下 PDF/PNG 的忽略规则，确保排版产物只留在本地。
 
 

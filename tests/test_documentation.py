@@ -92,3 +92,10 @@ def test_english_readme_mirrors_chinese_metrics_and_cross_links():
     assert rows(en)==rows(zh) and len(rows(en))==5
     for marker in ('Only four principal test dates','not a same-population model improvement','hjm59payrde6ronekgiqsn.streamlit.app'):
         assert marker in en
+
+
+def test_license_is_official_gpl3_and_scoped_to_code():
+    import hashlib
+    assert hashlib.sha256((ROOT/'LICENSE').read_bytes()).hexdigest()=='3972dc9744f6499f0f9b2dbf76696f2ae7ad8af9b23dde66d6af86c9dfb36986'
+    assert '[GNU GPL-3.0](LICENSE)' in (ROOT/'README.md').read_text() and '不覆盖第三方数据' in (ROOT/'README.md').read_text()
+    assert 'not third-party data' in (ROOT/'README.en.md').read_text()

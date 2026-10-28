@@ -177,3 +177,7 @@ T35 only (2026-10-28): user chose to strengthen baselines by first re-evaluating
 
 - deliverables/v2/build_report_v2.py composes v2 from the unchanged v1 Markdown plus deliverables/v2/chapter_11.md; every new number is read from studies/*/T3x_RESULTS.json and asserted. v1 Markdown, figures and REPORT_VERIFICATION.json stay byte-identical (build asserts this). v2 links reuse v1 figures; only figure_11_1.svg is new.
 - PDFs and page renders stay local (not in Git). The v2-only reportlab kinsoku patch hangs full-width punctuation in the 12pt right guard; build_report.py v1 behaviour is unchanged (make_pdf gained optional output/cover parameters with v1 defaults).
+
+## License
+
+- LICENSE is the unmodified official GNU GPL-3.0 text (sha256 3972dc97…6986, asserted by tests/test_documentation.py), chosen by the user. It covers repository code and documentation only; third-party datasets keep their own licenses. Never alter LICENSE text or relicense without the user's instruction.
