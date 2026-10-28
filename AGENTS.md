@@ -29,7 +29,7 @@ The user subsequently instructed: “以后做完全部推送” (push all compl
 
 ## Current authorized range
 
-T35 only (2026-10-28): user chose to strengthen baselines by first re-evaluating the unchanged T21/T22 protocol with a rolling-origin design and per-participant ranking metrics, then (separately) a Hawkes baseline as T36. T35 is DONE. User then authorized T36 only (Hawkes baseline on the frozen T35 fold plan); T36 is DONE. User then authorized T37 only (Hawkes scores as XGBoost inputs on the T35 folds); T37 is DONE. User then authorized DOCS-PRESENT only (documentation/README presentation cleanup; no app pages, models or frozen evidence changes); DOCS-PRESENT is DONE. User then authorized DEMO-DEPLOY only (prepare a public Streamlit Community Cloud demo); DONE: user deployed demo_app.py at https://hjm59payrde6ronekgiqsn.streamlit.app/ and Claude verified it. Stop and await a new instruction. Standing push authorization applies. REPORT-FULL is complete.
+T35 only (2026-10-28): user chose to strengthen baselines by first re-evaluating the unchanged T21/T22 protocol with a rolling-origin design and per-participant ranking metrics, then (separately) a Hawkes baseline as T36. T35 is DONE. User then authorized T36 only (Hawkes baseline on the frozen T35 fold plan); T36 is DONE. User then authorized T37 only (Hawkes scores as XGBoost inputs on the T35 folds); T37 is DONE. User then authorized DOCS-PRESENT only (documentation/README presentation cleanup; no app pages, models or frozen evidence changes); DOCS-PRESENT is DONE. User then authorized DEMO-DEPLOY only (prepare a public Streamlit Community Cloud demo); User then authorized the remaining items step by step (T38, T39, T40, REPORT-UPDATE, README-EN, LICENSE GPL-3.0, CONTRACT-TESTS), each verified and pushed before the next. DEMO-DEPLOY DONE: user deployed demo_app.py at https://hjm59payrde6ronekgiqsn.streamlit.app/ and Claude verified it. Stop and await a new instruction. Standing push authorization applies. REPORT-FULL is complete.
 
 ## Prediction data contract
 
@@ -158,3 +158,8 @@ T35 only (2026-10-28): user chose to strengthen baselines by first re-evaluating
 
 - Public deployments must use demo_app.py (fail-closed), never app.py. src/demo_mode.py DEMO_PAGES = Home, Data Sources, Play, Explore, Research Hub; they read only tracked repository files. All other routes render a local-only notice. Never add a page that downloads, imports, trains, scans local data or shows pair-level records to DEMO_PAGES.
 - The demo server has no data/ or models/; never upload raw data, models or per-sample outputs to a deployment. Deploying/sign-in is the user's action.
+
+## T38 participant-holdout contract
+
+- src/participant_holdout.py: 5 prespecified salted hash partitions; train/threshold only on A–A pairs of each frozen T35 fold; test B–B and A–B; unchanged T21/T22 protocol. References are T35 all-participant XGBoost and T36 Hawkes on the same rows.
+- The A–A training set is 23–29% of full training rows, so the −0.009 to −0.023 AP gap mixes unseen people with less data; never report it as a pure stranger effect. Partitions share people and are not independent replications.

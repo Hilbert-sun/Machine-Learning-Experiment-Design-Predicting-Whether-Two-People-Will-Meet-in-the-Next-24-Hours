@@ -2,6 +2,15 @@
 
 Date:2026-10-28
 
+**T38 — DONE：留出参与者验证。** 新增 src/participant_holdout.py、tests/test_participant_holdout.py、studies/participant_holdout/{README.md,T38_RESULTS.json}。
+
+- 预设 5 种哈希划分 × 11 个 T35 折，全部满足样本门槛。只用 A–A 配对训练（占全部训练行的 23%–29%），在 B–B 和 A–B 配对上测试。真实运行约 11 分 25 秒。
+- B–B 配对：留出 XGBoost AP 0.651 [0.631, 0.666]，全员 XGBoost 0.668，Hawkes 0.634，Logistic 0.591。留出模型比全员模型低 0.009–0.023（5 种划分区间都排除 0）；比 Hawkes 高 0.010–0.025（区间都不排除 0）。NDCG@5：0.797 对 0.801。
+- 下降同时来自"没见过这些人"和"训练数据更少"，两者无法分开，已在文档中写明。
+
+
+Date:2026-10-28
+
 **DEMO-DEPLOY — DONE（仓库已准备好；实际部署需要用户自己的 Streamlit 账号）。**
 
 - 新增 demo_app.py（默认锁定的公开入口）、src/demo_mode.py、packages.txt（libgomp1）、docs/DEPLOY.md 和 tests/test_demo_mode.py。app.py 只增加了锁定判断，普通入口的行为不变。
