@@ -43,3 +43,22 @@ def test_demo_set_is_public_only_and_normal_app_unchanged():
     assert DEMO_PAGES == {PAGES[i][0] for i in (0, 7, 12, 13, 14)}
     app = AppTest.from_file(str(ROOT / 'app.py'), default_timeout=15).run().switch_page('pages/1_Data_Manager.py').run()
     assert not app.exception and not notice(app)
+
+
+def test_locked_page_refuses_even_when_run_without_the_demo_entry(monkeypatch):
+    """Cold-start legacy pages/ routing can run a page file directly; the page guard must still stop it."""
+    from types import SimpleNamespace
+    import src.demo_mode as demo_mode
+    fake = SimpleNamespace(pages_manager=SimpleNamespace(main_script_path=str(ROOT / 'demo_app.py')))
+    monkeypatch.setattr(demo_mode, 'get_script_run_ctx', lambda: fake)
+    assert demo_mode.demo_entry_running()
+    for page, _ in PAGES:
+        source = (ROOT / page).read_text()
+        if page in DEMO_PAGES:
+            assert 'stop_if_locked' not in source
+        else:
+            # The guard is the first executable statement, before any heavy import or local file access.
+            body = [l for l in source.splitlines() if l.strip() and not l.lstrip().startswith(('#', '"""'))]
+            assert body[:2] == ['from src.demo_mode import stop_if_locked', 'stop_if_locked(__file__)  # public demo: refuse before any import or work'], page
+    monkeypatch.setattr(demo_mode, 'get_script_run_ctx', lambda: SimpleNamespace(pages_manager=SimpleNamespace(main_script_path=str(ROOT / 'app.py'))))
+    assert not demo_mode.demo_entry_running()

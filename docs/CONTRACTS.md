@@ -151,6 +151,7 @@ Enforced by: `tests/test_documentation.py::test_document_local_links_exist`, `te
 ## Online demo boundary (DEMO-DEPLOY)
 
 - Public deployments must use demo_app.py (fail-closed), never app.py. src/demo_mode.py DEMO_PAGES = Home, Data Sources, Play, Explore, Research Hub; they read only tracked repository files. All other routes render a local-only notice. Never add a page that downloads, imports, trains, scans local data or shows pair-level records to DEMO_PAGES.
+- Two layers are mandatory: demo_app.py blocks locked routes, and every non-DEMO page starts with `stop_if_locked(__file__)`, because a cold server can route a first request through legacy pages/ routing and run a page without the entry script (reproduced and fixed 2026-10-28). Enforced by `tests/test_demo_mode.py::test_locked_page_refuses_even_when_run_without_the_demo_entry`.
 - The demo server has no data/ or models/; never upload raw data, models or per-sample outputs to a deployment. Deploying/sign-in is the user's action.
 
 Enforced by: `tests/test_demo_mode.py::test_demo_entry_blocks_local_research_pages`, `tests/test_demo_mode.py::test_demo_set_is_public_only_and_normal_app_unchanged`

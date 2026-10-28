@@ -1,3 +1,6 @@
+from src.demo_mode import stop_if_locked
+
+stop_if_locked(__file__)  # public demo: refuse before any import or work
 from pathlib import Path
 
 import pandas as pd

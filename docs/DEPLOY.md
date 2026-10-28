@@ -2,7 +2,7 @@
 
 当前线上地址：<https://hjm59payrde6ronekgiqsn.streamlit.app/>（2026-10-28 部署，入口为 `demo_app.py`）。
 
-在线演示必须使用 [`demo_app.py`](../demo_app.py) 作为入口，**不要用 `app.py`**。`demo_app.py` 默认锁定：只开放首页、Play、Explore、科研中心目录和数据来源说明，这五个页面只读取仓库里已审查的公开文件。其余 10 个科研页面（数据管理、训练、预测、Time Machine 等）在线上只显示"需本地运行"的提示，不渲染下载、导入、训练或选择控件，也不会在服务器上执行任何操作。锁定范围定义在 [src/demo_mode.py](../src/demo_mode.py)，由 [tests/test_demo_mode.py](../tests/test_demo_mode.py) 逐页验证。
+在线演示必须使用 [`demo_app.py`](../demo_app.py) 作为入口，**不要用 `app.py`**。`demo_app.py` 默认锁定：只开放首页、Play、Explore、科研中心目录和数据来源说明，这五个页面只读取仓库里已审查的公开文件。其余 10 个科研页面（数据管理、训练、预测、Time Machine 等）在线上只显示"需本地运行"的提示，不渲染下载、导入、训练或选择控件，也不会在服务器上执行任何操作。锁定范围定义在 [src/demo_mode.py](../src/demo_mode.py)，由 [tests/test_demo_mode.py](../tests/test_demo_mode.py) 逐页验证。锁定有两层：入口在导航运行前拦截；每个被锁页面开头也会调用 `stop_if_locked`。第二层必不可少，因为服务器冷启动（例如休眠后被唤醒）时，第一个请求可能走 Streamlit 旧式的 `pages/` 目录路由，不经过入口文件直接运行页面。2026-10-28 在本机复现了这个绕过，修复后再次冷启动复测，确认已经拦住。`.streamlit/config.toml` 还关闭了旧式侧边栏导航。
 
 部署环境中没有 `data/` 和 `models/` 的真实内容，也不应该上传任何原始数据、模型或逐样本结果。
 

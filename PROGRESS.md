@@ -6,6 +6,8 @@ Date:2026-10-28
 
 **PLAY-REF — DONE：Play 研究参照卡片。** 新增 src/play_reference.py、studies/play_reference/{PLAY_REFERENCE.json,README.md}、tests/test_play_reference.py。Play 结果页在趣味指数下方显示"研究参照"：Copenhagen 研究中情况类似的配对，第二天再次接触的真实比例。数据来自 535,135 个有可靠标签的样本、13 个预测日，样本不足的格子已隐藏，示例：24 小时内见过且近 14 天接触 6 天以上为 63%，整体为 9.7%。卡片明确写出这不是用户的概率。趣味指数的计分规则（逐字节锁定的 src/chance_encounter.py）没有改动；Play 仍然不读取任何数据集或模型。
 
+**收尾检查中修复的安全问题**：本机全新启动 demo_app.py 后，第一个请求直接访问 /Data_Manager，页面绕过了演示锁定，显示了全部控件和本机路径。原因是 Streamlit 冷启动时会走旧式 pages/ 目录路由，不经过入口文件。修复办法：10 个被锁页面开头都加了页面级检查 stop_if_locked，并在 .streamlit/config.toml 关闭旧式侧边栏；demo_app.py 改为直接调用 st.navigation。修复后冷启动复测 /Data_Manager 和 /Time_Machine，都只显示锁定提示；新增测试保证每个被锁页面的第一条语句就是这个检查。线上应用需要在更新后重新部署（推送后自动进行；如果没有更新，请在 Streamlit 后台点 Reboot）。
+
 **本次会话完成并发布的全部工作**（均在 research-v2.2，每项都核对了 CI）：
 
 - 研究：T35 滚动验证（11 个测试日）、T36 Hawkes 基线、T37 Hawkes 特征、T38 留出参与者、T39 日间差异、T40 更短半衰期。

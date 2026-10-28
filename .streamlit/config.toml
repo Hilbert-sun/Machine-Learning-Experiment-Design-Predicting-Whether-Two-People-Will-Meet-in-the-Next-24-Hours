@@ -4,3 +4,7 @@ primaryColor = "#63C7B2"
 
 [browser]
 gatherUsageStats = false
+
+[client]
+# Navigation is rendered by the app itself; never show Streamlit's legacy pages/ sidebar.
+showSidebarNavigation = false
