@@ -104,6 +104,8 @@ T30 has 38,005 historical candidates: 27,820 reliable labels and 10,185 Unknown 
 
 **T36 Hawkes baseline** on the same T35 folds: a label-free per-pair exponential-kernel Hawkes process reaches pooled AP 0.6285 (7d XGBoost 0.6619, Δ+0.033, interval [0.017, 0.048]; above 7d logistic 0.5907), with nearly identical per-participant NDCG@5 (0.784 vs 0.786). Every fold selected the smallest half-life in the grid. [Hawkes baseline](studies/hawkes_baseline/README.md).
 
+**T37 Hawkes scores as XGBoost inputs** (same folds, no tuning): pooled AP 0.6649 vs 0.6619 (Δ+0.003, interval [0.0003, 0.0062]) — a negligible increment; the existing 7d features already carry most of the recency structure. [Hawkes features](studies/hawkes_features/README.md).
+
 T32 measured five separate processes per configuration on the same machine/input. MIT cold peak RSS fell 27.59%; specific Copenhagen warm feature/prediction operations reduced elapsed time about 97.9%/95.0%. Some cold paths became slower. Whole-page rendering and cross-OS performance were not measured. [Performance evidence](PERFORMANCE_AUDIT.md).
 
 ## Architecture and stack

@@ -2,6 +2,17 @@
 
 Date:2026-10-28
 
+**T37 — DONE：Hawkes 强度作为 XGBoost 输入。** 新增 src/hawkes_features.py、tests/test_hawkes_features.py、studies/hawkes_features/{README.md,T37_RESULTS.json}；T35/T36 代码与冻结材料未改动。
+
+- 输入为 7 天特征加 4 个 Hawkes 网格分数，不选半衰期；XGBoost 不调参，沿用 T35 折计划。训练时刻补算 22,881 行 Hawkes 分数，复用 T36 分数前做了重算一致性检查；参照模型 AP 与 T36 逐位一致。
+- 结果：合并 AP 0.6649，原 XGBoost 0.6619，差 +0.0031，区间 [0.0003, 0.0062]，9/11 天为正；NDCG@5 0.7893。提升可以忽略，说明原有 7 天特征已包含大部分最近接触结构。
+- 验证：tests/test_hawkes_features.py 2 passed；`--verify-only` 重算一致；真实运行约 2 分 19 秒。
+
+下一步建议（需授权）：本轮"补强基线"已经完成；若继续，可以设计一套新的、未暴露的验证方案，或回到展示层面的精简工作。
+
+
+Date:2026-10-28
+
 **T36 — DONE：Hawkes 自激过程基线。** 新增 src/hawkes_baseline.py、tests/test_hawkes_baseline.py、studies/hawkes_baseline/{README.md,T36_RESULTS.json}；T35 代码与冻结材料未改动。
 
 - 每个（t，配对）只用该配对 [t-7d,t) 的接触时间做极大似然估计，不用标签，共拟合 77,604 个样本。半衰期每折只在验证集上选，11 折都选中 0.5 小时（网格下边界）。

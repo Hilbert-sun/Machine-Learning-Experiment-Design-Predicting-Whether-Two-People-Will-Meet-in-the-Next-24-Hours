@@ -29,7 +29,7 @@ The user subsequently instructed: “以后做完全部推送” (push all compl
 
 ## Current authorized range
 
-T35 only (2026-10-28): user chose to strengthen baselines by first re-evaluating the unchanged T21/T22 protocol with a rolling-origin design and per-participant ranking metrics, then (separately) a Hawkes baseline as T36. T35 is DONE. User then authorized T36 only (Hawkes baseline on the frozen T35 fold plan); T36 is DONE. Stop and await a new instruction. Standing push authorization applies. REPORT-FULL is complete.
+T35 only (2026-10-28): user chose to strengthen baselines by first re-evaluating the unchanged T21/T22 protocol with a rolling-origin design and per-participant ranking metrics, then (separately) a Hawkes baseline as T36. T35 is DONE. User then authorized T36 only (Hawkes baseline on the frozen T35 fold plan); T36 is DONE. User then authorized T37 only (Hawkes scores as XGBoost inputs on the T35 folds); T37 is DONE. Stop and await a new instruction. Standing push authorization applies. REPORT-FULL is complete.
 
 ## Prediction data contract
 
@@ -141,3 +141,8 @@ T35 only (2026-10-28): user chose to strengthen baselines by first re-evaluating
 - src/hawkes_baseline.py fits per-(t, pair) exponential-kernel Hawkes (mu, alpha<=0.99) by MLE on that pair's distinct [t-7d,t) contact times only; no labels. Forecast 1-exp(-Lambda) ignores within-horizon excitation (lower bound).
 - Half-life grid {0.5,2,8,24}h is chosen per T35 fold on validation AP only. Every fold chose the 0.5h boundary; extending the grid now would be post-exposure selection and needs a new validation design.
 - Reads the verified frozen T35 receipt/predictions; private scores stay in ignored data/processed/hawkes/<run_id>; public aggregates only in studies/hawkes_baseline/ (no IDs, no 'key' field names). --verify-only recomputes them.
+
+## T37 Hawkes-feature contract
+
+- src/hawkes_features.py feeds XGBoost (unchanged T21/T22 parameters/seed/threshold rule, no calibration/tuning) 7d bounded features plus all four T36 Hawkes grid scores; no half-life selection. Uses the frozen T35 folds; reuses checksum-verified T36 scores and scores missing train times with the same function (one reused time is recomputed for equality). Reference AP must match T36 exactly.
+- Result: +0.0031 AP over 7d XGBoost ([0.0003, 0.0062], 9/11 days): report as a negligible increment on previously exposed dates, not a generalizable improvement. Private predictions in ignored data/processed/hawkes_features/<run_id>; public aggregates only in studies/hawkes_features/.
