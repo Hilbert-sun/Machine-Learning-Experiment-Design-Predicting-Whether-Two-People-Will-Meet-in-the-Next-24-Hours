@@ -118,3 +118,13 @@ def test_gitleaks_exceptions_only_cover_known_frozen_digest_lines():
     assert all(not re.search(p,'unrelated.json') for p in allow['paths'])
     assert all(not re.search(p,'"api_key": "'+'a'*64+'"') for p in allow['regexes'])
     assert all(not re.search(p,'"key_hash": "'+'0'*64+'"') for p in allow['regexes'])
+
+
+def test_only_the_exact_reviewed_demo_gif_is_allowed():
+    root=Path(__file__).resolve().parents[1]
+    gif=(root/'docs/media/demo.gif').read_bytes()
+    assert safety.check_content('docs/media/demo.gif',gif,frozenset())==[]
+    assert safety.check_content('docs/media/demo.gif',gif+b'x',frozenset())==['unreviewed-media-change']
+    assert safety.check_content('docs/media/demo.gif',b'GIF89a'+b'\x00'*10,frozenset())==['unreviewed-media-change']
+    assert 'unreviewed-binary-content' in safety.check_content('docs/media/other.gif',gif,frozenset())
+    assert set(safety.REVIEWED_MEDIA)=={'docs/media/demo.gif'}

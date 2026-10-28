@@ -11,6 +11,11 @@ import pytest
 from tools.check_repository_safety import approved_reports, check_content
 
 ROOT=Path(__file__).resolve().parents[1]
+REVIEWED_SAFETY_ADDITIONS={
+    'tools/check_repository_safety.py':(b"# Exact, human-reviewed public media (user-authorized 2026-10-28). Each entry pins one path to one\n# SHA256 and a GIF signature; any other binary content is still rejected.\nREVIEWED_MEDIA = {'docs/media/demo.gif': '41cdeb143013a986ed9a2989d6de73e635cc2dc27eae3c76e13b3dab43c99e90'}\n",
+        b"    if name in REVIEWED_MEDIA:\n        if (hashlib.sha256(content).hexdigest()!=REVIEWED_MEDIA[name] or not content.startswith((b'GIF87a', b'GIF89a'))\n                or len(content)>MAX_BYTES):\n            return ['unreviewed-media-change']\n        return []\n"),
+    'tests/test_repository_safety.py':(b"\n\ndef test_only_the_exact_reviewed_demo_gif_is_allowed():\n    root=Path(__file__).resolve().parents[1]\n    gif=(root/'docs/media/demo.gif').read_bytes()\n    assert safety.check_content('docs/media/demo.gif',gif,frozenset())==[]\n    assert safety.check_content('docs/media/demo.gif',gif+b'x',frozenset())==['unreviewed-media-change']\n    assert safety.check_content('docs/media/demo.gif',b'GIF89a'+b'\\x00'*10,frozenset())==['unreviewed-media-change']\n    assert 'unreviewed-binary-content' in safety.check_content('docs/media/other.gif',gif,frozenset())\n    assert set(safety.REVIEWED_MEDIA)=={'docs/media/demo.gif'}\n",),
+}
 DOCS=('README.md','README.en.md',*('docs/'+name for name in ('FINAL_RESEARCH_AUDIT.md','REPRODUCIBILITY.md','PORTFOLIO_GUIDE.md',
       'DEMO_GUIDE.md','FINAL_RELEASE_CHECKLIST.md','CI_VERIFICATION.md','DEVELOPMENT_HISTORY.md','PRODUCT_PLAN.md','EXPLORE_GUIDE.md','PRODUCT_DELIVERY.md')))
 
@@ -82,7 +87,12 @@ def test_current_status_and_ci_security_policy_not_weakened():
     for name in ('.github/workflows/ci.yml','.gitleaks.toml','tools/check_repository_safety.py',
                  'tools/run_secret_scan.py','tests/test_repository_safety.py','tests/conftest.py'):
         expected=subprocess.check_output(['git','-C',str(ROOT),'show',baseline+':'+name])
-        assert (ROOT/name).read_bytes()==expected,name
+        current=(ROOT/name).read_bytes()
+        # The only user-authorized change (2026-10-28): the exact hash-pinned demo GIF exception.
+        for addition in REVIEWED_SAFETY_ADDITIONS.get(name,()):
+            assert current.count(addition)==1,name
+            current=current.replace(addition,b'')
+        assert current==expected,name
 
 
 def test_english_readme_mirrors_chinese_metrics_and_cross_links():

@@ -32,6 +32,9 @@ SECRET_PATTERNS = {
     'database-password': re.compile(r'\b(?:postgres(?:ql)?|mysql|mongodb(?:\+srv)?)://[^\s:/]+:[^\s/@]+@'),
 }
 PERSONAL_PATH = re.compile(r'/(?:Users|home)/[A-Za-z0-9_.-]+/')
+# Exact, human-reviewed public media (user-authorized 2026-10-28). Each entry pins one path to one
+# SHA256 and a GIF signature; any other binary content is still rejected.
+REVIEWED_MEDIA = {'docs/media/demo.gif': '41cdeb143013a986ed9a2989d6de73e635cc2dc27eae3c76e13b3dab43c99e90'}
 
 
 def git(root, *args, input=None):
@@ -84,6 +87,11 @@ def _private_structure(value):
 
 def check_content(name, content, allow_reports):
     problems = []
+    if name in REVIEWED_MEDIA:
+        if (hashlib.sha256(content).hexdigest()!=REVIEWED_MEDIA[name] or not content.startswith((b'GIF87a', b'GIF89a'))
+                or len(content)>MAX_BYTES):
+            return ['unreviewed-media-change']
+        return []
     path = PurePosixPath(name)
     marker = path.name=='.gitkeep' and content==b''
     if (path.parts[0] in {'data','models'} and not marker) or path.parts[0] in {'.venv','venv','secrets','credentials'}:

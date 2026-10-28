@@ -2,11 +2,15 @@
 
 [中文](README.md) | English
 
-**Will two people come into contact within the next 24 hours?** Encounter Lab studies this question with the anonymized Bluetooth proximity records of the Copenhagen Networks Study. Predictions use only history before time t, the target is a recorded contact in (t, t+24h], leakage is guarded at every step, and a missing observation is never treated as "did not meet". The project also ships a Streamlit app with a playful questionnaire, public data stories and the full research toolkit.
+**Two people who were recently in contact: will they meet again within the next 24 hours?** Encounter Lab studies this question with the anonymized Bluetooth proximity records of the Copenhagen Networks Study. Predictions use only history before time t, the target is a recorded contact in (t, t+24h] (candidates met the day before, so this is repeat-contact prediction, not first meetings between strangers), leakage is guarded at every step, and a missing observation is never treated as "did not meet". The project also ships a Streamlit app with a playful questionnaire, public data stories and the full research toolkit.
 
 [![Public CI](https://github.com/Hilbert-sun/Machine-Learning-Experiment-Design-Predicting-Whether-Two-People-Will-Meet-in-the-Next-24-Hours/actions/workflows/ci.yml/badge.svg?branch=research-v2.2)](https://github.com/Hilbert-sun/Machine-Learning-Experiment-Design-Predicting-Whether-Two-People-Will-Meet-in-the-Next-24-Hours/actions/workflows/ci.yml) [![Open in Streamlit](https://static.streamlit.io/badges/streamlit_badge_black_white.svg)](https://hjm59payrde6ronekgiqsn.streamlit.app/)
 
 **[Try the live demo →](https://hjm59payrde6ronekgiqsn.streamlit.app/)** No installation needed for Play and Explore. The research tools need local data and run locally only.
+
+**[One-page case study](docs/CASE_STUDY.en.md)**: problem, method, three findings and limitations in a few minutes.
+
+![Live demo walkthrough: home, Play questionnaire, fun index, personal analysis, clue diagram and real data (captions in Chinese)](docs/media/demo.gif)
 
 ![Rolling-origin pooled AP: XGBoost with 1/3/7-day history, and five models with 7-day history](docs/figures/rolling_ap.svg)
 

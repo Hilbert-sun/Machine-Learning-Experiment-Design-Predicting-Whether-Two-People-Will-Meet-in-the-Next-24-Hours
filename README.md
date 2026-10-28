@@ -2,11 +2,15 @@
 
 中文 | [English](README.en.md)
 
-**两个人在未来 24 小时内会不会相遇？** 本项目用 Copenhagen Networks Study 的匿名蓝牙接近记录研究这个问题：只看 t 之前的历史，预测 (t, t+24h] 内是否会再次接近，并严格防止数据泄漏、不把缺失观测当成"没相遇"。项目同时提供一个 Streamlit 应用，包括趣味问卷、公开数据分析和完整的科研工具。
+**最近接触过的两个人，在未来 24 小时内还会再相遇吗？** 本项目用 Copenhagen Networks Study 的匿名蓝牙接近记录研究这个问题：只看 t 之前的历史，预测 (t, t+24h] 内是否会再次接近（候选是前一天接触过的配对，所以这是重复接触预测，不预测陌生人的初次相遇），并严格防止数据泄漏、不把缺失观测当成"没相遇"。项目同时提供一个 Streamlit 应用，包括趣味问卷、公开数据分析和完整的科研工具。
 
 [![Public CI](https://github.com/Hilbert-sun/Machine-Learning-Experiment-Design-Predicting-Whether-Two-People-Will-Meet-in-the-Next-24-Hours/actions/workflows/ci.yml/badge.svg?branch=research-v2.2)](https://github.com/Hilbert-sun/Machine-Learning-Experiment-Design-Predicting-Whether-Two-People-Will-Meet-in-the-Next-24-Hours/actions/workflows/ci.yml) [![在线体验](https://static.streamlit.io/badges/streamlit_badge_black_white.svg)](https://hjm59payrde6ronekgiqsn.streamlit.app/)
 
 **[在线体验 →](https://hjm59payrde6ronekgiqsn.streamlit.app/)** 不用安装，直接试 Play 趣味问卷和 Explore 公开数据分析；科研工具需要本地数据，只能本地运行。
+
+**[一页案例总结](docs/CASE_STUDY.md)**：问题、方法、三个发现和局限，几分钟读完。
+
+![在线演示录屏：首页、Play 问卷、趣味指数、我的偶遇分析、线索图和真实数据](docs/media/demo.gif)
 
 ![滚动验证合并 AP：XGBoost 1/3/7 天历史对比，以及 7 天历史下五个模型的对比](docs/figures/rolling_ap.svg)
 

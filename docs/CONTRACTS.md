@@ -112,6 +112,8 @@ Enforced by: `tests/test_safe_cache.py::test_interrupted_publish_preserves_prior
 
 Enforced by: `tests/test_ci_environment.py::test_workflow_retains_complete_tests_and_minimal_read_only_permissions`, `tests/test_ci_environment.py::test_live_http_is_refused_before_any_network`, `tests/test_repository_safety.py::test_index_bytes_are_scanned_including_force_added_ignored_env`, `tests/test_repository_safety.py::test_real_historical_public_evidence_unchanged`, `tests/test_repository_safety.py::test_gitleaks_exceptions_only_cover_known_frozen_digest_lines`
 
+Addendum (2026-10-28, user-authorized): tools/check_repository_safety.py REVIEWED_MEDIA allows exactly one binary file, docs/media/demo.gif, pinned to its SHA256 and GIF signature (≤1 MB). Any change to that GIF needs a new human review and hash update; never add other paths without the user's explicit authorization. Enforced by `tests/test_repository_safety.py::test_only_the_exact_reviewed_demo_gif_is_allowed`.
+
 ## T35 rolling-origin contract
 
 - src/rolling_validation.py freezes protocol plus the full fold plan (data/processed/rolling/<run_id>/PROTOCOL_FROZEN.json) before fitting. Folds: one test time; 3 validation times; >=4 train times; t+24h strictly before the next set; >=20 per class per set. Unchanged T21/T22 models/parameters/seed/max-F1 threshold, no calibration/tuning. Any fit failure drops the fold for all models.

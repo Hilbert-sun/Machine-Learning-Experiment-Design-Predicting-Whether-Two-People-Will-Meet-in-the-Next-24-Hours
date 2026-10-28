@@ -29,7 +29,7 @@ The user subsequently instructed: “以后做完全部推送” (push all compl
 
 ## Current authorized range
 
-All work the user authorized on 2026-10-28 is DONE and published on research-v2.2: T35–T40 (rolling validation, Hawkes baseline/features, participant holdout, day analysis, wider Hawkes grid), DOCS-PRESENT, DEMO-DEPLOY (live demo https://hjm59payrde6ronekgiqsn.streamlit.app/ from demo_app.py), REPORT-UPDATE (report v2), README-EN, LICENSE (GPL-3.0, user's choice) and CONTRACT-TESTS. No task is in progress. STOP and await a new instruction; do not start research, tuning on exposed dates, main merges, tags, releases or new deployments without explicit authorization.
+All work the user authorized on 2026-10-28 is DONE and published on research-v2.2: T35–T40 (rolling validation, Hawkes baseline/features, participant holdout, day analysis, wider Hawkes grid), DOCS-PRESENT, DEMO-DEPLOY (live demo https://hjm59payrde6ronekgiqsn.streamlit.app/ from demo_app.py), REPORT-UPDATE (report v2), README-EN, LICENSE (GPL-3.0, user's choice) CONTRACT-TESTS and CASE-DEMO (one-page case study, captured live-demo GIF). No task is in progress. STOP and await a new instruction; do not start research, tuning on exposed dates, main merges, tags, releases or new deployments without explicit authorization.
 
 ## Local environment
 
@@ -48,5 +48,5 @@ Read the matching section of docs/CONTRACTS.md before touching any research, inf
 - Frozen evidence (51 files pinned by the trusted baseline, including the 7 root FROZEN_DOCUMENTS) is never edited or moved; frozen code whose hash defines a run id is not modified.
 - Raw data, models, per-sample predictions, credentials and PDFs/renders stay out of Git; public outputs are reviewed aggregates without participant/pair IDs.
 - Public deployments use demo_app.py only; no page that downloads, imports, trains or reads local data joins DEMO_PAGES.
-- Never weaken repository safety, CI, the Gitleaks policy or the GPL-3.0 LICENSE text.
+- Never weaken repository safety, CI, the Gitleaks policy or the GPL-3.0 LICENSE text. The only binary exception is the hash-pinned docs/media/demo.gif (user-authorized 2026-10-28); adding or changing media needs the user's explicit review.
 
