@@ -2,7 +2,7 @@
 
 Task IDs and titles follow the user's task-board screenshot. Dependencies and acceptance criteria below are the implementation plan derived from `PROJECT_SPEC.md`, rather than additional completed functionality.
 
-Current execution: **DOCS-PRESENT — DONE** (user authorized 2026-10-28: fix the presentation layer). T35–T37 DONE. T36 DONE (see studies/hawkes_baseline/README.md). T35 DONE (11 rolling test days; see studies/rolling_validation/README.md). User chose (2026-10-28) to strengthen baselines by first building a new rolling-origin validation design, then adding a Hawkes baseline (T36) plus per-participant ranking metrics, and to push completed work. T35 only; T36 stays TODO until separately started. REPORT-FULL is DONE.
+Current execution: **DEMO-DEPLOY — DONE (repository ready; the actual deployment needs the user's Streamlit account)** (user authorized 2026-10-28: online demo). DOCS-PRESENT DONE. T35–T37 DONE. T36 DONE (see studies/hawkes_baseline/README.md). T35 DONE (11 rolling test days; see studies/rolling_validation/README.md). User chose (2026-10-28) to strengthen baselines by first building a new rolling-origin validation design, then adding a Hawkes baseline (T36) plus per-participant ranking metrics, and to push completed work. T35 only; T36 stays TODO until separately started. REPORT-FULL is DONE.
 
 | Complete | ID | Task | Status | Dependencies | Acceptance criteria |
 | --- | --- | --- | --- | --- | --- |
@@ -83,3 +83,4 @@ T01 excludes Streamlit navigation/pages, dataset downloads, preprocessing, featu
 | ID | Task | Status | Dependencies | Acceptance criteria |
 | --- | --- | --- | --- | --- |
 | DOCS-PRESENT | 展示层精简：文档归档、README 首屏与核心图 | DONE | T37 | Move the 12 non-frozen, non-generated root guides into docs/ with every relative link rewritten; keep the 7 trusted-baseline frozen documents, generated DATASET_CATALOG.md, workflow files and the REPORT-FULL deliverables byte-identical. README opens with the question, one source-derived result figure, a three-line conclusion and quick start; details move to docs/. Pages/navigation unchanged (research-route and legacy-UI contracts). Link, documentation, audit, safety and full tests pass; own CI succeeds. |
+| DEMO-DEPLOY | 在线演示（Streamlit Community Cloud） | DONE | DOCS-PRESENT | Fail-closed demo_app.py entry opens only Home/Play/Explore/Research Hub/Data Sources, which read repository files only; every other route renders a local-only notice with no download/import/train controls. Normal app.py behaviour unchanged. Linux apt runtime declared (packages.txt libgomp1). A fresh index-only export without data/models runs in a real browser. Deployment itself needs the user's Streamlit account; Claude prepares the repository, documents the steps, and does not sign in. |

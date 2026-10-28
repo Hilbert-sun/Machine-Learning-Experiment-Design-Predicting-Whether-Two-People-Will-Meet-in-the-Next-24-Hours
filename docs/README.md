@@ -11,6 +11,7 @@
 | [REPRODUCIBILITY.md](REPRODUCIBILITY.md) | 三级复现：公开 CI、公开审计、本地真实数据 |
 | [FINAL_RESEARCH_AUDIT.md](FINAL_RESEARCH_AUDIT.md) | T17–T34 科研审计与结果边界 |
 | [FINAL_RELEASE_CHECKLIST.md](FINAL_RELEASE_CHECKLIST.md) | 已完成的验收，以及不能等同于研究泛化的边界 |
+| [DEPLOY.md](DEPLOY.md) | 在线演示（Streamlit Community Cloud）的部署步骤与锁定范围 |
 | [CI_VERIFICATION.md](CI_VERIFICATION.md) | 已发布 SHA 与实际 Actions 记录 |
 | [PORTFOLIO_GUIDE.md](PORTFOLIO_GUIDE.md) | 模块架构与作品集说明 |
 | [DELIVERY.md](DELIVERY.md) | 早期软件交付说明（2026-10-09） |

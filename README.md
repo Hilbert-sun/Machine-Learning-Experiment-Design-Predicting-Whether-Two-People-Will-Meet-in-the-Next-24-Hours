@@ -27,7 +27,7 @@ python -m pip install -r requirements.txt
 python -m streamlit run app.py
 ```
 
-浏览器打开终端显示的地址（通常是 http://localhost:8501）。如果只在本机预览，可以在启动命令后加 `--server.address 127.0.0.1`。Linux 上的原生树模型需要 OpenMP 运行时（CI 使用 libgomp1），macOS 可能需要 libomp。当前版本在 [`research-v2.2`](https://github.com/Hilbert-sun/Machine-Learning-Experiment-Design-Predicting-Whether-Two-People-Will-Meet-in-the-Next-24-Hours/tree/research-v2.2) 分支。
+浏览器打开终端显示的地址（通常是 http://localhost:8501）。在线演示只开放 Play、Explore 和公开报告，部署方法见[在线演示部署](docs/DEPLOY.md)。如果只在本机预览，可以在启动命令后加 `--server.address 127.0.0.1`。Linux 上的原生树模型需要 OpenMP 运行时（CI 使用 libgomp1），macOS 可能需要 libomp。当前版本在 [`research-v2.2`](https://github.com/Hilbert-sun/Machine-Learning-Experiment-Design-Predicting-Whether-Two-People-Will-Meet-in-the-Next-24-Hours/tree/research-v2.2) 分支。
 
 | 想体验什么 | 入口 | 是否需要本地真实数据/模型 |
 | --- | --- | --- |

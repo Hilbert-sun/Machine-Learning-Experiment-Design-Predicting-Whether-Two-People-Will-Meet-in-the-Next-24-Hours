@@ -2,6 +2,16 @@
 
 Date:2026-10-28
 
+**DEMO-DEPLOY — DONE（仓库已准备好；实际部署需要用户自己的 Streamlit 账号）。**
+
+- 新增 demo_app.py（默认锁定的公开入口）、src/demo_mode.py、packages.txt（libgomp1）、docs/DEPLOY.md 和 tests/test_demo_mode.py。app.py 只增加了锁定判断，普通入口的行为不变。
+- 在线只开放首页、数据来源、Play、Explore 和科研中心；其余 10 个页面显示"需本地运行"，不渲染任何下载、训练或选择控件。
+- 验证：tests 526 passed（新增 16 项）。用 git checkout-index 导出一份不含数据和模型的干净副本，运行 demo_app.py，在真实浏览器中逐页检查：5 个开放页面正常，没有异常；被锁页面显示提示，没有控件。
+- 预览工具在这台机器上启动不了服务器（进程挂起，没有日志），所以改用 Bash 在后台启动来做浏览器检查。干净副本放在被忽略的 data/processed/demo_clone，检查完已删除。
+
+
+Date:2026-10-28
+
 **DOCS-PRESENT — DONE：展示层精简。**
 
 - 根目录的 Markdown 从 25 份减到 13 份：12 份指南移入 docs/（新增 docs/README.md 索引），156 处相对链接已改写。7 份冻结文档和生成的 DATASET_CATALOG.md 受可信基线按路径保护，保留在根目录；deliverables/ 逐字节不变。
