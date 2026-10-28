@@ -57,6 +57,7 @@ python -m streamlit run app.py
 - **T35–T37**：协议不变，改为滚动起点，得到 11 个测试日（59,140 个样本，正例率 19.66%），对应上图。按人排序指标 NDCG@5：7 天 XGBoost 0.786，Hawkes 0.784。见[滚动验证](studies/rolling_validation/README.md)、[Hawkes 基线](studies/hawkes_baseline/README.md)和 [Hawkes 特征](studies/hawkes_features/README.md)。
 - **T38 留出参与者**：只用 A 组参与者之间的配对训练，在两人都没见过的 B–B 配对上测试，XGBoost 合并 AP 为 0.651（5 种划分的范围 0.631–0.666），比见过所有人的模型低约 0.017。这个差距同时包含"没见过这些人"和"训练数据只剩约 1/4"两个因素。见[留出参与者验证](studies/participant_holdout/README.md)。
 - **T39 日间差异**：日 AP 从 0.43 到 0.91，主要随当天的正例率和"候选人最近接触得多紧密"变化（与距上次接触时间的 ρ = −0.86）。AP 最低的那天，模型反而比随机排序好 7.9 倍。见[日间差异分析](studies/day_analysis/README.md)。
+- **T40 更短半衰期**：把 Hawkes 的半衰期网格扩展到 5 分钟后，验证集上的最优值落在 15–30 分钟（网格内部），测试 AP 0.626，与 T36 无差异。T36 选到边界并没有低估 Hawkes。见[更短的 Hawkes 半衰期](studies/hawkes_short/README.md)。
 - **T32 性能**：同一机器、同一输入，每种配置运行 5 个独立进程。MIT 冷启动峰值内存下降 27.59%；Copenhagen 部分热启动的特征和预测操作耗时约下降 97.9% 和 95.0%；部分冷启动路径变慢。见[性能证据](PERFORMANCE_AUDIT.md)。
 
 其他数据源：Workplace 只支持已观测正例的检索，High School 只支持有限的描述性检索；MIT Reality Mining 的时间单位未核实；Social Evolution 不可用。各数据源的身份按来源分别命名，从不跨数据集合并，见[多数据源研究](MULTISOURCE_STUDY.md)。

@@ -9,3 +9,4 @@
 | [T37 Hawkes 特征](hawkes_features/README.md) | 把 Hawkes 分数作为 XGBoost 的输入 | +0.003，可以忽略 |
 | [T38 留出参与者验证](participant_holdout/README.md) | 只用 A 组参与者之间的配对训练，在没见过的 B 组参与者上测试 | B–B 配对 AP 0.651，比见过所有人的模型低约 0.017 |
 | [T39 日间差异分析](day_analysis/README.md) | 描述各测试日的难度：正例率、最近接触程度、样本量 | AP 低的日子主要是正例少；距上次接触时间与 AP 的 ρ = −0.86 |
+| [T40 更短的 Hawkes 半衰期](hawkes_short/README.md) | 半衰期网格扩展到 5 分钟，仍只按验证集选择 | 最优值在 15–30 分钟，测试 AP 0.626，与 T36 无差异 |

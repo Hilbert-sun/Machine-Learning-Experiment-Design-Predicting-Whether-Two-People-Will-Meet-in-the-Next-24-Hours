@@ -167,3 +167,8 @@ T35 only (2026-10-28): user chose to strengthen baselines by first re-evaluating
 ## T39 day-analysis contract
 
 - src/day_analysis.py is descriptive only: frozen T35/T36 predictions and T20 7d features, per-day AP, AP/prevalence and Spearman rho over 11 dependent days. No fitting/selection. Never label days as weekdays/weekends (origin unconfirmed); compare days on AP/prevalence as well as AP.
+
+## T40 wide Hawkes-grid contract
+
+- src/hawkes_short.py reuses the T36 per-pair MLE with a prespecified 5–1440 minute grid and a log-sum-exp excitation recursion (must match T36 within 1e-6 on shared half-lives). Per-fold validation selection only. Grid extension was motivated by T36 selections after T36 test scores were seen: report as a follow-up check.
+- Result: optimum interior at 15–30 minutes; test AP −0.0028 vs T36 (interval includes 0). Do not further tune the grid on these dates.

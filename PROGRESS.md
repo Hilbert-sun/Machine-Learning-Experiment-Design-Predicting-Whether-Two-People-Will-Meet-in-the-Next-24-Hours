@@ -2,6 +2,14 @@
 
 Date:2026-10-28
 
+**T40 — DONE：更短的 Hawkes 半衰期。** 新增 src/hawkes_short.py、tests/test_hawkes_short.py、studies/hawkes_short/{README.md,T40_RESULTS.json}。T36 代码未改动。
+
+- 网格为 5–1440 分钟。log-sum-exp 递推在 T36 的 4 个半衰期上与原结果的最大差为 2.6×10⁻⁹。各折选中 15 分钟 6 次、30 分钟 4 次、60 分钟 1 次；验证集平均 AP 在 30 分钟处最高（0.642），5 分钟时降到 0.605。
+- 测试：扩展网格的 Hawkes AP 为 0.6258，T36 为 0.6285，差 −0.0028，区间 [−0.0050, 0.0004]；XGBoost 仍高出 +0.036。真实运行约 4 分钟；`--verify-only` 一致；T39 的 CI 40634721160 三个 Job 均通过。
+
+
+Date:2026-10-28
+
 **T39 — DONE：日间表现差异分析。** 新增 src/day_analysis.py、tests/test_day_analysis.py、studies/day_analysis/{README.md,T39_RESULTS.json}。纯描述，不拟合。
 
 - 7 天 XGBoost 的日 AP 范围 0.43–0.91，AP/正例率范围 1.64–7.93。日 AP 与正例率 ρ = +0.74，与距上次接触时间 ρ = −0.86；活跃度和覆盖率与 AP 基本无关。研究日 21 正例率只有 5.4%，AP 为 0.43，但提升倍数是 11 天中最高的 7.9 倍。
