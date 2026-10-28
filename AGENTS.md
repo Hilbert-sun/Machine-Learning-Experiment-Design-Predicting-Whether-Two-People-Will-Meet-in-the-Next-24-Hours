@@ -172,3 +172,8 @@ T35 only (2026-10-28): user chose to strengthen baselines by first re-evaluating
 
 - src/hawkes_short.py reuses the T36 per-pair MLE with a prespecified 5–1440 minute grid and a log-sum-exp excitation recursion (must match T36 within 1e-6 on shared half-lives). Per-fold validation selection only. Grid extension was motivated by T36 selections after T36 test scores were seen: report as a follow-up check.
 - Result: optimum interior at 15–30 minutes; test AP −0.0028 vs T36 (interval includes 0). Do not further tune the grid on these dates.
+
+## Report v2 (REPORT-UPDATE)
+
+- deliverables/v2/build_report_v2.py composes v2 from the unchanged v1 Markdown plus deliverables/v2/chapter_11.md; every new number is read from studies/*/T3x_RESULTS.json and asserted. v1 Markdown, figures and REPORT_VERIFICATION.json stay byte-identical (build asserts this). v2 links reuse v1 figures; only figure_11_1.svg is new.
+- PDFs and page renders stay local (not in Git). The v2-only reportlab kinsoku patch hangs full-width punctuation in the 12pt right guard; build_report.py v1 behaviour is unchanged (make_pdf gained optional output/cover parameters with v1 defaults).

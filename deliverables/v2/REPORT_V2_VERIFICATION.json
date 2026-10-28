@@ -1,0 +1,630 @@
+{
+  "version": 2,
+  "date": "2026-10-28",
+  "v1_sha256": "b154057c55d209e2da23ffa968300f175c7fff37c334f77e5043f00f484d71db",
+  "study_sha256": {
+    "T35": "5fa3de5cf919228a7010a52e5b81d16d77c84603a6905264c236a6096adc2200",
+    "T36": "43cc56c223e56105d850fbf78df6ddd99f1e6a293ebba2447eaf190bc8787787",
+    "T37": "af85d3aa2f35c121e4c6eb5351b3e9e29069200cd71775c1bc79e88d7701b4e5",
+    "T38": "724b706712c83165e7fe991f986395d4af94a80a765a054f0cbf017b5510cf9e",
+    "T39": "e4acb653fd0d41afd75a21e1e36d1c1e6d442e29327a41b706e8b4423cf23f76",
+    "T40": "8e456ce2e849471dd196e9938c5a56e41dfed2811774ee49b54a71e85e3b3ff7"
+  },
+  "chapter_values": {
+    "D71": "+0.090",
+    "D71_CI": "[0.073, 0.103]",
+    "DLR": "+0.071",
+    "PARITY": "2.6e-09",
+    "HAWKES_AP": "0.629",
+    "XGB_HAWKES": "0.033",
+    "WIDE_AP": "0.626",
+    "T37_DELTA": "0.003",
+    "HOLDOUT_AP": "0.651",
+    "HOLDOUT_GAP": "0.017",
+    "DAY_MIN": "0.43",
+    "DAY_MAX": "0.91",
+    "RHO_PREV": "+0.74",
+    "RHO_REC": "-0.86",
+    "LIFT_MAX": "7.9"
+  },
+  "report_sha256": "2c74eb74d922e0008d6ed3ff950c45786879570c3ed04498f2e6b44bf729430e",
+  "pdf_sha256": "1f8c962bcce906a019479b266e0bdf9b8b406ff3c19b44f55ec0b3f11e689f9a",
+  "chapters": 12,
+  "figures": 10,
+  "tables": 18,
+  "references": 24,
+  "body_chinese_characters": 15047,
+  "heading_pages": [
+    {
+      "level": 0,
+      "title": "中文摘要",
+      "page": 2
+    },
+    {
+      "level": 0,
+      "title": "第1章 绪论",
+      "page": 8
+    },
+    {
+      "level": 1,
+      "title": "1.1 研究背景",
+      "page": 8
+    },
+    {
+      "level": 1,
+      "title": "1.2 研究问题",
+      "page": 8
+    },
+    {
+      "level": 1,
+      "title": "1.3 研究目标",
+      "page": 8
+    },
+    {
+      "level": 1,
+      "title": "1.4 研究意义",
+      "page": 8
+    },
+    {
+      "level": 1,
+      "title": "1.5 报告结构与审查范围",
+      "page": 9
+    },
+    {
+      "level": 0,
+      "title": "第2章 系统需求与总体架构",
+      "page": 9
+    },
+    {
+      "level": 1,
+      "title": "2.1 功能与非功能需求",
+      "page": 9
+    },
+    {
+      "level": 1,
+      "title": "2.2 技术选型及职责",
+      "page": 9
+    },
+    {
+      "level": 1,
+      "title": "2.3 系统整体架构",
+      "page": 9
+    },
+    {
+      "level": 1,
+      "title": "2.4 模块关系与数据流",
+      "page": 10
+    },
+    {
+      "level": 1,
+      "title": "2.5 前后端交互",
+      "page": 10
+    },
+    {
+      "level": 1,
+      "title": "2.6 工程组织与开发过程",
+      "page": 10
+    },
+    {
+      "level": 0,
+      "title": "第3章 数据来源与数据预处理",
+      "page": 11
+    },
+    {
+      "level": 1,
+      "title": "3.1 来源核验与统计口径",
+      "page": 11
+    },
+    {
+      "level": 1,
+      "title": "3.2 Copenhagen主要来源",
+      "page": 11
+    },
+    {
+      "level": 1,
+      "title": "3.3 SocioPatterns与其他来源",
+      "page": 11
+    },
+    {
+      "level": 1,
+      "title": "3.4 字段与规范化表示",
+      "page": 12
+    },
+    {
+      "level": 1,
+      "title": "3.5 质量检查",
+      "page": 13
+    },
+    {
+      "level": 1,
+      "title": "3.6 清洗与去重",
+      "page": 13
+    },
+    {
+      "level": 1,
+      "title": "3.7 缺失与扫描覆盖",
+      "page": 13
+    },
+    {
+      "level": 1,
+      "title": "3.8 数据隐私与公开边界",
+      "page": 13
+    },
+    {
+      "level": 1,
+      "title": "3.9 初期零样本的原因与解决",
+      "page": 13
+    },
+    {
+      "level": 0,
+      "title": "第4章 预测任务定义与特征工程",
+      "page": 14
+    },
+    {
+      "level": 1,
+      "title": "4.1 样本与目标",
+      "page": 14
+    },
+    {
+      "level": 1,
+      "title": "4.2 预测时点和观察窗口",
+      "page": 14
+    },
+    {
+      "level": 1,
+      "title": "4.3 候选配对构造",
+      "page": 14
+    },
+    {
+      "level": 1,
+      "title": "4.4 标签与覆盖准入",
+      "page": 15
+    },
+    {
+      "level": 1,
+      "title": "4.5 接触频率与活动特征",
+      "page": 15
+    },
+    {
+      "level": 1,
+      "title": "4.6 最近接触时间",
+      "page": 15
+    },
+    {
+      "level": 1,
+      "title": "4.7 网络特征",
+      "page": 16
+    },
+    {
+      "level": 1,
+      "title": "4.8 1、3、7与14天的不同角色",
+      "page": 16
+    },
+    {
+      "level": 1,
+      "title": "4.9 时间泄漏与自动拒绝",
+      "page": 16
+    },
+    {
+      "level": 1,
+      "title": "4.10 事件时间与到达时间",
+      "page": 16
+    },
+    {
+      "level": 0,
+      "title": "第5章 机器学习模型与实验设计",
+      "page": 17
+    },
+    {
+      "level": 1,
+      "title": "5.1 模型选择依据",
+      "page": 17
+    },
+    {
+      "level": 1,
+      "title": "5.2 基线方法",
+      "page": 17
+    },
+    {
+      "level": 1,
+      "title": "5.3 逻辑回归",
+      "page": 17
+    },
+    {
+      "level": 1,
+      "title": "5.4 XGBoost",
+      "page": 17
+    },
+    {
+      "level": 1,
+      "title": "5.5 LightGBM的能力边界",
+      "page": 17
+    },
+    {
+      "level": 1,
+      "title": "5.6 时间切分与跨界清除",
+      "page": 17
+    },
+    {
+      "level": 1,
+      "title": "5.7 参数、阈值与模型选择",
+      "page": 18
+    },
+    {
+      "level": 1,
+      "title": "5.8 概率校准",
+      "page": 18
+    },
+    {
+      "level": 1,
+      "title": "5.9 模型保存与加载",
+      "page": 18
+    },
+    {
+      "level": 1,
+      "title": "5.10 复现与模型管理",
+      "page": 18
+    },
+    {
+      "level": 0,
+      "title": "第6章 实验结果与模型评估",
+      "page": 19
+    },
+    {
+      "level": 1,
+      "title": "6.1 评价指标与选择理由",
+      "page": 19
+    },
+    {
+      "level": 1,
+      "title": "6.2 T17基线与主模型",
+      "page": 19
+    },
+    {
+      "level": 1,
+      "title": "6.3 分类工作点与主要结果",
+      "page": 20
+    },
+    {
+      "level": 1,
+      "title": "6.4 同一候选总体下的窗口效应",
+      "page": 20
+    },
+    {
+      "level": 1,
+      "title": "6.5 概率校准的效果和支持限制",
+      "page": 21
+    },
+    {
+      "level": 1,
+      "title": "6.6 日期依赖与不确定性",
+      "page": 22
+    },
+    {
+      "level": 1,
+      "title": "6.7 T30候选扩展与评估总体",
+      "page": 22
+    },
+    {
+      "level": 1,
+      "title": "6.8 选择偏差与概率误差",
+      "page": 23
+    },
+    {
+      "level": 1,
+      "title": "6.9 误差分析及科学局限",
+      "page": 23
+    },
+    {
+      "level": 0,
+      "title": "第7章 接触网络分析与数据可视化",
+      "page": 24
+    },
+    {
+      "level": 1,
+      "title": "7.1 网络分析的作用",
+      "page": 24
+    },
+    {
+      "level": 1,
+      "title": "7.2 节点与边的定义",
+      "page": 24
+    },
+    {
+      "level": 1,
+      "title": "7.3 历史图构建与节点度数",
+      "page": 24
+    },
+    {
+      "level": 1,
+      "title": "7.4 多数据集描述结果",
+      "page": 24
+    },
+    {
+      "level": 1,
+      "title": "7.5 正接触检索与局部网络",
+      "page": 24
+    },
+    {
+      "level": 1,
+      "title": "7.6 布局与交互设计",
+      "page": 25
+    },
+    {
+      "level": 1,
+      "title": "7.7 真实接触活动趋势",
+      "page": 25
+    },
+    {
+      "level": 1,
+      "title": "7.8 黑白网络结构示意",
+      "page": 25
+    },
+    {
+      "level": 1,
+      "title": "7.9 通俗解释与缺失展示",
+      "page": 26
+    },
+    {
+      "level": 1,
+      "title": "7.10 可视化的解释边界",
+      "page": 26
+    },
+    {
+      "level": 0,
+      "title": "第8章 交互式应用系统设计与实现",
+      "page": 26
+    },
+    {
+      "level": 1,
+      "title": "8.1 用户与独立通路",
+      "page": 26
+    },
+    {
+      "level": 1,
+      "title": "8.2 Home与首次加载",
+      "page": 27
+    },
+    {
+      "level": 1,
+      "title": "8.3 Play问卷体验",
+      "page": 27
+    },
+    {
+      "level": 1,
+      "title": "8.4 Explore个人与公开分析",
+      "page": 27
+    },
+    {
+      "level": 1,
+      "title": "8.5 Research科研中心",
+      "page": 27
+    },
+    {
+      "level": 1,
+      "title": "8.6 问卷结构与校验",
+      "page": 28
+    },
+    {
+      "level": 1,
+      "title": "8.7 固定娱乐规则",
+      "page": 28
+    },
+    {
+      "level": 1,
+      "title": "8.8 关键词与分数解释",
+      "page": 28
+    },
+    {
+      "level": 1,
+      "title": "8.9 A/B线索图谱",
+      "page": 29
+    },
+    {
+      "level": 1,
+      "title": "8.10 真实研究图表",
+      "page": 29
+    },
+    {
+      "level": 1,
+      "title": "8.11 页面导航与状态管理",
+      "page": 29
+    },
+    {
+      "level": 1,
+      "title": "8.12 首次提示与隐私设计",
+      "page": 29
+    },
+    {
+      "level": 1,
+      "title": "8.13 响应式与交互限制",
+      "page": 29
+    },
+    {
+      "level": 0,
+      "title": "第9章 系统测试与工程质量",
+      "page": 30
+    },
+    {
+      "level": 1,
+      "title": "9.1 单元测试的范围",
+      "page": 30
+    },
+    {
+      "level": 1,
+      "title": "9.2 集成测试与真实产物",
+      "page": 30
+    },
+    {
+      "level": 1,
+      "title": "9.3 Streamlit页面与状态测试",
+      "page": 30
+    },
+    {
+      "level": 1,
+      "title": "9.4 防泄漏与未来扰动",
+      "page": 30
+    },
+    {
+      "level": 1,
+      "title": "9.5 保存加载与优化一致性",
+      "page": 30
+    },
+    {
+      "level": 1,
+      "title": "9.6 GitHub Actions实际验收",
+      "page": 30
+    },
+    {
+      "level": 1,
+      "title": "9.7 冻结材料与仓库边界",
+      "page": 31
+    },
+    {
+      "level": 1,
+      "title": "9.8 凭据与隐私检查",
+      "page": 31
+    },
+    {
+      "level": 1,
+      "title": "9.9 浏览器验收的证据层级",
+      "page": 31
+    },
+    {
+      "level": 1,
+      "title": "9.10 测试结果的解释",
+      "page": 32
+    },
+    {
+      "level": 1,
+      "title": "9.11 性能测量与安全代价",
+      "page": 32
+    },
+    {
+      "level": 0,
+      "title": "第10章 讨论与未来工作",
+      "page": 33
+    },
+    {
+      "level": 1,
+      "title": "10.1 研究价值",
+      "page": 33
+    },
+    {
+      "level": 1,
+      "title": "10.2 数据与来源限制",
+      "page": 33
+    },
+    {
+      "level": 1,
+      "title": "10.3 历史接触与真实偶遇",
+      "page": 33
+    },
+    {
+      "level": 1,
+      "title": "10.4 缺测与不确定性",
+      "page": 33
+    },
+    {
+      "level": 1,
+      "title": "10.5 跨群体泛化",
+      "page": 33
+    },
+    {
+      "level": 1,
+      "title": "10.6 校准与个性化限制",
+      "page": 33
+    },
+    {
+      "level": 1,
+      "title": "10.7 可能的数据采集研究",
+      "page": 34
+    },
+    {
+      "level": 1,
+      "title": "10.8 系统扩展方向",
+      "page": 34
+    },
+    {
+      "level": 0,
+      "title": "第11章 补充研究：滚动验证、更强基线与跨人群检验",
+      "page": 34
+    },
+    {
+      "level": 1,
+      "title": "11.1 动机与总体设计",
+      "page": 34
+    },
+    {
+      "level": 1,
+      "title": "11.2 滚动起点重评估（T35）",
+      "page": 34
+    },
+    {
+      "level": 1,
+      "title": "11.3 Hawkes自激过程基线（T36、T40）",
+      "page": 35
+    },
+    {
+      "level": 1,
+      "title": "11.4 留出参与者验证（T38）",
+      "page": 35
+    },
+    {
+      "level": 1,
+      "title": "11.5 日间差异（T39）",
+      "page": 36
+    },
+    {
+      "level": 1,
+      "title": "11.6 小结与局限",
+      "page": 37
+    },
+    {
+      "level": 0,
+      "title": "第12章 结论",
+      "page": 37
+    },
+    {
+      "level": 0,
+      "title": "参考文献",
+      "page": 39
+    },
+    {
+      "level": 0,
+      "title": "附录A 核心目录与阶段成果",
+      "page": 41
+    },
+    {
+      "level": 0,
+      "title": "附录B 配置与环境",
+      "page": 42
+    },
+    {
+      "level": 0,
+      "title": "附录C 指标与解释规则",
+      "page": 42
+    },
+    {
+      "level": 0,
+      "title": "附录D 主要结果补充",
+      "page": 43
+    },
+    {
+      "level": 0,
+      "title": "附录E 运行与复现",
+      "page": 43
+    },
+    {
+      "level": 0,
+      "title": "附录F 完整用户操作路径",
+      "page": 44
+    },
+    {
+      "level": 0,
+      "title": "附录G 已知限制与证据追溯",
+      "page": 44
+    }
+  ],
+  "render_review": "see local render QA"
+}

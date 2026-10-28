@@ -150,6 +150,7 @@ def fill_tables(text, data):
 
 
 BLACK,WHITE=colors.black,colors.white
+COVER=('完整项目研究报告','审阅与编制日期：2026年10月13日','研究与工程基准：research-v2.2 /478a320','涵盖T01-T34与P01-P03','依据公开源码、冻结聚合材料与实际CI记录编写')
 
 def label(d,x,y,text,size=10,anchor='middle',font='ReportSong'):
     for i,line in enumerate(text.split('\n')):
@@ -314,7 +315,7 @@ class ReportDoc(BaseDocTemplate):
             self.heading_pages.append({'level':flowable.toc_level,'title':title,'page':self.page})
 
 
-def make_pdf(text,fig):
+def make_pdf(text,fig,output=None,cover=None):
     body=ParagraphStyle('Body',fontName='ReportSong',fontSize=12,leading=18,textColor=BLACK,alignment=TA_JUSTIFY,
                         firstLineIndent=24,rightIndent=12,spaceAfter=3,wordWrap='CJK',allowWidows=0,allowOrphans=0)
     styles={'body':body,
@@ -331,9 +332,7 @@ def make_pdf(text,fig):
       'covertext':ParagraphStyle('CoverText',fontName='ReportSong',fontSize=12,leading=21,alignment=TA_CENTER,textColor=BLACK,spaceAfter=12,wordWrap='CJK')}
     story=[Spacer(1,65),Paragraph('Encounter Lab：<br/>面向未来24小时接触事件预测的<br/>数据分析、机器学习建模与<br/>交互式可视化系统设计与实现',styles['cover']),
        Paragraph('Encounter Lab: Design and Implementation of a Data Analytics, Machine Learning and Interactive Visualization System for 24-Hour Contact Prediction',styles['covertext']),
-       Spacer(1,42),Paragraph('完整项目研究报告',styles['covertext']),Paragraph('审阅与编制日期：2026年10月13日',styles['covertext']),
-       Paragraph('研究与工程基准：research-v2.2 /478a320',styles['covertext']),Paragraph('涵盖T01-T34与P01-P03',styles['covertext']),
-       Paragraph('依据公开源码、冻结聚合材料与实际CI记录编写',styles['covertext'])]
+       Spacer(1,42)]+[Paragraph(line,styles['covertext']) for line in (cover or COVER)]
     lines=text.splitlines();i=next(i for i,line in enumerate(lines) if line=='## 中文摘要');refs=False
     while i<len(lines):
         line=lines[i].strip()
@@ -389,7 +388,7 @@ def make_pdf(text,fig):
         while i<len(lines) and lines[i].strip() and not re.match(r'^(#|\||!\[|<!--|```)',lines[i]):parts.append(lines[i].strip());i+=1
         paragraph=' '.join(parts)
         story.append(Paragraph(inline(paragraph),styles['reference'] if refs else styles['plain'] if paragraph.startswith('关键词') else styles['body']))
-    doc=ReportDoc(OUT/'Encounter_Lab_Full_Report.pdf',styles);doc.multiBuild(story)
+    doc=ReportDoc(output or OUT/'Encounter_Lab_Full_Report.pdf',styles);doc.multiBuild(story)
     return doc.heading_pages
 
 

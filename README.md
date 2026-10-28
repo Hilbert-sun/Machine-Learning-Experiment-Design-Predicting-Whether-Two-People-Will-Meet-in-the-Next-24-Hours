@@ -115,7 +115,7 @@ python -m tools.run_secret_scan
 
 | 文档 | 内容 |
 | --- | --- |
-| [完整中文项目研究报告](deliverables/Encounter_Lab_Full_Report.md) | 11 章学术报告（基于 478a320 版本，文中的文件名指当时的位置） |
+| [完整中文项目研究报告（第二版）](deliverables/v2/Encounter_Lab_Full_Report_v2.md) | 12 章学术报告，第 11 章为 T35–T40 补充研究；[第一版](deliverables/Encounter_Lab_Full_Report.md)基于 478a320，保留为历史记录 |
 | [docs/README.md](docs/README.md) | 产品交付、Explore 指南、产品计划、演示、复现、审计、交付清单、CI 记录、开发历史 |
 | [studies/README.md](studies/README.md) | T35–T37 滚动验证、Hawkes 基线、Hawkes 特征 |
 | [TASKS.md](TASKS.md) · [PROGRESS.md](PROGRESS.md) · [AGENTS.md](AGENTS.md) | 任务看板、最新进展、会话规则 |

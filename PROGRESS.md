@@ -2,6 +2,14 @@
 
 Date:2026-10-28
 
+**REPORT-UPDATE — DONE：完整报告第二版。** 新增 deliverables/v2/（Markdown、章节草稿、构建脚本、校验 JSON、图 11-1）。第一版报告、图和校验记录不变；build_report.py 的 make_pdf 增加了可选的输出路径和封面参数，默认值与第一版相同。
+
+- 第二版共 12 章、10 幅图、18 张表、24 条参考文献，正文 15,047 个汉字，PDF 44 页（本地）。新增参考文献：Tashman（2000）滚动起点检验、Hawkes（1971）自激过程，以及本项目的 studies 目录。
+- 排版检查：在独立的文档虚拟环境（reportlab 5.1.0、pypdf 6.21.3）中构建。逐页检查了封面、目录、图 6-2 和第 34–38 页的渲染。行首中文标点从 15 处降到 0 处（第一版 PDF 中原有 12 处）；没有文字超出右页边距；没有彩色字符。PDF 和渲染图都留在本地。
+
+
+Date:2026-10-28
+
 **T40 — DONE：更短的 Hawkes 半衰期。** 新增 src/hawkes_short.py、tests/test_hawkes_short.py、studies/hawkes_short/{README.md,T40_RESULTS.json}。T36 代码未改动。
 
 - 网格为 5–1440 分钟。log-sum-exp 递推在 T36 的 4 个半衰期上与原结果的最大差为 2.6×10⁻⁹。各折选中 15 分钟 6 次、30 分钟 4 次、60 分钟 1 次；验证集平均 AP 在 30 分钟处最高（0.642），5 分钟时降到 0.605。
