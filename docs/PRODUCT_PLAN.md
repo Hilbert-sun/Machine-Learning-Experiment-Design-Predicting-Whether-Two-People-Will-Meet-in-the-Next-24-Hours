@@ -16,7 +16,7 @@ The output is **趣味偶遇指数**, not a trained/calibrated probability. No a
 
 ## Stable input and fixed formula
 
-[Pure engine](src/chance_encounter.py) exports Questionnaire, evaluate_questionnaire and structured EntertainmentResult/Keyword/Issue values. Machine keys are independent of Chinese labels. Relationship is descriptive only; arrangement is a gate. This stable callable/output contract is the extension seam for a future independently validated questionnaire engine; no such model is provided by P01.
+[Pure engine](../src/chance_encounter.py) exports Questionnaire, evaluate_questionnaire and structured EntertainmentResult/Keyword/Issue values. Machine keys are independent of Chinese labels. Relationship is descriptive only; arrangement is a gate. This stable callable/output contract is the extension seam for a future independently validated questionnaire engine; no such model is provided by P01.
 
 | Field | Machine values and rule points |
 | --- | --- |
@@ -36,13 +36,13 @@ Each of3–5 keyword cards cites its exact user-selected source, names the facto
 
 ## P01 original user path and state (current navigation below)
 
-[Overview](pages/0_Overview.py) → 开始偶遇预测 · Play → [Chance Encounter](pages/12_Chance_Encounter.py). At P01 delivery, the13th navigation page followed all12 research entries; P03 now supplies the four-entry navigation described below.
+[Overview](../pages/0_Overview.py) → 开始偶遇预测 · Play → [Chance Encounter](../pages/12_Chance_Encounter.py). At P01 delivery, the13th navigation page followed all12 research entries; P03 now supplies the four-entry navigation described below.
 
 After selecting answers, calculate the index; excluded/invalid/insufficient cases show an explanation with no score. A valid result displays n keyword cards. 修改信息 restores submitted answers; a new submit recalculates. 重新开始 clears only Play questionnaire/result/widget state, preserving research selection and welcome acknowledgement. Page switching can retain Play answers within the same server session; refresh starts a new server session and clears answers.
 
 ## Welcome and refresh behavior
 
-[Welcome module](src/welcome.py) uses native st.dialog/st.session_state, plus a tiny built-in Streamlit v2 JavaScript component. It communicates ONLY a Boolean confirmation flag; sessionStorage stores one nonidentifying marker (`encounter_lab_welcome_v1=1`), no questionnaire answers, names, IDs, URL token, cookie or third-party call. Static component code never interpolates user input and loads no external resources.
+[Welcome module](../src/welcome.py) uses native st.dialog/st.session_state, plus a tiny built-in Streamlit v2 JavaScript component. It communicates ONLY a Boolean confirmation flag; sessionStorage stores one nonidentifying marker (`encounter_lab_welcome_v1=1`), no questionnaire answers, names, IDs, URL token, cookie or third-party call. Static component code never interpolates user input and loads no external resources.
 
 The dialog waits for the browser's storage response. Unacknowledged visits see one nondismissible welcome with the explicit acknowledgement button; acknowledgement closes it and is written on the next component render. Navigation within the session does not repeat it; after the marker is persisted, normal same-tab refresh restores acknowledgement. A new independent tab/session can show it again. Browser tab duplication/session restore may copy or retain sessionStorage; this is browser behavior, not a fresh-visit identity guarantee.
 

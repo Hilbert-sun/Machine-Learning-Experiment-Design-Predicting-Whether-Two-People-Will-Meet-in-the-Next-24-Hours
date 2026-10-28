@@ -11,20 +11,20 @@ import pytest
 from tools.check_repository_safety import approved_reports, check_content
 
 ROOT=Path(__file__).resolve().parents[1]
-DOCS=('README.md','FINAL_RESEARCH_AUDIT.md','REPRODUCIBILITY.md','PORTFOLIO_GUIDE.md',
-      'DEMO_GUIDE.md','FINAL_RELEASE_CHECKLIST.md','CI_VERIFICATION.md','DEVELOPMENT_HISTORY.md','PRODUCT_PLAN.md','EXPLORE_GUIDE.md','PRODUCT_DELIVERY.md')
+DOCS=('README.md',*('docs/'+name for name in ('FINAL_RESEARCH_AUDIT.md','REPRODUCIBILITY.md','PORTFOLIO_GUIDE.md',
+      'DEMO_GUIDE.md','FINAL_RELEASE_CHECKLIST.md','CI_VERIFICATION.md','DEVELOPMENT_HISTORY.md','PRODUCT_PLAN.md','EXPLORE_GUIDE.md','PRODUCT_DELIVERY.md')))
 
 
 @pytest.mark.parametrize('name',DOCS)
 def test_document_local_links_exist(name):
-    text=(ROOT/name).read_text()
+    text=((ROOT/name).read_text())
     # This project uses inline Markdown links; nested badge URLs are external.
     for target in re.findall(r'\]\(([^\s)]+)(?:\s+"[^"]*")?\)',text):
         target=target.strip('<>')
         if urlsplit(target).scheme or target.startswith('#'):
             continue
         path=unquote(target.split('#',1)[0].split('?',1)[0])
-        assert (ROOT/path).is_file(),f'{name}: missing target {path}'
+        assert ((ROOT/name).parent/path).is_file(),f'{name}: missing target {path}'
 
 
 @pytest.mark.parametrize('name',DOCS)
@@ -58,8 +58,8 @@ def test_readme_real_metric_table_matches_frozen_values():
 
 
 def test_demo_and_reproduction_preserve_independent_reveal_and_empty_states():
-    reproduction=(ROOT/'REPRODUCIBILITY.md').read_text()
-    demo=(ROOT/'DEMO_GUIDE.md').read_text()
+    reproduction=(ROOT/'docs/REPRODUCIBILITY.md').read_text()
+    demo=(ROOT/'docs/DEMO_GUIDE.md').read_text()
     assert 'Select → Predict → Freeze → Reveal' in reproduction
     assert 'Predict → Freeze → Reveal' in demo
     assert 'no standalone UI tab' in reproduction

@@ -209,7 +209,7 @@ def audit_aggregates(root):
     require(parity['status']=='passed' and len(parity['operation_checks'])==len(modes),'T32.parity')
     snapshot=e.json('reports/performance/T32_SNAPSHOT_AUDIT.json')
     require(snapshot['status']=='stable_archive_snapshots_only' and snapshot['ingestion_time_status']=='unavailable','T32.snapshot_scope')
-    ci=e.read('CI_VERIFICATION.md')
+    ci=e.read('docs/CI_VERIFICATION.md')
     require(T33_SHA in ci and ('actions/runs/'+T33_RUN) in ci,'T33.CI_reference')
     return {'status':'PASS','verification_scope':'public_aggregate_verified',
             'raw_reproduction':'not_verifiable_without_local_artifacts',

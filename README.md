@@ -1,16 +1,18 @@
 # Encounter Lab · 相遇实验室
 
-**世界这么大，明天我们会不会刚好遇见？**
+**两个人在未来 24 小时内会不会相遇？** 本项目用 Copenhagen Networks Study 的匿名蓝牙接近记录研究这个问题：只看 t 之前的历史，预测 (t, t+24h] 内是否会再次接近，并严格防止数据泄漏、不把缺失观测当成"没相遇"。项目同时提供一个 Streamlit 应用，包括趣味问卷、公开数据分析和完整的科研工具。
 
-回答七个简单问题，获得0–100的趣味偶遇指数；用关键词、因素图和 A/B 线索图理解自己的填写信息，也可以查看真实研究群体的接触规律。无需注册、原始数据或模型即可使用 Play 与 Explore。**趣味指数来自固定规则，不是真实相遇概率。**
+[![Public CI](https://github.com/Hilbert-sun/Machine-Learning-Experiment-Design-Predicting-Whether-Two-People-Will-Meet-in-the-Next-24-Hours/actions/workflows/ci.yml/badge.svg?branch=research-v2.2)](https://github.com/Hilbert-sun/Machine-Learning-Experiment-Design-Predicting-Whether-Two-People-Will-Meet-in-the-Next-24-Hours/actions/workflows/ci.yml)
 
-应用只有四个一级入口：**首页 Home / 玩一玩 Play / 数据分析 Explore / 科研中心 Research**。首页点击“开始偶遇预测”，提交问卷后进入完整分析；也可直接进入 Explore 的公开数据区。原有科研功能全部保留在 Research 分类目录，科研统计需主动打开。安装与一分钟操作见 [产品交付说明](PRODUCT_DELIVERY.md)。
+![滚动验证合并 AP：XGBoost 1/3/7 天历史对比，以及 7 天历史下五个模型的对比](docs/figures/rolling_ap.svg)
 
-**T01–T34 与 Product Extension P01–P03 已交付。** P03 最终提交 [`390384c`](https://github.com/Hilbert-sun/Machine-Learning-Experiment-Design-Predicting-Whether-Two-People-Will-Meet-in-the-Next-24-Hours/commit/390384ca27b9e9e89788a6d17e5c436552d28873) 的 [GitHub Actions](https://github.com/Hilbert-sun/Machine-Learning-Experiment-Design-Predicting-Whether-Two-People-Will-Meet-in-the-Next-24-Hours/actions/runs/38115466252) 已核实三个必需 Job 全部成功：500项全量测试、71项 Streamlit Smoke、27项安全测试及12项原生依赖检查。该记录对应已发布的 P03；后续文档提交须通过自己的 CI。
+**结论（T35–T37 滚动验证，11 个测试日）**
 
-当前产品版本位于 [`research-v2.2`](https://github.com/Hilbert-sun/Machine-Learning-Experiment-Design-Predicting-Whether-Two-People-Will-Meet-in-the-Next-24-Hours/tree/research-v2.2)。在 GitHub 查看代码、README 或克隆时请选择这个分支。
+1. **历史越长越准。** 7 天历史比 1 天高 +0.090 AP（日块 95% 区间 [0.073, 0.103]），11 天全部为正。
+2. **信号主要来自最近接触的时间结构。** 不用标签、每对只有两个参数的 Hawkes 自激过程 AP 为 0.629，接近 XGBoost 的 0.662；把 Hawkes 分数再加进 XGBoost，只多 +0.003。
+3. **只能作描述性结论。** 测试日以前都被评估过，区间只描述日间波动，也没有独立总体验证。详见[研究结果与适用总体](#研究结果与适用总体)。
 
-科研部分研究未来24小时的匿名设备接近记录，比较历史窗口、模拟历史预测并审计不完整观测。设备接近是相遇的代理证据，不能预测关系或追踪实时位置。真实数据、权重及逐样本结果仅在本地，GitHub 提供代码、已审查聚合报告和公开测试。
+图由 [docs/figures/build_readme_figure.py](docs/figures/build_readme_figure.py) 从公开聚合结果生成。
 
 ## 快速开始
 
@@ -25,68 +27,20 @@ python -m pip install -r requirements.txt
 python -m streamlit run app.py
 ```
 
-浏览器打开终端显示的地址，通常为 http://localhost:8501。仅在本机预览时可在启动命令后加 `--server.address 127.0.0.1`。Linux 原生树模型需要 OpenMP 运行时（CI 使用 libgomp1）；macOS 原生依赖及平台限制见下方安装说明。
+浏览器打开终端显示的地址（通常是 http://localhost:8501）。如果只在本机预览，可以在启动命令后加 `--server.address 127.0.0.1`。Linux 上的原生树模型需要 OpenMP 运行时（CI 使用 libgomp1），macOS 可能需要 libomp。当前版本在 [`research-v2.2`](https://github.com/Hilbert-sun/Machine-Learning-Experiment-Design-Predicting-Whether-Two-People-Will-Meet-in-the-Next-24-Hours/tree/research-v2.2) 分支。
 
-| 想体验什么 | 操作入口 | 是否需要本地真实数据/模型 |
+| 想体验什么 | 入口 | 是否需要本地真实数据/模型 |
 | --- | --- | --- |
-| 趣味偶遇指数 | Home → Play，填写七项选择题 | 不需要 |
-| 个人线索与图谱 | Play 结果 → 查看我的偶遇分析 | 只需当前会话的有效问卷 |
-| 公开群体规律 | Explore → 真实数据中的相遇规律 | 不需要，使用仓库中的已审查聚合报告 |
-| 历史科研与模型 | Research 分类目录 | 具体研究操作需要对应本地数据、模型及版本证据；缺失时显示空状态 |
+| 趣味偶遇指数 | Home → Play，回答七道选择题 | 不需要 |
+| 个人线索与图谱 | Play 结果 → 查看我的偶遇分析 | 只需当前会话中的有效问卷 |
+| 公开群体规律 | Explore → 真实数据中的相遇规律 | 不需要，读取仓库中已审查的聚合报告 |
+| 历史科研与模型 | Research 分类目录 | 需要对应的本地数据、模型和版本证据；缺失时显示空状态 |
 
-普通用户路径：**开始偶遇预测 → 七项问卷 → 查看指数 → 查看我的偶遇分析 → 修改或重置**。科研复现路径和娱乐体验互相独立。
+**Play 的趣味指数来自固定规则，不是真实相遇概率**，也和科研模型完全独立。规则见[产品计划](docs/PRODUCT_PLAN.md)，Explore 的口径见 [Explore 指南](docs/EXPLORE_GUIDE.md)，演示流程见[五分钟演示](docs/DEMO_GUIDE.md)。
 
-## Play · 趣味偶遇预测（P01）
+## 研究结果与适用总体
 
-从首页点击“开始偶遇预测”，或在全局导航选择“玩一玩 Play”。无需登录、数据集或模型；填写七项粗粒度选择题即可体验。首次访问显示一次娱乐提示，同标签页刷新在浏览器会话存储可用时不重复；问卷答案只留在服务器当前会话，刷新会清空。
-
-输出是0–100的**固定规则趣味指数，不能当作真实偶遇概率**。五类已知历史/日常线索等权平均，不确定项不当成零分；关系类型不加权。少于三项有效线索、已约定见面、约定不明或明显矛盾时不出指数。结果提供3–5张仅引用实际填写信息的关键词卡片，支持修改与重新开始。
-
-原 Copenhagen 模型没有用该问卷训练，也不能区分约定见面与偶遇；Play 与 Research 的结果保持独立。完整规则、刷新限制与 P02/P03 边界见 [PRODUCT_PLAN.md](PRODUCT_PLAN.md)。
-
-## Explore · 看看偶遇分析（P02）
-
-一级导航提供 Home / Play / Explore / Research；科研概览移至科研中心，在点击“打开科研概览”后才加载。Play 结果页点击“查看我的偶遇分析”，即可解释当前问卷的真实 Keyword、因素分值和 A/B 线索关联；没有提交问卷时不生成示例个人分数。
-
-深色线索图使用稳定力导向布局、悬停/点击说明、A/B 焦点切换和恢复视图；触屏可使用节点说明选择器。可选共同熟人数仅画一个自述汇总节点，不改变 P01 指数，不制造个体朋友或真实社交链路。个人信息只在当前会话中处理；修改/重置问卷会使旧分析失效。
-
-Explore 使用“我的偶遇分析 / 真实数据中的相遇规律”两个标签；无问卷时默认打开公开数据。公开群体区无需原始数据或模型：直接读取 T22 同一测试总体的窗口排序结果、T31 相对研究日接触活动及已公开邻居分组。隐私抑制/缺失不补0；MIT 未核实时间单位不画日趋势，Social Evolution 不画虚构曲线。真实科研接触网络通过独立入口访问，不混入 A/B 图谱。见 [EXPLORE_GUIDE.md](EXPLORE_GUIDE.md)。
-
-## 前端预览 / Frontend walkthrough
-
-前端由 Python + Streamlit 构建，图表使用 Plotly，页面导航在 [app.py](app.py) 和 [src/ui.py](src/ui.py) 中定义。无需额外构建 JavaScript 应用；后端推理与研究逻辑位于独立的 src 模块。
-
-安装依赖后运行：
-
-```sh
-streamlit run app.py
-```
-
-打开终端显示的本地地址，默认是 http://localhost:8501。应用提供中文优先的深色界面：四个全局一级入口、Research 分类目录和15个注册页面（原12条路由 + Play + Explore + Research Hub）。窄屏导航自动换行、卡片纵向排列，不再平铺全部科研页面。
-
-建议按以下顺序查看：
-
-1. **Home / Research**：首页选择 Play、Explore 或科研中心；Research 目录中点击“打开科研概览”查看原有六项指标，首页和未打开概览的目录不扫描本地研究数据。
-2. **History Window Study**：保留默认配置，点击 Run Study 读取并验签已有冻结结果，查看同一队列的 1/3/7 天比较。匹配的本地数据、模型和运行记录是必要条件。
-3. **Time Machine**：选择历史研究日、配对及窗口，按 Select → Predict → Freeze → Reveal 操作。揭晓不足以验证无接触时显示 Unknown；静态档案不作为实时预测。
-4. **Multi-Dataset Exploration**：查看各来源的描述网络与正接触检索，区分可用、历史不足、时间单位未知和不可用状态。
-
-首次克隆没有真实数据或模型时，相关页面显示明确空状态；公共报告与测试仍可直接查看。T30 审计通过文档和聚合表呈现，没有单独的应用页面。完整操作说明见 [五分钟演示](DEMO_GUIDE.md) 和 [分级复现指南](REPRODUCIBILITY.md)。
-
-查看前端代码时，从 app.py 的导航进入下面各页面；Time Machine 的具体交互在 [src/time_machine_ui.py](src/time_machine_ui.py)，多数据集展示在 [src/multisource_ui.py](src/multisource_ui.py)。
-
-## Research and implemented features
-
-Copenhagen supports the main binary experiment with scan-coverage proxy evidence. Workplace archives support observed-positive retrieval; High School supports limited descriptive retrieval. MIT Reality Mining has unverified tick units; Social Evolution remains unavailable. Identities are namespaced by source and never merged across datasets.
-
-- Chronological train/validation/test splits with strict 24-hour label purging; validation-only thresholds and model calibration where supported.
-- Shared candidates and bounded 1/3/7-day features, frozen models and explicit model information deadlines.
-- Independent Time Machine: Select → Predict → Freeze → Reveal; unreliable absence remains Unknown.
-- Population/selection-bias audit, source-specific network exploration and fixed-rule Top-K retrieval.
-- Parquet/PyArrow processing, stable archive snapshots and versioned caches with output-parity checks.
-- 12 original research routes plus independent Play, Explore and Research Hub pages, pytest, Python 3.11/Linux GitHub Actions and repository/secret scanning.
-
-## Genuine findings and their populations
+这些结果都基于 Copenhagen 的扫描覆盖率代理标签：只有观测充分的完整时段，才能把"没接触"记为负例，其余记为 Unknown，不计入二分类指标。不同实验的总体不同，表中数值不能跨行直接比较。
 
 | Copenhagen evidence | Test population | XGBoost AP | ROC-AUC | Brier |
 | --- | --- | --- | --- | --- |
@@ -96,23 +50,23 @@ Copenhagen supports the main binary experiment with scan-coverage proxy evidence
 | T22 fixed cohort, 7d history | same T22 cohort | 0.691366 | 0.841494 | 0.109107 |
 | T30 expanded, reliably labeled and predictable, 7d | 27,802 samples, same exposed 4 dates, 27.70% positive | 0.758930 | 0.854281 | 0.128114 |
 
-T22 compares the same historical candidates, labels and purged splits; only the bounded history budget changes. Its 7d−1d AP difference is 0.102644. **Only four principal test dates, scan-proxy labels and no independent population validation:** these results do not establish significance, causation or long-term generalization. T17 uses a different cohort and a 14-day feature bank, so it is not a direct window comparison.
+- **T22**：同一批候选、标签和清除后的划分，只改变历史窗口长度，7d−1d 的 AP 差为 0.102644。**Only four principal test dates, scan-proxy labels and no independent population validation**：这些结果不能证明显著性、因果关系或长期泛化。T17 使用不同的队列和 14 天特征库，不能当作窗口对比。
+- **T30**：38,005 个历史候选中，27,820 个有可靠标签，10,185 个为 Unknown。新增的 12,436 个候选里只有已知正例、没有已知负例，所以 T30 较高的 AP **not a same-population model improvement**，Brier 反而比 T22 差。见[审计证据](docs/FINAL_RESEARCH_AUDIT.md)。
+- **T35–T37**：协议不变，改为滚动起点，得到 11 个测试日（59,140 个样本，正例率 19.66%），对应上图。按人排序指标 NDCG@5：7 天 XGBoost 0.786，Hawkes 0.784。见[滚动验证](studies/rolling_validation/README.md)、[Hawkes 基线](studies/hawkes_baseline/README.md)和 [Hawkes 特征](studies/hawkes_features/README.md)。
+- **T32 性能**：同一机器、同一输入，每种配置运行 5 个独立进程。MIT 冷启动峰值内存下降 27.59%；Copenhagen 部分热启动的特征和预测操作耗时约下降 97.9% 和 95.0%；部分冷启动路径变慢。见[性能证据](PERFORMANCE_AUDIT.md)。
 
-T30 has 38,005 historical candidates: 27,820 reliable labels and 10,185 Unknown (26.80%); 37,913 candidates can be predicted, of which 27,802 have reliable labels. The added 12,436 candidates contain 10,185 Unknown and 2,251 known positives, with no known negatives. Its higher AP is **not a same-population model improvement**; Brier worsens relative to T22. Reliable-subset performance does not identify unbiased performance over all candidates. [Audit evidence and interpretation](FINAL_RESEARCH_AUDIT.md).
+其他数据源：Workplace 只支持已观测正例的检索，High School 只支持有限的描述性检索；MIT Reality Mining 的时间单位未核实；Social Evolution 不可用。各数据源的身份按来源分别命名，从不跨数据集合并，见[多数据源研究](MULTISOURCE_STUDY.md)。
 
-**T35 rolling-origin re-evaluation** (unchanged T21/T22 protocol, 11 previously exposed test days, 59,140 samples): 7d XGBoost pooled AP 0.6619 vs 1d 0.5716 (Δ+0.090, day-block 95% interval [0.073, 0.103], positive on 11/11 days) and vs 7d historical frequency 0.4762; per-participant NDCG@5 0.786. Different population from T22; descriptive of day-to-day variation, not population inference. [Rolling validation](studies/rolling_validation/README.md).
+## 方法要点
 
-**T36 Hawkes baseline** on the same T35 folds: a label-free per-pair exponential-kernel Hawkes process reaches pooled AP 0.6285 (7d XGBoost 0.6619, Δ+0.033, interval [0.017, 0.048]; above 7d logistic 0.5907), with nearly identical per-participant NDCG@5 (0.784 vs 0.786). Every fold selected the smallest half-life in the grid. [Hawkes baseline](studies/hawkes_baseline/README.md).
+- 时间顺序划分训练、验证和测试集，并严格清除跨边界的 24 小时标签窗口；阈值和校准只用验证集。
+- 共享候选集，1/3/7 天有界特征，冻结的模型，以及明确的模型信息截止时间。
+- 独立的 Time Machine：Select → Predict → Freeze → Reveal；无法可靠判定的"没接触"保持 Unknown。
+- 总体与选择偏差审计、按数据源的网络探索，以及固定规则的 Top-K 检索。
+- Parquet/PyArrow 处理、稳定的归档快照，以及带输出一致性检查的版本化缓存。
+- 技术栈：pandas、NumPy、scikit-learn、XGBoost、LightGBM、SciPy、NetworkX、Streamlit、Plotly。模块结构见[作品集架构说明](docs/PORTFOLIO_GUIDE.md)。
 
-**T37 Hawkes scores as XGBoost inputs** (same folds, no tuning): pooled AP 0.6649 vs 0.6619 (Δ+0.003, interval [0.0003, 0.0062]) — a negligible increment; the existing 7d features already carry most of the recency structure. [Hawkes features](studies/hawkes_features/README.md).
-
-T32 measured five separate processes per configuration on the same machine/input. MIT cold peak RSS fell 27.59%; specific Copenhagen warm feature/prediction operations reduced elapsed time about 97.9%/95.0%. Some cold paths became slower. Whole-page rendering and cross-OS performance were not measured. [Performance evidence](PERFORMANCE_AUDIT.md).
-
-## Architecture and stack
-
-Python, pandas, NumPy, scikit-learn, XGBoost and LightGBM provide preparation, baselines, model persistence and synthetic/native regression coverage. Copenhagen window results use XGBoost, logistic regression and historical frequency; LightGBM is supported but is not the reported window-study winner. NetworkX supports historical networks; Streamlit and Plotly provide the application. Parquet/PyArrow and SHA256 snapshot/cache identities preserve data contracts. [Actual module architecture](PORTFOLIO_GUIDE.md).
-
-## Application pages
+## 应用页面
 
 | Page | Purpose |
 | --- | --- |
@@ -132,50 +86,32 @@ Python, pandas, NumPy, scikit-learn, XGBoost and LightGBM provide preparation, b
 | [Encounter Insights · Explore](pages/13_Encounter_Insights.py) | Personal clue explanations/diagram and separate public research stories |
 | [Research Hub](pages/14_Research_Hub.py) | Categorized research directory, opt-in original overview and report links |
 
-T30 has no dedicated application page: read [ASOF_AUDIT.md](ASOF_AUDIT.md) and its public aggregate tables. Local private HTML, when present, is an additional research artifact.
+应用的一级导航只有 Home / Play / Explore / Research 四个入口，科研页面收在 Research 分类目录里。导航在 [app.py](app.py) 和 [src/ui.py](src/ui.py) 中定义。T30 审计没有单独的页面，见 [ASOF_AUDIT.md](ASOF_AUDIT.md)。
 
-## 环境与验证 / Environment and verification
-
-Use Python 3.11 and a full Git clone on branch `research-v2.2` so the trusted frozen baseline is available. Linux native tree libraries require an OpenMP runtime (CI uses libgomp1); macOS may require libomp. The archived requirements-lock.txt describes a macOS ARM64 environment, not a Linux lock.
+## 验证与复现
 
 ```sh
-python3.11 -m venv .venv
-source .venv/bin/activate
-python -m pip install -r requirements.txt
 python -m pip check
 python -m pytest -q
 python -m src.final_audit
 python tools/check_repository_safety.py
 python -m tools.run_secret_scan
-streamlit run app.py
 ```
 
-No dataset or model download is needed for public tests or the public audit. The default public audit checks aggregate equations and 51 frozen files against the trusted T32 commit; it does not recompute genuine Copenhagen AP from raw data. Data/models are excluded from Git; missing local artifacts yield informative empty states. [Three reproduction levels](REPRODUCIBILITY.md), [five-minute demo](DEMO_GUIDE.md).
+公开测试和公开审计都不需要下载数据或模型。公开审计核对聚合结果之间的算术关系，以及 51 份冻结材料与可信基线是否一致，但不会从原始数据重算 AP。有本地 Copenhagen 数据时，`python -m src.rolling_validation --verify-only`、`python -m src.hawkes_baseline --verify-only` 和 `python -m src.hawkes_features --verify-only` 会从本地逐样本结果重算公开聚合。CI 有三个 Job：全量 pytest、15 条路由的 Streamlit smoke，以及仓库与密钥安全扫描。见[分级复现指南](docs/REPRODUCIBILITY.md)和 [CI 验证记录](docs/CI_VERIFICATION.md)。
 
-## Research limitations, sources and licenses
+## 局限、数据来源与许可
 
-Only four principal window-study test dates; exposed historical periods; coverage is a proxy, not continuous device-online evidence; missing contact is not automatically negative. Stable archive event time does not establish historical ingestion availability. Static archives cannot be advertised as real-time forecasts. Snapshots retain disclosed TOCTOU/atomic-publication limits and lack live ingestion transactions. Anonymous identifiers can still carry reidentification risk; no individual demo exports are published. Case Explorer now reuses the verified Time Machine policy/snapshot service; mixed policies reject before prediction or future reads. Five critical pages passed real browser visual acceptance, alongside the 15-route AppTest suite. See [final acceptance evidence](FINAL_RESEARCH_AUDIT.md).
+覆盖率只是代理指标，不代表设备持续在线；缺少接触记录也不会自动当成负例。静态归档不能当作实时预测。快照仍有已披露的 TOCTOU 和原子发布限制。匿名 ID 仍有被重新识别的风险，因此不发布任何个人层面的导出结果。原始数据、模型权重和逐样本预测都不进入 Git。
 
-Source links, citations and dataset-specific licensing evidence are preserved in [source quality metadata](reports/multisource/T31_SOURCE_SUMMARY.json), [dataset catalog](reports/DATASET_CATALOG.json), and [multi-source study](MULTISOURCE_STUDY.md). Copenhagen: [official Figshare record](https://figshare.com/articles/dataset/The_Copenhagen_Networks_Study_interaction_data/7267433). Do not infer a dataset license from website source-code licenses; MIT Social Evolution acquisition/license remain unverified. Contact-only sources cannot support reliable binary negatives. No project code LICENSE file is currently provided; do not assume permission for unrestricted redistribution. Dataset-specific licenses govern third-party data separately.
+数据来源、引用与各数据集的许可证据见[来源质量元数据](reports/multisource/T31_SOURCE_SUMMARY.json)和[数据集目录](reports/DATASET_CATALOG.json)。Copenhagen 数据来自其 [Figshare 官方页面](https://figshare.com/articles/dataset/The_Copenhagen_Networks_Study_interaction_data/7267433)。不能根据网站源码的许可证推断数据集许可证。本项目代码目前没有 LICENSE 文件，不代表允许不受限制地再分发；第三方数据各自适用其数据集许可证。
 
-## CI、验收证据与文档索引
-
-[![Public CI](https://github.com/Hilbert-sun/Machine-Learning-Experiment-Design-Predicting-Whether-Two-People-Will-Meet-in-the-Next-24-Hours/actions/workflows/ci.yml/badge.svg?branch=research-v2.2)](https://github.com/Hilbert-sun/Machine-Learning-Experiment-Design-Predicting-Whether-Two-People-Will-Meet-in-the-Next-24-Hours/actions/workflows/ci.yml)
-
-Three jobs verify full public pytest, 15-route Streamlit smoke, and repository/secret safety. Synthetic fixtures and public aggregates are distinct from lawful local research reproduction. No raw data, weights, per-sample predictions, credentials or personal paths belong in Git. [已核验的研究及产品 CI 记录](CI_VERIFICATION.md)。最新维护提交仍以该 SHA 自己的 Actions 状态为准。
+## 文档索引
 
 | 文档 | 内容 |
 | --- | --- |
-| [完整中文项目研究报告](deliverables/Encounter_Lab_Full_Report.md) | 11章学术报告、可追溯实验表与黑白SVG；正式PDF保留本地 |
-| [产品交付说明](PRODUCT_DELIVERY.md) | 当前功能、操作路径、三档浏览器验收、图谱与隐私限制 |
-| [Explore 使用指南](EXPLORE_GUIDE.md) | 个人线索、公开图表、来源口径与 Unknown 处理 |
-| [产品计划与固定规则](PRODUCT_PLAN.md) | P01–P03 完成情况、字段、计分和会话行为 |
-| [演示指南](DEMO_GUIDE.md) | 无私有数据的产品演示与科研五分钟路径 |
-| [交付清单](FINAL_RELEASE_CHECKLIST.md) | 已完成验收及不可等同于研究泛化的边界 |
-| [CI 验证记录](CI_VERIFICATION.md) | 已发布 SHA、实际 Actions、公开测试验证范围 |
-
-- [Final research audit and task evidence index](FINAL_RESEARCH_AUDIT.md)
-- [Reproducibility](REPRODUCIBILITY.md), [portfolio architecture](PORTFOLIO_GUIDE.md), [demo](DEMO_GUIDE.md), [release checklist](FINAL_RELEASE_CHECKLIST.md)
-- [Tasks](TASKS.md), [latest progress](PROGRESS.md), [session instructions](AGENTS.md)
-- Frozen historical snapshots: [research report](RESEARCH_REPORT.md), [window study](WINDOW_STUDY.md), [as-of contract](ASOF_INFERENCE.md), [Time Machine](TIME_MACHINE.md), [population audit](ASOF_AUDIT.md), [multi-source](MULTISOURCE_STUDY.md), [performance](PERFORMANCE_AUDIT.md). Old task-status statements in these are historical, not current status.
-- [Development history](DEVELOPMENT_HISTORY.md): previous README preserved as a dated historical snapshot; its old status notes are superseded by TASKS/PROGRESS.
+| [完整中文项目研究报告](deliverables/Encounter_Lab_Full_Report.md) | 11 章学术报告（基于 478a320 版本，文中的文件名指当时的位置） |
+| [docs/README.md](docs/README.md) | 产品交付、Explore 指南、产品计划、演示、复现、审计、交付清单、CI 记录、开发历史 |
+| [studies/README.md](studies/README.md) | T35–T37 滚动验证、Hawkes 基线、Hawkes 特征 |
+| [TASKS.md](TASKS.md) · [PROGRESS.md](PROGRESS.md) · [AGENTS.md](AGENTS.md) | 任务看板、最新进展、会话规则 |
+| 冻结的历史快照 | [研究报告](RESEARCH_REPORT.md)、[窗口研究](WINDOW_STUDY.md)、[as-of 契约](ASOF_INFERENCE.md)、[Time Machine](TIME_MACHINE.md)、[总体审计](ASOF_AUDIT.md)、[多数据源](MULTISOURCE_STUDY.md)、[性能](PERFORMANCE_AUDIT.md)、[数据集目录](DATASET_CATALOG.md)。这些文档受可信基线保护，必须保留在根目录；其中的任务状态是历史记录 |

@@ -12,7 +12,7 @@ for title, entries in RESEARCH_GROUPS:
             st.caption(description)
 with st.expander("研究报告与复现说明"):
     base = "https://github.com/Hilbert-sun/Machine-Learning-Experiment-Design-Predicting-Whether-Two-People-Will-Meet-in-the-Next-24-Hours/blob/research-v2.2/"
-    for name, label in (("FINAL_RESEARCH_AUDIT.md", "科研审计与结果边界"), ("REPRODUCIBILITY.md", "分级复现指南"), ("PRODUCT_DELIVERY.md", "产品操作与交付说明")):
+    for name, label in (("docs/FINAL_RESEARCH_AUDIT.md", "科研审计与结果边界"), ("docs/REPRODUCIBILITY.md", "分级复现指南"), ("docs/PRODUCT_DELIVERY.md", "产品操作与交付说明")):
         st.link_button(label, base + name)
 st.divider()
 st.subheader("科研概览 · 原 Overview 统计")

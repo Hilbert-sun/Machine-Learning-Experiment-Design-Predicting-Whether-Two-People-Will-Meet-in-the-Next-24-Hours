@@ -2,6 +2,17 @@
 
 Date:2026-10-28
 
+**DOCS-PRESENT — DONE：展示层精简。**
+
+- 根目录的 Markdown 从 25 份减到 13 份：12 份指南移入 docs/（新增 docs/README.md 索引），156 处相对链接已改写。7 份冻结文档和生成的 DATASET_CATALOG.md 受可信基线按路径保护，保留在根目录；deliverables/ 逐字节不变。
+- README 重写（19.2 KB → 约 11 KB）：首屏是问题、结果图、三条结论和快速开始；保留 T17/T22/T30 原始数值表、15 个页面链接以及全部限制说明。新增 studies/README.md。
+- 结果图 docs/figures/rolling_ap.svg 由 build_readme_figure.py 从 T35/T37 公开 JSON 生成，支持浅色和深色模式。
+- 代码只改了路径：pages/14_Research_Hub.py 的文档链接、src/final_audit.py 读取 docs/CI_VERIFICATION.md，以及对应测试路径。应用页面和导航不变。
+- 验证：全量 pytest 510 passed；final_audit PASS（51 份冻结材料不变）；全仓库相对链接检查 0 个失效。
+
+
+Date:2026-10-28
+
 **T37 — DONE：Hawkes 强度作为 XGBoost 输入。** 新增 src/hawkes_features.py、tests/test_hawkes_features.py、studies/hawkes_features/{README.md,T37_RESULTS.json}；T35/T36 代码与冻结材料未改动。
 
 - 输入为 7 天特征加 4 个 Hawkes 网格分数，不选半衰期；XGBoost 不调参，沿用 T35 折计划。训练时刻补算 22,881 行 Hawkes 分数，复用 T36 分数前做了重算一致性检查；参照模型 AP 与 T36 逐位一致。

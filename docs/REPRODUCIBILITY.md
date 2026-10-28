@@ -45,7 +45,7 @@ Do not use `src.real_experiment`, `src.research_delivery`, default `src.asof_aud
 streamlit run app.py
 ```
 
-All 12 registered pages are listed in [README](README.md). Overview summarizes actual available local files. Data Manager requires explicit acquisition actions; Catalog explains per-source suitability. A public checkout has no genuine models/processed data and should show empty states rather than invented scores. Raw files alone do not constitute a verified processed version.
+All 12 registered pages are listed in [README](../README.md). Overview summarizes actual available local files. Data Manager requires explicit acquisition actions; Catalog explains per-source suitability. A public checkout has no genuine models/processed data and should show empty states rather than invented scores. Raw files alone do not constitute a verified processed version.
 
 With matching saved artifacts, History Window Study reuses the default frozen run; do not alter settings or launch new experiments during final acceptance. Model manifests and source/snapshot versions must match. Legacy Prediction Lab and bounded-window Time Machine have different contracts; do not substitute one bank for another.
 
@@ -53,7 +53,7 @@ Time Machine uses Select → Predict → Freeze → Reveal. Select the source, S
 
 Static Copenhagen archives cannot pass real-time prospective mode without a verified current clock and recent pre-t scans. Event time is distinct from data arrival; ingestion_time is unavailable. Historical replay assumes archive availability and is not a reconstruction of live upload timing.
 
-T30 has no standalone UI tab: open [ASOF_AUDIT.md](ASOF_AUDIT.md) and [aggregate metrics](reports/asof_audit/T30_METRICS.csv); private local HTML is optional. T31 appears in Multi-Dataset Exploration, separating descriptive graphs from Observed Positive Retrieval; unrecorded pairs are Unknown, and MIT ticks are not converted to days.
+T30 has no standalone UI tab: open [ASOF_AUDIT.md](../ASOF_AUDIT.md) and [aggregate metrics](../reports/asof_audit/T30_METRICS.csv); private local HTML is optional. T31 appears in Multi-Dataset Exploration, separating descriptive graphs from Observed Positive Retrieval; unrecorded pairs are Unknown, and MIT ticks are not converted to days.
 
 Case Explorer Reveal reuses the verified Time Machine policy service: every selected model policy comes from read_model_contract, mixed policies reject before prediction/future access, and the exact verified threshold reaches Reveal. The legacy checkbox remains an explicit backtest action; the independent Time Machine retains its separate Freeze step. No evaluation bank becomes an inference candidate source. See [final audit](FINAL_RESEARCH_AUDIT.md).
 

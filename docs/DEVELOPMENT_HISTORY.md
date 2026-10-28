@@ -4,7 +4,7 @@ This is a preserved development record. Old task states and page counts describe
 
 # Encounter Lab — 相遇实验室
 
-使用公开、匿名接触数据，研究两名参与者未来 24 小时内发生设备近距离接触的概率。T01–T16的软件交付证据见 [DELIVERY.md](DELIVERY.md)。T17已在完整Copenhagen真实数据上完成首次基线/XGBoost实验：测试PR-AUC(AP)0.3815、ROC-AUC0.7507、校准Brier0.0777，详见 [诊断报告](reports/T17_DATA_DIAGNOSTICS.md) 和 [真实实验报告](reports/T17_REAL_EXPERIMENT.md)。数据与模型仅在本地，仓库只提交代码及安全聚合结果；新克隆仍需自行准备真实数据与模型。
+使用公开、匿名接触数据，研究两名参与者未来 24 小时内发生设备近距离接触的概率。T01–T16的软件交付证据见 [DELIVERY.md](DELIVERY.md)。T17已在完整Copenhagen真实数据上完成首次基线/XGBoost实验：测试PR-AUC(AP)0.3815、ROC-AUC0.7507、校准Brier0.0777，详见 [诊断报告](../reports/T17_DATA_DIAGNOSTICS.md) 和 [真实实验报告](../reports/T17_REAL_EXPERIMENT.md)。数据与模型仅在本地，仓库只提交代码及安全聚合结果；新克隆仍需自行准备真实数据与模型。
 
 ## 环境安装
 
@@ -242,7 +242,7 @@ python -m pytest -q
 
 测试正例率21.38136%，7d−1d AP差+0.102644；4个主测试日及3个预设滚动折的差值均为正。结果支持这些观测时期内的窗口效果；仅4个主测试日，不输出置信区间或显著性结论。验证只有3天，无法在严格隔离后同时支持校准和>=2个阈值选择日，统一报告未校准模型及可靠性曲线。T17已经看过重叠日期，本轮不是全新独立外部验证；候选/正例率变化也使它不能与T17直接比较原始AP。
 
-详见 [T18审计](reports/window_study/T18_AUDIT.md)、[共同样本](reports/window_study/T19_COHORT_AUDIT.md)、[窗口隔离](reports/window_study/T20_FEATURE_AUDIT.md)、[主实验](reports/window_study/T21_REAL_EXPERIMENT.md)、[三窗口/时间鲁棒性](reports/window_study/T22_WINDOW_COMPARISON.md)。三个模型全部实际拟合，较差的1d历史频率结果保留。十五份聚合输出可随代码保存；逐样本Parquet、36个模型和完整交互HTML保存在忽略目录。
+详见 [T18审计](../reports/window_study/T18_AUDIT.md)、[共同样本](../reports/window_study/T19_COHORT_AUDIT.md)、[窗口隔离](../reports/window_study/T20_FEATURE_AUDIT.md)、[主实验](../reports/window_study/T21_REAL_EXPERIMENT.md)、[三窗口/时间鲁棒性](../reports/window_study/T22_WINDOW_COMPARISON.md)。三个模型全部实际拟合，较差的1d历史频率结果保留。十五份聚合输出可随代码保存；逐样本Parquet、36个模型和完整交互HTML保存在忽略目录。
 
 在本机原T17数据/模型、T19共同cohort和T20特征缓存齐全的情况下：
 
@@ -261,7 +261,7 @@ python -m pytest -q
 
 2026-10-10完成剩余任务，现共十个导航页面。新增 **History Window Study**：真实后端作业、完整样本审计、1/3/7d曲线、PR/可靠性/日期差异、CSV/JSON/HTML下载和保存模型个案预测。默认复用冻结研究；更改设置只评估validation，保护已报告test；未来模式不读取实际标签。新增 **Dataset Catalog**：分来源许可/访问/字段/哈希/时间/覆盖/可用历史诊断、小片段探针后合法下载、验证后手动导入及拒绝覆盖已有raw文件。
 
-完整交付见 [RESEARCH_REPORT.md](RESEARCH_REPORT.md)、[WINDOW_STUDY.md](WINDOW_STUDY.md)、[DATASET_CATALOG.md](DATASET_CATALOG.md)。机器可读指标：[CSV](reports/RESEARCH_METRICS.csv)、[JSON](reports/RESEARCH_METRICS.json)；验证：[T27_VERIFICATION.json](reports/T27_VERIFICATION.json)。全量196项测试通过；十页真实AppTest、导出和临时本地HTTP启动通过；36个冻结模型的完整概率/指标一致，另有真实seed43验证作业及缓存复用检查。冻结T17–T22统计源码、数据、模型和报告保持不变。
+完整交付见 [RESEARCH_REPORT.md](../RESEARCH_REPORT.md)、[WINDOW_STUDY.md](../WINDOW_STUDY.md)、[DATASET_CATALOG.md](../DATASET_CATALOG.md)。机器可读指标：[CSV](../reports/RESEARCH_METRICS.csv)、[JSON](../reports/RESEARCH_METRICS.json)；验证：[T27_VERIFICATION.json](../reports/T27_VERIFICATION.json)。全量196项测试通过；十页真实AppTest、导出和临时本地HTTP启动通过；36个冻结模型的完整概率/指标一致，另有真实seed43验证作业及缓存复用检查。冻结T17–T22统计源码、数据、模型和报告保持不变。
 
 来源结论：Copenhagen支持目前报告的主要实验；High School历史/扫描证据不足；Reality Mining处理版96个ID/1,086,403行，但时间ticks0–233单位未核验且无在线日志；Workplace2015/2013为217/92个ID、78,249/9,827行，各只剩3个完整7d历史预测日且缺在线证据，均仅探索；Social Evolution官方端点无法连接、许可/实际schema未核验，未下载实际文件。没有为了新增AP而造负例或混合来源。
 
@@ -279,12 +279,12 @@ python -m pytest -q
 
 新增独立顶部导航 **时间机器 · Time Machine**，现在共11个页面；不需要先运行离线Window Study。按 **Select → Predict → Freeze Prediction → Reveal Next24h** 操作，查看1/3/7天历史统计、模型信息截止时间及实际概率。预测/冻结阶段不读取未来结果；揭晓独立返回Contact/No Contact/Unknown及依据。选择、模型或数据版本变化会使旧活动记录失效。当前静态档案缺少可信实时锚点，实时模式会明确拒绝。
 
-操作与限制见 [TIME_MACHINE.md](TIME_MACHINE.md)。冻结记录仅在会话中保存，原始数据、模型和逐样本结果不入Git。T17–T27冻结实验与T28接口保持不变。专项37项及完整234项测试通过；真实Copenhagen模型的完整流程、日期失效和归档实时拒绝也已验证。T30预测质量与选择偏差审计为下一任务，尚未开始。
+操作与限制见 [TIME_MACHINE.md](../TIME_MACHINE.md)。冻结记录仅在会话中保存，原始数据、模型和逐样本结果不入Git。T17–T27冻结实验与T28接口保持不变。专项37项及完整234项测试通过；真实Copenhagen模型的完整流程、日期失效和归档实时拒绝也已验证。T30预测质量与选择偏差审计为下一任务，尚未开始。
 
 
 ## T30 — As-of预测质量与选择偏差审计
 
-见 [ASOF_AUDIT.md](ASOF_AUDIT.md) 和 [聚合指标CSV](reports/asof_audit/T30_METRICS.csv)。固定原T22模型/阈值，在已报告Study Days24–27先冻结纯历史候选概率，再独立揭晓和对账。共38,005个候选，27,820个标签可揭晓，10,185个Unknown（26.80%）；92个候选因历史扫描输入不足拒绝推理，最终共同可预测且可靠标签子集为27,802行。
+见 [ASOF_AUDIT.md](../ASOF_AUDIT.md) 和 [聚合指标CSV](../reports/asof_audit/T30_METRICS.csv)。固定原T22模型/阈值，在已报告Study Days24–27先冻结纯历史候选概率，再独立揭晓和对账。共38,005个候选，27,820个标签可揭晓，10,185个Unknown（26.80%）；92个候选因历史扫描输入不足拒绝推理，最终共同可预测且可靠标签子集为27,802行。
 
 该条件子集上XGBoost1/3/7d AP为0.669281/0.701926/0.758930；**不能解释为全部候选总体的无偏性能或独立新测试改善**。新增12,436个候选中81.90%为Unknown，已知的2,251个结果全为正例；正例率/观测选择变化会抬高表面AP。7d Brier从旧队列0.109107变成新条件子集0.128114，不能只报AP上升。旧25,569行队列上的概率、标签和指标均重现原结果，冻结模型未重训。
 
@@ -298,7 +298,7 @@ python -m pytest -q
 
 ## T31 — Multi-Dataset Exploratory Research
 
-新增第12个导航页 **多数据集探索 · Multi-Dataset Exploration**；读取真实聚合报告，支持来源切换、网络/频率分布、每日活动和已观测正接触Top-K检索。详见 [MULTISOURCE_STUDY.md](MULTISOURCE_STUDY.md)，[质量汇总](reports/multisource/T31_SOURCE_SUMMARY.json)、[检索CSV](reports/multisource/T31_RETRIEVAL_METRICS.csv) 和 [窗口适用性](reports/multisource/T31_FEASIBILITY.json)。
+新增第12个导航页 **多数据集探索 · Multi-Dataset Exploration**；读取真实聚合报告，支持来源切换、网络/频率分布、每日活动和已观测正接触Top-K检索。详见 [MULTISOURCE_STUDY.md](../MULTISOURCE_STUDY.md)，[质量汇总](../reports/multisource/T31_SOURCE_SUMMARY.json)、[检索CSV](../reports/multisource/T31_RETRIEVAL_METRICS.csv) 和 [窗口适用性](../reports/multisource/T31_FEASIBILITY.json)。
 
 真实Workplace2013/2015：92/217名接触参与者，9,827/78,249条记录，755/4,274个配对；各只有3个完整7d历史时点。共同日期上固定频率Top20的1/3/7d候选池内捕获率为21.09%/23.13%/23.81%及5.82%/6.57%/6.38%，仅描述已记录正接触，不能跨源比较模型强弱。候选池覆盖未来已记录正配对31.34%/24.87%，候选池外大量正接触另报，不能只看Top-K命中。
 
@@ -315,7 +315,7 @@ HighSchool只有2个完整1d时点，短窗口结果仅有限描述；3/7d不运
 
 ## T32 — 性能、安全缓存与稳定档案快照
 
-见 [PERFORMANCE_AUDIT.md](PERFORMANCE_AUDIT.md)、[真实性能CSV](reports/performance/T32_BENCHMARK.csv)、[结果一致性](reports/performance/T32_PARITY.json) 和 [快照保障/限制](reports/performance/T32_SNAPSHOT_AUDIT.json)。每个真实路径/缓存状态5个独立进程，记录原生峰值RSS、中位耗时及范围；冷指应用缓存为空，未声称清空操作系统缓存。
+见 [PERFORMANCE_AUDIT.md](../PERFORMANCE_AUDIT.md)、[真实性能CSV](../reports/performance/T32_BENCHMARK.csv)、[结果一致性](../reports/performance/T32_PARITY.json) 和 [快照保障/限制](../reports/performance/T32_SNAPSHOT_AUDIT.json)。每个真实路径/缓存状态5个独立进程，记录原生峰值RSS、中位耗时及范围；冷指应用缓存为空，未声称清空操作系统缓存。
 
 MIT Reality Mining冷缓存峰值RSS439.69→318.36MiB，下降27.59%，达到25%目标。Copenhagen热缓存1/3/7d特征0.7675→0.0159秒，Time Machine已保存模型预测0.7827→0.0391秒；均与同样热状态的冻结T31源码比较。冷候选/检索/模型加载等请求因完整哈希、只读快照和缓存校验而变慢，具体例外完整公开，不宣称所有路径都加速。
 

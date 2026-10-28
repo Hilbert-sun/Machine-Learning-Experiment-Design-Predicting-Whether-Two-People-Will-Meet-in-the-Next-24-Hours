@@ -4,13 +4,13 @@ Current product delivery: P03, accepted at390384c / [Actions38115466252](https:/
 
 ## Four global entry points
 
-Home / Play / Explore / Research are native page links on every routed page. All15 routes remain registered; the old research pages are reached through the categorized [Research Hub](pages/14_Research_Hub.py). Original Overview statistics and quick actions are preserved behind “打开科研概览”; Home and the unopened directory do not scan private files. Native links wrap and cards stack on narrow screens.
+Home / Play / Explore / Research are native page links on every routed page. All15 routes remain registered; the old research pages are reached through the categorized [Research Hub](../pages/14_Research_Hub.py). Original Overview statistics and quick actions are preserved behind “打开科研概览”; Home and the unopened directory do not scan private files. Native links wrap and cards stack on narrow screens.
 
 Explore has two tabs: **我的偶遇分析** and **真实数据中的相遇规律**. Without a valid submitted questionnaire, the public tab opens by default; the personal tab provides guidance with no sample index. With a valid result, personal analysis opens first. Switching tabs does not modify answers or score. The tiny public aggregates also render while their tab is hidden; no raw/model loading is involved.
 
 ## Personal explanation flow
 
-Play → submit valid questionnaire → 查看我的偶遇分析 → Explore. Only the current session's submitted Questionnaire and EntertainmentResult are used. [Analysis logic](src/encounter_insights.py) calls the unchanged P01 evaluator to verify the stored result matches the submitted answers; it does not create a second formula. Missing, stale, out-of-scope, unconfirmed, inconsistent, insufficient or invalid inputs display guidance without a personal index.
+Play → submit valid questionnaire → 查看我的偶遇分析 → Explore. Only the current session's submitted Questionnaire and EntertainmentResult are used. [Analysis logic](../src/encounter_insights.py) calls the unchanged P01 evaluator to verify the stored result matches the submitted answers; it does not create a second formula. Missing, stale, out-of-scope, unconfirmed, inconsistent, insufficient or invalid inputs display guidance without a personal index.
 
 Known Keyword structures determine the result text, source-grounded cards and factor bars. Unknown/unanswered factors are named separately, not zero-filled or included in the average. Values are fixed entertainment-rule points, not learned importance, SHAP or true encounter probabilities. Relationship categories never change the index.
 
@@ -18,7 +18,7 @@ Known Keyword structures determine the result text, source-grounded cards and fa
 
 ## The A/B clue diagram
 
-[Graph implementation](src/encounter_graph.py) uses existing NetworkX + Plotly only. A canonical node/edge order, fixed seed42 and80 spring-layout iterations provide repeatable force-directed positions. Dark background, soft edges, hover explanations, point-selection details, A/B focus controls and 恢复默认视图 are provided. A separate “查看节点说明（支持触屏）” selector exposes the same node provenance without requiring hover. Restore clears selected descriptions; removing the optional mutual summary also clears its obsolete selection. Labels use outward positioning, a wrapped mutual label and padded axes to reduce clipping; complex labels can still overlap on narrow screens, so the selector remains the complete accessible explanation. The layout is static and reproducible, not a continuously simulated or draggable-node force engine.
+[Graph implementation](../src/encounter_graph.py) uses existing NetworkX + Plotly only. A canonical node/edge order, fixed seed42 and80 spring-layout iterations provide repeatable force-directed positions. Dark background, soft edges, hover explanations, point-selection details, A/B focus controls and 恢复默认视图 are provided. A separate “查看节点说明（支持触屏）” selector exposes the same node provenance without requiring hover. Restore clears selected descriptions; removing the optional mutual summary also clears its obsolete selection. Labels use outward positioning, a wrapped mutual label and padded axes to reduce clipping; complex labels can still overlap on narrow screens, so the selector remains the complete accessible explanation. The layout is static and reproducible, not a continuously simulated or draggable-node force engine.
 
 A/B are symbolic questionnaire endpoints, not research IDs. Nodes represent only known Keyword fields; a known weak/conflicting-routine clue is labeled as such, not asserted to be a shared schedule. Unknown factors produce no node. Edges associate self-reported questionnaire fields with endpoints; they do not assert friendship, identical routines or causal influence. Color distinguishes factor type with text labels; clue-node size follows the P01 rule points, while A/B and mutual-summary sizes are fixed display markers, with no score assigned to the summary. Focus dims nodes outside the selected endpoint's neighborhood.
 
@@ -36,8 +36,8 @@ Built diagrams have at most8 nodes/12 edges; renderer hard caps15 nodes/30 edges
 
 Source paths:
 
-- [T22 frozen report](reports/window_study/T22_ROBUSTNESS.json), [T22 metrics](reports/window_study/T22_METRICS.csv)
-- [T31 source summary](reports/multisource/T31_SOURCE_SUMMARY.json), [network metrics](reports/multisource/T31_NETWORK_METRICS.csv), [feasibility](reports/multisource/T31_FEASIBILITY.json), [positive retrieval](reports/multisource/T31_RETRIEVAL_METRICS.csv)
+- [T22 frozen report](../reports/window_study/T22_ROBUSTNESS.json), [T22 metrics](../reports/window_study/T22_METRICS.csv)
+- [T31 source summary](../reports/multisource/T31_SOURCE_SUMMARY.json), [network metrics](../reports/multisource/T31_NETWORK_METRICS.csv), [feasibility](../reports/multisource/T31_FEASIBILITY.json), [positive retrieval](../reports/multisource/T31_RETRIEVAL_METRICS.csv)
 
 Workplace2013/2015 have recorded daily activity; High School has short verified duration and cannot support7d research. MIT Reality Mining retains static descriptive counts with unknown tick units and no daily curve. Social Evolution remains unavailable, with no placeholder curve or network. Contact records are not meeting counts; source namespaces remain independent. T31 observed-positive retrieval, T30 Unknown/selection bias, T32 snapshot/performance limits remain unchanged.
 
@@ -45,7 +45,7 @@ Public source summaries reuse the existing content-versioned aggregate-only cach
 
 ## Welcome, privacy and verification
 
-The existing [P01 welcome](src/welcome.py) is unchanged: one native dialog, Boolean tab-scoped acknowledgement, documented storage/refresh limits. Explore adds no second disclaimer. Local provenance/method labels remain necessary to distinguish entertainment points, public research aggregates and optional historical networks.
+The existing [P01 welcome](../src/welcome.py) is unchanged: one native dialog, Boolean tab-scoped acknowledgement, documented storage/refresh limits. Explore adds no second disclaimer. Local provenance/method labels remain necessary to distinguish entertainment points, public research aggregates and optional historical networks.
 
 Tests cover P01 session validation/staleness/reset and isolation, exact factor reuse/unknowns, deterministic bounded graph/summary-only acquaintances, data-driven T22/T31 figures and source/suppression/cohort guards, three homepage entries/lazy scans, all original routes and P01 scoring/welcome integrity. All tests use public aggregates and synthetic temporary questionnaire/record fixtures. Real browser desktop/narrow checks are recorded only if actually performed; no filled-questionnaire screenshots, private inputs or individual research graph exports are published.
 

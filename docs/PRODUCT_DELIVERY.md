@@ -16,7 +16,7 @@ One-minute path: Home → Play → seven coarse answers → calculate → intege
 2. Research Hub groups: **数据与探索**, **机器学习与评估**, **高级研究**, plus report/reproduction links.
 3. Registered original tools: Data Manager, Data Explorer, Encounter Network, Data Sources, Dataset Catalog; Model Training, Prediction Lab, Model Evaluation, History Window Study; Time Machine and Multi-Dataset Exploration.
 
-All12 original file routes remain registered, followed by Play/Explore/Research Hub (15 total). The original Overview route now serves Home; its six scientific indicators, three available-data charts and quick links are preserved in [the moved renderer](src/research_overview_ui.py). Open **Research → 打开科研概览** to inspect them; **收起科研概览** hides them. This is a presentation relocation, not a replacement dataset/statistics implementation. Global Home remains available from every tool. No custom navigation HTML/JavaScript or CSS selector overrides are added.
+All12 original file routes remain registered, followed by Play/Explore/Research Hub (15 total). The original Overview route now serves Home; its six scientific indicators, three available-data charts and quick links are preserved in [the moved renderer](../src/research_overview_ui.py). Open **Research → 打开科研概览** to inspect them; **收起科研概览** hides them. This is a presentation relocation, not a replacement dataset/statistics implementation. Global Home remains available from every tool. No custom navigation HTML/JavaScript or CSS selector overrides are added.
 
 ## Explore: two kinds of evidence
 

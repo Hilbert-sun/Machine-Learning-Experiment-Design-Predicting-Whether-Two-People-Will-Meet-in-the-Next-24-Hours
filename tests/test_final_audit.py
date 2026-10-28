@@ -15,7 +15,7 @@ ROOT=Path(__file__).resolve().parents[1]
 
 @pytest.fixture
 def public_only(tmp_path):
-    for name in approved_reports(ROOT)|set(FROZEN_DOCUMENTS)|{'CI_VERIFICATION.md'}:
+    for name in approved_reports(ROOT)|set(FROZEN_DOCUMENTS)|{'docs/CI_VERIFICATION.md'}:
         dest=tmp_path/name
         dest.parent.mkdir(parents=True,exist_ok=True)
         shutil.copyfile(ROOT/name,dest)
