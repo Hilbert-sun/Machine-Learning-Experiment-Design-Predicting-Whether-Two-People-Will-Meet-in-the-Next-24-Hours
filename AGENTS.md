@@ -29,7 +29,7 @@ The user subsequently instructed: “以后做完全部推送” (push all compl
 
 ## Current authorized range
 
-All work the user authorized on 2026-10-28 is DONE and published on research-v2.2: T35–T40 (rolling validation, Hawkes baseline/features, participant holdout, day analysis, wider Hawkes grid), DOCS-PRESENT, DEMO-DEPLOY (live demo https://hjm59payrde6ronekgiqsn.streamlit.app/ from demo_app.py), REPORT-UPDATE (report v2), README-EN, LICENSE (GPL-3.0, user's choice) CONTRACT-TESTS and CASE-DEMO (one-page case study, captured live-demo GIF). No task is in progress. STOP and await a new instruction; do not start research, tuning on exposed dates, main merges, tags, releases or new deployments without explicit authorization.
+PROJECT CLOSED (2026-10-28). The user asked to finish the Play research-reference card and then close the project. All authorized work is DONE and published on research-v2.2: T35–T40, DOCS-PRESENT, DEMO-DEPLOY (https://hjm59payrde6ronekgiqsn.streamlit.app/ from demo_app.py), REPORT-UPDATE (report v2), README-EN, LICENSE (GPL-3.0), CONTRACT-TESTS, CASE-DEMO and PLAY-REF. Do not start any new research, feature, deployment, merge into main, tag or release without a new explicit user instruction.
 
 ## Local environment
 

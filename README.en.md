@@ -46,7 +46,7 @@ Open the address the terminal prints (usually http://localhost:8501). The [live 
 | Public population patterns | Explore → patterns in real data | No; reads reviewed aggregate reports in the repository |
 | Historical research and models | Research directory | Matching local data, models and version evidence; empty states otherwise |
 
-**The Play index is a fixed rule, not a real encounter probability**, and it is fully separate from the research models. The app UI is Chinese-first. Rules are in the [product plan](docs/PRODUCT_PLAN.md), Explore scope in the [Explore guide](docs/EXPLORE_GUIDE.md) and a walkthrough in the [demo guide](docs/DEMO_GUIDE.md).
+**The Play index is a fixed rule, not a real encounter probability**, and it is fully separate from the research models. The result page adds a "research reference" card: the actual next-day re-contact share of Copenhagen study pairs in a similar situation, from a public suppressed aggregate ([Play reference table](studies/play_reference/README.md)). It links the playful experience to the research finding and is not your probability either. The app UI is Chinese-first. Rules are in the [product plan](docs/PRODUCT_PLAN.md), Explore scope in the [Explore guide](docs/EXPLORE_GUIDE.md) and a walkthrough in the [demo guide](docs/DEMO_GUIDE.md).
 
 ## Results and their populations
 

@@ -1,0 +1,107 @@
+{
+  "cells": [
+    {
+      "frequency": "zero",
+      "recency": "day",
+      "recontact_rate": null,
+      "samples": null,
+      "suppressed": true
+    },
+    {
+      "frequency": "one_two",
+      "recency": "day",
+      "recontact_rate": 0.07,
+      "samples": 35083,
+      "suppressed": false
+    },
+    {
+      "frequency": "three_five",
+      "recency": "day",
+      "recontact_rate": 0.244,
+      "samples": 15929,
+      "suppressed": false
+    },
+    {
+      "frequency": "six_plus",
+      "recency": "day",
+      "recontact_rate": 0.63,
+      "samples": 9108,
+      "suppressed": false
+    },
+    {
+      "frequency": "zero",
+      "recency": "week",
+      "recontact_rate": null,
+      "samples": null,
+      "suppressed": true
+    },
+    {
+      "frequency": "one_two",
+      "recency": "week",
+      "recontact_rate": 0.076,
+      "samples": 208067,
+      "suppressed": false
+    },
+    {
+      "frequency": "three_five",
+      "recency": "week",
+      "recontact_rate": 0.2,
+      "samples": 46463,
+      "suppressed": false
+    },
+    {
+      "frequency": "six_plus",
+      "recency": "week",
+      "recontact_rate": 0.418,
+      "samples": 7815,
+      "suppressed": false
+    },
+    {
+      "frequency": "zero",
+      "recency": "month",
+      "recontact_rate": 0.042,
+      "samples": 61080,
+      "suppressed": false
+    },
+    {
+      "frequency": "one_two",
+      "recency": "month",
+      "recontact_rate": 0.056,
+      "samples": 148218,
+      "suppressed": false
+    },
+    {
+      "frequency": "three_five",
+      "recency": "month",
+      "recontact_rate": 0.144,
+      "samples": 3170,
+      "suppressed": false
+    },
+    {
+      "frequency": "six_plus",
+      "recency": "month",
+      "recontact_rate": null,
+      "samples": null,
+      "suppressed": true
+    }
+  ],
+  "eligible_samples": 535135,
+  "overall_recontact_rate": 0.097,
+  "prediction_times": 13,
+  "protocol": {
+    "dataset_id": "copenhagen",
+    "fitting": false,
+    "frequency": "distinct contact days in [t-14d, t) as an approximation of the questionnaire's 30-day encounter count",
+    "limits": "Danish students' Bluetooth proximity in one month of 2013; self-reported coarse answers only loosely match these buckets",
+    "outcome": "share with a recorded contact in (t, t+24h]; Unknown labels excluded upstream",
+    "population": "T07 coverage-eligible labels of all previously contacted pairs, prediction times with complete 14-day history",
+    "recency": "hours since the last contact before t; questionnaire 最近24小时/最近7天/最近30天 map to <1d, 1–7d, ≥7d",
+    "selection": false,
+    "suppression": {
+      "minimum_each_class": 20,
+      "minimum_samples": 200
+    },
+    "task": "PLAY-REF",
+    "version": 1
+  }
+}

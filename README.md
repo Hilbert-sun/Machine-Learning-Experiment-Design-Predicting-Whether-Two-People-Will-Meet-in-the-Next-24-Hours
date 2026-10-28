@@ -44,7 +44,7 @@ python -m streamlit run app.py
 | 公开群体规律 | Explore → 真实数据中的相遇规律 | 不需要，读取仓库中已审查的聚合报告 |
 | 历史科研与模型 | Research 分类目录 | 需要对应的本地数据、模型和版本证据；缺失时显示空状态 |
 
-**Play 的趣味指数来自固定规则，不是真实相遇概率**，也和科研模型完全独立。规则见[产品计划](docs/PRODUCT_PLAN.md)，Explore 的口径见 [Explore 指南](docs/EXPLORE_GUIDE.md)，演示流程见[五分钟演示](docs/DEMO_GUIDE.md)。
+**Play 的趣味指数来自固定规则，不是真实相遇概率**，也和科研模型完全独立。结果页另有一张"研究参照"卡片：显示 Copenhagen 研究中与你填写情况类似的配对，第二天再次接触的真实比例（来自公开聚合表，见 [Play 研究参照表](studies/play_reference/README.md)），用来把趣味体验和研究结论连起来；它同样不是你们的概率。规则见[产品计划](docs/PRODUCT_PLAN.md)，Explore 的口径见 [Explore 指南](docs/EXPLORE_GUIDE.md)，演示流程见[五分钟演示](docs/DEMO_GUIDE.md)。
 
 ## 研究结果与适用总体
 

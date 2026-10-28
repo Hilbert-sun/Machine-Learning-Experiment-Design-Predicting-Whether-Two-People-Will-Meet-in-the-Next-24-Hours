@@ -2,6 +2,24 @@
 
 Date:2026-10-28
 
+## 项目收尾（PROJECT CLOSED）
+
+**PLAY-REF — DONE：Play 研究参照卡片。** 新增 src/play_reference.py、studies/play_reference/{PLAY_REFERENCE.json,README.md}、tests/test_play_reference.py。Play 结果页在趣味指数下方显示"研究参照"：Copenhagen 研究中情况类似的配对，第二天再次接触的真实比例。数据来自 535,135 个有可靠标签的样本、13 个预测日，样本不足的格子已隐藏，示例：24 小时内见过且近 14 天接触 6 天以上为 63%，整体为 9.7%。卡片明确写出这不是用户的概率。趣味指数的计分规则（逐字节锁定的 src/chance_encounter.py）没有改动；Play 仍然不读取任何数据集或模型。
+
+**本次会话完成并发布的全部工作**（均在 research-v2.2，每项都核对了 CI）：
+
+- 研究：T35 滚动验证（11 个测试日）、T36 Hawkes 基线、T37 Hawkes 特征、T38 留出参与者、T39 日间差异、T40 更短半衰期。
+- 展示：文档归档到 docs/，README 首屏加结果图；中英文 README；一页案例总结（中英文）；演示录屏 GIF；完整报告第二版（本地 PDF 44 页）。
+- 产品：在线演示 https://hjm59payrde6ronekgiqsn.streamlit.app/（入口 demo_app.py，默认锁定科研页面）；Play 研究参照卡片。
+- 工程：GPL-3.0 许可证；契约原样移入 docs/CONTRACTS.md，并由索引测试守护；安全检查只为固定哈希的 demo.gif 开了一个经授权的精确例外。
+
+**已知局限**：单一人群、约四周数据；测试日此前都已被评估过；日块区间没有考虑参与者跨天重复；外部验证只能在出勤假设下进行（尚未做）；预测范围是重复接触，不包括初次相遇。
+
+**项目已收尾。** 没有进行中的任务；新的研究、功能、部署、合并到 main 或发布，都需要用户重新明确授权。
+
+
+Date:2026-10-28
+
 **CASE-DEMO — DONE：一页案例总结与演示录屏。**
 
 - 新增 docs/CASE_STUDY.md 和 CASE_STUDY.en.md，按"问题 → 数据 → 方法 → 三个发现 → 局限"组织。数字已与 T17 元数据和 T35–T38 公开结果核对：692 名参与者、28 天、242 万条记录。中英文 README 的首句都改为"重复接触预测"的准确表述。

@@ -188,3 +188,10 @@ Enforced by: review — deliverables/v2/build_report_v2.py asserts v1 byte-ident
 
 Enforced by: `tests/test_documentation.py::test_license_is_official_gpl3_and_scoped_to_code`
 
+## Play research reference (PLAY-REF)
+
+- src/play_reference.py builds studies/play_reference/PLAY_REFERENCE.json from local T07 labels and T08 features once; Play reads only that reviewed public JSON, never datasets or models. The fixed-rule entertainment index (src/chance_encounter.py, byte-pinned) is unchanged.
+- Cells with fewer than 200 samples or fewer than 20 of either class are suppressed; no IDs. The card must always state it describes Copenhagen study pairs and is not the user's probability; answers outside the 28-day data (超过30天/从未/不确定/不记得) show an honest unavailable message.
+
+Enforced by: `tests/test_play_reference.py::test_public_table_is_complete_suppressed_and_aggregate_only`, `tests/test_play_reference.py::test_lookup_ready_suppressed_and_unavailable_answers`, `tests/test_play_reference.py::test_result_page_shows_reference_without_changing_index`, `tests/test_chance_encounter_ui.py::test_standalone_page_never_opens_research_artifacts`
+
