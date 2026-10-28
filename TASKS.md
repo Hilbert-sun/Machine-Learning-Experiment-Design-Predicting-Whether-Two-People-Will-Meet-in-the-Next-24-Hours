@@ -2,7 +2,7 @@
 
 Task IDs and titles follow the user's task-board screenshot. Dependencies and acceptance criteria below are the implementation plan derived from `PROJECT_SPEC.md`, rather than additional completed functionality.
 
-Current execution: **LICENSE — DONE; CONTRACT-TESTS next** (README-EN DONE) (T40 DONE, CI 40635558765) (T38/T39 DONE; CI 40634169183, 40634721160). User authorized (2026-10-28) the remaining review items step by step: T38, T39, T40, REPORT-UPDATE, README-EN, LICENSE (GPL-3.0, user's choice), CONTRACT-TESTS; verify and push each before the next. DEMO-DEPLOY DONE. DOCS-PRESENT DONE. T35–T37 DONE. T36 DONE (see studies/hawkes_baseline/README.md). T35 DONE (11 rolling test days; see studies/rolling_validation/README.md). User chose (2026-10-28) to strengthen baselines by first building a new rolling-origin validation design, then adding a Hawkes baseline (T36) plus per-participant ranking metrics, and to push completed work. T35 only; T36 stays TODO until separately started. REPORT-FULL is DONE.
+Current execution: **All authorized items DONE (T38–T40, REPORT-UPDATE, README-EN, LICENSE, CONTRACT-TESTS); awaiting a new instruction** (T40 DONE, CI 40635558765) (T38/T39 DONE; CI 40634169183, 40634721160). User authorized (2026-10-28) the remaining review items step by step: T38, T39, T40, REPORT-UPDATE, README-EN, LICENSE (GPL-3.0, user's choice), CONTRACT-TESTS; verify and push each before the next. DEMO-DEPLOY DONE. DOCS-PRESENT DONE. T35–T37 DONE. T36 DONE (see studies/hawkes_baseline/README.md). T35 DONE (11 rolling test days; see studies/rolling_validation/README.md). User chose (2026-10-28) to strengthen baselines by first building a new rolling-origin validation design, then adding a Hawkes baseline (T36) plus per-participant ranking metrics, and to push completed work. T35 only; T36 stays TODO until separately started. REPORT-FULL is DONE.
 
 | Complete | ID | Task | Status | Dependencies | Acceptance criteria |
 | --- | --- | --- | --- | --- | --- |
@@ -83,7 +83,7 @@ T01 excludes Streamlit navigation/pages, dataset downloads, preprocessing, featu
 | REPORT-UPDATE | 完整报告补充 T35–T40 | DONE | T38–T40 | Add an evidence-linked chapter to the Chinese report with source-derived tables/figure; regenerate the local PDF; preserve the original REPORT-FULL record. |
 | README-EN | 英文 README | DONE | REPORT-UPDATE | README.en.md mirroring the Chinese README facts and links; cross-links both ways; doc link tests cover it. |
 | LICENSE | GPL-3.0 许可证 | DONE | README-EN | Add the official GPL-3.0 text for project code only; README states third-party datasets keep their own licenses. |
-| CONTRACT-TESTS | 契约改写为测试 | TODO | LICENSE | Turn checkable AGENTS.md contracts (past-only features, Unknown never zero, demo page boundary, frozen paths) into tests or point to existing ones; shorten AGENTS.md accordingly without weakening any rule. |
+| CONTRACT-TESTS | 契约改写为测试 | DONE | LICENSE | Turn checkable AGENTS.md contracts (past-only features, Unknown never zero, demo page boundary, frozen paths) into tests or point to existing ones; shorten AGENTS.md accordingly without weakening any rule. |
 
 ## Presentation maintenance
 

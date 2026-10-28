@@ -2,6 +2,16 @@
 
 Date:2026-10-28
 
+**CONTRACT-TESTS — DONE：契约改写为测试。** AGENTS.md 中 20 节研究与工程契约原样移入 docs/CONTRACTS.md，每节末尾列出负责检查它的测试（共 62 个测试函数）。AGENTS.md 从 29 KB 缩短到约 6 KB，保留工作流程、授权规则和 7 条核心原则，并要求修改相关模块前先阅读 CONTRACTS.md。原 183 行中，除了有意修改的"阅读顺序"一行，其余都逐字保留。
+
+- 新增 tests/test_contract_index.py：每节契约都必须存在且有"Enforced by"行，列出的测试函数必须真实存在；新补两项此前没有覆盖的检查：studies/ 下的公开 JSON 不含私有字段或 key 类字段名、协议声明没有用测试集做选择；冻结文档必须留在根目录。
+- 报告第二版那一节只能靠人工审查（构建时断言，不在 CI 中运行），文档里已如实注明。LICENSE 的 CI 40637779671 已核对。
+
+**本轮授权的全部事项均已完成**：T38、T39、T40、REPORT-UPDATE、README-EN、LICENSE、CONTRACT-TESTS。等待新的指示。
+
+
+Date:2026-10-28
+
 **LICENSE — DONE：GPL-3.0。** 用户选择 GPL-3.0。LICENSE 是从 gnu.org 下载的官方原文，sha256 与标准 COPYING 文件一致，由测试断言。中英文 README 都写明：许可只覆盖本项目的代码和文档，第三方数据集各自适用其原始许可证。README-EN 的 CI 40637350888 三个 Job 均通过。
 
 
